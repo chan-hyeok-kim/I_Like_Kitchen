@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.hamelen.main">
+	<logger name="com.ham.main">
 		<level value="info" />
 	</logger>
 	
