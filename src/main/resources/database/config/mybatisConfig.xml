@@ -5,5 +5,5 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd"> 
   
 <configuration>
-    
+    <typeAlias type="com.is.main.Board.qna.QnaDTO" alias="qnaDTO"></typeAlias>
 </configuration>
