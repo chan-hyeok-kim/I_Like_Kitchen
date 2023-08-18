@@ -12,7 +12,7 @@
 <body>
 <c:import url="temp/header.jsp"></c:import>
 <h1>
-	Hello world!  
+	아이라이크키친!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="abc">
+  
+  <insert id="setBook" parameterType="BookDTO">
+     INSERT INTO BOOK(ORDERNUM, PRODUCTNUM, ID, CHOICE, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, CHECK)
+     VALUES (BOOK_SEQ,#{productNum},#{id},#{choice},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},0)
+  </insert>
+  
+  
+  
+  
+  
+  </mapper>
