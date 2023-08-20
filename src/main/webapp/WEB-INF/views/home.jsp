@@ -11,11 +11,21 @@
 </head>
 <body>
 <c:import url="temp/header.jsp"></c:import>
+<section class="ms-5">
 <h1>
 	아이라이크키친!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<button id="close" class="btn btn-outline-primary">X</button>
+  
+  <script type="text/javascript">
+    $('#close').click(function(){
+    	window.open( "/book/add", "예약", "width=600, height=1000, top=50, left=1000" );
+    })
+    </script>
+</section>
 </body>
 </html>
 

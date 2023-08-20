@@ -9,7 +9,8 @@
         <typeAlias type="java.lang.Long" alias="Long"/>
         
         <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
-    
+        
+        <typeAlias type="com.ham.main.product.pay.PayDTO" alias="PayDTO"/>
    
    
    </typeAliases>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ham.main.product.pay.PayDAO">
+
+
+  <insert id="setPay" parameterType="PayDTO">
+     INSERT INTO PAYMENT(PAYNUM, ORDERNUM, PRODUCTNUM, ID, PAYDATE, PAYAMOUNT, PAYSTATE)
+     VALUES (PAY_SEQ.NEXTVAL,#{orderNum},#{productNum},#{id},SYSDATE,#{payAmount},0)
+  </insert>
+  
+  
+  </mapper>
