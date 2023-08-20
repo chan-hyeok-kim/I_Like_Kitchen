@@ -21,6 +21,36 @@
     height: 46px;
     margin-top: 30px;
 }
+
+ table,td,th{
+    border-collapse: collapse;
+    empty-cells: show;
+    
+    
+  }/* bisque */
+  td,th{
+    border-bottom: solid #fff1c4dc 1px;
+    line-height: 50px;
+  }
+  .table1{
+    border-top: solid rgb(32, 12, 121) 4px; 
+    width: 1000px;  
+    margin: auto;
+    margin-top: 40px;
+  }
+   .table2{
+    width: 400px;
+  }
+  th{
+    background-color: #fff1c4dc;
+  }
+  .tb1{
+    border: solid blanchedalmond 1px;
+  }
+ 
+  
+ 
+
 </style>
 <!-- 아임포트  -->
  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -29,73 +59,101 @@
 <body>
 
 
-<div class="ri-text">
+<!-- <div class="ri-text"> -->
                            
-결제예정금액
-
-  <table>
 
 
-  </table>
-
-<table >
-<thead>
-   <tr>
-       <th colspan="2">호스트 정보</th>
-       <th></th>
-   </tr>
-</thead>
-<tbody>
-     <tr>
-        <td>상호명</td>
-        <td></td>
-     </tr>
-     <tr>
-        <td>대표자명</td>
-        <td></td>
-     </tr>
-     <tr>
-        <td>소재지</td>
-        <td></td>
-     </tr>
-     <tr>
-        <td>사업자번호</td>
-        <td></td>
-     </tr>
-     <tr>
-        <td>연락처</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>EMAIL</td>
-        <td></td>
-      </tr>
-</tbody>
+<table class="table1">
+        <thead>
+           <tr>
+            <th></th>
+               <th style="text-align: left">호스트 정보</th>            
+           </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td>상호명</td>
+                <td></td>
+             </tr>
+             <tr>
+                <td>대표자명</td>
+                <td></td>
+             </tr>
+             <tr>
+                <td>소재지</td>
+                <td></td>
+             </tr>
+             <tr>
+                <td>사업자번호</td>
+                <td></td>
+             </tr>
+             <tr>
+                <td>연락처</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EMAIL</td>
+                <td></td>
+              </tr>
+        </tbody>
 
 
 </table>
 
-환불규정 안내
 
 
+<table class="table1">
+        <thead>
+           <tr>
+           <th width="10%"></th>
+           <th width="90%">환불규정 안내</th>            
+           </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td></td>
+                <td>이용당일(첫 날)이후에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다
+                결제 후 2시간 이내에는 100%환불이 가능합니다.(단, 이용시간 전까지만 가능)</td>
+             </tr>
+             <tr>
+                <td>4일 전: </td>
+                <td>총 금액의 100%환불</td>
+             </tr>
+             <tr>
+                <td>2일 전: </td>
+                <td>총 금액의 70%환불</td>
+             </tr>
+             <tr>
+                <td>기타</td>
+                <td></td>
+             </tr>
+             <tr>
+                <td>기타</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>기타</td>
+                <td></td>
+              </tr>
+        </tbody>
+</table>
 
-결제수단 선택
 
 <div class="room-booking">
 <button data-bs-toggle="modal" data-bs-target="#exampleModal">결제하기</button>
-
+</div>
 
  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">결제</h1>
+      <div class="modal-header" style="background-color: #fff1c4dc">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" style="margin-left: 30px">결제</h1>
         
       </div>
       <div class="modal-body">
           <h4 style="font-weight: bold">결제하시겠습니까?</h4>
-    <table>
+    <table class="table2">
      <tr>
         <td>예약공간</td>
         <td></td>
@@ -116,14 +174,15 @@
         <td>결제예정금액</td>
         <td></td>
       </tr>
-      </div>
       </table>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" id="btn">결제하기</button>
       </div>
-    </div>
+      
+  
+      <div class="modal-footer room-booking">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 200px">닫기</button>
+        <button type="button" class="btn btn-primary" id="btn" style="width: 200px">결제하기</button>
+      </div>
+   
   </div>
 </div>
  
