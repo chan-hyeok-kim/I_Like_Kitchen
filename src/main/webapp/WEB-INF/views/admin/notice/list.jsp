@@ -34,10 +34,10 @@
             padding-left: 30px;
             position: relative;
         }
-        .contents span:nth-child(1){
+        .contents span:nth-child(2){
             padding-right: 100px;
         }
-        .contents span:nth-child(3){
+        .contents span:nth-child(4){
             position: absolute;
             right: 70px;
         }
@@ -50,10 +50,11 @@
         <a href="oftenQnA/list">자주찾는 질문</a>
     </div>
     <div id="nav02">
-        <h2>공지사항</h2>
+        <h2>공지사항 관리</h2>
 
 		<c:forEach items="${list}" var="kto">
 			<div class="contents">
+				<input type="checkbox">
 	            <span>필독</span>
 	            <span><a href="detail?noticeNum=${kto.noticeNum}">${kto.noticeTitle}</a></span>
 	            <span>${kto.noticeDate}</span>

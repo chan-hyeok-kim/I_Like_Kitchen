@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<c:import url="../temp/bootStrap.jsp"></c:import>
 	<style>
         #nav01{
         	height: 60px;
@@ -25,6 +27,8 @@
             margin: auto;
         }
         .contents{
+        	height: 30px;
+        	line-height: 30px;
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             padding-left: 30px;
@@ -40,6 +44,7 @@
     </style>
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
         <a href="oftenQnA/list">자주찾는 질문</a>
