@@ -47,6 +47,10 @@
   .tb1{
     border: solid blanchedalmond 1px;
   }
+  
+  .check1{
+    margin-left: 5%;
+  }
  
   
  
@@ -139,8 +143,54 @@
 </table>
 
 
+<table class="table1">
+        <thead>
+           <tr>
+           <th width="10%"></th>
+           <th width="80%">서비스 동의</th>
+           <th width="10%" style="text-align: right;">
+           <input class="form-check-input" type="checkbox" value="" id="checkedAll">
+           <label class="form-check-label" for="checkedAll">전체 동의</label></th>            
+           </tr>
+        </thead>
+        <tbody>
+             <tr>
+             
+                <td><input class="form-check-input check1" type="checkbox" value="" id="checked1"></td>
+                <td>
+                 
+                <label class="form-check-label" for="checked1">
+                위 공간의 예약조건 확인 및 결제진행 동의
+                 </label></td>
+             </tr>
+             
+             <tr>
+                <td><input class="form-check-input check1" type="checkbox" value="" id="checked2"></td>
+                <td>
+                <label class="form-check-label" for="checked2">
+                환불 규정 안내에 대한 동의</label></td>
+             </tr>
+             <tr>
+                <td><input class="form-check-input check1" type="checkbox" value="" id="checked3"></td>
+                <td>
+                <label class="form-check-label" for="checked3">
+                개인정보 제3자 제공 동의
+                </label>
+                </td>
+             </tr>
+             <tr>
+                <td><input class="form-check-input check1" type="checkbox" value="" id="checked4"></td>
+                <td>
+                <label class="form-check-label" for="checked4">
+                개인정보 수집 및 이용 동의
+                </label></td>
+             </tr>
+        </tbody>
+</table>
+	
+
 <div class="room-booking">
-<button data-bs-toggle="modal" data-bs-target="#exampleModal">결제하기</button>
+<button style="font-weight: bold; margin-left: 85%" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn1" disabled="disabled">결제하기</button>
 </div>
 
  <!-- Modal -->

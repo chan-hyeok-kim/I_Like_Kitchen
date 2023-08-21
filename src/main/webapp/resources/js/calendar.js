@@ -1,8 +1,13 @@
 
-			let cho = document.getElementById("choice")
+    
+			
 
-        
+
+			let cho = document.getElementsByClassName("cho")
+
+          //  for(c of cho){
 			document.addEventListener('DOMContentLoaded', function() { 
+			  // c.addEventListener("click", function() {
 				let calendarEl = document.getElementById('calendar');
 				let calendar = new FullCalendar.Calendar(calendarEl, {
 					initialView : 'dayGridMonth',
@@ -17,6 +22,4 @@
 				});
 				calendar.render();
 			});
-			
-			
-		
+			//}

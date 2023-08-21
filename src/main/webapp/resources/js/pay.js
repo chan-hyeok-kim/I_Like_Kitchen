@@ -50,3 +50,45 @@ $('#btn').click(
     }
 });
 }
+
+let check1 = document.getElementsByClassName("check1")
+
+function btnCheck(){
+if($('#checkedAll').prop("checked")){
+	  $('#btn1').prop("disabled",false);
+	}else{
+	$('#btn1').prop("disabled",true);
+	}
+}
+
+$('#checkedAll').click(function(){
+	
+	$('.check1').each(function(i, e){
+        $(e).prop("checked",$('#checkedAll').prop("checked"))
+	})
+    btnCheck();
+	
+})
+
+
+$('.check1').each(function(i,e){
+	$(e).click(function(){
+		let check = true;
+		$('.check1').each(function(i,e1){
+		   if(!$(e1).prop("checked")){
+			  check=false;
+			  $('#checkedAll').prop("checked",check);
+		   }
+		})
+
+		if(check){
+			 $('#checkedAll').prop("checked", true);
+		}  
+		btnCheck(); 
+	   })
+ })
+
+
+	
+	
+
