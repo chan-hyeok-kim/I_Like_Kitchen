@@ -24,4 +24,9 @@ public class NoticeDAO {
 		return sqlSession.selectOne(NAMESPACE + "getDetail", noDTO);
 	}
 	
+	public int setAdd(NoticeDTO noDTO) {
+		
+		return sqlSession.insert(NAMESPACE + "setAdd", noDTO);
+	}
+	
 }

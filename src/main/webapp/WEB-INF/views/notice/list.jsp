@@ -52,6 +52,11 @@
     <div id="nav02">
         <h2>공지사항</h2>
 
+		<div class="contents">
+            <span>공지</span>
+            <span>제목</span>
+            <span>작성날짜</span>
+       	</div>
 		<c:forEach items="${list}" var="kto">
 			<div class="contents">
 	            <span>필독</span>

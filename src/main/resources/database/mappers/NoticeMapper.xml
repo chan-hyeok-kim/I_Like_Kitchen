@@ -13,4 +13,9 @@
 		FROM NOTICE
 		WHERE NOTICENUM = #{noticeNum}
 	</select>
+	
+	<insert id="setAdd" parameterType="NoticeDTO">
+		INSERT INTO NOTICE 
+		VALUES(NOTICE_SEQ.NEXTVAL, #{id}, #{noticeTitle}, #{noticeContents}, SYSDATE)
+	</insert>
 </mapper>

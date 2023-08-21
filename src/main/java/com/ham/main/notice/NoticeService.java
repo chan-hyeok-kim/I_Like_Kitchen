@@ -22,4 +22,9 @@ public class NoticeService {
 		return noDAO.getDetail(noDTO);
 	}
 	
+	public int setAdd(NoticeDTO noDTO) {
+		
+		return noDAO.setAdd(noDTO);
+	}
+	
 }

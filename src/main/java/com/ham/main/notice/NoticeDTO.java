@@ -4,11 +4,19 @@ import java.sql.Date;
 
 public class NoticeDTO {
 
+	private String id;
 	private Long noticeNum;
 	private String noticeTitle;
 	private String noticeContents;
 	private Date noticeDate;
 	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public Long getNoticeNum() {
 		return noticeNum;
 	}
