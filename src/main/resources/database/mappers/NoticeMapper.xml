@@ -4,18 +4,55 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.ham.main.notice.NoticeDAO">
+
+	<resultMap type="NoticeDTO" id="getSelectResult">
+		<id column="NOTICENUM" property="noticeNum"/>
+		<result column="ID" property="id"/>
+		<result column="NOTICETITLE" property="noticeTitle"/>
+		<result column="NOTICECONTENTS" property="noticeContents"/>
+		<result column="NOTICEDATE" property="noticeDate"/>
+		<result column="VITALCHECK" property="vitalCheck"/>
+		<collection property="ktos" javaType="List" ofType="NoticeFileDTO">
+			<id column="" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORIGINALNAME" property="originalName"/>
+		</collection>
+	</resultMap>
+	
+	
 	<select id="getList" resultType="NoticeDTO">
 		SELECT * FROM NOTICE
+		ORDER BY NOTICEDATE DESC
 	</select>
 	
-	<select id="getDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+	<select id="getDetail" resultMap="getSelectResult" parameterType="NoticeDTO">
 		SELECT *
-		FROM NOTICE
-		WHERE NOTICENUM = #{noticeNum}
+		FROM NOTICE N LEFT JOIN NOTICEFILE NF 
+			ON N.NOTICENUM = NF.NOTICENUM 
+		WHERE N.NOTICENUM = #{noticeNum}
+		
 	</select>
+	
+	<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
+		SELECT FILENUM, FILENAME 
+		FROM NOTICEFILE
+		WHERE FILENUM = #{fileNum} 
+	</select>
+	
 	
 	<insert id="setAdd" parameterType="NoticeDTO">
+		<selectKey keyProperty="noticeNum" order="BEFORE" resultType="Long">
+			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO NOTICE 
-		VALUES(NOTICE_SEQ.NEXTVAL, #{id}, #{noticeTitle}, #{noticeContents}, SYSDATE)
+		VALUES(#{noticeNum}, #{id}, #{noticeTitle}, #{noticeContents}, SYSDATE, #{vitalCheck})
+		<!-- id 는 DAO 에 도착하기 전에만 넣어주면됨(Controller 나 Service 에서) -->
 	</insert>
+	
+	<insert id="setFileAdd" parameterType="NoticeFileDTO">
+		INSERT INTO NOTICEFILE(FILENUM, NOTICENUM, FILENAME, ORIGINALNAME)
+		VALUES(FILE_SEQ.NEXTVAL, #{noticeNum}, #{fileName}, #{originalName})
+	</insert>
+	
+	
 </mapper>

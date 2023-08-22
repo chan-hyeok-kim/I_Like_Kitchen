@@ -1,6 +1,7 @@
 package com.ham.main.notice;
 
 import java.sql.Date;
+import java.util.List;
 
 public class NoticeDTO {
 
@@ -9,8 +10,22 @@ public class NoticeDTO {
 	private String noticeTitle;
 	private String noticeContents;
 	private Date noticeDate;
+	private String vitalCheck;
+	private List<NoticeFileDTO> ktos;
 	
 	
+	public List<NoticeFileDTO> getKtos() {
+		return ktos;
+	}
+	public void setKtos(List<NoticeFileDTO> ktos) {
+		this.ktos = ktos;
+	}
+	public String getVitalCheck() {
+		return vitalCheck;
+	}
+	public void setVitalCheck(String vitalCheck) {
+		this.vitalCheck = vitalCheck;
+	}
 	public String getId() {
 		return id;
 	}

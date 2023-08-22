@@ -23,7 +23,7 @@
             text-decoration: none;
         }
         #nav02{
-            width: 900px;
+            width: 1000px;
             margin: auto;
         }
         .contents{
@@ -50,7 +50,7 @@
         }
         #addBtn{
             position: relative;
-            left: 570px;
+            left: 600px;
             bottom: 6px;
             height: 32px;
             border: none;
@@ -86,7 +86,6 @@
 		</c:forEach>
     </div>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
     <script>
         // 공지사항 전체 체크/해제
         $("#allCheck").click(function(){

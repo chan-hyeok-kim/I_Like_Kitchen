@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.RoleDTO;
@@ -55,11 +56,25 @@ public class NoticeController {
 		return "/admin/notice/add";
 	}
 	@PostMapping("add")
-	public String setAdd(HttpSession session, NoticeDTO noDTO, Model model) throws Exception{
-		MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
-		noDTO.setId(memDTO.getId());
+	public String setAdd(NoticeDTO noDTO, HttpSession session, MultipartFile[] files) throws Exception{
+		//MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
+		//noDTO.setId(memDTO.getId());
+		noDTO.setId("qwe");
 		
-		return "redirect:/admin/notice/list";
+		noService.setAdd(noDTO, files, session);
+		System.out.println(noDTO.getNoticeTitle());
+		
+		return "redirect:/notice/list";
 	}
+	
+	@GetMapping("update")
+	public String setUpdate(NoticeDTO noDTO, Model model) throws Exception {
+		noDTO = noService.getDetail(noDTO);
+		
+		model.addAttribute("kto", noDTO);
+		
+		return "/admin/notice/update";
+	}
+
 	
 }

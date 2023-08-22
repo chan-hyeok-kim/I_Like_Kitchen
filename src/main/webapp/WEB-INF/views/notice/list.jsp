@@ -23,7 +23,7 @@
             text-decoration: none;
         }
         #nav02{
-            width: 900px;
+            width: 1000px;
             margin: auto;
         }
         .contents{
@@ -41,6 +41,9 @@
             position: absolute;
             right: 70px;
         }
+        #title{
+        	margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
@@ -50,7 +53,9 @@
         <a href="oftenQnA/list">자주찾는 질문</a>
     </div>
     <div id="nav02">
-        <h2>공지사항</h2>
+        <div id="title">
+        	<h2>공지사항</h2>
+        </div>
 
 		<div class="contents">
             <span>공지</span>

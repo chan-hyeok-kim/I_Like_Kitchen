@@ -70,50 +70,34 @@
             <h2>공지사항 작성</h2>
         </div>
         
-        <form action="/notice/add" method="post" id="frm" enctype="multipart/form-data">
+        <form method="post" id="frm" enctype="multipart/form-data">
             <table>
                 <tr>
                     <th class="tableTh">제목</th>
                     <td>
-                        <input type="checkbox" id="vitalCheck"> 필독
-                        <input type="hidden" id="checkVal" name="vitalCheck">
-                        <input type="text" id="noticeTitle" name="noticeTitle">
+                        <input type="checkbox" name="importantCheck"> 필독
+                        <input type="text" id="noticeTitle" name="noticeTitle" value="${kto.noticeTitle}">
                     </td>
                 </tr>
                 <tr>
                     <th class="tableTh">내용</th>
                     <td>
-                        <textarea cols="110" rows="30" id="noticeContents" name="noticeContents"></textarea>
+                        <textarea cols="110" rows="30" id="noticeContents" name="noticeContents">${kto.noticeContents}</textarea>
                     </td>
                 </tr>
                 <tr>
                     <th class="tableTh">첨부 파일</th>
                     <td>
-                        <input type="file" name="files">
+                        <input type="file">
                     </td>
                 </tr>
             </table>
 
             <div id="butDiv">
-                <button type="submit" id="addBtn">등록하기</button>
+                <button id="addBtn">등록하기</button>
             </div>
         </form>
     </div>
-	
-	<script>
-		// 등록하기
-		/* $("#addBtn").click(function() {
-			$(location).attr("href", "list");
-		}); */
-		
-		// 필독 체크시
-		$("#vitalCheck").click(function(){    
-            if($("#vitalCheck").is(":checked") == true){
-                $("#checkVal").val("1");
-            } else{
-                $("#checkVal").val("0");
-            }
-        });
-	</script>
+
 </body>
 </html>

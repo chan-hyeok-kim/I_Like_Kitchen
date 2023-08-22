@@ -29,4 +29,15 @@ public class NoticeDAO {
 		return sqlSession.insert(NAMESPACE + "setAdd", noDTO);
 	}
 	
+	// file(파일)
+	public int setFileAdd(NoticeFileDTO noFileDTO) throws Exception {
+		
+		return sqlSession.insert(NAMESPACE + "setFileAdd", noFileDTO);
+	}
+	
+	public NoticeFileDTO getFileDetail(NoticeFileDTO noFileDTO) {
+		
+		return sqlSession.selectOne(NAMESPACE + "getFileDetail", noFileDTO);
+	}
+	
 }

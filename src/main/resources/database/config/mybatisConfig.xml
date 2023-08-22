@@ -7,6 +7,9 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.ham.main.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.ham.main.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	
 	</typeAliases>
 </configuration>
