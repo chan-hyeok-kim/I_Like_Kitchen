@@ -2,6 +2,8 @@ package com.ham.main.product.book;
 
 import java.sql.Date;
 
+import java.time.LocalTime;
+
 public class BookDTO {
 	
 	private Long orderNum;
@@ -14,7 +16,7 @@ public class BookDTO {
 	private Date bookDate;
 	private Date startTime;
 	private Date endTime;
-	private boolean check;
+	private String status;
 	
 	
 	
@@ -67,6 +69,11 @@ public class BookDTO {
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
+
+	
+	
+	
+	
 	public Date getStartTime() {
 		return startTime;
 	}
@@ -79,11 +86,11 @@ public class BookDTO {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	public boolean isCheck() {
-		return check;
+	public String getStatus() {
+		return status;
 	}
-	public void setCheck(boolean check) {
-		this.check = check;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

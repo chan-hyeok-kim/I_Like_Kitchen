@@ -15,8 +15,9 @@
 					locale : 'ko',
 					dateClick : function(info) {
 						alert('예약하실 날짜는 ' + info.dateStr + '입니다')
-					    
-     
+					    console.log(info.dateStr)
+					    $('#setDate').val(info.dateStr);
+                        console.log($('#setDate').val());
 					}
 
 				});

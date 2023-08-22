@@ -49,7 +49,7 @@ public class MemberController {
 			session.setAttribute("member", memberDTO);
 		}
 		
-		return "redirect:../";
+		return "redirect:/";
 	}
 	
 	//로그아웃
@@ -57,7 +57,7 @@ public class MemberController {
 	public String getLogout(HttpSession session) throws Exception {
 		session.invalidate();
 		
-		return "redirect:../";
+		return "redirect:/";
 	}
 	
 	//ID중복체크

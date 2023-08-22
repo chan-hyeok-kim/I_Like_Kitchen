@@ -1,9 +1,9 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,11 +132,11 @@
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                                  <nav>
-		<%-- <ul class="nav">
+		   <ul class="nav">
 			<c:if test="${not empty member}">
-				<li class="nav-item text-white me-3"><a href="/member/logout">로그아웃</a></li>
-			    <li class="nav-item text-white me-3"><a href="/member/mypage">마이페이지</a></li>
-			</c:if> --%>
+				<li class="nav-item text-white me-3"><a href="/member/logout">logout</a></li>
+			    <li class="nav-item text-white me-3"><a href="/member/mypage">MyPage</a></li>
+			</c:if> 
 			<c:if test="${empty member}">
 			    <li class="nav-item text-white me-3"><a href="/member/login">login</a></li>
 			    <li class="nav-item text-white me-3"><a href="/partner/join">legister partner </a></li>

@@ -90,19 +90,20 @@ section{
 					</div>
 					<div class="modal-body"> -->
 
-						<form action="">
+						<form action="./add" method="post">
+						<input type="hidden" name="productNum" value="2">
 							<div class="b1">
 								<div class="f1">상품 선택</div>
 
 								<div class="form-check cho">
 									<input class="form-check-input" type="radio" name="choice"
-										id="radio1" checked> <label class="form-check-label"
-										for="radio1"> 일반 </label>
+										id="radio1" value="1"> 일반 <label class="form-check-label"
+										for="radio1">1</label>
 								</div>
 								<div class="form-check cho">
 									<input class="form-check-input" type="radio" name="choice"
-										id="radio2"> <label class="form-check-label"
-										for="radio2"> 1박 이상 </label>
+										id="radio2" value="2"> 1박 이상<label class="form-check-label"
+										for="radio2">2</label>
 								</div>
 								
 							</div>
@@ -112,13 +113,15 @@ section{
 								
 								</div>
 								
-								<div id='calendar' name="bookDate"></div>
+								<div id='calendar'>
+								<input type="hidden" name="bookDate" id="setDate">
+								</div>
 							</div>
 							<div class="b1">
 								<div id="time" class="f1">이용 시간 선택</div>
 
 								<div class="">
-									시작 시간 : <select name="startTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+									시작 시간 : <select name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">시작(세팅 포함)시간</option>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>
@@ -147,7 +150,7 @@ section{
     </select>
 								</div>
 								<div class="">
-									종료 시간 : <select name="endTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+									종료 시간 : <select name="end" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">종료(정리 포함)시간</option>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>
@@ -199,7 +202,7 @@ section{
 <div class="b1">
 					호스트 승인 후 예약이 가능합니다.<br>
 
-					<button type="button" class="btn btn-dark"
+					<button type="submit" class="btn btn-dark"
 						style="width: 400px; margin: auto">접수</button>
 </div>
 					</form>
