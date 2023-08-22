@@ -118,19 +118,19 @@ section{
 								</div>
 							</div>
 							<div class="b1">
-								<div id="time" class="f1">이용 시간 선택</div>
+								<div class="f1">이용 시간 선택</div>
 
-								<div class="">
+								<div class="" id="time">
 									시작 시간 : <select name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">시작(세팅 포함)시간</option>
-        <option value="00:00">00:00</option>
-        <option value="01:00">01:00</option>
-        <option value="02:00">02:00</option>
-        <option value="03:00">03:00</option>
-        <option value="04:00">04:00</option>
-        <option value="05:00">05:00</option>
-        <option value="06:00">06:00</option>
-        <option value="07:00">07:00</option>
+        <option value="00:00" class="opt-1">00:00</option>
+        <option value="01:00" class="opt-1">01:00</option>
+        <option value="02:00" class="opt-1">02:00</option>
+        <option value="03:00" class="opt-1">03:00</option>
+        <option value="04:00" class="opt-1">04:00</option>
+        <option value="05:00" class="opt-1">05:00</option>
+        <option value="06:00" class="opt-1">06:00</option>
+        <option value="07:00" class="opt-1">07:00</option>
         <option value="08:00">08:00</option>
         <option value="09:00">09:00</option>
         <option value="10:00">10:00</option>

@@ -24,3 +24,8 @@
 				calendar.render();
 			});
 			//}
+
+			$('#time').click(function(){
+				console.log("잘되");
+			})
+		
