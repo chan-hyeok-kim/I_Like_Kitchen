@@ -11,8 +11,8 @@
         <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
         
         <typeAlias type="com.ham.main.product.pay.PayDTO" alias="PayDTO"/>
-   
-   
+        <typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
+        <typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
    </typeAliases>
 
    

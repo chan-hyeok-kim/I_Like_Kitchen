@@ -11,10 +11,19 @@ public class BookDTO {
 	private String contents;
 	private Integer headCount;
 	private String purpose;
+	private Date bookDate;
 	private Date startTime;
 	private Date endTime;
 	private boolean check;
 	
+	
+	
+	public Date getBookDate() {
+		return bookDate;
+	}
+	public void setBookDate(Date bookDate) {
+		this.bookDate = bookDate;
+	}
 	public Long getOrderNum() {
 		return orderNum;
 	}

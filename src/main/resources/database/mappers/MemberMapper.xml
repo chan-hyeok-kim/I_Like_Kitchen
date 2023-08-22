@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ham.main.member.MemberDAO">
+  
+  	<!-- 로그인 -->
+	<select id="getLogin" resultMap="getLoginResult" resultType="MemberDTO">
+		SELECT M.*, R.* 
+			FROM MEMBER M 
+			INNER JOIN MEMBERROLE MR
+			ON(M.ID = MR.ID)
+			INNER JOIN ROLE R
+			ON(MR.ROLENUM = R.ROLENUM)
+			WHERE M.ID = #{id} AND M.PASSWORD = #{password}
+	</select>
+	
+	<resultMap type="MemberDTO" id="getLoginResult">
+  		<!-- column의 이름과 setter의 이름이 같아야함. -->
+  		<id column="ID" property="id"/>
+  		<result column="PASSWORD" property="password"/>
+  		<result column="NAME" property="name"/>
+  		<result column="EMAIL" property="email"/>
+  		<result column="PHONE" property="phone"/> 
+  		
+  		<collection property="roles" javaType="List" ofType="RoleDTO">
+			<id column="ROLENUM" property="roleNum"/>
+			<result column="ROLENAME" property="roleName"/>
+		</collection>
+  	</resultMap>
+  	
+  	<insert id="setMemberRole" parameterType="MemberDTO">
+  		INSERT INTO MEMBERROLE (ID, ROLENUM) 
+  			VALUES (#{id}, 1)
+  	</insert>
+	
+	<!-- 회원가입 -->
+	<insert id="setJoin" parameterType="MemberDTO">
+		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE)
+			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
+	</insert>
+	
+	<!-- ID 중복체크 -->
+  	<select id="getMemberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT ID FROM MEMBER WHERE ID = #{id} 
+  	</select>
+  	
+  	<!-- EMAIL 중복체크 -->
+  	<select id="getMemberEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT * FROM MEMBER WHERE EMAIL = #{email}
+  	</select>
+  	
+  	<!-- ID찾기 -->
+  	<select id="findId" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT ID FROM MEMBER WHERE EMAIL = #{email}
+  	</select>
+  	
+  </mapper>
+  

@@ -52,7 +52,7 @@
     margin-left: 5%;
   }
  
-  
+
  
 
 </style>
@@ -77,27 +77,27 @@
         <tbody>
              <tr>
                 <td>상호명</td>
-                <td></td>
+                <td>kto.</td>
              </tr>
              <tr>
                 <td>대표자명</td>
-                <td></td>
+                <td>kto.partnerName</td>
              </tr>
              <tr>
                 <td>소재지</td>
-                <td></td>
+                <td>kto.address</td>
              </tr>
              <tr>
                 <td>사업자번호</td>
-                <td></td>
+                <td>kto.partnerNum</td>
              </tr>
              <tr>
                 <td>연락처</td>
-                <td></td>
+                <td>kto.phone</td>
               </tr>
               <tr>
                 <td>EMAIL</td>
-                <td></td>
+                <td>kto.email</td>
               </tr>
         </tbody>
 
@@ -206,23 +206,23 @@
     <table class="table2">
      <tr>
         <td>예약공간</td>
-        <td></td>
+        <td>kto.productName</td>
      </tr>
      <tr>
         <td>예약날짜</td>
-        <td></td>
+        <td>kto.</td>
      </tr>
      <tr>
         <td>예약시간</td>
-        <td></td>
+        <td>kto.startTime~kto.endTime</td>
      </tr>
      <tr>
         <td>예약인원</td>
-        <td></td>
+        <td>kto.headCount</td>
      </tr>
      <tr>
         <td>결제예정금액</td>
-        <td></td>
+        <td>kto.price</td>
       </tr>
       </table>
       </div>

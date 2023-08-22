@@ -112,13 +112,13 @@ section{
 								
 								</div>
 								
-								<div id='calendar'></div>
+								<div id='calendar' name="bookDate"></div>
 							</div>
 							<div class="b1">
 								<div id="time" class="f1">이용 시간 선택</div>
 
 								<div class="">
-									시작 시간 : <select name="approval-startTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+									시작 시간 : <select name="startTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">시작(세팅 포함)시간</option>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>
@@ -147,7 +147,7 @@ section{
     </select>
 								</div>
 								<div class="">
-									종료 시간 : <select name="approval-endTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+									종료 시간 : <select name="endTime" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">종료(정리 포함)시간</option>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>

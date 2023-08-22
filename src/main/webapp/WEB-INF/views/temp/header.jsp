@@ -131,7 +131,21 @@
                                     <li><a href="./blog.html">News</a></li>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
+                                 <nav>
+		<%-- <ul class="nav">
+			<c:if test="${not empty member}">
+				<li class="nav-item text-white me-3"><a href="/member/logout">로그아웃</a></li>
+			    <li class="nav-item text-white me-3"><a href="/member/mypage">마이페이지</a></li>
+			</c:if> --%>
+			<c:if test="${empty member}">
+			    <li class="nav-item text-white me-3"><a href="/member/login">login</a></li>
+			    <li class="nav-item text-white me-3"><a href="/partner/join">legister partner </a></li>
+			</c:if>
+		</ul>
+	 </nav>
                             </nav>
+                            
+                            
                             <div class="nav-right search-switch">
                                 <i class="icon_search"></i>
                             </div>
@@ -140,6 +154,7 @@
                 </div>
             </div>
         </div>
+        
     </header>
     <!-- Header End -->
 
