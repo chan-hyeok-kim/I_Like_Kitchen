@@ -9,8 +9,8 @@
 
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-<link rel="stylesheet"
-	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<!-- <link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"> -->
 <!-- swiper  -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -97,13 +97,13 @@ section{
 
 								<div class="form-check cho">
 									<input class="form-check-input" type="radio" name="choice"
-										id="radio1" value="1"> 일반 <label class="form-check-label"
-										for="radio1">1</label>
+										id="radio1" value="1"><label class="form-check-label"
+										for="radio1"><div>일반</div></label>
 								</div>
 								<div class="form-check cho">
 									<input class="form-check-input" type="radio" name="choice"
-										id="radio2" value="2"> 1박 이상<label class="form-check-label"
-										for="radio2">2</label>
+										id="radio2" value="2"><label class="form-check-label"
+										for="radio2"><div>1박 이상</div></label>
 								</div>
 								
 							</div>
@@ -120,17 +120,17 @@ section{
 							<div class="b1">
 								<div class="f1">이용 시간 선택</div>
 
-								<div class="" id="time">
-									시작 시간 : <select name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+								<div class="" id="startTime">
+									시작 시간 : <select id="selectStartTime" name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">시작(세팅 포함)시간</option>
         <option value="00:00" class="opt-1">00:00</option>
-        <option value="01:00" class="opt-1">01:00</option>
-        <option value="02:00" class="opt-1">02:00</option>
-        <option value="03:00" class="opt-1">03:00</option>
-        <option value="04:00" class="opt-1">04:00</option>
-        <option value="05:00" class="opt-1">05:00</option>
-        <option value="06:00" class="opt-1">06:00</option>
-        <option value="07:00" class="opt-1">07:00</option>
+        <option value="01:00">01:00</option>
+        <option value="02:00">02:00</option>
+        <option value="03:00">03:00</option>
+        <option value="04:00">04:00</option>
+        <option value="05:00">05:00</option>
+        <option value="06:00">06:00</option>
+        <option value="07:00">07:00</option>
         <option value="08:00">08:00</option>
         <option value="09:00">09:00</option>
         <option value="10:00">10:00</option>
@@ -149,10 +149,10 @@ section{
         <option value="23:00">23:00</option>
     </select>
 								</div>
-								<div class="">
-									종료 시간 : <select name="end" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
+							<div class="" id="endTime">
+									종료 시간 : <select id="selectEndTime" name="end" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">종료(정리 포함)시간</option>
-        <option value="00:00">00:00</option>
+        <option value="00:00" class="opt-2">00:00</option>
         <option value="01:00">01:00</option>
         <option value="02:00">02:00</option>
         <option value="03:00">03:00</option>

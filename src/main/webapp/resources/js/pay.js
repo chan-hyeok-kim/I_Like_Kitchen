@@ -36,20 +36,20 @@ $('#btn').click(
 
 let check1 = document.getElementsByClassName("check1")
 
-function btnCheck(){
-if($('#checkedAll').prop("checked")){
-	  $('#btn1').prop("disabled",false);
-	}else{
-	$('#btn1').prop("disabled",true);
-	}
-}
+// function btnCheck(){
+// if($('#checkedAll').prop("checked")){
+// 	  $('#btn1').prop("disabled",false);
+// 	}else{
+// 	$('#btn1').prop("disabled",true);
+// 	}
+// }
 
 $('#checkedAll').click(function(){
 	
 	$('.check1').each(function(i, e){
         $(e).prop("checked",$('#checkedAll').prop("checked"))
 	})
-    btnCheck();
+    // btnCheck();
 	
 })
 
@@ -66,12 +66,26 @@ $('.check1').each(function(i,e){
 
 		if(check){
 			 $('#checkedAll').prop("checked", true);
-		}  
-		btnCheck(); 
+			 
+		} 
+		// btnCheck(); 
+		
 	   })
  })
 
 
-	
-	
+$('#agree').mouseover(function(){
+	if(!$('#checkedAll').prop("checked")){
+		$('#btnHome').attr("data-bs-target","reject");
+	}else{
+		$('#btnHome').attr("data-bs-target","#exampleModal");
+	}
+})
+
+
+$('#btnHome').click(function(){
+	if(!$('#checkedAll').prop("checked")){
+       alert("필수 서비스 사항에 전부 동의해주세요")
+	}
+})
 

@@ -143,7 +143,7 @@
 </table>
 
 
-<table class="table1">
+<table class="table1" id="agree">
         <thead>
            <tr>
            <th width="10%"></th>
@@ -190,7 +190,7 @@
 	
 
 <div class="room-booking">
-<button style="font-weight: bold; margin-left: 85%" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn1" disabled="disabled">결제하기</button>
+<button style="font-weight: bold; margin-left: 85%" data-bs-toggle="modal" data-bs-target="reject" id="btnHome">결제하기</button>
 </div>
 
  <!-- Modal -->
@@ -210,7 +210,7 @@
      </tr>
      <tr>
         <td>예약날짜</td>
-        <td>kto.</td>
+        <td>kto.bookDate</td>
      </tr>
      <tr>
         <td>예약시간</td>

@@ -23,6 +23,7 @@ public class PayController {
 	
 //	@PostMapping("add")
 	public int setPay(PayDTO payDTO) throws Exception{
+		
 		return payService.setPay(payDTO);
 	}
 }
