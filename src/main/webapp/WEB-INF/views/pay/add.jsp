@@ -227,7 +227,7 @@
       </table>
       </div>
       
-  
+      
       <div class="modal-footer room-booking">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 200px">닫기</button>
         <button type="button" class="btn btn-primary" id="btn" style="width: 200px">결제하기</button>
@@ -239,6 +239,7 @@
  
  
  </div>
+ 
 
 <script src="/resources/js/pay.js"></script>
 </body>
