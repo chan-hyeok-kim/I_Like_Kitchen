@@ -1,6 +1,23 @@
 
 $('#btn').click(
-    pay
+    $.ajax({
+		url: "/pay/add", //cross-domain error가 발생하지 않도록 주의해주세요
+		type: 'POST',
+		data: {
+		orderNum:"4",
+		payAmount:34000
+		}
+			
+			//기타 필요한 데이터가 있으면 추가 전달
+		,success:function(result){
+		  if(result.trim()>0){
+			alert("주문정보 저장 성공");
+		 }else{
+			alert("주문정보 저장 실패");
+		 }
+		}
+	})
+	//pay
   )
 
 
@@ -33,17 +50,13 @@ $('#btn').click(
 	        	// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
 	        	if(rsp.paid_amount == data.response.amount){
 
-					data = JSON.stringify({
-						merchant_uid : "4",
-						amount : 34000
-					})
-
 		        	$.ajax({
 						url: "/pay/add", //cross-domain error가 발생하지 않도록 주의해주세요
 						type: 'POST',
-						dataType: 'json',
-						contentType: 'application/json',
-						data: data
+						data: {
+						orderNum:"4",
+						payAmount:34000
+						}
 							
 							//기타 필요한 데이터가 있으면 추가 전달
 						,success:function(result){

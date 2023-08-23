@@ -24,12 +24,9 @@ public class PayController {
 	}
 	
 	@PostMapping("add")
-	public String setPay(@RequestParam("amount")Long amount,@RequestParam("merchant_uid") String merchant_uid,Model model) throws Exception{
+	public String setPay(PayDTO payDTO,Model model) throws Exception{
 		
-		PayDTO payDTO = new PayDTO();
 		payDTO.setId("id677");
-		payDTO.setOrderNum(Long.parseLong(merchant_uid));
-		payDTO.setPayAmount(amount);
 		payDTO.setProductNum(2L);
 		int result = payService.setPay(payDTO);
 		
