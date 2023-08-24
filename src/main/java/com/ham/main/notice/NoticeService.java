@@ -30,9 +30,9 @@ public class NoticeService {
 	}
 	
 	public int setAdd(NoticeDTO noDTO, MultipartFile[] files, HttpSession session) throws Exception {
-		String path = "/resources/upload/notice/";
-		
 		int result = noDAO.setAdd(noDTO);
+		
+		String path = "/resources/upload/notice/";
 		
 		for(MultipartFile file: files) {
 			if(!file.isEmpty()) {
@@ -48,6 +48,44 @@ public class NoticeService {
 		}
 		
 		return result;
+	}
+	
+	public int setUpdate(NoticeDTO noDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = noDAO.setUpdate(noDTO);
+		
+		String path = "/resources/upload/notice/";
+		
+		for(MultipartFile file: files) {
+			if(!file.isEmpty()) {
+				String fileName = fileManager.fileSave(path, session, file);
+				NoticeFileDTO noFileDTO = new NoticeFileDTO();
+				
+				noFileDTO.setNoticeNum(noDTO.getNoticeNum());
+				noFileDTO.setFileName(fileName);
+				noFileDTO.setOriginalName(file.getOriginalFilename());
+				
+				result = noDAO.setFileAdd(noFileDTO);
+			}
+		}
+		
+		return result;
+	}
+	
+	public int setDelete(NoticeDTO noDTO) throws Exception{
+		
+		return noDAO.setDelete(noDTO);
+	}
+	
+	// file(파일)
+	public int setFileDelete(NoticeFileDTO noFileDTO, HttpSession session) throws Exception {
+		noFileDTO = noDAO.getFileDetail(noFileDTO);
+		boolean flag = fileManager.fileDelete(noFileDTO, "/resources/upload/notice", session);
+		
+		if(flag) {
+			return noDAO.setFileDelete(noFileDTO);
+		}
+		
+		return 0;
 	}
 	
 	

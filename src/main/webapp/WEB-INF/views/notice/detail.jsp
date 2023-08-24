@@ -55,7 +55,15 @@
         }
         #updateBtn{
             position: relative;
-            left: 680px;
+            left: 700px;
+            bottom: 6px;
+            height: 32px;
+            border: none;
+            cursor: pointer;
+        }
+        #deleteBtn{
+            position: relative;
+            left: 700px;
             bottom: 6px;
             height: 32px;
             border: none;
@@ -72,7 +80,8 @@
     <div id="nav02">
     	<div id="title">
         	<h2>공지사항</h2>
-        	<button id="updateBtn">공지사항 수정</button>
+        	<button id="updateBtn">수정</button>
+        	<button id="deleteBtn">삭제</button>
         </div>
 
 		<div class="contents">
@@ -81,9 +90,12 @@
             <span>${kto.noticeDate}</span>
        	</div>
         <div class="contents02">
-        	<p>${kto.noticeContents}</p>
+        	<pre>${kto.noticeContents}</pre>
         </div>
         
+        <form id="frm">
+        	<input type="hidden" name="noticeNum" value="${kto.noticeNum}">
+        </form>
         <div>
 	        <c:forEach items="${kto.ktos}" var="f">
 		        <img src="/resources/upload/notice/${f.fileName}">
@@ -92,8 +104,22 @@
     </div>
     
     <script>
+    	// update 버튼
     	$("#updateBtn").click(function() {
 			$(location).attr("href", "update?noticeNum=${kto.noticeNum}");
+		});
+    	
+    	// delete 버튼
+    	$("#deleteBtn").click(function() {
+    		let check = confirm("삭제 하시겠습니까");
+    		
+    		if(!check){
+    			return;
+    		}
+    		
+    		$("#frm").attr("method", "post");
+    		$("#frm").attr("action", "delete");
+    		$("#frm").submit();
 		});
     </script>
 </body>

@@ -11,7 +11,8 @@
         #nav01{
         	height: 60px;
         	line-height: 60px; 
-            border: 1px solid black;
+            border-top: 1px solid black;
+    		border-bottom: 1px solid black;
             padding-right: 700px;
             text-align: center;
             margin-bottom: 100px;
@@ -29,7 +30,6 @@
         .contents{
         	height: 30px;
         	line-height: 30px; 
-            border-top: 1px solid black;
             border-bottom: 1px solid black;
             padding-left: 30px;
             position: relative;
@@ -56,6 +56,14 @@
             border: none;
             cursor: pointer;
         }
+        #deleteBtn{
+            position: relative;
+            left: 600px;
+            bottom: 6px;
+            height: 32px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -68,6 +76,7 @@
         <div id="title">
             <h2>공지사항 관리</h2>
             <button id="addBtn">공지사항 작성</button>
+            <button id="deleteBtn">삭제</button>
         </div>
 
 		<div class="contents">
@@ -76,10 +85,17 @@
             <span>제목</span>
             <span>작성날짜</span>
        	</div>
-		<c:forEach items="${list}" var="kto">
+		<c:forEach items="${list}" var="kto" varStatus="i">
 			<div class="contents">
 				<input type="checkbox" class="check01">
-	            <span>필독</span>
+				<c:choose>
+					<c:when test="${kto.vitalCheck == '1'}">					
+			            <span>필독</span>
+					</c:when>
+					<c:otherwise>
+						<span></span>
+					</c:otherwise>
+				</c:choose>
 	            <span><a href="detail?noticeNum=${kto.noticeNum}">${kto.noticeTitle}</a></span>
 	            <span>${kto.noticeDate}</span>
         	</div>
@@ -115,6 +131,9 @@
         $("#addBtn").click(function(){
             $(location).attr("href", "add");
         });
+        
+        // delete 버튼
+        
     </script>
 </body>
 </html>

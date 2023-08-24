@@ -29,6 +29,16 @@ public class NoticeDAO {
 		return sqlSession.insert(NAMESPACE + "setAdd", noDTO);
 	}
 	
+	public int setUpdate(NoticeDTO noDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE + "setUpdate", noDTO);
+	}
+	
+	public int setDelete(NoticeDTO noDTO) throws Exception{
+		
+		return sqlSession.delete(NAMESPACE + "setDelete", noDTO);
+	}
+	
 	// file(파일)
 	public int setFileAdd(NoticeFileDTO noFileDTO) throws Exception {
 		
@@ -38,6 +48,11 @@ public class NoticeDAO {
 	public NoticeFileDTO getFileDetail(NoticeFileDTO noFileDTO) {
 		
 		return sqlSession.selectOne(NAMESPACE + "getFileDetail", noFileDTO);
+	}
+	
+	public int setFileDelete(NoticeFileDTO noFileDTO) throws Exception {
+		
+		return sqlSession.delete(NAMESPACE + "setFileDelete", noFileDTO);
 	}
 	
 }

@@ -37,6 +37,8 @@
             left: 26px;
             width: 803px;
             height: 32px;
+            margin-top: 10px;
+    		margin-bottom: 10px;
         }
         .tableTh{
             width: 80px;
@@ -54,8 +56,51 @@
             border: none;
             cursor: pointer;
             background-color: bisque;
-            left: 570px;
             height: 32px;
+            margin: 50px;
+        }
+        
+        #foreachDiv{
+        	margin-top: 10px;
+        }
+        .fileDelete{
+        	font-weight: bold;
+        	color: red;
+		    position: relative;
+		    left: 740px;
+		    cursor: pointer;
+        }
+        .fd{
+        	font-weight: bold;
+        	color: red;
+		    position: relative;
+		    left: 420px;
+		    cursor: pointer;
+        }
+        .fileDiv{
+            margin: 10px;
+        	border-bottom: 1px solid black;
+        }
+        .files{
+        	margin: 10px;
+        }
+        #fileAddDiv{
+        	margin: 10px;
+        	margin-top: 20px;
+			border-top: 1px solid black;
+        }
+        #fileAddBtn{
+        	border-radius: 5px;
+        	border: none;
+            cursor: pointer;
+            background-color: bisque;
+            margin: 15px;
+            width: 90px;
+        }
+        
+        table img{
+        	width: 80px;
+        	margin-right: 10px;
         }
     </style>
 </head>
@@ -67,7 +112,7 @@
     </div>
     <div id="nav02">
         <div id="title">
-            <h2>공지사항 작성</h2>
+            <h2>공지사항 수정</h2>
         </div>
         
         <form method="post" id="frm" enctype="multipart/form-data">
@@ -75,7 +120,8 @@
                 <tr>
                     <th class="tableTh">제목</th>
                     <td>
-                        <input type="checkbox" name="importantCheck"> 필독
+                        <input type="checkbox" id="vitalCheck"> 필독
+                        <input type="hidden" id="checkVal" name="vitalCheck">
                         <input type="text" id="noticeTitle" name="noticeTitle" value="${kto.noticeTitle}">
                     </td>
                 </tr>
@@ -88,7 +134,20 @@
                 <tr>
                     <th class="tableTh">첨부 파일</th>
                     <td>
-                        <input type="file">
+                    	<c:forEach items="${kto.ktos}" var="f">
+                    		<div id="foreachDiv">
+		                        <img src="/resources/upload/notice/${f.fileName}">
+		                        <span class="fileDelete" data-delete-num="${f.fileNum}">✕</span>
+                    		</div>
+                    		<span>${f.originalName}</span>
+                    	</c:forEach>
+                    	
+                    	<div id="fileAddDiv">
+	                    	<button type="button" id="fileAddBtn">파일 추가</button>
+                    	</div>
+                    	<div id="fileList">
+                    		
+                    	</div>
                     </td>
                 </tr>
             </table>
@@ -98,6 +157,74 @@
             </div>
         </form>
     </div>
-
+    
+	<script>
+		// 필독 체크여부 확인
+		if('${kto.vitalCheck}' === "1"){
+			$("#vitalCheck").prop("checked", true);
+		} else{
+			$("#vitalCheck").prop("checked", false);
+		}
+	
+		// 필독 체크시
+		$("#vitalCheck").click(function(){    
+            if($("#vitalCheck").is(":checked") == true){
+                $("#checkVal").val("1");
+            } else{
+                $("#checkVal").val("0");
+            }
+        });
+		
+		// file delete
+		$(".fileDelete").click(function() {
+			let check = confirm("삭제시 복구 불가");
+			let num = this.getAttribute("data-delete-num");
+			
+			if(check){
+				$(this).parent().next().remove();
+				this.parentNode.remove();
+				this.remove();
+				count--;
+				
+				$.ajax({
+					type:"get",
+					url:"fileDelete?fileNum=" + num,
+				});
+			}
+		});
+		
+		// 기존 file add
+		let count = 0;
+		let idx = 0;
+		if($(".fileDelete") != null){
+			count = $(".fileDelete").length;
+		}
+		
+		
+		$("#fileAddBtn").click(function() {
+			
+			if(count >= 5){
+				alert("최대 5개의 파일만 업로드 가능합니다");
+				
+				return;
+			}
+			let r = "<div class='fileDiv'>";
+			r += "<input type='file' name='files' class='files'>";
+			r += "<span class='fd' data-id='file" + idx + "'>✕</span>";
+			r += "</div>";
+			
+			$("#fileList").append(r);
+			
+			count++;
+			idx++;
+		});
+		
+		// 추가된 file delete
+		$("#fileList").on("click", ".fd", function() {
+			$(this).parent().remove();
+			
+			count--;
+		});
+	</script>
 </body>
 </html>

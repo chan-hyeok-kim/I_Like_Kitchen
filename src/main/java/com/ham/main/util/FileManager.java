@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ham.main.notice.NoticeFileDTO;
+
 @Component
 public class FileManager {
 	
@@ -29,6 +31,14 @@ public class FileManager {
 		multipartFile.transferTo(file);
 		
 		return uId;
+	}
+	
+	
+	public boolean fileDelete(NoticeFileDTO noFileDTO, String path, HttpSession session) {
+		path = session.getServletContext().getRealPath(path);
+		File file = new File(path, noFileDTO.getFileName());
+		
+		return file.delete(); 
 	}
 
 }

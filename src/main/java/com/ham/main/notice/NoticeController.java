@@ -62,7 +62,6 @@ public class NoticeController {
 		noDTO.setId("qwe");
 		
 		noService.setAdd(noDTO, files, session);
-		System.out.println(noDTO.getNoticeTitle());
 		
 		return "redirect:/notice/list";
 	}
@@ -74,6 +73,24 @@ public class NoticeController {
 		model.addAttribute("kto", noDTO);
 		
 		return "/admin/notice/update";
+	}
+	@PostMapping("update")
+	public String setUpdate(NoticeDTO noDTO, MultipartFile[] files, HttpSession session) throws Exception{
+		noService.setUpdate(noDTO, files, session);
+		
+		return "redirect:/notice/detail?noticeNum=" + noDTO.getNoticeNum();
+	}
+	
+	@PostMapping("delete")
+	public String setDelete(NoticeDTO noDTO) throws Exception{
+		noService.setDelete(noDTO);
+		
+		return "redirect:/notice/list";
+	}
+	
+	@GetMapping("fileDelete")
+	public void setFileDelete(NoticeFileDTO noFileDTO, HttpSession session) throws Exception {
+		noService.setFileDelete(noFileDTO, session);
 	}
 
 	
