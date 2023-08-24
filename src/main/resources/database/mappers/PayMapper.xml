@@ -7,8 +7,63 @@
 
 
   <insert id="setPay" parameterType="PayDTO">
+  <selectKey order="BEFORE" resultType="Long" keyProperty="payNum">
+     SELECT PAY_SEQ.NEXTVAL FROM DUAL
+  </selectKey>
      INSERT INTO PAYMENT(PAYNUM, ORDERNUM, PRODUCTNUM, ID, PAYDATE, PAYAMOUNT, PAYSTATE)
-     VALUES (PAY_SEQ.NEXTVAL,#{orderNum},#{productNum},#{id},SYSDATE,#{payAmount},0)
+     VALUES (#{payNum},#{orderNum},#{productNum},#{id},SYSDATE,#{payAmount},0)
+  </insert>
+  
+  
+  <select id="getDetail" resultMap="getDetailResult" parameterType="PayDTO"> 
+     SELECT * 
+       FROM PAYMENT P INNER JOIN BOOK B 
+         ON P.ORDERNUM = B.ORDERNUM INNER JOIN MEMBER M 
+         ON B.ID = M.ID  
+      WHERE PAYNUM=#{payNum}
+  </select> 
+  
+  <resultMap type="PayDTO" id="getDetailResult">
+     <id column="PAYNUM" property="payNum"/> 
+     <result column="ORDERNUM" property="orderNum"/>
+     <result column="PRODUCTNUM" property="productNum"/>
+     <result column="ID" property="id"/>
+     <result column="PAYDATE" property="payDate"/>
+     <result column="PAYAMOUNT" property="payAmount"/>
+     <result column="PAYSTATE" property="payState"/>
+     
+     <association javaType="BookDTO" property="bookDTO">
+     <id column="ORDERNUM" property="orderNum"/>
+     <result column="PRODUCTNUM" property="productNum"/>
+     <result column="ID" property="id"/>
+     <result column="CHOICE" property="choice"/>
+     <result column="CONTENTS" property="contents"/>
+     <result column="HEADCOUNT" property="headCount"/>
+     <result column="PURPOSE" property="purpose"/>
+     <result column="STARTTIME" property="startTime"/>
+     <result column="ENDTIME" property="endTime"/>
+     <result column="STATUS" property="status"/>
+     <result column="BOOKDATE" property="bookDate"/>
+     </association>
+     
+     <association javaType="MemberDTO" property="memberDTO">
+        <id column="ID" property="id"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="NAME" property="name"/>
+        <result column="EMAIL" property="email"/>
+        <result column="PHONE" property="phone"/>
+     </association>
+  <!-- 나중에 product추가해야됨 상품명이랑 파일까지 -->
+  
+  </resultMap>
+  
+  <update id="setUpdatePay" parameterType="payDTO">
+       UPDATE PAYMENT SET PAYSTATE='1' 
+  </update>
+  
+  <insert id="setRefund" parameterType="refundDTO">
+       INSERT INTO REFUND(REFUNDNUM, PAYNUM, REFUNDAMOUNT, REFUNDDATE, REFUNDREASON)
+       VALUES (REFUND_SEQ.NEXTVAL, #{payNum},#{refundAmount},SYSDATE, #{refundReason})
   </insert>
   
   

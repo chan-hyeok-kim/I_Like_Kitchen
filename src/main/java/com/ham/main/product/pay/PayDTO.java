@@ -1,6 +1,10 @@
 package com.ham.main.product.pay;
 
+import java.lang.reflect.Member;
 import java.sql.Date;
+
+import com.ham.main.member.MemberDTO;
+import com.ham.main.product.book.BookDTO;
 
 public class PayDTO {
 	
@@ -11,7 +15,23 @@ public class PayDTO {
 	private Date payDate;
 	private Long payAmount;
 	private Integer payState;
+	private BookDTO bookDTO;
+	private MemberDTO memberDTO;
+	 
 	
+	
+	public BookDTO getBookDTO() {
+		return bookDTO;
+	}
+	public void setBookDTO(BookDTO bookDTO) {
+		this.bookDTO = bookDTO;
+	}
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
 	public Long getPayNum() {
 		return payNum;
 	}
