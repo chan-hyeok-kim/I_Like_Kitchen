@@ -63,7 +63,7 @@
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
-        <a href="oftenQnA/list">자주찾는 질문</a>
+        <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
     </div>
     <div id="nav02">
         <div id="title">
@@ -76,7 +76,7 @@
                     <th class="tableTh">제목</th>
                     <td>
                         <input type="checkbox" id="vitalCheck"> 필독
-                        <input type="hidden" id="checkVal" name="vitalCheck">
+                        <input type="hidden" id="checkVal" name="vitalCheck" value="0">
                         <input type="text" id="noticeTitle" name="noticeTitle">
                     </td>
                 </tr>

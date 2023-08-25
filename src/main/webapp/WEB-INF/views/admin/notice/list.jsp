@@ -64,13 +64,20 @@
             border: none;
             cursor: pointer;
         }
+        
+        #nav03{
+        	text-align: center;
+		    margin-top: 50px;
+		    font-size: 17px;
+        }
     </style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
+	
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
-        <a href="oftenQnA/list">자주찾는 질문</a>
+        <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
     </div>
     <div id="nav02">
         <div id="title">
@@ -85,9 +92,9 @@
             <span>제목</span>
             <span>작성날짜</span>
        	</div>
-		<c:forEach items="${list}" var="kto" varStatus="i">
+		<c:forEach items="${list}" var="kto">
 			<div class="contents">
-				<input type="checkbox" class="check01">
+				<input type="checkbox" class="check01" value="${kto.noticeNum}">
 				<c:choose>
 					<c:when test="${kto.vitalCheck == '1'}">					
 			            <span>필독</span>
@@ -100,6 +107,11 @@
 	            <span>${kto.noticeDate}</span>
         	</div>
 		</c:forEach>
+    </div>
+    <div id="nav03">
+    	<c:forEach var="i" begin="1" end="5">
+    		<a href="">${i}</a>
+    	</c:forEach>
     </div>
 
     <script>
@@ -132,8 +144,42 @@
             $(location).attr("href", "add");
         });
         
+        // 체크 클릭시 각 체크박스의 값 넘기기
+        $(".check01").click(function() {
+        	
+        	let noticeNum = [];
+
+        	if($(this).is(":checked") == true){
+        		noticeNum.push($(this).val());
+        	} else{ 
+        		noticeNum.pop();
+        	}            
+        	
+        	console.log(noticeNum);
+        });
         // delete 버튼
+        $("#deleteBtn").click(function() {
+        	delete2();
+        	
+		});
         
+        
+        function delete2(){
+        	if(noticeNum != null){
+	        	$.ajax({
+	        		type:"post",
+	        		url:"delete",
+	        		data:{
+	        			noticeNum:noticeNum
+	        		},
+	        		success:function(){
+	        			$(location).attr("href", "list");
+	        		}
+	        	});	        		
+        	} else{
+        		alert("게시물을 선택하세요.");
+        	}
+        }
     </script>
 </body>
 </html>
