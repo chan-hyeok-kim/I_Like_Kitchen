@@ -1,28 +1,12 @@
 package com.ham.main.product.pay;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
-import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.JsonObject;
 import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
 import com.ham.main.util.CreatOrderNum;
@@ -34,11 +18,6 @@ public class PayController {
 	@Autowired
 	private PayService payService;
     
-	@Autowired
-	private CreatOrderNum creatOrderNum;
-	
-	@Autowired
-	private AlterDate alterDate;
 	
 	
 	@GetMapping("add")
@@ -97,14 +76,7 @@ public class PayController {
 			payService.setRefund(refundDTO);
 		}
 		model.addAttribute("result",result);
-		
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	 	params.add(reason, reason);
-	 	
-	 	HttpHeaders headers = new HttpHeaders(params);
-	 	headers.add("");
-	 	
-	 	HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
+	
 		
 		return "commons/ajaxResult";
 		
