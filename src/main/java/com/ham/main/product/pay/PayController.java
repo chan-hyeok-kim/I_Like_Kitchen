@@ -14,8 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
+import com.ham.main.product.pay.port.PortController;
 import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
 import com.ham.main.util.CreatOrderNum;
@@ -40,6 +40,8 @@ public class PayController {
 	@Autowired
 	private AlterDate alterDate;
 	
+	@Autowired
+	private PortController portController;
 	
 	@GetMapping("add")
 	public void setPay() throws Exception{
@@ -64,7 +66,12 @@ public class PayController {
 	
 	payDTO =  payService.getDetail(payDTO);
 	model.addAttribute("kto", payDTO);
+	
+	//String token = portController.getImportToken();
+	//System.out.println(token);
+	
 	/*
+	 *
 	 * Date date1 = payDTO.getBookDTO().getStartTime(); Date date2 =
 	 * payDTO.getBookDTO().getEndTime();
 	 * 
@@ -98,57 +105,10 @@ public class PayController {
 		}
 		model.addAttribute("result",result);
 		
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	 	params.add(reason, reason);
-	 	
-	 	HttpHeaders headers = new HttpHeaders(params);
-	 	headers.add("");
-	 	
-	 	HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
-		
+	    
 		return "commons/ajaxResult";
 		
-//		HttpURLConnection conn = null;
-//		String access_token = null;
-//		URL url = new URL("http://api.iamport.kr/users/getToken");
-//		conn = (HttpURLConnection)url.openConnection();
-//		
-//		conn.setRequestMethod("POST");
-//		
-////		헤더 설정
-//		conn.setRequestProperty("Content-Type", "applicaition/json");
-//		conn.setRequestProperty("Accpet", "applicaition/json");
-//		
-//		conn.setDoOutput(true);
-//		
-//		JsonObject obj = new JsonObject();
-//		obj.addProperty("imp_key","imp_key");
-//		obj.addProperty("imp_secret","imp_secret");
-////		JSON형태로 넣은 후 요청
-//		
-//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-//		bw.write(obj.toString());
-//		bw.flush();
-//		bw.close();
-//	    
-//		int result = 0;
-//		int responseCode = conn.getResponseCode();
-//		System.out.println("응답코드 : " + responseCode);
-//		
-//	    if(responseCode == 200) {
-//	    	System.out.println("환불 성공");
-//	    	BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//	    	StringBuilder sb = new StringBuilder();
-//	    	String line = null;
-//	    	while((line = br.readLine())!=null) {
-//	    		sb.append(line+"\n");
-//	    	}
-//	    	br.close();
-//	    	System.out.println(""+sb.toString());
-//	    	result = 1;
-//	    }else {
-//	    	System.out.println(conn.getResponseMessage());	
-//	    }
+
 	 	
 		
 	 	
