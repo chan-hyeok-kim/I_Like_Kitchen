@@ -1,5 +1,7 @@
 package com.ham.main.member;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,24 +72,43 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		session.setAttribute("member", memberDTO);
-
-		int result = 0;
-		String message = "로그인 실패!";
-		String url = "./login";
+		
 		if(memberDTO != null) {
-			result = 1;
-			message = "로그인 성공!";
-			url = "/";
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberDTO);
+		}else {
+			mv.addObject("errorMessage", "로그인에 실패했습니다.");
+			mv.setViewName("/member/memberLogin");
 		}
+		
+//		session.setAttribute("member", memberDTO);
+//
+//		int result = 0;
+//		String message = "로그인 실패!";
+//		String url = "./memberLogin";
+//		if(memberDTO != null) {
+//			result = 1;
+//			message = "로그인 성공!";
+//			url = "/";
+//		}
+//
+//		mv.addObject("url", url);
+//		mv.addObject("message", message);
+//		mv.setViewName("commons/result");
 
-		mv.addObject("url", url);
-		mv.addObject("message", message);
-		mv.setViewName("commons/result");
-
+		return mv;
+	}
+	
+	//로그아웃
+	@GetMapping("memberLogout")
+	public ModelAndView getMemberLogout(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("redirect:../");
+		
 		return mv;
 	}
 }

@@ -13,6 +13,12 @@
 
 	<section class="container mt-5">
 		<h1 class="my-4">Login Page</h1>
+		
+		<c:if test="${not empty errorMessage}">
+            <div class="alert alert-danger" role="alert">
+                ${errorMessage}
+            </div>
+        </c:if>
 
 		<form action="./memberLogin" method="post">
 			<div class="mb-3">

@@ -43,7 +43,7 @@
 			      <nav>
 			      	<ul class="nav">
 			      		<c:if test="${not empty member}">
-			      			<li class="nav-item text-white me-3"><a href="/member/logout">로그아웃</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/member/mypage">마이페이지</a></li>
 			      		</c:if>
 			      		<c:if test="${empty member}">
