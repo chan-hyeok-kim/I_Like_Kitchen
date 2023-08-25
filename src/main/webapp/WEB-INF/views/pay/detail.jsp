@@ -9,19 +9,23 @@
 
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
-<style type="text/css"></style>
+<style type="text/css">
+ table{
+      width: 600px;
+ }
+</style>
 </head>
 <body>
-<table>
+<table class="table">
 <thead>
    <tr>
-      <th rowspan="2"></th>
-      <th>kto.productDTO.productName 결제상태</th>
+      <th rowspan="2" width="20%"></th>
+      <th width="80%">kto.productDTO.productName 결제상태</th>
       
    </tr>
     <tr>
-      <th></th>
-      <th>${kto.payState}</th>
+      <th><c:if test="${kto.payState eq 1}">예약 승인</c:if> 
+          <c:if test="${kto.payState eq 0}">승인 대기 중</c:if></th>
    </tr>
   </thead>
    <tbody>
@@ -34,11 +38,10 @@
        <td></td>
       </tr>
       <tr>
-       <td colspan="2">사용시간</td>
+       <td rowspan="2">사용시간</td>
        <td>${kto.bookDTO.startTime}</td>
       </tr>
       <tr>
-       <td></td>
        <td>${kto.bookDTO.endTime}</td>
       </tr>
        <tr>

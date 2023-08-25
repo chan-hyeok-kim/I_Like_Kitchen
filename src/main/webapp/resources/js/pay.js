@@ -156,24 +156,24 @@ $('#checkedAll').click(function(){
 })
 
 
-$('.check1').each(function(i,e){
-	$(e).click(function(){
-		let check = true;
-		$('.check1').each(function(i,e1){
-		   if(!$(e1).prop("checked")){
-			  check=false;
-			  $('#checkedAll').prop("checked",check);
-		   }
-		})
 
-		if(check){
-			 $('#checkedAll').prop("checked", true);
-			 
-		} 
-		// btnCheck(); 
+	$('.check1').click(function(){
+		let check = true;
+	
+		$('.check1').each(function(i,e){
+		   if(!$(e).prop("checked")){
+			  
+			  check = $(e).prop("checked");
+			  return check;
+		   }
+        })
+        
+	     $('#checkedAll').prop("checked",check);
+	  	 	
 		
-	   })
- })
+		// btnCheck(); 
+	 })
+ 
 
 
 $('#agree').mouseover(function(){

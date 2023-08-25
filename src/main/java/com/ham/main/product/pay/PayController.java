@@ -44,7 +44,8 @@ public class PayController {
 	private PortController portController;
 	
 	@GetMapping("add")
-	public void setPay() throws Exception{
+	public void setPay(Model model) throws Exception{
+//		파트너디테일 넣어야함 
 		
 	}
 	
