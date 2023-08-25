@@ -47,7 +47,7 @@
 			      			<li class="nav-item text-white me-3"><a href="/member/mypage">마이페이지</a></li>
 			      		</c:if>
 			      		<c:if test="${empty member}">
-			      			<li class="nav-item text-white me-3"><a href="/member/login">로그인</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/member/join">장소등록</a></li>
 			      		</c:if>
 			      	</ul>

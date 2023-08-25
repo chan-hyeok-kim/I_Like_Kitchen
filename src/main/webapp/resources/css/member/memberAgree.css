@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.terms-container {
+	margin-top: 2rem;
+	padding: 2rem;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+}
+.terms-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+.form-check {
+	margin-bottom: 1rem;
+}
+.agree-btn {
+	display: flex;
+	justify-content: center;
+}
