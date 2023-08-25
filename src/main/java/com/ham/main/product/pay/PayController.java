@@ -66,9 +66,9 @@ public class PayController {
 	
 	payDTO =  payService.getDetail(payDTO);
 	model.addAttribute("kto", payDTO);
-	
-	//String token = portController.getImportToken();
-	//System.out.println(token);
+	String token = portController.getImportToken();
+    	
+	System.out.println(token);
 	
 	/*
 	 *
@@ -100,12 +100,24 @@ public class PayController {
 //      적립금 없애기도 가능할듯
 		refundDTO.setRefundAmount(payAmount);
 		refundDTO.setRefundReason(reason);
+		
+		String token = portController.getImportToken();
+		payDTO = payService.getDetail(payDTO);
+		String uid = payDTO.getSid();
+	
+		portController.payMentCancle(token, uid, refundDTO.getRefundAmount(), reason);
+		
 		if(result>0) {
+			
 			payService.setRefund(refundDTO);
 		}
 		model.addAttribute("result",result);
 		
-	    
+		
+//		조회를 하고 uid빼서넣기
+		
+		
+		
 		return "commons/ajaxResult";
 		
 

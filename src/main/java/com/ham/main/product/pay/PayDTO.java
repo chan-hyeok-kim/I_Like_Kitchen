@@ -15,11 +15,19 @@ public class PayDTO {
 	private Date payDate;
 	private Long payAmount;
 	private Integer payState;
+    private String sid;
+    
 	private BookDTO bookDTO;
 	private MemberDTO memberDTO;
-	 
+
 	
 	
+	public String getSid() {
+		return sid;
+	}
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
 	public BookDTO getBookDTO() {
 		return bookDTO;
 	}

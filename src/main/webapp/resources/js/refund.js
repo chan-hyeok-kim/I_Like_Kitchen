@@ -54,11 +54,14 @@ function cancelPay(cancelReason) {
     //     checksum: cancelableAmount // [권장] 환불 가능 금액 입력
       }
     ,success:function(result){
-
+     if(result.trim()>0){
     
       alert("환불 성공");
+     }else{
+      alert("환불 실패");
+     }
     },error:function(){
-      alert("환불 실패")
+      alert("에러 발생")
     }
   })
 

@@ -10,8 +10,8 @@
   <selectKey order="BEFORE" resultType="Long" keyProperty="payNum">
      SELECT PAY_SEQ.NEXTVAL FROM DUAL
   </selectKey>
-     INSERT INTO PAYMENT(PAYNUM, ORDERNUM, PRODUCTNUM, ID, PAYDATE, PAYAMOUNT, PAYSTATE)
-     VALUES (#{payNum},#{orderNum},#{productNum},#{id},SYSDATE,#{payAmount},0)
+     INSERT INTO PAYMENT(PAYNUM, ORDERNUM, PRODUCTNUM, ID, PAYDATE, PAYAMOUNT, PAYSTATE, SID)
+     VALUES (#{payNum},#{orderNum},#{productNum},#{id},SYSDATE,#{payAmount},0,#{sid})
   </insert>
   
   
@@ -31,6 +31,7 @@
      <result column="PAYDATE" property="payDate"/>
      <result column="PAYAMOUNT" property="payAmount"/>
      <result column="PAYSTATE" property="payState"/>
+     <result column="SID" property="sid"/>
      
      <association javaType="BookDTO" property="bookDTO">
      <id column="ORDERNUM" property="orderNum"/>
