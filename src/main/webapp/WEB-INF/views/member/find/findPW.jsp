@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <c:import url="../../temp/bootStrap.jsp"></c:import>
 <title>비밀번호 찾기</title>
+<link href="/resources/css/member/findPW.css" rel="stylesheet">
 </head>
 <body>
 	<c:import url="../../temp/header.jsp"></c:import>
@@ -30,10 +31,11 @@
 	    </c:if>
 	    
 	    <div class="row justify-content-center my-5">
-	        <form class="col-md-7" action="./findPW" method="post">
+	        <form class="col-md-7" id="frm" action="./findPW" method="post">
 	            <div class="mb-3">
 	                <label for="id" class="form-label">아이디</label>
 	                <input type="text" id="id" name="id" required class="form-control">
+	                <div id="idResult"></div>
 	            </div>
 	            <div class="mb-3">
 	                <label for="email" class="form-label">이메일</label>
@@ -47,13 +49,20 @@
 	                        <option value="@nate.com">@nate.com</option>
 	                    </select>
 	                </div>
+	                <div id="emailResult"></div>
+					<div class="input-group mt-3">
+						<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+						<button type="button" class="btn btn-primary" id="mail-Check-Btn">인증번호 발송</button>
+						<button type="button" class="btn btn-secondary d-none" id="mail-Confirm-Btn">인증번호 확인</button>
+					</div>
+					<span id="mail-check-warn"></span>
 	            </div>
-	            <button type="submit" class="btn btn-outline-secondary">임시 비밀번호 발급</button>
+	            <button type="button" id="btn" class="btn btn-outline-secondary">임시 비밀번호 발급</button>
 	        </form>
 	    </div>
 	</div>
 	
-	<!-- <script src="/resources/js/member/findPW.js"></script> -->
+	<script src="/resources/js/member/findPW.js"></script>
 
 </body>
 </html>

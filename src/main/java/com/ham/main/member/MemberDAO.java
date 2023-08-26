@@ -27,4 +27,8 @@ public class MemberDAO {
 	public int setMemberRole(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "setMemberRole", memberDTO);
 	}
+	
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setMemberUpdate", memberDTO);
+	}
 }

@@ -40,7 +40,18 @@ public class MemberService {
 		return result;
 	}
 	
+	//로그인
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberLogin(memberDTO);
+	}
+	
+	//회원정보
+	public MemberDTO getMemberPage(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberLogin(memberDTO);
+	}
+	
+	//회원정보수정
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setMemberUpdate(memberDTO);
 	}
 }

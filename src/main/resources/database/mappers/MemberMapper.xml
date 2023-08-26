@@ -23,7 +23,7 @@
 			ON(M.ID = MR.ID)
 			INNER JOIN ROLE R
 			ON(MR.ROLENUM = R.ROLENUM)
-			WHERE M.ID = #{id}
+			WHERE M.ID = #{id} AND M.PASSWORD = #{password}
     </select>
     
     <resultMap type="MemberDTO" id="getMemberLoginResult">
@@ -45,6 +45,12 @@
   		INSERT INTO MEMBERROLE (ID, ROLENUM) 
   			VALUES (#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
   	</insert>
-    
+  	
+  	<!-- 회원정보 수정 -->
+    <update id="setMemberUpdate" parameterType="memberDTO">
+    	UPDATE MEMBER 
+    		SET PASSWORD = #{password}, NAME = #{name}, EMAIL = #{email}, EMAILDOMAIN = #{emailDomain}, PHONE = #{phone}
+    			WHERE ID = #{id}
+    </update>
   </mapper>
   

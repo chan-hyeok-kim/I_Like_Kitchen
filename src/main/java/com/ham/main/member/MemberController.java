@@ -107,4 +107,42 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	//회원정보(Mypage)
+	@GetMapping("memberPage")
+	public ModelAndView getMemberPage(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		memberDTO = memberService.getMemberPage(memberDTO);
+		mv.addObject("kto", memberDTO);
+		mv.setViewName("member/memberPage");
+		
+		return mv;
+	}
+	
+	//회원정보수정
+	@GetMapping("memberUpdate")
+	public ModelAndView setMemberUpdate(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		memberDTO = memberService.getMemberPage(memberDTO);
+		mv.addObject("kto", memberDTO);
+		mv.setViewName("member/memberUpdate");
+		
+		return mv;
+	}
+	
+	@PostMapping("memberUpdate")
+	public ModelAndView setMemberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionMemberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO.setId(sessionMemberDTO.getId());
+		int result = memberService.setMemberUpdate(memberDTO);
+		
+		mv.setViewName("redirect:./memberPage");
+		return mv;
+	}
+	
 }

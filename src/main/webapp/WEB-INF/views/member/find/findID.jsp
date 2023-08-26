@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <c:import url="../../temp/bootStrap.jsp"></c:import>
 <title>아이디 찾기</title>
+<link href="/resources/css/member/findID.css" rel="stylesheet">
 </head>
 <body>
 	<c:import url="../../temp/header.jsp"></c:import>
@@ -31,10 +32,11 @@
 	    </c:if>
 	    
 	    <div class="row justify-content-center my-5">
-	        <form class="col-md-7" action="./findID" method="post">
+	        <form class="col-md-7" id="frm" action="./findID" method="post">
 	            <div class="mb-3">
 	                <label for="name" class="form-label">이름</label>
 	                <input type="text" class="form-control" id="name" name="name">
+					<div id="nameResult"></div>
 	            </div>
 	            <div class="mb-3">
 	                <label for="email" class="form-label">이메일</label>
@@ -48,11 +50,14 @@
 	                        <option value="@nate.com">@nate.com</option>
 	                    </select>
 	                </div>
+					<div id="emailResult"></div>
 	            </div>
-	            <button type="submit" class="btn btn-outline-secondary">아이디 찾기</button>
+	            <button type="button" id="btn" class="btn btn-outline-secondary">아이디 찾기</button>
 	        </form>
 	    </div>
 	</div>
+	
+	<script src="/resources/js/member/findID.js"></script>
 
 </body>
 </html>

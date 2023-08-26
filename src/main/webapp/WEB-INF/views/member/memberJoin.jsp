@@ -45,7 +45,7 @@
 			
 			<div class="mb-3">
 			  <label for="phone" class="form-label fw-bold">전화번호</label>
-			  <input type="text" name="phone" class="form-control" id="phone" placeholder="전화번호 입력" required>
+			  <input type="text" name="phone" class="form-control" id="phone" placeholder="전화번호 입력" maxlength="11" required>
 			  <div id="phoneResult"></div>
 			</div>
 			
@@ -61,12 +61,12 @@
 			            <option value="@nate.com">@nate.com</option>
 			        </select>
 			    </div>
+				<div id="emailResult"></div>
 			    <div class="input-group mt-3">
 			        <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
 			        <button type="button" class="btn btn-primary" id="mail-Check-Btn">인증번호 발송</button>
 			        <button type="button" class="btn btn-secondary d-none" id="mail-Confirm-Btn">인증번호 확인</button>
 			    </div>
-			    <span id="emailResult"></span>
 			    <span id="mail-check-warn"></span>
 			</div>
 	
