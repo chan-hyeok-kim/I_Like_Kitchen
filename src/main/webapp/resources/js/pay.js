@@ -73,17 +73,11 @@ $('#btn').click(
 							 location.replace('detail?payNum='+result);
 							})
 						},error:function(){
-							alert("결제 실패");
+							("결제 실패","결제가 취소됩니다","error");
+							//금액이 맞지 않을 시, 스크립트에서 위변조되었을 시
 						}
 							
-							//기타 필요한 데이터가 있으면 추가 전달
-						// ,success:function(result){
-						//   if(result.trim()>0){
-						// 	alert("주문정보 저장 성공");
-						//  }else{
-						// 	alert("주문정보 저장 실패");
-						//  }
-						// }
+						
 						
 					})
 					

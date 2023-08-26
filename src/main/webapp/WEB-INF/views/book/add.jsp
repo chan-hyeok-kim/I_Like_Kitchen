@@ -117,8 +117,8 @@ section{
 								<input type="hidden" name="bookDate" id="setDate">
 								</div>
 							</div>
-							<div class="b1">
-								<div class="f1">이용 시간 선택</div>
+							<div class="b1" id="selectTime">
+								<div class="f1">이용 시간 선택	&#40;<span id="selectTimeTitle"></span>&#41;</div>
 
 								<div class="" id="startTime">
 									시작 시간 : <select id="selectStartTime" name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
@@ -222,21 +222,7 @@ section{
 
 		<script src="/resources/js/calendar.js"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('.timepicker').timepicker({
-					timeFormat : 'h:mm p',
-					interval : 60,
-					minTime : '10',
-					maxTime : '6:00pm',
-					defaultTime : '12',
-					startTime : '00:00',
-					dynamic : false,
-					dropdown : true,
-					scrollbar : true
-				});
-			});
-		</script>
+		
 
 		<script
 			src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
