@@ -11,12 +11,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ham.main.member.mail.MailSendController;
+import com.ham.main.member.mail.MailSendService;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MailSendController mailSendController;
+	
+	@Autowired
+	private MailSendService mailSendService;
 	
 	@PostMapping("memberIdCheck")
 	public ModelAndView getMemberIdCheck(MemberDTO memberDTO)throws Exception{
@@ -79,26 +88,13 @@ public class MemberController {
 		if(memberDTO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);
+			
+			mv.setViewName("redirect:../");
 		}else {
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");
 			mv.setViewName("/member/memberLogin");
 		}
 		
-//		session.setAttribute("member", memberDTO);
-//
-//		int result = 0;
-//		String message = "로그인 실패!";
-//		String url = "./memberLogin";
-//		if(memberDTO != null) {
-//			result = 1;
-//			message = "로그인 성공!";
-//			url = "/";
-//		}
-//
-//		mv.addObject("url", url);
-//		mv.addObject("message", message);
-//		mv.setViewName("commons/result");
-
 		return mv;
 	}
 	

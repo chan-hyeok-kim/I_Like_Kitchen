@@ -54,6 +54,7 @@
 			    <div class="input-group">
 			        <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력" >
 			        <select class="form-control" name="emailDomain" id="emailDomain" >
+			        	<option value="" selected="selected">선택</option>
 			            <option value="@naver.com">@naver.com</option>
 			            <option value="@daum.net">@daum.net</option>
 			            <option value="@gmail.com">@gmail.com</option>

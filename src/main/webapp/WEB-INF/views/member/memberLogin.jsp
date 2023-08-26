@@ -34,8 +34,8 @@
 				<button class="btn btn-primary">로그인</button>
 			</div>
 			<div class="mb-3">
-				<a href="/member/findID">아이디찾기</a>
-				<a href="/member/findPW">비밀번호찾기</a> 
+				<a href="/member/find/findID">아이디찾기</a>
+				<a href="/member/find/findPW">비밀번호찾기</a> 
 				<a href="/member/memberAgree">회원가입</a>
 			</div>			
 		</form>
