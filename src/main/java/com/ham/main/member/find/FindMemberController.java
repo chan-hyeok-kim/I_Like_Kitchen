@@ -34,7 +34,6 @@ public class FindMemberController {
 	@PostMapping("findID")
 	public ModelAndView findIdResult(String name, String email, String emailDomain) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/find/findID");
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(name);
 		memberDTO.setEmail(email);
@@ -44,9 +43,12 @@ public class FindMemberController {
 		
 		if(memberDTO != null) {
 			mv.addObject("successMessage", "찾으시는 아이디는" + memberDTO.getId() + "입니다.");
+			mv.addObject("successMessage", "찾으시는 아이디는" + memberDTO.getId() + "입니다.");
 		}else {
 			mv.addObject("errorMessage", "일치하는 회원의 정보가 없습니다.");
 		}
+		mv.setViewName("member/find/findID");
+		
 		return mv;
 	}
 	

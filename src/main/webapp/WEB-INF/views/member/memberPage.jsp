@@ -18,6 +18,10 @@
         border-bottom: 1px solid #e0e0e0;
         margin-bottom: 1em;
     }
+    .single-btn {
+        display: flex;
+        justify-content: center;
+    }
 </style>
 </head>
 <body>
@@ -41,13 +45,12 @@
                             <div class="col-md-3 info-label">전화번호</div>
                             <div class="col-md-9 info-text">${kto.phone}</div>
                         </div>  
-                        </div>
                         <div class="info-divider"></div>
                         <div class="row mb-3">
                             <div class="col-md-3 info-label">이메일</div>
                             <div class="col-md-9 info-text">${kto.email}${kto.emailDomain}</div>
                         </div>
-                        <div class="d-flex justify-content-between mt-3">
+                        <div class="d-flex single-btn mb-3">
                         	<a href="./memberUpdate" class="btn btn-outline-secondary">회원정보 수정</a>
                         </div>
                     </div>
