@@ -32,6 +32,7 @@ section{
 .f1 {
 	font-weight: bold;
 	margin: 12px;
+	border-bottom: solid gainsboro 1px;
 	/* margin-top: 10px;
 	padding-left: 20px;
 	line-height: 15px;
@@ -44,7 +45,16 @@ section{
     border-bottom: solid rgb(188, 206, 251) 4px;
 	margin: auto;
 	width: 90%;
+	padding-top: 20px;
 }
+
+.b1Last{ 
+	margin: auto;
+	width: 90%;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
 
 .m2 {
 	margin-top: 20px;
@@ -103,7 +113,7 @@ section{
 								<div class="form-check cho">
 									<input class="form-check-input" type="radio" name="choice"
 										id="radio2" value="2"><label class="form-check-label"
-										for="radio2"><div>1박 이상</div></label>
+										for="radio2"><div>종일 대관</div></label>
 								</div>
 								
 							</div>
@@ -199,14 +209,18 @@ section{
 						<textarea class="form-control m2" id="ta1" rows="3" cols="7"
 							name="contents"></textarea>
 					</div>
-<div class="b1">
-					호스트 승인 후 예약이 가능합니다.<br>
-
-					<button type="submit" class="btn btn-dark"
-						style="width: 400px; margin: auto">접수</button>
+<div class="b1Last">
+<div>
+					<p style="color:red">호스트 승인 후 예약이 가능합니다.</p>
+					</div>
+<div style="margin-bottom: 20px">
+					<button type="submit" class="btn btn-light"
+						style="width: 300px; margin-left: 70px; background-color: rgb(188, 206, 251); color: white">접수</button>
+</div>
 </div>
 					</form>
-
+<div style="height: 20px">
+</div>
 
 			
 				<!--   <div class="modal-footer">

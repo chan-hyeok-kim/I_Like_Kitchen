@@ -38,13 +38,13 @@ console.log(today)
 						console.log(typeof info.dateStr)
 						let selectMonth = info.date.getMonth()+1;
 					 	let selectDate = info.date.getDate();
-						swal({
-						   title: '선택하신 날짜는 '+ selectMonth+'월'+selectDate+'일'+'입니다'
-						})
+						swal(
+						   '알림','선택하신 날짜는 '+ selectMonth+'월'+selectDate+'일'+'입니다'
+						)
 						$('#setDate').val(info.dateStr);
                          console.log($('#setDate').val());
                         $('#selectTimeTitle').empty();
-						$('#selectTimeTitle').append(selectMonth+'&#47;'+selectDate)
+						$('#selectTimeTitle').append(selectMonth+'월 '+selectDate+'일')
 						}
 					 } 
 				
