@@ -33,9 +33,11 @@
 <button id="identify" class="btn btn-info">휴대폰 본인인증하기</button>
 <div></div>
 <br>
-<div>
-사업자 등록번호 입력<input type="text" name="parterNum" id="bussinessNum">
+<div id="bussinessCheck">
+사업자 등록번호 입력<input type="text" name="parterNum" id="bussinessNum" data-serviceKey="${serviceKey}">
 </div>
+<div id="resultText"></div>
+
 
 <br>
 <div id="naver_id_login">
@@ -48,7 +50,9 @@
     })
     </script>
 	<script src="/resources/js/naverLogin.js"></script>
+	<script src="/resources/js/identify.js"></script>
 </section>
+
 </body>
 </html>
 
