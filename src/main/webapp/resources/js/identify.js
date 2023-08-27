@@ -96,7 +96,10 @@ $('#businessInfo').click(function(){
         accept: "application/json",
         success:function(result){
             console.log(result)
+            console.log(result.data[0].valid)
+            if(result.data[0].valid=="01"){
             swal("유효한 사업자입니다. 파트너 페이지로 이동합니다")
+            }
         }
         ,error:function(){
             
