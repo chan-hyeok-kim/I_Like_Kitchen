@@ -92,9 +92,7 @@ public class PortController {
 	
 	public void payMentCancle(String access_token, String imp_uid, long amount, String reason) throws IOException  {
 		System.out.println("결제 취소");
-		
 		System.out.println(access_token);
-		
 		System.out.println(imp_uid);
 		
 		HttpsURLConnection conn = null;

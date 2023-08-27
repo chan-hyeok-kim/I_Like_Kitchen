@@ -56,5 +56,9 @@
   		SELECT ID FROM MEMBER WHERE EMAIL = #{email}
   	</select>
   	
+  	<select id="memberTelCount" resultType="Long" parameterType="MemberDTO">
+  	    SELECT COUNT(PHONE) FROM MEMBER
+  	     WHERE PHONE=#{phone}
+  	</select>
   </mapper>
   

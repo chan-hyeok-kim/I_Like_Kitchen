@@ -9,6 +9,10 @@
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style type="text/css">
+html, body{
+     background: rgb(250, 250, 236);
+}
+
 .room-booking button {
 	font-size: 14px;
 	border: 1px solid #dfa974;
@@ -73,7 +77,7 @@ th:first-child {
 }
 
 #tbl1, #tbl2 {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 #tbl1 td, #tbl2 td {
@@ -101,7 +105,7 @@ th:first-child {
 
 
 
-	<table class="table1 table table-light" id="tbl1">
+	<table class="table1 table" id="tbl1">
 		<thead>
 			<tr>
 				<th width="30%">호스트 정보</th>
@@ -140,7 +144,7 @@ th:first-child {
 
 
 
-	<table class="table1 table table-light" id="tbl2">
+	<table class="table1 table" id="tbl2">
 		<thead>
 			<tr>
 				
@@ -150,14 +154,16 @@ th:first-child {
 		</thead>
 		<tbody>
 			<tr>
-			<td colspan="2" style="text-align: left">&#42;&#42;&#42;이용당일(첫
-					날)이후에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다 결제 후 2시간 이내에는 100%환불이 가능합니다.(단,
-					이용시간 전까지만 가능)&#42;&#42;&#42;</td>
+			<td colspan="2" style="padding-top: 30px">
+			<p style="font-size: 20px"><em class="warn" style="color: rgb(255, 58, 72);">이용당일(첫 날) 이후에 환불 관련 사항은 호스트에게 직접
+                문의하셔야 합니다.</em> <br>결제 후 2시간 이내에는 100% 환불이 가능합니다.(단,
+              이용시간 전까지만 가능)
+            </p></td>
 			</tr>
 
 			<tr>
-				<td width="25%">이용 4일 전</td>
-				<td width="75%">총 금액의 100%환불</td>
+				<td width="25%"><p>이용 4일 전</td>
+				<td width="75%">총 금액의 100%환불</p></td>
 			</tr>
 			<tr>
 				<td>이용 2일 전</td>
@@ -185,7 +191,7 @@ th:first-child {
 	
 
 
-	<table class="table1 table table-light" id="agree">
+	<table class="table1 table" id="agree">
 		<thead>
 			<tr>
 

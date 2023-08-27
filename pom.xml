@@ -64,6 +64,21 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- lombok -->
+		<dependency>
+  		<groupId>org.projectlombok</groupId>
+  		<artifactId>lombok</artifactId>
+  		<version>1.18.4</version>
+  		<scope>provided</scope>
+  	</dependency>
+		
+<!-- StringUtils -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.11</version>
+</dependency>		
+
  		<!-- import REST API -->
 <dependency>
     <groupId>com.github.iamport</groupId>
@@ -85,6 +100,20 @@
     <version>5.2.1</version>
 </dependency>
 
+<!-- scribejava-apis -->
+<dependency>
+    <groupId>com.github.scribejava</groupId>
+    <artifactId>scribejava-apis</artifactId>
+    <version>8.3.1</version>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- scribejava-core -->
+<dependency>
+    <groupId>com.github.scribejava</groupId>
+    <artifactId>scribejava-core</artifactId>
+    <version>8.3.1</version>
+</dependency>
 
 
 		

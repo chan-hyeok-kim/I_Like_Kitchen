@@ -1,7 +1,11 @@
 package com.ham.main.member;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ham.main.util.SendMessage;
 
 @Service
 public class MemberService {
@@ -32,4 +36,25 @@ public class MemberService {
 	public MemberDTO findId(MemberDTO memberDTO) throws Exception {
 		return memberDAO.findId(memberDTO);
 	}
+	
+	public String sendRandomMessage(String tel) {
+        SendMessage message = new SendMessage();
+        Random random = new Random();
+        String numStr = "";
+        for (int i = 0; i < 6; i++) {
+            String ran = Integer.toString(random.nextInt(10));
+            numStr += ran;
+        }
+        System.out.println("회원가입 문자 인증 => " + numStr);
+
+        message.sendMsg(tel, numStr);
+
+        return numStr;
+    }
+	
+	 public Long memberTelCount(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.memberTelCount(memberDTO);
+	 }
+	
+	
 }

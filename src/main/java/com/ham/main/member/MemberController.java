@@ -1,5 +1,8 @@
 package com.ham.main.member;
 
+import java.net.http.HttpRequest;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.util.auth.SNSLogin;
+import com.ham.main.util.auth.SnsValue;
 
 @Controller
 @RequestMapping("/member/*")
@@ -20,6 +26,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+    @Inject
+	private SnsValue naverSns;
+	
 	//회원가입
 	@GetMapping("join")
 	public void setJoin() throws Exception {
@@ -37,7 +46,11 @@ public class MemberController {
 	
 	//로그인
 	@GetMapping("login")
-	public void getLogin() throws Exception {
+	public void getLogin(Model model) throws Exception {
+		
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naverUrl", snsLogin);
+		
 		
 	}
 	
@@ -87,6 +100,43 @@ public class MemberController {
 		
 		return "commons/ajaxResult";
 	}
+	
+	
+	
+	  @PostMapping("phoneAuth")
+	    @ResponseBody
+	    public Boolean phoneAuth(String tel, HttpSession session) {
+            MemberDTO memberDTO = new MemberDTO();
+            memberDTO.setPhone(tel);
+	        try { // 이미 가입된 전화번호가 있으면
+	            if(memberService.memberTelCount(memberDTO) > 0) 
+	                return true; 
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        String code = memberService.sendRandomMessage(tel);
+	        session.setAttribute("rand", code);
+	        
+	        return false;
+	    }
+
+	    @PostMapping("phoneAuthOk")
+	    @ResponseBody
+	    public Boolean phoneAuthOk(HttpServletRequest request) {
+	        String rand = (String) request.getSession().getAttribute("rand");
+	        String code = (String) request.getParameter("code");
+
+	        System.out.println(rand + " : " + code);
+
+	        if (rand.equals(code)) {
+	        	request.getSession().removeAttribute("rand");
+	            return false;
+	        } 
+
+	        return true;
+	    }
+	
 	
 //	//ID 확인 폼
 //	@GetMapping("findIdForm")

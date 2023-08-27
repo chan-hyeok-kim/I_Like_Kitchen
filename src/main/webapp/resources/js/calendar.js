@@ -13,6 +13,7 @@ if(month<10){
 }
 today = year+'-'+month+'-'+date
 console.log(today)
+$('#selectTimeTitle').append(month+'월 '+date+'일')
           //  for(c of cho){
 			document.addEventListener('DOMContentLoaded', function() { 
 			  // c.addEventListener("click", function() {
@@ -21,12 +22,12 @@ console.log(today)
 					initialView : 'dayGridMonth',
 					selectable : true,
 					locale : 'ko',
-				//	validRange: function(nowDate){
-				//		return{
-				//		start: nowDate,
-				//		end: nowDate+50
-				//	}
-				//	},
+				  events: [
+				    { 
+				    start: '0000-00-00',
+				    end: today,
+				    display: 'inverse-background'
+				    }],
 					 dateClick : function(info) {
 					 	console.log(info.date)
 		               
@@ -88,6 +89,4 @@ function bookNoticeStart(){
 			   })
 	
 	}
-	
-	
 	

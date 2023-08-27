@@ -35,4 +35,9 @@ public class MemberDAO {
 	public MemberDTO findId(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "findId", memberDTO);
 	}
+	
+    public Long memberTelCount(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE+"memberTelCount",memberDTO);
+    }
+    
 }

@@ -23,7 +23,7 @@ html,body{
  }
  
 html{
-    background: rgba(250, 246, 223, 0.89);
+    background: rgb(250, 250, 236);
 }
 
 section{
@@ -59,7 +59,7 @@ section{
 .m2 {
 	margin-top: 20px;
 	margin-bottom: 30px;
-	
+	margin-left: 20px;
 }
 .m21{
     
@@ -81,36 +81,19 @@ section{
 <body>
 	<section>
 
-		
-	<!-- 	<div class="room-booking">
-			<button type="button" style="font-weight: bold"
-				class="btn btn-warning" data-bs-toggle="modal"
-				data-bs-target="#exampleModal">예약</button>
-		</div>
-
-
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body"> -->
 
 						<form action="./add" method="post">
 						<input type="hidden" name="productNum" value="2">
 							<div class="b1">
-								<div class="f1">상품 선택</div>
+								<div class="f1"><label for="radio1">상품 선택</label></div>
 
-								<div class="form-check cho">
+								<div class="form-check cho" style="margin-left: 20px">
 									<input class="form-check-input" type="radio" name="choice"
-										id="radio1" value="1"><label class="form-check-label"
+										id="radio1" value="1">
+										<label class="form-check-label"
 										for="radio1"><div>일반</div></label>
 								</div>
-								<div class="form-check cho">
+								<div class="form-check cho" style="margin-left: 20px">
 									<input class="form-check-input" type="radio" name="choice"
 										id="radio2" value="2"><label class="form-check-label"
 										for="radio2"><div>종일 대관</div></label>
@@ -119,7 +102,7 @@ section{
 							</div>
 
 							<div class="b1" id="date">
-								<div class="f1">날짜 선택
+								<div class="f1"><label for="calendar">날짜 선택</label>
 								
 								</div>
 								
@@ -128,9 +111,9 @@ section{
 								</div>
 							</div>
 							<div class="b1" id="selectTime">
-								<div class="f1">이용 시간 선택	&#40;<span id="selectTimeTitle"></span>&#41;</div>
+								<div class="f1"><label>이용 시간 선택	&#40;<span id="selectTimeTitle"></span>&#41;</label></div>
 
-								<div class="" id="startTime">
+								<div class="" id="startTime" style="margin-left: 20px">
 									시작 시간 : <select id="selectStartTime" name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">시작(세팅 포함)시간</option>
         <option value="00:00" class="opt-1">00:00</option>
@@ -159,7 +142,7 @@ section{
         <option value="23:00">23:00</option>
     </select>
 								</div>
-							<div class="" id="endTime">
+							<div class="" id="endTime" style="margin-left: 20px">
 									종료 시간 : <select id="selectEndTime" name="end" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
         <option value="" class="TimeFormstyle__DefaultOption-sc-161sx5r-1 FTLFp">종료(정리 포함)시간</option>
         <option value="00:00" class="opt-2">00:00</option>
@@ -193,13 +176,13 @@ section{
 
 							<div class="b1">
 
-								<div class="f1">인원 선택</div>
-								<input type="number" class="form-control m2" name="headCount">
+								<div class="f1"><label for="headCount">인원 선택</label></div>
+								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1">
 							</div>
 					
 					<div class="b1">
-						<div class="f1">목적</div>
-						<input type="text" class="form-control m2" name="purpose">
+						<div class="f1"><label for="purpose">목적</label></div>
+						<input type="text" class="form-control m2" name="purpose" id="purpose" style="width: 90%">
 					</div>
 
 					<div class="b1">
@@ -207,7 +190,7 @@ section{
 							<label for="ta1" class="form-label">호스트 전달 내용</label>
 						</div>
 						<textarea class="form-control m2" id="ta1" rows="3" cols="7"
-							name="contents"></textarea>
+							name="contents" style="width: 90%"></textarea>
 					</div>
 <div class="b1Last">
 <div>
