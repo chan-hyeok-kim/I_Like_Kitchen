@@ -122,11 +122,19 @@
                 for(i of $(".check01")){
                     i.checked = true;
                 }
+                
+                $(".check01").each(function(i, e) {
+                	noticeNum.push(e.value);
+				});
+                
             } else{
                 for(i of $(".check01")){
                     i.checked = false;
                 }
+                
+                noticeNum = [];
             }
+            console.log(noticeNum);
         });
 
         // 공지사항 단일글 체크해제 시 전체체크 해제
@@ -145,41 +153,41 @@
         });
         
         // 체크 클릭시 각 체크박스의 값 넘기기
+       	let noticeNum = [];
         $(".check01").click(function() {
         	
-        	let noticeNum = [];
-
-        	if($(this).is(":checked") == true){
-        		noticeNum.push($(this).val());
-        	} else{ 
-        		noticeNum.pop();
-        	}            
+        	let valIndex = noticeNum.indexOf($(this).val()); 
         	
+        	if($(this).is(":checked")){
+        		noticeNum.push($(this).val());
+        		//noticeNum[noticeNum.length] = $(this).val();
+        	} else{ 
+        		noticeNum.splice(valIndex, 1);
+        	}     
         	console.log(noticeNum);
         });
+        
         // delete 버튼
         $("#deleteBtn").click(function() {
-        	delete2();
         	
-		});
-        
-        
-        function delete2(){
-        	if(noticeNum != null){
+        	if(noticeNum.length == 0){
+        		alert("삭제할 게시물 선택하세요.");
+        	}
+        	
+        	noticeNum.forEach(function(e) {
 	        	$.ajax({
 	        		type:"post",
 	        		url:"delete",
 	        		data:{
-	        			noticeNum:noticeNum
+	        			noticeNum:e
 	        		},
 	        		success:function(){
 	        			$(location).attr("href", "list");
 	        		}
 	        	});	        		
-        	} else{
-        		alert("게시물을 선택하세요.");
-        	}
-        }
+			});
+		});
+        
     </script>
 </body>
 </html>
