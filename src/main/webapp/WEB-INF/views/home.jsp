@@ -30,14 +30,20 @@
   
 <div></div>
 <br>
+<input type="text" id="phone">
 <button id="identify" class="btn btn-info">휴대폰 본인인증하기</button>
+
 <div></div>
+
+
 <br>
-<div id="bussinessCheck">
-사업자 등록번호 입력<input type="text" name="parterNum" id="bussinessNum" data-serviceKey="${serviceKey}">
+<div id="businessCheck" style="border: solid gainsboro 1px;">
+대표자명 <input type="text" id="businessName" value="이승엽"><br>
+사업자 등록번호 입력<input type="text" id="businessNum" data-serviceKey="${serviceKey}" value="4578500300"><br>
+개업연월일 <input type="text" id="businessDate" value="20160202">  
 </div>
 <div id="resultText"></div>
-
+<button id="businessInfo">제출하기</button>
 
 <br>
 <div id="naver_id_login">

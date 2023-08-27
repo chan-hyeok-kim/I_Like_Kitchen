@@ -105,9 +105,9 @@ public class MemberController {
 	
 	  @PostMapping("phoneAuth")
 	    @ResponseBody
-	    public Boolean phoneAuth(String tel, HttpSession session) {
+	    public Boolean phoneAuth(String phone, HttpSession session) {
             MemberDTO memberDTO = new MemberDTO();
-            memberDTO.setPhone(tel);
+            memberDTO.setPhone(phone);
 	        try { // 이미 가입된 전화번호가 있으면
 	            if(memberService.memberTelCount(memberDTO) > 0) 
 	                return true; 
@@ -115,7 +115,7 @@ public class MemberController {
 	            e.printStackTrace();
 	        }
 
-	        String code = memberService.sendRandomMessage(tel);
+	        String code = memberService.sendRandomMessage(phone);
 	        session.setAttribute("rand", code);
 	        
 	        return false;

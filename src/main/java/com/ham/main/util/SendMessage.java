@@ -13,6 +13,7 @@ import java.util.Random;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import javax.net.ssl.HttpsURLConnection;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -32,7 +33,7 @@ public class SendMessage {
         // 개인 인증키
         String accessKey = "YOBMQxoPXU3lqd6dYi34";
         // 2차 인증을 위해 서비스마다 할당되는 service secret
-        String secretKey = "YOBMQxoPXU3lqd6dYi34";
+        String secretKey = "tG7ZtjRbTIh4EVH4MQTEMLHx53OC0eL2OTuruv9R";
         // 프로젝트에 할당된 SMS 서비스 ID
         String serviceId = "ncp:sms:kr:313932845338:gdj68_kitchen";
         // 요청 method
@@ -48,7 +49,7 @@ public class SendMessage {
         JSONArray  toArr = new JSONArray();
         
         // 난수와 함께 전송
-        toJson.put("content","Going 본인인증 ["+rand+"]");		
+        //toJson.put("content","ILikeKitchen 본인인증 ["+rand+"]");		
         toJson.put("to",tel);
         toArr.add(toJson);
 	    
@@ -56,6 +57,7 @@ public class SendMessage {
         bodyJson.put("type","sms");
         bodyJson.put("contentType","COMM");
         bodyJson.put("countryCode","82");
+        bodyJson.put("content", "ILikeKitchen 본인인증 ["+rand+"]");
         
         // 발신번호 * 사전에 인증/등록된 번호만 사용할 수 있습니다.
         bodyJson.put("from","01026459730");		

@@ -1,16 +1,43 @@
+
+
+//휴대폰 본인인증
 $('#identify').click(function(){
-    
+    let phone=$('#phone').val();
+    $.ajax({
+        url:"/member/phoneAuth",
+        type:"POST",
+        data:{
+        phone:phone
+        },success:function(result){
+            if(result){
+                alert("이미 가입된 휴대전화번호입니다")
+            }
+            // $.ajax({
+            //     url:"/member/phoneAuthOk"
+            //     type:"POST"
+            // })
+        },error:function(){
+            console.log("서버 송신 에러")
+        }
+    })
 })
 
 
+// 사업자등록번호 진위확인
 
 
-$('#bussinessNum').blur(function(){
-    let bNo = $('#bussinessNum').val();
-    let serviceKey = $('#bussinessNum').attr("data-serviceKey");
+let serviceKey = $('#businessNum').attr('data-serviceKey');
+let bNo="";
+let businessName="";
+let businessDate="";
+
+
+
+$('#businessNum').blur(function(){
+    bNo = $('#businessNum').val();
     let data = {
-        "b_no": [bNo] // 사업자번호 "xxxxxxx" 로 조회 시,
-       }; 
+        "b_no": [bNo], // 사업자번호 "xxxxxxx" 로 조회 시,
+    }; 
        console.log(bNo)
        console.log(serviceKey)
     $.ajax({
@@ -34,7 +61,7 @@ $('#bussinessNum').blur(function(){
           "color":"red"
           })
           }else{
-           resultText="유효한 사업자등록번호입니다";
+           resultText=result.data[0].tax_type+"입니다";
            $('#resultText').css({ 
           "color":"greenyellow"
           })
@@ -46,4 +73,35 @@ $('#bussinessNum').blur(function(){
           console.log(result.responseText); //responseText의 에러메세지 확인
       }
     })
+})
+
+$('#businessInfo').click(function(){
+    bNo = $('#businessNum').val();
+    businessName = $('#businessName').val();
+    businessDate = $('#businessDate').val();
+    console.log("클릭됨")
+  let data = {
+      "businesses":[{
+      "b_no":bNo,
+      "start_dt":businessDate,
+      "p_nm":businessName
+  }]
+}
+    $.ajax({
+        url:"http://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey="+serviceKey,
+        type:"POST",
+        data:JSON.stringify(data),
+        dataType: "JSON",
+        contentType: "application/json",
+        accept: "application/json",
+        success:function(result){
+            console.log(result)
+            swal("유효한 사업자입니다. 파트너 페이지로 이동합니다")
+        }
+        ,error:function(){
+            
+            swal("검증 실패")
+        }
+
+  })
 })
