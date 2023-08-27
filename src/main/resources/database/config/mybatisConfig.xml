@@ -7,6 +7,8 @@
 	<typeAliases>
 		<typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
+		
+		<typeAlias type="com.ham.main.partner.PartnerDTO" alias="PartnerDTO"/>
 
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>

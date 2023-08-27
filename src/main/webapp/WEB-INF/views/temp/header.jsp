@@ -44,11 +44,12 @@
 			      	<ul class="nav">
 			      		<c:if test="${not empty member}">
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/partner/partnerJoin">공간등록</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/member/memberPage">마이페이지</a></li>
 			      		</c:if>
 			      		<c:if test="${empty member}">
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/member/join">장소등록</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/partner/partnerLogin">호스트 로그인</a></li>
 			      		</c:if>
 			      	</ul>
 			      </nav>
