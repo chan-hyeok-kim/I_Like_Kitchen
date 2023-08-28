@@ -40,4 +40,8 @@ public class MemberDAO {
     	return sqlSession.selectOne(NAMESPACE+"memberTelCount",memberDTO);
     }
     
+    public MemberDTO getBySnsNaver(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE+"getBySnsNaver", memberDTO);
+    }
+    
 }

@@ -70,24 +70,11 @@ public class PayController {
 	String token = portController.getImportToken();
     	
 	System.out.println(token);
-	
-	/*
-	 *
-	 * Date date1 = payDTO.getBookDTO().getStartTime(); Date date2 =
-	 * payDTO.getBookDTO().getEndTime();
-	 * 
-	 * int useTime = alterDate.useTime(date1,date2); model.addAttribute("useTime",
-	 * useTime);
-	 */
-//	model.addAttribute("pay_method", pay_method);
 	}
 	
-//	@GetMapping("refund")
-//	public void setRefund(Model model) throws Exception{
-//		payDTO =  payService.getDetail(payDTO);
-//		model
-//	}
-//	
+	
+	
+	
 	@PostMapping("refund")
 	public String setRefund(Model model,PayDTO payDTO,@RequestParam("reason") String reason) throws Exception{
 //		payDTO =  payService.getDetail(payDTO);

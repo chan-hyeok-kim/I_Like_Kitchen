@@ -37,17 +37,17 @@ public class MemberService {
 		return memberDAO.findId(memberDTO);
 	}
 	
-	public String sendRandomMessage(String tel) {
+	public String sendRandomMessage(String phone) {
         SendMessage message = new SendMessage();
         Random random = new Random();
         String numStr = "";
         for (int i = 0; i < 6; i++) {
-            String ran = Integer.toString(random.nextInt(10));
-            numStr += ran;
+            String randomNum = Integer.toString(random.nextInt(10));
+            numStr += randomNum;
         }
         System.out.println("회원가입 문자 인증 => " + numStr);
 
-        message.sendMsg(tel, numStr);
+        message.sendMsg(phone, numStr);
 
         return numStr;
     }
@@ -55,6 +55,11 @@ public class MemberService {
 	 public Long memberTelCount(MemberDTO memberDTO) throws Exception{
 	    	return memberDAO.memberTelCount(memberDTO);
 	 }
+	 
+	 public MemberDTO getBySns(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.getBySnsNaver(memberDTO);
+	 }
+	 
 	
 	
 }

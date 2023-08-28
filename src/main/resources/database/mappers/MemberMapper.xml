@@ -37,8 +37,8 @@
 	
 	<!-- 회원가입 -->
 	<insert id="setJoin" parameterType="MemberDTO">
-		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE)
-			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
+		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, NAVERID)
+			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, {#naverId})
 	</insert>
 	
 	<!-- ID 중복체크 -->
@@ -60,5 +60,10 @@
   	    SELECT COUNT(PHONE) FROM MEMBER
   	     WHERE PHONE=#{phone}
   	</select>
+  	
+  	<select id="getBySnsNaver" resultType="MemberDTO">
+        SELECT * FROM MEMBER WHERE NAVERID = #{naverId}
+    </select>
+  	
   </mapper>
   

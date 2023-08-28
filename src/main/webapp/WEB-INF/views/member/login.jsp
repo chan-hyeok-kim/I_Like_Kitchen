@@ -35,5 +35,9 @@
 			</div>
 		</form>
 		
+		<div class="text-center">
+		   <a href="${naverUrl}"><img width="300" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
+		</div>
+		
 	</section>
 </html>

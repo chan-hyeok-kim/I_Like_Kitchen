@@ -33,7 +33,11 @@
 	</beans:bean>
 
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-	   <beans:constructor-arg value="http://localhost:82"></beans:constructor-arg>   
+	   <beans:constructor-arg value="http://localhost:82/member/auth/naver/callback"></beans:constructor-arg>   
+	</beans:bean>
+	
+	<beans:bean id="naverState" class="java.lang.String">
+	   <beans:constructor-arg value="test"></beans:constructor-arg> 
 	</beans:bean>
 	
 	<beans:bean id="naverSns" class="com.ham.main.util.auth.SnsValue">
@@ -41,6 +45,7 @@
 	     <beans:constructor-arg ref="naverClientID"/>
 	     <beans:constructor-arg ref="naverClientSecret"/>
 	     <beans:constructor-arg ref="naverRedirectUrl"/>
+	     <beans:constructor-arg ref="naverState"/>
 	</beans:bean>
 	
 	

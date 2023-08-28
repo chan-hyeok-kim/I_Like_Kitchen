@@ -8,6 +8,7 @@
 </head>
 <body>
 로그인 성공 실패 결과창
+${result}
 
 </body>
 </html>

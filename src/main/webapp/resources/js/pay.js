@@ -73,16 +73,16 @@ $('#btn').click(
 							 location.replace('detail?payNum='+result);
 							})
 						},error:function(){
-							("결제 실패","결제가 취소됩니다","error");
-							//금액이 맞지 않을 시, 스크립트에서 위변조되었을 시
+							
 						}
 							
-						
-						
 					})
 					
-					
 	        	} else {
+					swal("결제 실패","결제가 취소됩니다","error");
+							let cancelReason = '결제 검증 실패'
+							cancelPay(cancelReason)
+							//금액이 맞지 않을 시, 스크립트에서 위변조되었을 시
 	        		console.log("결제 실패");
 	        	}
 	        });
@@ -91,43 +91,22 @@ $('#btn').click(
 	)
   }
 
-  // .done(function(res) {
-                    //         if (res > 0) {
-                    //             swal('주문정보 저장 성공')
-                    //             createPayInfo(uid);
-                    //         }
-                    //         else {
-                    //             swal('주문정보 저장 실패');
-                    //         }
-                    //     })
 
-
-
-
-
-//   function createPayInfo(uid) {
-//     // 결제정보 생성 및 테이블 저장 후 결제완료 페이지로 이동 
-//     $.ajax({
-//         type: 'get',
-//         url: '/payInfo',
-//         data: {
-//             'imp_uid': uid,
-//         },
-//         success: function(data) {
-            
-//             swal('결제 성공 !',"결제완료 페이지로 이동합니다.","success").then(function(){
-                
-//                 // 결제완료 페이지로 이동
-//                 location.replace('/order/complete?payNum='+data);
-
-//             })
-//         },
-//         error: function() {
-//             swal('결제정보 저장 통신 실패');
-//         }
-//     });
-// }
-
+function cancelPay(cancelReason) {
+	$.ajax({
+	  url: "/pay/refund", 
+	  type: "POST",
+	  data: {
+		orderNum:orderNum, // 예: ORD20180131-0000011
+		payAmount:amount, // 환불금액
+		payNum:payNum,
+		reason:cancelReason // 환불사유\
+	    },
+		success:function(){
+                console.log("결제 취소 완료")
+		}
+	})
+}
 
 
 let check1 = document.getElementsByClassName("check1")
