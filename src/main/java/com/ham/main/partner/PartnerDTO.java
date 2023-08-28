@@ -11,11 +11,11 @@ public class PartnerDTO {
 	private String id;
 	private String partnerEmail;
 	private String partnerEmailDomain;
-	private String partnerAddress;
 	private Long partnerAccount;
 	private Date partnerDate;
 	private String partnerName;
-	private List<RoleDTO> roles;
+	private String companyName;
+	private String partnerPhone;
 	
 	public Long getPartnerNum() {
 		return partnerNum;
@@ -41,12 +41,6 @@ public class PartnerDTO {
 	public void setPartnerEmailDomain(String partnerEmailDomain) {
 		this.partnerEmailDomain = partnerEmailDomain;
 	}
-	public String getPartnerAddress() {
-		return partnerAddress;
-	}
-	public void setPartnerAddress(String partnerAddress) {
-		this.partnerAddress = partnerAddress;
-	}
 	public Long getPartnerAccount() {
 		return partnerAccount;
 	}
@@ -65,11 +59,17 @@ public class PartnerDTO {
 	public void setPartnerName(String partnerName) {
 		this.partnerName = partnerName;
 	}
-	public List<RoleDTO> getRoles() {
-		return roles;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setRoles(List<RoleDTO> roles) {
-		this.roles = roles;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getPartnerPhone() {
+		return partnerPhone;
+	}
+	public void setPartnerPhone(String partnerPhone) {
+		this.partnerPhone = partnerPhone;
 	}
 	
 }

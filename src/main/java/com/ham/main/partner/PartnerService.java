@@ -9,11 +9,8 @@ public class PartnerService {
 	@Autowired
 	private PartnerDAO partnerDAO;
 	
-	public int setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
-		return partnerDAO.setPartnerJoin(partnerDTO);
+	public int setPartnerRegisterJoin(PartnerDTO partnerDTO) throws Exception {
+		return partnerDAO.setPartnerRegisterJoin(partnerDTO);
 	}
 	
-	public int setMemberRole(PartnerDTO partnerDTO) throws Exception {
-		return partnerDAO.setMemberRole(partnerDTO);
-	}
 }

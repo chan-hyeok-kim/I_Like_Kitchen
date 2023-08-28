@@ -12,11 +12,8 @@ public class PartnerDAO {
 	
 	private final String NAMESPACE = "com.ham.main.partner.PartnerDAO.";
 	
-	public int setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setPartnerJoin", partnerDTO);
+	public int setPartnerRegisterJoin(PartnerDTO partnerDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setPartnerRegisterJoin", partnerDTO);
 	}
 	
-	public int setMemberRole(PartnerDTO partnerDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setMemberRole", partnerDTO);
-	}
 }
