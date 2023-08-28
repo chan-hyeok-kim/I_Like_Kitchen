@@ -121,7 +121,7 @@
                     <th class="tableTh">제목</th>
                     <td>
                         <input type="checkbox" id="vitalCheck"> 필독
-                        <input type="hidden" id="checkVal" name="vitalCheck">
+                        <input type="hidden" id="checkVal" name="vitalCheck" value="0">
                         <input type="text" id="noticeTitle" name="noticeTitle" value="${kto.noticeTitle}">
                     </td>
                 </tr>

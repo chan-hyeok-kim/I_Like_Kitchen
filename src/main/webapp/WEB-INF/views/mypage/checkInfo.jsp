@@ -7,7 +7,12 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
-	
+	<style>
+		#contents{
+			text-align: center;
+			padding-right: 40px;
+		}
+	</style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
@@ -20,15 +25,31 @@
                 <h3>내 정보 관리</h3>
             </div>
 
-            <div>
+            <div id="contents">
             	<p>개인정보 확인을 위해 비밀번호를 입력해주세요.</p>
             	
-            	<div>
-            		<input type="text" name="">
-            		<button>회원 확인</button>
-            	</div>
+            	<form id="frm">
+	            	<div>
+	            		<input type="text" id="checkPW" name="password">
+	            		<button id="checkBtn">회원 확인</button>
+	            	</div>
+            	</form>
             </div>
         </menu>
     </div>
+    
+    <script>
+    	$("#checkBtn").click(function() {
+    		
+    		if(${kto.password} == $("#checkPW").val()){
+    			$("#frm").attr("method", "post");
+    			$("#frm").attr("action", "info");
+    			$("#frm").submit();
+    			
+    		} else{
+	    		alert("비밀번호가 같지 않습니다.");
+    		}
+		});
+    </script>
 </body>
 </html>

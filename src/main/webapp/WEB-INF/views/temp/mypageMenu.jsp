@@ -76,7 +76,7 @@
         <p class="menuP"><a href="/mypage/cancle">취소/환불 내역</a></p>
         
         <h3>My 정보</h3>
-        <p><a>포인트</a></p>
+        <p><a>적립금</a></p>
         <p class="menuP"><a href="/mypage/info">내 정보 관리</a></p>
         
         <h3>My 활동</h3>

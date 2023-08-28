@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class NoticeDAO {
 
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ham.main.notice.NoticeDAO.";
 	
 	

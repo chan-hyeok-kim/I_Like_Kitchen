@@ -23,7 +23,7 @@
 	
 	<select id="getList" resultType="NoticeDTO">
 		SELECT * FROM NOTICE
-		ORDER BY VITALCHECK, NOTICEDATE DESC
+		ORDER BY VITALCHECK DESC, NOTICEDATE DESC
 	</select>
 	
 	
