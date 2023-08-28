@@ -37,7 +37,7 @@ public class SNSLogin {
     public String getNaverAuthURL(String state) {
     	return this.oauthService.getAuthorizationUrl(state);
     }
-    
+    	
     public MemberDTO getUserProfile(String code) throws Exception {
     	OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
     	
