@@ -28,7 +28,6 @@ public class SNSLogin {
     	this.oauthService = new ServiceBuilder(sns.getClientId())
     	       .apiSecret(sns.getCleintSecret())
     	       .callback(sns.getRedirectURL())
-    	       .defaultScope("profile")
     	       .build(sns.getApi20Instance());
     	       
     	this.sns = sns;
@@ -64,6 +63,7 @@ public class SNSLogin {
 		    memberDTO.setName(resNode.get("name").asText());
 		    memberDTO.setEmail(resNode.get("email").asText());
 		    memberDTO.setPhone(resNode.get("mobile").asText());
+		    
 //		String id = rootNode.get("id").asText();
 //		String displayName = rootNode.get("displayName");
 //		JsonNode nameNode = rootNode.path("name");
