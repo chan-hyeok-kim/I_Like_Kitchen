@@ -111,9 +111,9 @@
     	
     	// delete 버튼
     	$("#deleteBtn").click(function() {
-    		let check = confirm("삭제 하시겠습니까");
+    		let result = confirm("삭제 하시겠습니까?");
     		
-    		if(!check){
+    		if(!result){
     			return;
     		}
     		

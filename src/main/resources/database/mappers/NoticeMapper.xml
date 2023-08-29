@@ -58,7 +58,8 @@
 	
 	
 	<update id="setUpdate" parameterType="NoticeDTO">
-		UPDATE NOTICE SET NOTICETITLE = #{noticeTitle}, NOTICEcONTENTS = #{noticeContents}, VITALCHECK = #{vitalCheck} 
+		UPDATE NOTICE 
+		SET NOTICETITLE = #{noticeTitle}, NOTICECONTENTS = #{noticeContents}, VITALCHECK = #{vitalCheck} 
 		WHERE NOTICENUM = #{noticeNum}
 	</update>
 	

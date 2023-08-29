@@ -12,9 +12,19 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO."; 
 	
 	
-	public MemberDTO getInfoCheck(MemberDTO memDTO) throws Exception{
+	public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
 		
-		return sqlSession.selectOne(NAMESPACE + "getInfoCheck", memDTO);
+		return sqlSession.selectOne(NAMESPACE + "getCheckInfo", memDTO);
+	}
+	
+	public int setUpdate(MemberDTO memDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE + "setUpdate", memDTO);
+	}
+	
+	public int setDelete(MemberDTO memDTO) throws Exception{
+		
+		return sqlSession.delete(NAMESPACE + "setDelete", memDTO);
 	}
 	
 }

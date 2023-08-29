@@ -9,6 +9,7 @@ public class MemberDTO {
 	private String name;
 	private String email;
 	private String phone;
+	private Long point;
 	private List<RoleDTO> roles;
 	
 	public String getId() {
@@ -40,6 +41,12 @@ public class MemberDTO {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public Long getPoint() {
+		return point;
+	}
+	public void setPoint(Long point) {
+		this.point = point;
 	}
 	public List<RoleDTO> getRoles() {
 		return roles;

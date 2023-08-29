@@ -28,12 +28,10 @@
             <div id="contents">
             	<p>개인정보 확인을 위해 비밀번호를 입력해주세요.</p>
             	
-            	<form id="frm">
-	            	<div>
-	            		<input type="text" id="checkPW" name="password">
-	            		<button id="checkBtn">회원 확인</button>
-	            	</div>
-            	</form>
+            	<div>
+            		<input type="text" id="checkPW" name="password">
+            		<button id="checkBtn">회원 확인</button>
+            	</div>
             </div>
         </menu>
     </div>
@@ -42,9 +40,7 @@
     	$("#checkBtn").click(function() {
     		
     		if(${kto.password} == $("#checkPW").val()){
-    			$("#frm").attr("method", "post");
-    			$("#frm").attr("action", "info");
-    			$("#frm").submit();
+    			$(location).attr("href", "memberUpdate");
     			
     		} else{
 	    		alert("비밀번호가 같지 않습니다.");

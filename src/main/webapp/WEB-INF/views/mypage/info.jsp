@@ -58,6 +58,9 @@
             	<p>전화번호</p>
             	<span>${kto.phone}</span>
             </div>
+            <form id="frm">
+	            <input type="hidden" name="id" value="${kto.id}">
+            </form>
             
             <button id="updateBtn">계정 수정</button>
             <button id="deleteBtn">계정 탈퇴</button>
@@ -65,9 +68,23 @@
     </div>
     
     <script>
+    	// 수정 버튼 클릭
     	$("#updateBtn").click(function() {
 			
-    		$(location).attr("href", "memberUpdate?id=${kto.id}");
+    		$(location).attr("href", "checkInfo");
+		});
+    	
+    	// 탈퇴 버튼 클릭
+		$("#deleteBtn").click(function() {
+			let result = confirm("정말 계정을 탈퇴하시겠습니까?");
+			
+			if(!result){
+				return;
+			}
+			
+			$("#frm").attr("method", "post");
+			$("#frm").attr("action", "delete");
+			$("#frm").submit();
 		});
     </script>
 </body>

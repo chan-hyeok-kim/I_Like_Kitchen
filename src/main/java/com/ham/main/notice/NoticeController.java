@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.RoleDTO;
+import com.ham.main.util.Pager;
 
 @Controller
 @RequestMapping("/notice/*")
@@ -24,20 +25,20 @@ public class NoticeController {
 	
 	
 	@GetMapping("list")
-	public String getList(Model model) throws Exception {
+	public String getList(Model model, Pager pager) throws Exception {
 		RoleDTO role = new RoleDTO();
 		role.setRoleNum(9L);
 		
 		List<NoticeDTO> ar = noService.getList();
 		
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
 		
 		if(role.getRoleNum() == 9) {
 			return "/admin/notice/list";
 		}else {
 			return "/notice/list";
 		}
-		
 		
 	}
 	
@@ -51,7 +52,10 @@ public class NoticeController {
 	}
 	
 	@GetMapping("add")
-	public String setAdd() throws Exception{
+	public String setAdd(HttpSession session) throws Exception{
+		if(session.getAttribute("kto") == null) {
+			return "/home";
+		}
 		
 		return "/admin/notice/add";
 	}

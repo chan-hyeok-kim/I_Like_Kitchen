@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping("/mypage/*")
 public class MemberController {
@@ -38,24 +40,44 @@ public class MemberController {
 	@GetMapping("info")
 	public String getInfo(MemberDTO memDTO, HttpSession session) throws Exception{
 		memDTO.setPassword("1234");
+		memDTO = memService.getCheckInfo(memDTO);
 		
 		session.setAttribute("kto", memDTO);
-		
-		return "/mypage/checkInfo";
-	}
-	@PostMapping("info")
-	public String getInfo(MemberDTO memDTO, Model model) throws Exception{
-		memDTO = memService.getInfoCheck(memDTO);
-		
-		model.addAttribute("kto", memDTO);
 		
 		return "/mypage/info";
 	}
 	
+	@GetMapping("checkInfo")
+	public String checkInfo() {
+		
+		return "/mypage/checkInfo";
+	}
+	
 	@GetMapping("memberUpdate")
-	public String setUpdate(MemberDTO memDTO, Model model) throws Exception {
+	public String setUpdate() throws Exception {
 		
 		return "/mypage/memberUpdate";
+	}
+	@PostMapping("memberUpdate")
+	public String setUpdate(MemberDTO memDTO) throws Exception {
+		memDTO = memService.getCheckInfo(memDTO);
+		
+		int result = memService.setUpdate(memDTO);
+		
+		System.out.println(memDTO.getId());
+		System.out.println(memDTO.getPassword());
+		System.out.println(result);
+		
+		return "redirect:/mypage/info";
+	}
+	
+	@PostMapping("delete")
+	public String setDelete(MemberDTO memDTO, HttpSession session) throws Exception{
+		memService.setDelete(memDTO);
+		session.invalidate();
+		System.out.println(memDTO.getId());
+		
+		return "redirect:/";
 	}
 	
 	

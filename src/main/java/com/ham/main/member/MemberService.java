@@ -10,9 +10,19 @@ public class MemberService {
 	private MemberDAO memDAO;
 	
 	
-	public MemberDTO getInfoCheck(MemberDTO memDTO) throws Exception{
+	public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
 		
-		return memDAO.getInfoCheck(memDTO);
+		return memDAO.getCheckInfo(memDTO);
+	}
+	
+	public int setUpdate(MemberDTO memDTO) throws Exception {
+		
+		return memDAO.setUpdate(memDTO);
+	}
+	
+	public int setDelete(MemberDTO memDTO) throws Exception{
+		
+		return memDAO.setDelete(memDTO);
 	}
 
 }

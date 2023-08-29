@@ -109,7 +109,7 @@
 		</c:forEach>
     </div>
     <div id="nav03">
-    	<c:forEach var="i" begin="1" end="5">
+    	<c:forEach var="i" begin="${pager.startNum}+1" end="5">
     		<a href="">${i}</a>
     	</c:forEach>
     </div>
