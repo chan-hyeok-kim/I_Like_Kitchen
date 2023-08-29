@@ -13,4 +13,7 @@ public class BookService {
 		return bookDAO.setBook(bookDTO);
 	}
 
+	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
+		return bookDAO.getDetail(bookDTO);
+	}
 }

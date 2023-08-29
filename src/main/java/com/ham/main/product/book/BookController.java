@@ -68,5 +68,12 @@ public class BookController {
             
             return "commons/result";
 	}
+	
+	@GetMapping("detail")
+	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
+		return bookService.getDetail(bookDTO);
+	}
+	
+	
 
 }

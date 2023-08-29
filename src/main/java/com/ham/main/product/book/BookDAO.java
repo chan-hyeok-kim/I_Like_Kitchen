@@ -14,5 +14,9 @@ public class BookDAO {
 	public int setBook(BookDTO bookDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setBook",bookDTO);
 	}
+	
+	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getDetail", bookDTO);
+	}
 
 }

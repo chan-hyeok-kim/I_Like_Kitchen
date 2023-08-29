@@ -8,6 +8,7 @@
    <typeAliases>
         <typeAlias type="java.lang.Long" alias="Long"/>
         
+        <typeAlias type="com.ham.main.product.ProductDTO" alias="ProductDTO"/>
         <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
         
         <typeAlias type="com.ham.main.product.pay.PayDTO" alias="PayDTO"/>
@@ -15,7 +16,8 @@
         
         <typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
         <typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
-       
+        
+        <typeAlias type="com.ham.main.partner.PartnerDTO" alias="PartnerDTO"/>
    
    </typeAliases>
 

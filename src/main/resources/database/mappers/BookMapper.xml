@@ -10,7 +10,11 @@
      VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{choice},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},'예약',#{bookDate})
   </insert>
   
-
+  <select id="getDetail" resultType="BookDTO" parameterType="BookDTO">
+     SELECT * 
+       FROM BOOK
+      WHERE ORDERNUM=#{orderNum} 
+  </select>
   
   
   

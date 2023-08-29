@@ -2,9 +2,11 @@ package com.ham.main.member;
 
 import java.util.Random;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.scribejava.core.model.Response;
 import com.ham.main.util.SendMessage;
 
 @Service
@@ -45,8 +47,8 @@ public class MemberService {
             String randomNum = Integer.toString(random.nextInt(10));
             numStr += randomNum;
         }
+     
         System.out.println("회원가입 문자 인증 => " + numStr);
-
         message.sendMsg(phone, numStr);
 
         return numStr;

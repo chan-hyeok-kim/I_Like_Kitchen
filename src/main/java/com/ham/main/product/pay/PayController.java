@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
 import com.ham.main.member.MemberService;
+import com.ham.main.partner.PartnerService;
 import com.ham.main.product.pay.port.PortController;
 import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
@@ -50,10 +51,13 @@ public class PayController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private PartnerService partnerService;
+	
 	@GetMapping("add")
 	public void setPay(Model model, HttpSession session) throws Exception{
-//		파트너디테일 넣어야함 
-	
+//		파트너디테일,productdetail 넣어야함 
+	     
 	}
 	
 	@PostMapping("add")

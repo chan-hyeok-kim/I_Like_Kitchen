@@ -1,18 +1,20 @@
 
+
+
 $('#btn').click(function(){
 	pay()
 })
 
 
-
+IMP.init('imp27436400')
   function pay(){
 	let uid='';
-    IMP.init('imp27436400')
+    
     IMP.request_pay({
-    // pg : 'html5_inicis'
-	pg: 'nice',
-    pay_method : 'card',
-    merchant_uid: "4", // 상점에서 관리하는 주문 번호
+    // pg : 'bluewalnut'
+	pg: 'tosspay',
+    pay_method : 'tosspay',
+    merchant_uid: "5", // 상점에서 관리하는 주문 번호
     name : '주문명:결제테스트',
     amount : 34000,
     buyer_email : 'test@naver.com',

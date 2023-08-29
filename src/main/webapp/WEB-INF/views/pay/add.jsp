@@ -6,13 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style type="text/css">
-html, body{
-     background: rgb(250, 250, 236);
+section{
+     background: #F8F9FA;
+     padding-top: 30px;
 }
 
+
+/* .menu-item,.top-nav{
+     background: white;
+}
+ */
 .room-booking button {
 	font-size: 14px;
 	border: 1px solid #dfa974;
@@ -27,7 +34,12 @@ html, body{
 table, td, th {
 	border-collapse: collapse;
 	empty-cells: show;
+	background: white;
 } /* bisque */
+
+table{
+    width: 65%;
+}
 td, th {
 	/*   border-bottom: solid #fff1c4dc 1px; */
 	line-height: 50px;
@@ -84,29 +96,36 @@ th:first-child {
 	text-align: center;
 }
 
+.modal-background{
+    background: white;
+}
 
+.bi{
+    width: 30px; height: 30px;
+}
 
+.caution-text{
+   margin-left: 25px;
+   margin-right: 25px;
+}
 
-@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
-
-
-
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 </style>
 
 
 <!-- 아임포트  -->
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 </head>
 <body>
-
-
+<div class="header-background">
+<c:import url="../temp/header.jsp"></c:import>
+</div>
 	<!-- <div class="ri-text"> -->
 
+<section>
 
-
-	<table class="table1 table" id="tbl1">
+	<table class="table1" id="tbl1">
 		<thead>
 			<tr>
 				<th width="30%">호스트 정보</th>
@@ -145,7 +164,7 @@ th:first-child {
 
 
 
-	<table class="table1 table" id="tbl2">
+	<table class="table1" id="tbl2">
 		<thead>
 			<tr>
 				
@@ -192,7 +211,7 @@ th:first-child {
 	
 
 
-	<table class="table1 table" id="agree">
+	<table class="table1" id="agree">
 		<thead>
 			<tr>
 
@@ -248,14 +267,14 @@ th:first-child {
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header" style="background: #F8F9FA">
+				<div class="modal-header modal-background">
 					<h1 class="modal-title fs-5" id="exampleModalLabel"
-						style="margin-left: 30px">결제 확인</h1>
+						style="margin-left: 30px; font-family:'Jeju Gothic',sans-serif;">결제 확인</h1>
 
 				</div>
-				<div class="modal-body" style="background: #F8F9FA">
-					<h4 style="font-weight: bold; font-family:sans-serif; margin-left: 30px;">결제하시겠습니까?</h4>
-					<table class="table2 table" style="margin-left: 30px">
+				<div class="modal-body modal-background">
+					<h4 style="font-weight: bold; font-family:sans-serif; text-align: center; margin-top: 30px; margin-bottom: 40px;">결제하시겠습니까?</h4>
+					<table class="table2 table" style="">
 						<tr>
 							<td>예약공간</td>
 							<td>kto.productName</td>
@@ -280,8 +299,19 @@ th:first-child {
 					</table>
 				</div>
 
+<p class="caution-text"><svg style="color: blue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+</svg> 결제 후 2시간이 지나 예약 취소 시, 파트너가 설정한 환불 기준에 따라 환불이 진행됩니다
+</p>
 
-				<div class="modal-footer" style="background: #F8F9FA">
+<p class="caution-text" style="color: red;">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+</svg> 결제 전에, 환불 기준과 예약내용을 반드시 확인해주세요!</p>
+
+				<div class="modal-footer modal-background">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal" style="width: 225px">닫기</button>
 					<button type="button" class="btn btn-primary" id="btn"
@@ -296,6 +326,8 @@ th:first-child {
 	</div>
 
 
-	<script src="/resources/js/pay.js"></script>
+	
+</section>
+<script src="/resources/js/pay.js"></script>
 </body>
 </html>

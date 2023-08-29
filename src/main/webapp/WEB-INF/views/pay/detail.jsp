@@ -12,11 +12,12 @@
 <style type="text/css">
  table{
       width: 600px;
+      background: #F8F9FA;
  }
 </style>
 </head>
 <body>
-<table class="table">
+<table class="pay-table">
 <thead>
    <tr>
       <th rowspan="2" width="20%"></th>
