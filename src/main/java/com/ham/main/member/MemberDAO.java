@@ -32,4 +32,8 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE + "setMemberUpdate", memberDTO);
 	}
 	
+	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getIdCheck", memberDTO);
+	}
+	
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,14 +28,28 @@ public class MemberController {
 	@Autowired
 	private MailSendService mailSendService;
 	
-	@PostMapping("memberIdCheck")
-	public ModelAndView getMemberIdCheck(MemberDTO memberDTO)throws Exception{
-		boolean check = memberService.getMemberIdCheck(memberDTO);
-		ModelAndView mv = new ModelAndView();
+//	@PostMapping("memberIdCheck")
+//	public ModelAndView getMemberIdCheck(MemberDTO memberDTO)throws Exception{
+//		boolean check = memberService.getMemberIdCheck(memberDTO);
+//		ModelAndView mv = new ModelAndView();
+//		
+//		mv.addObject("result", check);
+//		mv.setViewName("commons/ajaxResult");
+//		return mv;
+//	}
+	
+	@GetMapping(value = "idCheck")
+	public String getIdCheck(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = memberService.getIdCheck(memberDTO);
 		
-		mv.addObject("result", check);
-		mv.setViewName("commons/ajaxResult");
-		return mv;
+		int result = 0;  //중복
+		if(memberDTO == null) {
+			result = 1; //중복x
+		}
+		
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
 	}
 	
 	@PostMapping("memberEmailCheck")

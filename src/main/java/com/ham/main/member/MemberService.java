@@ -9,15 +9,19 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public boolean getMemberIdCheck(MemberDTO memberDTO)throws Exception{
-		memberDTO = memberDAO.getMemberLogin(memberDTO);
-		
-		boolean check = true;
-		
-		if(memberDTO != null) {
-			check = false;
-		}
-		return check;
+//	public boolean getMemberIdCheck(MemberDTO memberDTO)throws Exception{
+//		memberDTO = memberDAO.getMemberLogin(memberDTO);
+//		
+//		boolean check = true;
+//		
+//		if(memberDTO != null) {
+//			check = false;
+//		}
+//		return check;
+//	}
+	
+	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getIdCheck(memberDTO);
 	}
 	
 	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {

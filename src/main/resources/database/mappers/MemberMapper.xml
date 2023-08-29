@@ -46,6 +46,11 @@
   			VALUES (#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
   	</insert>
   	
+  	<!-- ID 중복체크 -->
+  	<select id="getIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT ID FROM MEMBER WHERE ID = #{id} 
+  	</select>
+  	
   	<!-- 회원정보 수정 -->
     <update id="setMemberUpdate" parameterType="memberDTO">
     	UPDATE MEMBER 

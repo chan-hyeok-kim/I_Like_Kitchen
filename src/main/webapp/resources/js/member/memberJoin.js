@@ -17,34 +17,66 @@ const btn = document.getElementById("btn");
 let checkResult = [false, false, false, false, false, false]
 
 
+// //------ID CHECK---------
+// id.addEventListener("blur", function(){
+//     //중복검사
+//     let xhttp = new XMLHttpRequest();
+
+//     //url, method
+//     xhttp.open("POST", "./memberIdCheck");
+
+//     //header
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+//     //요청 발생 POST일 경우 parameter 전송
+//     xhttp.send("id="+id.value);
+
+//     //응답 처리
+//     xhttp.addEventListener("readystatechange", function(){
+//         if(this.readyState==4 && this.status==200){
+//             if(this.responseText.trim()=='true'){
+//                 checkResult[0]=true;
+//                 idResult.innerHTML="사용 가능한 ID입니다.";
+//                 idResult.className = "s";
+//             }else {
+//                 checkResult[0]=false;
+//                 idResult.innerHTML="중복된 ID입니다.";
+//                 idResult.className = "f";
+//             }
+//         }
+//     });
+// });
+
 //------ID CHECK---------
 id.addEventListener("blur", function(){
-    //중복검사
-    let xhttp = new XMLHttpRequest();
+    console.log(id.id);
+    const idResult = document.getElementById(id.id + "Result");
 
-    //url, method
-    xhttp.open("POST", "./memberIdCheck");
-
-    //header
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    //요청 발생 POST일 경우 parameter 전송
-    xhttp.send("id="+id.value);
-
-    //응답 처리
-    xhttp.addEventListener("readystatechange", function(){
-        if(this.readyState==4 && this.status==200){
-            if(this.responseText.trim()=='true'){
-                checkResult[0]=true;
-                idResult.innerHTML="사용 가능한 ID입니다.";
-                idResult.className = "s";
-            }else {
-                checkResult[0]=false;
-                idResult.innerHTML="중복된 ID입니다.";
+    fetch("./idCheck?id="+id.value, {method:"GET"})
+        .then((response)=>{return response.text()})
+        .then((r)=>{
+            //alert(r.trim());
+            if(r.trim() == '1'){
+                if(id.value == "" || id.value.length > 10){
+                    //console.log("x");
+                    idResult.innerHTML = "ID는 비어있으면 안되고, 10글자 미만이어야 합니다.";
+                    idResult.className = "f";
+                    checkResult[0] = false;
+                    checkResult[6] = false;
+                }else{
+                    //console.log("0");
+                    idResult.innerHTML = "사용 가능한 ID입니다.";
+                    idResult.className = "s";
+                    checkResult[0] = true;
+                    checkResult[6] = true;
+                }
+            }else{
+                idResult.innerHTML = "이미 사용중인 ID입니다.";
                 idResult.className = "f";
+                checkResult[0] = false;
+                checkResult[6] = false;
             }
-        }
-    });
+        })
 });
 
 // //PW 검증
