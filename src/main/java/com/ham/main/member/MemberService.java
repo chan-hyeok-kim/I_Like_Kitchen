@@ -60,6 +60,9 @@ public class MemberService {
 	    	return memberDAO.getBySnsNaver(memberDTO);
 	 }
 	 
+	 public MemberDTO getDetail(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.getDetail(memberDTO);
+	 }
 	
 	
 }
