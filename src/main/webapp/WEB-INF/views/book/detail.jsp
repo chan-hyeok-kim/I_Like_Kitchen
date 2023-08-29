@@ -65,6 +65,10 @@
 
 
 
-<script src="/resources/js/refund.js"></script>
+<script>
+${'#btn'}.click(function(){
+	
+})
+</script>
 </body>
 </html>

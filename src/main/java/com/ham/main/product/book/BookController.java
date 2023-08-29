@@ -70,8 +70,10 @@ public class BookController {
 	}
 	
 	@GetMapping("detail")
-	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
-		return bookService.getDetail(bookDTO);
+	public void getDetail(BookDTO bookDTO, Model model) throws Exception{
+		bookDTO = bookService.getDetail(bookDTO);
+		model.addAttribute("kto",bookDTO);
+	
 	}
 	
 	
