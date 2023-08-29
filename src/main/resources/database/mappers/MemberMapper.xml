@@ -23,6 +23,7 @@
   		<result column="NAME" property="name"/>
   		<result column="EMAIL" property="email"/>
   		<result column="PHONE" property="phone"/> 
+  		<result column="NAVERID" property="naverId"/>
   		
   		<collection property="roles" javaType="List" ofType="RoleDTO">
 			<id column="ROLENUM" property="roleNum"/>
@@ -63,6 +64,12 @@
   	
   	<select id="getBySnsNaver" resultType="MemberDTO">
         SELECT * FROM MEMBER WHERE NAVERID = #{naverId}
+    </select>
+    
+    <select id="getDetail" resultType="MemberDTO" parameterType="MemberDTO">
+        SELECT * 
+          FROM MEMBER
+         WHERE ID=#{id} 
     </select>
   	
   </mapper>

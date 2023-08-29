@@ -17,7 +17,7 @@
 		<form action="./login" method="post">
 			<div class="mb-3">
   				<label for="id" class="form-label">ID</label>
-  				<input type="text" name="id" class="form-control" id="id" value="ID677" placeholder="ID를 입력하세요.">
+  				<input type="text" name="id" class="form-control" id="id" value="id677" placeholder="ID를 입력하세요.">
 			</div>
 			<div class="mb-3">
   				<label for="password" class="form-label">PASSWORD</label>

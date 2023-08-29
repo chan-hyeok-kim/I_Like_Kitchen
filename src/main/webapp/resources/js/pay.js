@@ -1,39 +1,17 @@
 
-$('#btn').click(
-    
-	pay
-  )
+$('#btn').click(function(){
+	pay()
+})
 
 
 
   function pay(){
-// 	$.ajax({
-// 		url: "/pay/add", //cross-domain error가 발생하지 않도록 주의해주세요
-// 		type: 'POST',
-// 		data: {
-// 		orderNum:"4",
-// 		payAmount:34000,
-// 		pay_method : 'card',
-// 		}
-// 			//기타 필요한 데이터가 있으면 추가 전달
-// 		,success:function(result){
-// 			console.log(result);
-// 			swal('결제 성공!',"결제 완료 페이지로 이동합니다.","success").then(function(){	
-//             //결제완료 페이지로 이동
-//              location.replace('detail?payNum='+result);
-// 			})
-// 		},error:function(){
-// 			alert("결제 실패");
-// 		}
-// 	})
-//   }
-
 	let uid='';
     IMP.init('imp27436400')
     IMP.request_pay({
     // pg : 'html5_inicis'
-	pg: 'kicc',
-    pay_method : 'kicc',
+	pg: 'nice',
+    pay_method : 'card',
     merchant_uid: "4", // 상점에서 관리하는 주문 번호
     name : '주문명:결제테스트',
     amount : 34000,
@@ -81,7 +59,7 @@ $('#btn').click(
 	        	} else {
 					swal("결제 실패","결제가 취소됩니다","error");
 							let cancelReason = '결제 검증 실패'
-							cancelPay(cancelReason)
+						//	cancelPay(cancelReason)
 							//금액이 맞지 않을 시, 스크립트에서 위변조되었을 시
 	        		console.log("결제 실패");
 	        	}
@@ -92,21 +70,21 @@ $('#btn').click(
   }
 
 
-function cancelPay(cancelReason) {
-	$.ajax({
-	  url: "/pay/refund", 
-	  type: "POST",
-	  data: {
-		orderNum:orderNum, // 예: ORD20180131-0000011
-		payAmount:amount, // 환불금액
-		payNum:payNum,
-		reason:cancelReason // 환불사유\
-	    },
-		success:function(){
-                console.log("결제 취소 완료")
-		}
-	})
-}
+// function cancelPay(cancelReason) {
+// 	$.ajax({
+// 	  url: "/pay/refund", 
+// 	  type: "POST",
+// 	  data: {
+// 		orderNum:orderNum, // 예: ORD20180131-0000011
+// 		payAmount:amount, // 환불금액
+// 		payNum:payNum,
+// 		reason:cancelReason // 환불사유\
+// 	    },
+// 		success:function(){
+//                 console.log("결제 취소 완료")
+// 		}
+// 	})
+// }
 
 
 let check1 = document.getElementsByClassName("check1")

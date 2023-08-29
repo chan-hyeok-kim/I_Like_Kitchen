@@ -10,6 +10,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
+import com.ham.main.member.MemberService;
 import com.ham.main.product.pay.port.PortController;
 import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
@@ -43,10 +47,13 @@ public class PayController {
 	@Autowired
 	private PortController portController;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	@GetMapping("add")
-	public void setPay(Model model) throws Exception{
+	public void setPay(Model model, HttpSession session) throws Exception{
 //		파트너디테일 넣어야함 
-		
+	
 	}
 	
 	@PostMapping("add")

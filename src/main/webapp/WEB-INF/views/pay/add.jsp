@@ -86,6 +86,7 @@ th:first-child {
 
 
 
+
 @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
 
 
@@ -162,8 +163,8 @@ th:first-child {
 			</tr>
 
 			<tr>
-				<td width="25%"><p>이용 4일 전</td>
-				<td width="75%">총 금액의 100%환불</p></td>
+				<td width="25%">이용 4일 전</td>
+				<td width="75%">총 금액의 100%환불</td>
 			</tr>
 			<tr>
 				<td>이용 2일 전</td>
@@ -247,20 +248,19 @@ th:first-child {
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header" style="background: #F8F9FA">
 					<h1 class="modal-title fs-5" id="exampleModalLabel"
-						style="margin-left: 30px">결제</h1>
+						style="margin-left: 30px">결제 확인</h1>
 
 				</div>
-				<div class="modal-body">
-					<h4 style="font-weight: bold; font-family:sans-serif; ">결제하시겠습니까?</h4>
-					<table class="table2 table table-light">
+				<div class="modal-body" style="background: #F8F9FA">
+					<h4 style="font-weight: bold; font-family:sans-serif; margin-left: 30px;">결제하시겠습니까?</h4>
+					<table class="table2 table" style="margin-left: 30px">
 						<tr>
 							<td>예약공간</td>
 							<td>kto.productName</td>
 						</tr>
-						<li>
-						</li>
+						
 						<tr>
 							<td>예약날짜</td>
 							<td>kto.bookDate</td>
@@ -281,7 +281,7 @@ th:first-child {
 				</div>
 
 
-				<div class="modal-footer">
+				<div class="modal-footer" style="background: #F8F9FA">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal" style="width: 225px">닫기</button>
 					<button type="button" class="btn btn-primary" id="btn"

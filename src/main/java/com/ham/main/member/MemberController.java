@@ -70,6 +70,7 @@ public class MemberController {
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
 		}
+		//널아닐 시 어떻게 할지 추가
 		
 		return "redirect:/";
 	}
@@ -177,6 +178,8 @@ public class MemberController {
 
 	        return true;
 	    }
+	    
+	   
 	
 	
 //	//ID 확인 폼
