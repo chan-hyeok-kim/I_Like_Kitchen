@@ -29,7 +29,7 @@ public class NoticeController {
 		RoleDTO role = new RoleDTO();
 		role.setRoleNum(9L);
 		
-		List<NoticeDTO> ar = noService.getList();
+		List<NoticeDTO> ar = noService.getList(pager);
 		
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);

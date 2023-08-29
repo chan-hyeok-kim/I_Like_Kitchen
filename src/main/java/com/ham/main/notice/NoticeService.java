@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.util.FileManager;
+import com.ham.main.util.Pager;
 
 @Service
 public class NoticeService {
@@ -19,9 +20,11 @@ public class NoticeService {
 	private FileManager fileManager;
 	
 	
-	public List<NoticeDTO> getList() throws Exception{
+	public List<NoticeDTO> getList(Pager pager) throws Exception{
+		pager.makeRowNum();
+		pager.makePageNum(noDAO.getTotal());
 		
-		return noDAO.getList();
+		return noDAO.getList(pager);
 	}
 	
 	public NoticeDTO getDetail(NoticeDTO noDTO) throws Exception{

@@ -2,14 +2,14 @@ package com.ham.main.util;
 
 public class Pager {
 	
-	private Long startRow;
-	private Long lastRow;
-	private Long totalRow;
-	private Long page;
-	private Long totalPage;
-	private Long startNum;
-	private Long lastNum;
-	
+	private Long startRow;		// 시작 데이터(행)
+	private Long lastRow;		// 마지막 데이터(행)
+	private Long totalRow;		// 한페이지에 보여줄 row(데이터)의 갯수
+	private Long page;			// 현재 페이지
+	private Long totalPage;		// 총페이지 갯수
+	private Long startNum;		// 현재 블럭의 첫 페이지
+	private Long lastNum;		// 현재 블럭의 마지막 페이지
+		
 	
 	public Long getStartRow() {
 		return startRow;
@@ -24,6 +24,10 @@ public class Pager {
 		this.lastRow = lastRow;
 	}
 	public Long getTotalRow() {
+		if(this.totalRow == null) {
+			this.totalRow = 5L;
+		}
+		
 		return totalRow;
 	}
 	public void setTotalRow(Long totalRow) {
@@ -56,6 +60,40 @@ public class Pager {
 	}
 	public void setLastNum(Long lastNum) {
 		this.lastNum = lastNum;
+	}
+	
+	
+	public void makeRowNum() {
+		this.startRow = (this.getPage() - 1)*this.getTotalRow() + 1;
+		this.lastRow = this.getPage() * this.getTotalRow();
+	}
+	
+	public void makePageNum(Long total) {
+		if(total % this.getTotalRow() == 0) {
+			this.totalPage = total / this.getTotalRow();
+		} else {
+			this.totalPage = total / this.getTotalRow() + 1;
+		}
+		
+		
+		long perBlock = 5;
+		long totalBlock = this.totalPage / perBlock;
+		if(this.totalPage % perBlock != 0) {
+			totalBlock++;
+		}
+		
+		
+		long block = this.getPage() / perBlock;
+		if(this.getPage() % perBlock != 0) {
+			block++;
+		}
+		
+		
+		this.startNum = (block - 1)*perBlock + 1;
+		this.lastNum = block * perBlock;
+		
+		
+		
 	}
 		
 

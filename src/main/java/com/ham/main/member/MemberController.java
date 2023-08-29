@@ -40,6 +40,7 @@ public class MemberController {
 	@GetMapping("info")
 	public String getInfo(MemberDTO memDTO, HttpSession session) throws Exception{
 		memDTO.setPassword("1234");
+		memDTO.setId("qwe");
 		memDTO = memService.getCheckInfo(memDTO);
 		
 		session.setAttribute("kto", memDTO);
@@ -48,7 +49,12 @@ public class MemberController {
 	}
 	
 	@GetMapping("checkInfo")
-	public String checkInfo() {
+	public String checkInfo(MemberDTO memDTO, HttpSession session, Model model) throws Exception {
+		memDTO = (MemberDTO)session.getAttribute("kto");
+		
+		memDTO = memService.getCheckInfo(memDTO);
+		
+		model.addAttribute("kto", memDTO);
 		
 		return "/mypage/checkInfo";
 	}
@@ -60,12 +66,11 @@ public class MemberController {
 	}
 	@PostMapping("memberUpdate")
 	public String setUpdate(MemberDTO memDTO) throws Exception {
-		memDTO = memService.getCheckInfo(memDTO);
-		
 		int result = memService.setUpdate(memDTO);
 		
 		System.out.println(memDTO.getId());
 		System.out.println(memDTO.getPassword());
+		System.out.println(memDTO.getName());
 		System.out.println(result);
 		
 		return "redirect:/mypage/info";

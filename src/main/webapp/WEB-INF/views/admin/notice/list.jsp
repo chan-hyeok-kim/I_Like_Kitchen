@@ -68,8 +68,10 @@
         #nav03{
         	text-align: center;
 		    margin-top: 50px;
-		    font-size: 17px;
+		    font-size: 18px;
+		    font-weight: bold;
         }
+        
     </style>
 </head>
 <body>
@@ -109,12 +111,31 @@
 		</c:forEach>
     </div>
     <div id="nav03">
-    	<c:forEach var="i" begin="${pager.startNum}+1" end="5">
-    		<a href="">${i}</a>
+    	<c:if test="${pager.page > 1}">
+	    	<a href="list?page=${pager.page - 1}">
+		    	<span>◁</span>
+	    	</a>
+	    </c:if>
+    
+    	<c:forEach var="i" begin="${pager.startNum}" end="${pager.lastNum}">
+    		<a href="list?page=${i}" class="pageColor">${i}</a>
     	</c:forEach>
+    	
+    	<c:if test="${pager.page < pager.totalPage}">
+	    	<a href="list?page=${pager.page + 1}">
+	    		<span>▷</span>
+	    	</a>
+    	</c:if>
     </div>
 
     <script>
+    	// 현재 페이지의 a태그 색깔 변화
+    	$(".pageColor").each(function(i, e) {
+			if($(this).text() == ${pager.page}){
+				$(this).css("color", "red");
+			} 
+		});
+    
         // 공지사항 전체 체크/해제
         $("#allCheck").click(function(){
             

@@ -13,17 +13,26 @@
 		<result column="NOTICEDATE" property="noticeDate"/>
 		<result column="VITALCHECK" property="vitalCheck"/>
 		<collection property="ktos" javaType="List" ofType="NoticeFileDTO">
-			<id column="" property="fileNum"/>
-			<result column="FILENUM" property="fileNum"/>
+			<id column="fileNum" property="fileNum"/>
 			<result column="FILENAME" property="fileName"/>
 			<result column="ORIGINALNAME" property="originalName"/>
 		</collection>
 	</resultMap>
 	
 	
+	<select id="getTotal" resultType="Long">
+		SELECT COUNT(NOTICENUM) 
+		FROM NOTICE
+	</select>
+	
+	
 	<select id="getList" resultType="NoticeDTO">
-		SELECT * FROM NOTICE
-		ORDER BY VITALCHECK DESC, NOTICEDATE DESC
+		SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM NOTICE 
+			  		ORDER BY VITALCHECK DESC, NOTICENUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	

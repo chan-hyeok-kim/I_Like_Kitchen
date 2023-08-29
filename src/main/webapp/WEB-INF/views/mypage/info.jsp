@@ -71,7 +71,11 @@
     	// 수정 버튼 클릭
     	$("#updateBtn").click(function() {
 			
-    		$(location).attr("href", "checkInfo");
+    		/* $.ajax({
+    			type:"get",
+    			url:"checkInfo"
+    		}); */				
+    		$(location).attr("href", "checkInfo?id=${kto.id}&password=${password}");
 		});
     	
     	// 탈퇴 버튼 클릭
