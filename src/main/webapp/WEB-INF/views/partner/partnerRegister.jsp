@@ -50,7 +50,7 @@
 			
 			<div class="mb-3">
 			  <label for="partnerPhone" class="form-label fw-bold">전화번호</label>
-			  <input type="text" name="partnerPhone" class="form-control" id="partnerPhone" placeholder="전화번호를 입력해주세요.">
+			  <input type="text" name="partnerPhone" class="form-control" id="partnerPhone" value="01012345678" placeholder="전화번호를 입력해주세요.">
 			  <div id="partnerPhoneResult"></div>
 			</div>
 			

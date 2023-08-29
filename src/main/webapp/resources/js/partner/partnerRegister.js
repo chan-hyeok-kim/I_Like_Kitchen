@@ -166,9 +166,11 @@ $('#partnerBtn').click(function(){
         success:function(result){
             console.log(result)
             console.log(result.data[0].valid)
-            if(!checkResult.includes(false) && result.data[0].valid=="01"){
-                swal("유효한 사업자입니다. 파트너 페이지로 이동합니다")
+            if(checkResult.includes(true) && result.data[0].valid=="01"){
+                swal("유효한 사업자입니다. 파트너 페이지에서 로그인해주세요.")
                 partnerForm.submit();
+            }else if(!checkResult.includes(true)){
+                swal("필수사항을 입력해주세요.")
             }else {
                 swal("등록되지 않은 사업자입니다.")
             }
