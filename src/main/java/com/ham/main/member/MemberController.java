@@ -4,16 +4,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.ham.main.member.mail.MailSendController;
 import com.ham.main.member.mail.MailSendService;
+import com.ham.main.util.auth.KakaoLoginBO;
 
 @Controller
 @RequestMapping("/member/*")
@@ -21,6 +27,10 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private KakaoLoginBO kakaoLoginBO;
+	private String apiResult = null;
 	
 	@Autowired
 	private MailSendController mailSendController;
@@ -88,8 +98,11 @@ public class MemberController {
 	
 	//로그인
 	@GetMapping("memberLogin")
-	public ModelAndView getMemberLogin() throws Exception {
+	public ModelAndView getMemberLogin(Model model, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		String kakaoAuthUrl = kakaoLoginBO.getAuthorizationUrl(session);
+		System.out.println("카카오:" + kakaoAuthUrl);
+		model.addAttribute("urlKakao", kakaoAuthUrl);
 		mv.setViewName("/member/memberLogin");
 		
 		return mv;
@@ -158,6 +171,40 @@ public class MemberController {
 		
 		mv.setViewName("redirect:./memberPage");
 		return mv;
+	}
+
+	
+	// 카카오 로그인 성공시 callback
+	@RequestMapping(value = "/callbackKakao.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callbackKakao(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws Exception {
+		System.out.println("로그인 성공 callbackKakao");
+		OAuth2AccessToken oauthToken;
+		oauthToken = kakaoLoginBO.getAccessToken(session, code, state);
+		// 로그인 사용자 정보를 읽어온다
+		apiResult = kakaoLoginBO.getUserProfile(oauthToken);
+			
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObj;
+			
+		jsonObj = (JSONObject) jsonParser.parse(apiResult);
+		JSONObject response_obj = (JSONObject) jsonObj.get("kakao_account");	
+		JSONObject response_obj2 = (JSONObject) response_obj.get("profile");
+		// 프로필 조회
+		String email = (String) response_obj.get("email");
+		String name = (String) response_obj2.get("nickname");
+		// 세션에 사용자 정보 등록
+		// session.setAttribute("islogin_r", "Y");
+		session.setAttribute("signIn", apiResult);
+		session.setAttribute("email", email);
+		session.setAttribute("name", name);
+
+		return "member/loginSuccess";
+	}
+	    
+	// 소셜 로그인 성공 페이지
+	@RequestMapping("/loginSuccess")
+	public String loginSuccess() {
+		return "member/loginSuccess";
 	}
 	
 }

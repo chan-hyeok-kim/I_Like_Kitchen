@@ -37,7 +37,10 @@
 				<a href="/member/find/findID">아이디찾기</a>
 				<a href="/member/find/findPW">비밀번호찾기</a> 
 				<a href="/member/memberAgree">회원가입</a>
-			</div>			
+			</div>
+			<div>
+				<button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button>
+			</div>		
 		</form>
 
 	</section>

@@ -57,5 +57,16 @@
     		SET PASSWORD = #{password}, NAME = #{name}, EMAIL = #{email}, EMAILDOMAIN = #{emailDomain}, PHONE = #{phone}
     			WHERE ID = #{id}
     </update>
+    
+    <!-- findKakao -->
+    <!-- <select id="findKakao" parameterType="java.util.HashMap" resultType="KakaoDTO">
+    	SELECT * FROM KAKAO WHERE KAKAONAME = #{nickname} AND KAKAOEMAIL = #{email}
+    </select> -->
+    
+    <!-- KakakoLogin DB저장 -->
+    <!-- <insert id="kakaoLogin" parameterType="java.util.HashMap">
+    	INSERT INTO KAKAO(ID, KAKAONAME, KAKAOEMAIL)
+    		VALUES (#{id}, #{nickname}, #{email})
+    </insert> -->
   </mapper>
   
