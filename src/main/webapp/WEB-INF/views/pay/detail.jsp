@@ -11,43 +11,43 @@
 
 <style type="text/css">
  table{
-      width: 600px;
+      width: 400px;
       background: #F8F9FA;
+      text-align: center;
  }
+ #btnHome{
+      margin-top: 10px;
+      margin-left: 100px;
+      width: 200px;
 </style>
 </head>
 <body>
 <table class="pay-table">
 <thead>
    <tr>
-      <th rowspan="2" width="20%"></th>
-      <th width="80%">kto.productDTO.productName 결제상태</th>
+      <th rowspan="2">사진</th>
+      <th>상품명</th>
       
    </tr>
-    <tr>
-      <th><c:if test="${kto.payState eq 1}">예약 승인</c:if> 
-          <c:if test="${kto.payState eq 0}">승인 대기 중</c:if></th>
-   </tr>
+    
   </thead>
    <tbody>
+   <tr>
+      <td>결제상태</td>
+      <td><c:if test="${kto.payState eq 1}">예약 승인</c:if> 
+          <c:if test="${kto.payState eq 0}">승인 대기 중</c:if></td>
+   </tr>
       <tr>
        <td>예약자</td>
        <td>${kto.memberDTO.name}</td>
       </tr>
-       <tr>
-       <td>결제 수단</td>
-       <td></td>
-      </tr>
       <tr>
-       <td rowspan="2">사용시간</td>
-       <td>${kto.bookDTO.startTime}</td>
-      </tr>
+        <td>결제 날짜</td>
+        <td>${kto.payDate}</td>
+       </tr>
       <tr>
-       <td>${kto.bookDTO.endTime}</td>
-      </tr>
-       <tr>
-       <td>결제 날짜</td>
-       <td>${kto.payDate}</td>
+       <td>사용시간</td>
+       <td id="bookTime" data-startTime="${kto.bookDTO.startTime}" data-endTime="${kto.bookDTO.endTime}"></td>
       </tr>
       <tr>
        <td>결제 금액</td>
@@ -58,7 +58,7 @@
 </table>
 
 <!-- Button trigger modal -->
-<button id="btnHome" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button id="btnHome" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   환불하기
 </button>
 
@@ -82,6 +82,22 @@
   </div>
 </div>
 
+<script type="text/javascript">
+
+ let start = $('#bookTime').attr('data-startTime');
+ let end = $('#bookTime').attr('data-endTime')
+  console.log(typeof start);
+  console.log(start);
+  console.log(end);
+  
+  start=start.substring(11,16);
+  end=end.substring(11,16);
+  console.log(start);
+  
+  $('#bookTime').append(start)
+  $('#bookTime').append('~'+end)
+  
+  </script>
 <script src="/resources/js/refund.js"></script>
 </body>
 </html>

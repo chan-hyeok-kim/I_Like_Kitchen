@@ -11,8 +11,21 @@
 
 <style type="text/css">
  table{
-      width: 600px;
+      width: 400px;
+      background: #F8F9FA;
+      text-align: center;
  }
+ #btn{
+      margin-top: 10px;
+      margin-left: 100px;
+      width: 200px;
+      /* background: #F4F3EA;
+      border: 1px solid black;
+       */
+ }
+
+ 
+
 </style>
 </head>
 <body>
@@ -20,55 +33,74 @@
 <table class="book-table">
 <thead>
    <tr>
-      <th rowspan="2" width="20%"></th>
-      <th width="80%"></th>
+      <th rowspan="2">상품사진</th>
+      <th>${product.productName}</th>
       
-   </tr>
-    <tr>
-      
-      <th>kto.productName</th>
    </tr>
   </thead>
    <tbody>
+  <%--  <tr>
+   <td>상품명</td>
+   <td>${product.productName}</td>
+   </tr> --%>
       <tr>
          <td>상품 선택</td> 
-         <td></td> 
+         <td>${kto.choice}</td> 
       </tr>
       <tr>
        <td>예약자</td>
-       <td>${kto.memberDTO.name}</td>
+       <td>${member.name}</td>
       </tr>
        <tr>
-       <td>결제 수단</td>
-       <td></td>
+       <td>예약번호</td>
+       <td>${kto.orderNum}</td>
       </tr>
       <tr>
-       <td rowspan="2">사용시간</td>
-       <td>${kto.bookDTO.startTime}</td>
-      </tr>
-      <tr>
-       <td>${kto.bookDTO.endTime}</td>
-      </tr>
-       <tr>
        <td>예약 날짜</td>
        <td>${kto.bookDate}</td>
       </tr>
       <tr>
-       <td>예약 금액</td>
-       <td>${kto.payAmount}</td>
+       <td>사용시간</td>
+       <td id="bookTime" data-startTime="${kto.startTime}" data-endTime="${kto.endTime}"></td>
+      </tr>
+      <tr>
+       <td>승인 상태</td>
+       <td>${kto.status}</td>
       </tr>
    </tbody>
 
 </table>
 
-<button id="btn" data-productNum="${kto. productNum}">결제하기</button>
+<button id="btn" class="btn btn-outline-primary" data-orderNum="${kto.orderNum}">결제하기</button>
 
 
 
 <script>
-${'#btn'}.click(function(){
+let orderNum = $('#btn').attr("data-orderNum");
+console.log(orderNum);
+
+$('#btn').click(function(){
 	
-})
+	    location.href="../pay/add?orderNum="+orderNum;
+	})
+   
+
+
+start = $('#bookTime').attr('data-startTime');
+end = $('#bookTime').attr('data-endTime')
+console.log(typeof start);
+console.log(start);
+console.log(end);
+
+start=start.substring(11,16);
+end=end.substring(11,16);
+console.log(start);
+
+$('#bookTime').append(start)
+$('#bookTime').append('~'+end)
+
+
+
 </script>
 </body>
 </html>

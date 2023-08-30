@@ -11,7 +11,7 @@ public class ProductDTO {
 	private Long partnerNum;
 	private Date regDate;
 	private String address;
-	private String tel;
+	private String tell;
 	private Long price;
 	private String contents;
 	private String productName;

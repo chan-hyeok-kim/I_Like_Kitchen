@@ -9,6 +9,8 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,7 +28,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
 import com.ham.main.member.MemberService;
+import com.ham.main.partner.PartnerDTO;
 import com.ham.main.partner.PartnerService;
+import com.ham.main.product.ProductDTO;
+import com.ham.main.product.ProductService;
+import com.ham.main.product.book.BookDTO;
+import com.ham.main.product.book.BookService;
 import com.ham.main.product.pay.port.PortController;
 import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
@@ -54,10 +61,46 @@ public class PayController {
 	@Autowired
 	private PartnerService partnerService;
 	
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
+	private ProductService productService;
+	
 	@GetMapping("add")
-	public void setPay(Model model, HttpSession session) throws Exception{
+	public void setPay(BookDTO bookDTO, Model model, HttpSession session) throws Exception{
 //		파트너디테일,productdetail 넣어야함 
-	     
+		bookDTO = bookService.getDetail(bookDTO);
+		
+//		예약번호로 상품번호 조회
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(bookDTO.getProductNum());
+		productDTO = productService.getDetail(productDTO);
+		
+//		상품번호로 파트너조회
+		PartnerDTO partnerDTO = new PartnerDTO();
+		partnerDTO.setPartnerNum(productDTO.getPartnerNum());
+		partnerDTO = partnerService.getDetail(partnerDTO);
+	    
+//		Date date = new Date(bookDTO.getStartTime());
+//		java.util.Date startDate = bookDTO.getStartTime();
+//		Calendar startCalendar = Calendar.getInstance();
+//		startCalendar.setTime(startDate);
+//		System.out.println(startCalendar.getTime());
+//		String startTime = startCalendar.getTime().toString();
+//		startTime = startTime.substring(11, 16);
+//		System.out.println(startTime);
+//		
+//		java.util.Date endDate = bookDTO.getEndTime();
+//		Calendar endCalendar = Calendar.getInstance();
+//		endCalendar.setTime(endDate);
+//	    String endTime = endCalendar.getTime().toString();
+//		endTime = endTime.substring(11, 16);
+//	    System.out.println(endTime);
+		
+	
+		model.addAttribute("kto", partnerDTO);
+		model.addAttribute("book", bookDTO);
 	}
 	
 	@PostMapping("add")
@@ -78,9 +121,9 @@ public class PayController {
 	
 	payDTO =  payService.getDetail(payDTO);
 	model.addAttribute("kto", payDTO);
-	String token = portController.getImportToken();
-    	
-	System.out.println(token);
+//	String token = portController.getImportToken();
+//    	
+//	System.out.println(token);
 	}
 	
 	

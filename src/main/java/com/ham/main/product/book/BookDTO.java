@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import java.time.LocalTime;
 
+import com.ham.main.member.MemberDTO;
+
 import lombok.Data;
 
 @Data
@@ -17,15 +19,8 @@ public class BookDTO {
 	private Integer headCount;
 	private String purpose;
 	private Date bookDate;
-	private Date startTime;
-	private Date endTime;
+	private java.util.Date startTime;
+	private java.util.Date endTime;
 	private String status;
-	
-	
-	
-	
-	
-	
-	
 
 }

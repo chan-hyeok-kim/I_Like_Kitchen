@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.product.ProductDTO;
+import com.ham.main.product.ProductService;
+
 
 @Controller
 @RequestMapping("/book/*")
@@ -24,6 +27,9 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+	@Autowired
+	private ProductService productService;
+	
 	@GetMapping("add")
 	public void setBook() throws Exception {
 
@@ -53,7 +59,9 @@ public class BookController {
             java.sql.Date endHour2=new java.sql.Date(endHour.getTime());
             bookDTO.setStartTime(startHour2);
             bookDTO.setEndTime(endHour2);
-//            bookDTO.setStatus("예약");
+            
+            
+            bookDTO.setStatus("예약");
             int result = bookService.setBook(bookDTO);
             
             String message="";
@@ -70,9 +78,17 @@ public class BookController {
 	}
 	
 	@GetMapping("detail")
-	public void getDetail(BookDTO bookDTO, Model model) throws Exception{
+	public void getDetail(BookDTO bookDTO , Model model, HttpSession session) throws Exception{
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		bookDTO = bookService.getDetail(bookDTO);
+		
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(bookDTO.getProductNum());
+		productDTO = productService.getDetail(productDTO);
 		model.addAttribute("kto",bookDTO);
+		model.addAttribute("product", productDTO);
+		
+//		model.addAttribute("member", memberDTO);
 	
 	}
 	

@@ -1,5 +1,7 @@
 package com.ham.main.partner;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,10 @@ public class PartnerService {
 	
 	public PartnerDTO getDetail(PartnerDTO partnerDTO) throws Exception{
 		return partnerDAO.getDetail(partnerDTO);
+	}
+	
+	public List<PartnerDTO> getList(PartnerDTO partnerDTO) throws Exception{
+		return partnerDAO.getList(partnerDTO);
 	}
 	
 }

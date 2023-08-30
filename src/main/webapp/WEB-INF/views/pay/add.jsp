@@ -139,23 +139,23 @@ th:first-child {
 			</tr>
 			<tr>
 				<td>대표자명</td>
-				<td>kto.partnerName</td>
+				<td>${kto.partnerName}</td>
 			</tr>
 			<tr>
 				<td>소재지</td>
-				<td>kto.address</td>
+				<td>${kto.partnerAddress}</td>
 			</tr>
 			<tr>
 				<td>사업자번호</td>
-				<td>kto.partnerNum</td>
+				<td>${kto.partnerNum}</td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>kto.phone</td>
+				<td>${kto.productDTO.tell}</td>
 			</tr>
 			<tr>
 				<td>EMAIL</td>
-				<td>kto.email</td>
+				<td>${kto.partnerEmail}</td>
 			</tr>
 		</tbody>
 
@@ -277,24 +277,24 @@ th:first-child {
 					<table class="table2 table" style="">
 						<tr>
 							<td>예약공간</td>
-							<td>kto.productName</td>
+							<td>${kto.productDTO.productName}</td>
 						</tr>
 						
 						<tr>
 							<td>예약날짜</td>
-							<td>kto.bookDate</td>
+							<td>${book.bookDate}</td>
 						</tr>
 						<tr>
 							<td>예약시간</td>
-							<td>kto.startTime~kto.endTime</td>
+							<td id="bookTime" data-startTime="${book.startTime}" data-endTime="${book.endTime}"></td>
 						</tr>
 						<tr>
 							<td>예약인원</td>
-							<td>kto.headCount</td>
+							<td>${book.headCount}</td>
 						</tr>
 						<tr>
 							<td>결제예정금액</td>
-							<td>kto.price</td>
+							<td>${kto.productDTO.price}</td>
 						</tr>
 					</table>
 				</div>
@@ -328,6 +328,22 @@ th:first-child {
 
 	
 </section>
+<script type="text/javascript">
+
+start = $('#bookTime').attr('data-startTime');
+end = $('#bookTime').attr('data-endTime')
+console.log(typeof start);
+console.log(start);
+console.log(end);
+
+start=start.substring(11,16);
+end=end.substring(11,16);
+console.log(start);
+
+$('#bookTime').append(start)
+$('#bookTime').append('~'+end)
+
+</script>
 <script src="/resources/js/pay.js"></script>
 </body>
 </html>

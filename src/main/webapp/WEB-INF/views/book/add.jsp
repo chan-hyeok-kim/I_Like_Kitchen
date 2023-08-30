@@ -75,6 +75,70 @@ section{
 	height: 46px;
 	margin-top: 30px;
 }
+
+
+.input-number-group {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input-number-group input[type=number]::-webkit-inner-spin-button,
+.input-number-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.input-number-group .input-group-button {
+  line-height: calc(80px/2 - 5px);
+}
+
+.input-number-group .input-number {
+  width: 80px;
+  padding: 0 12px;
+  vertical-align: top;
+  text-align: center;
+  outline: none;
+  display: block;
+  margin: 0;
+}
+
+.input-number-group .input-number,
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  border: 1px solid #cacaca;
+  height: 40px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 0;
+}
+
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  display: inline-block;
+  width: 40px;
+  background: #e6e6e6;
+  color: #0a0a0a;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.input-number-group .input-number-decrement {
+  margin-right: 0.3rem;
+}
+
+.input-number-group .input-number-increment {
+  margin-left: 0.3rem;
+}
+
 </style>
 
 </head>
@@ -175,22 +239,33 @@ section{
 
 
 							<div class="b1">
-
-								<div class="f1"><label for="headCount">인원 선택</label></div>
-								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1">
+                       <div class="f1"><label for="headCount">인원 선택</label></div>
+<div class="input-group input-number-group">
+  <div class="input-group-button">
+    <span class="input-number-decrement">-</span>
+  </div>
+  <input class="input-number" type="number" style="width: 40%" value="1" class="form-control m2" name="headCount" id="headCount">
+  <div class="input-group-button">
+    <span class="input-number-increment">+</span>
+  </div>
+</div>
+<div style="margin-left: 30%;">
+<button>+5</button><button>+10</button><button>+50</button><button>+100</button>
+</div>
+								<!-- <div class="f1"><label for="headCount">인원 선택</label></div>
+								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1"> -->
+							<div class="f1"><label for="purpose">목적</label></div>
+						<input type="text" class="form-control m2" name="purpose" id="purpose" style="width: 90%">
 							</div>
 					
-					<div class="b1">
-						<div class="f1"><label for="purpose">목적</label></div>
-						<input type="text" class="form-control m2" name="purpose" id="purpose" style="width: 90%">
-					</div>
+					
 
 					<div class="b1">
 						<div class="mb-3 f1">
 							<label for="ta1" class="form-label">호스트 전달 내용</label>
 						</div>
-						<textarea class="form-control m2" id="ta1" rows="3" cols="7"
-							name="contents" style="width: 90%"></textarea>
+						<textarea class="form-control m2" id="ta1" rows="6" cols="7"
+							name="contents" style="width: 90%" placeholder="호스트에게 전달하고 싶은 내용을 적어주세요.&#13;&#10;호스트와 긴밀한 질의 응답이 필요할 경우 상세페이지의 '문의하기'버튼을 이용해주세요"></textarea>
 					</div>
 <div class="b1Last">
 <div>

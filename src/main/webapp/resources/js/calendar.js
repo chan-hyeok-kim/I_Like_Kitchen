@@ -22,11 +22,11 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
 					initialView : 'dayGridMonth',
 					selectable : true,
 					locale : 'ko',
-				  events: [
-				    { 
-				    start: '0000-00-00',
+				    events: [{ 
+	                start: '0000-00-00',
 				    end: today,
-				    display: 'inverse-background'
+				    display: 'background',
+				    backgroundColor:'gray'
 				    }],
 					 dateClick : function(info) {
 					 	console.log(info.date)
@@ -89,4 +89,20 @@ function bookNoticeStart(){
 			   })
 	
 	}
+	
+	$('.input-number-increment').click(function() {
+  let $input = $(this).parents('.input-number-group').find('.input-number');
+  let val = parseInt($input.val(), 10);
+  $input.val(val + 1);
+});
+
+$('.input-number-decrement').click(function() {
+  let $input = $(this).parents('.input-number-group').find('.input-number');
+  let val = parseInt($input.val(), 10);
+  if(val==1){
+     val=1;
+  }else{
+  $input.val(val - 1);
+  }
+})
 	
