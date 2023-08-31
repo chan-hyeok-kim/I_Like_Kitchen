@@ -11,6 +11,7 @@
 	<typeAlias type="com.ham.main.review.ReviewDTO" alias="ReviewDTO"/>
  	<typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
  	<typeAlias type="com.ham.main.member.MemberFileDTO" alias="MemberFIleDTO"/>
+ 	<typeAlias type="com.ham.main.review.ReviewFileDTO" alias="ReviewFileDTO"/>
   </typeAliases>
 
 </configuration>

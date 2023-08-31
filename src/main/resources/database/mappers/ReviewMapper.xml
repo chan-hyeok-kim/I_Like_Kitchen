@@ -42,8 +42,9 @@
   from REVIEW
  where reviewNum = #{reviewNum}
 </delete>
+
 <!-- 게시물 총 갯수 -->
-<select id="count" resultType="int">
+<select id="count" resultType="long">
  select count(reviewNum) from REVIEW
 </select>
 <!-- 게시물 목록 + 페이징 -->
@@ -59,5 +60,12 @@
   		INSERT INTO REVIEWFILE
   		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
   	</insert>
+<delete id="setFileDelete" parameterType="ReviewFileDTO">
+		DELETE REVIEWFILE WHERE FILENUM=#{fileNum}
+	</delete>
+	
+	<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
+		SELECT FILENUM, FILENAME, ORIGINALNAME FROM REVIEWFILE WHERE FILENUM=#{fileNum}
+	</select>
 
   </mapper>

@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
+ 
 <c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 <body>
@@ -30,8 +32,8 @@
  <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6">${view.questionContents}</textarea>
 
 
-<div>이름
-<br><input type="text" value="${view.id}" name="id"></input>
+<div>ID
+<br><input id="id" type="text" value="${view.id}" name="id"></input>
 </div>
 <br>
 <div>
@@ -41,7 +43,7 @@
 <br>
 <br>
 <button type="submit" class="btn btn-warning">문의수정</button>
-<button type="button" class="btn btn-light">취소</button>  
+<a class="btn" style="background-color:rgb(251,255,182)" href="../question/view?questionNum=${view.questionNum}">취소</a>  
 </form>
 </div>
 <c:import url="../temp/Footer.jsp"></c:import>

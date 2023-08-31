@@ -6,36 +6,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../temp/bootStrap.jsp"></c:import>
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 
-	<table>
+	<table class="border mx-auto p-2 " style="width: 1600px;">
 	 <thead>
-	  <tr>
-	   <th>후기번호</th>
-	   <th>작성자</th>
-	   <th>평점</th>
-	   <th>후기내용</th>
-	   <th>후기날짜</th>
+	  <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
+	   <th class="p-2 g-col-6 border">후기번호</th>
+	   <th class="p-2 g-col-6 border">작성자</th>
+	   <th class="p-2 g-col-6 border">평점</th>
+	   <th class="p-2 g-col-6 border">후기내용</th>
+	   <th class="p-2 g-col-6 border">후기날짜</th>
 	  </tr>
 	 </thead>
 	 
 	 <tbody>
 			  	<c:forEach items="${list}" var="list">
-		 <tr>
-		  <td>${list.reviewNum}</td>
-		  <td>
+		 <tr class="grid gap-3">
+		  <td class="p-2 g-col-6 border">${list.reviewNum}</td>
+		  <td class="p-2 g-col-6 border">
     		<a href="/review/view?reviewNum=${list.reviewNum}">${list.id}</a>
 			</td>
 		 
-		  <td>${list.reviewRate}</td>
-		  <td>${list.reviewContents}</td>
-		  <td>${list.reviewDate}</td>
+		  <td class="p-2 g-col-6 border">${list.reviewRate}</td>
+		  <td class="p-2 g-col-6 border">${list.reviewContents}</td>
+		  <td class="p-2 g-col-6 border">${list.reviewDate}</td>
 		 </tr>
 		</c:forEach>
 	 </tbody>
 	
 	</table>
+	<c:import url="../temp/Footer.jsp"></c:import>
 </body>
 </html>

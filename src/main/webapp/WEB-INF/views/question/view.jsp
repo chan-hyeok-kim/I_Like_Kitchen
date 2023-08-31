@@ -10,19 +10,20 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
+<h1>Detail</h1>
 
-
-<label>작성자</label>
+<label class="border">작성자</label>
 ${view.id}<br />
 
-<label>문의작성날짜</label>
+<label class="border">문의작성날짜</label>
 ${view.questionDate}<br />
 
-<label>문의내용</label>
+<label class="border">문의내용</label>
 ${view.questionContents}<br />
 
 <div>
-<a href="/question/update?questionNum=${view.questionNum}">게시물 수정</a><a href="/question/delete?questionNum=${view.questionNum}">게시물 삭제</a>
+<a href="/question/update?questionNum=${view.questionNum}" type="button" class="btn btn-warning p-2 g-col-6">게시물 수정</a><a href="/question/delete?questionNum=${view.questionNum}" type="button" class="btn btn-warning p-2 g-col-6">게시물 삭제</a>
 </div>
+<c:import url="../temp/Footer.jsp"></c:import>
 </body>
 </html>

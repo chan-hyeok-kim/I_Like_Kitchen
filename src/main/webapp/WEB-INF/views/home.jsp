@@ -12,7 +12,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Home</title>
 	<c:import url="temp/bootStrap.jsp"></c:import>
-	
+	<style>
+		
+	</style>
 	
 </head>
 <body>
@@ -20,15 +22,15 @@
 <h1>
 	Hello world!  
 </h1>
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button bg-warning p-2 text-dark bg-opacity-10" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
 <div>문의사항</div>
 	</button>
    	 </h2>
    	 	
-	  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+	  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" >
       <div class="accordion-body">
 				<div class="mb-3">
 				<c:if test="questionContents!=null||questionContents.length!==0">
@@ -68,12 +70,12 @@
 
 	<div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <button class="accordion-button collapsed bg-warning p-2 text-dark bg-opacity-10" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
 <div>후기작성</div>	
     </button>
     	</h2>
     		
-		   <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+		   <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
       <div class="accordion-body">
 		<div class="mb-3">	
 		<c:if test="reviewContents!=null||reviewContents.length!==0">

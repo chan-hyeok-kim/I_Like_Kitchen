@@ -1,6 +1,7 @@
 package com.ham.main.review;
 
 import java.sql.Date;
+import java.util.List;
 
 public class ReviewDTO{
 
@@ -10,8 +11,15 @@ public class ReviewDTO{
 	private String reviewContents;
 	private Date reviewDate;
 	private Long reviewRate;
-
+	private List<ReviewDTO> ktos;
 	
+	
+	public List<ReviewDTO> getKtos() {
+		return ktos;
+	}
+	public void setKtos(List<ReviewDTO> ktos) {
+		this.ktos = ktos;
+	}
 	public Long getReviewRate() {
 		return reviewRate;
 	}

@@ -79,7 +79,7 @@
         </div>
     </header>
     <!-- Header End -->
-</nav> <c:if test="${empty member}">
+				 <c:if test="${empty member}">
 				      <nav>
 				       	<ul class="nav">
 				       		<li class="nav-item text-white me-3 mx-auto p-2" type="button"value="Input"><a href="/member/login">로그인</a></li>
@@ -92,8 +92,8 @@
 				      <c:if test="${sessionScope.member ne null}">
 				      <nav>
 				       	<ul class="nav">
-				       		<li class="nav-item text-white me-3" type="button"value="Input"><a href="/member/logout">로그아웃</a></li>
-				       		<li class="nav-item text-white me-3" type="button"value="Input"><a href="/member/mypage">mypage</a></li>
+				       		<li class="nav-item text-white me-3" type="button" value="Input"><a href="/member/logout">로그아웃</a></li>
+				       		<li class="nav-item text-white me-3" type="button" value="Input"><a href="/member/mypage">mypage</a></li>
 				       	</ul>
 				      </nav>
 				      </c:if>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ham.main.question.QuestionService;
 import com.ham.main.util.Page;
 
 @Controller
@@ -45,6 +44,7 @@ public class ReviewController {
 	public String setContentsImgDelete(String path,HttpSession session,Model model) throws Exception{
 		boolean check=reviewService.setContentsImgDelete(path, session);
 		model.addAttribute("result", check);
+		
 		return "commons/ajaxResult";
 	}
 	
@@ -54,7 +54,16 @@ public class ReviewController {
 		System.out.println(files.getOriginalFilename());
 		String path=reviewService.setContentsImg(files, session);
 		model.addAttribute("result",path);
+		
 		return "commons/ajaxResult";
+	}
+	
+	@GetMapping("fileDelete")
+	public String setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session ,Model model)throws Exception{
+		int result = reviewService.setFileDelete(reviewFileDTO, session);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
+		
 	}
 //게시물 작성 폼
 @RequestMapping(value = "add", method = RequestMethod.GET)

@@ -19,9 +19,15 @@ public class ReviewDAO {
 		return sql.selectOne(NAMESPACE+"getFIleDetail",reviewFileDTO);
 	}
  	
-	public int setFileDelete(ReviewFileDTO reviewFilefileNum) throws Exception{
-		return sql.delete(NAMESPACE+"setFileDelete",reviewFilefileNum);
+	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception{
+		return sql.delete(NAMESPACE+"setFileDelete",reviewFileDTO);
 	}
+	public int setFileAdd(ReviewFileDTO reviewFileDTO)throws Exception{
+		return sql.insert(NAMESPACE+"setFileAdd", reviewFileDTO);
+	}
+
+	
+
  // 게시물 목록
  
  	public List<ReviewDTO> list() throws Exception { 
@@ -36,7 +42,7 @@ public class ReviewDAO {
 	}
 
 //게시물 조회
-	public ReviewDTO view(long reviewNum) throws Exception {
+	public ReviewDTO view(Long reviewNum) throws Exception {
 
 	return sql.selectOne(NAMESPACE + "view", reviewNum);
 

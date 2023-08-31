@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>후기조회</title>
+<c:import url="../temp/bootStrap.jsp"></c:import>
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -14,11 +16,7 @@
 <label>작성자</label>
 ${view.id}<br />
 
-		<div>
-			<c:forEach items="${dto.dtos}" var="f">
-				<img src="../resources/upload/${board}/${f.fileName}">
-			</c:forEach>
-		</div>
+
 <label>작성날짜</label>
 ${view.reviewDate}<br />
 
@@ -27,8 +25,15 @@ ${view.reviewContents}<br />
 
 <label>평점</label>
 ${view.reviewRate}<br />
+		<div>
+			<c:forEach items="${view.ktos}" var="f">
+				<a href="./fileDown?fileNum=${f.fileNum}">${f.originalName}</a>
+			</c:forEach>
+		</div>
+
 <div>
-<a href="/review/update?reviewNum=${view.reviewNum}">게시물 수정</a><a href="/review/delete?reviewNum=${view.reviewNum}">게시물 삭제</a>
+<a href="/review/update?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 수정</a><a href="/review/delete?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 삭제</a>
 </div>
+<c:import url="../temp/Footer.jsp"></c:import>
 </body>
 </html>

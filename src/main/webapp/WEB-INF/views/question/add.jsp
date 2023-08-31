@@ -36,7 +36,7 @@
  <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6">문의사항을입력하세요</textarea>
 	<input type="hidden" value="productNum"></input>
 
-<div>이름
+<div>ID
 	<br>
 		<input name="id" type="text" value="dnjy1945" name="id">${member.id}
 	</div>

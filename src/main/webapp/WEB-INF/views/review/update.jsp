@@ -29,8 +29,8 @@
  <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">후기를 입력하세요</textarea>
 
 <input type="hidden" value="productNum">
-<div>이름
-<br><input type="text" name="id" value="${view.id}">
+<div>ID
+<br><input id="id" type="text" name="id" value="${view.id}">
 </div>
 <br>
 <div>

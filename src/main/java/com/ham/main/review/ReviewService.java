@@ -9,19 +9,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ham.main.file.FileDTO;
 import com.ham.main.util.FIleManager;
 
 @Service
 public class ReviewService {
 
- @Autowired
- private ReviewDAO reviewDAO;
+	@Autowired
+ 	private ReviewDAO reviewDAO;
+	@Autowired
+	private FIleManager fileManager;
  
- 
- 	public List<ReviewDTO> list() throws Exception {
-
-  	return reviewDAO.list();
- }
 
  	public ReviewFileDTO getFileDown(ReviewFileDTO reviewFileDTO)throws Exception{
 		return reviewDAO.getFIleDetail(reviewFileDTO);
@@ -29,18 +27,40 @@ public class ReviewService {
  	
  	public boolean setContentsImgDelete(String path,HttpSession session) throws Exception{
 		//path: /resources/upload/notice/파일명
-		com.ham.main.file.FileDTO fileDTO =new com.ham.main.file.FileDTO();
+		FileDTO fileDTO =new FileDTO();
 //		path=path.substring(0, path.lastIndexOf("\\")+1);
 		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
-		path="/resources/upload/notice/";
+		
+		path="/resources/upload/review/";
 		return FIleManager.fileDelete(fileDTO, path, session);
 	}
 	
 	public String setContentsImg(MultipartFile file,HttpSession session)throws Exception {
-		String path="/resources/upload/motice/";
-		String fileName=FIleManager.fileSave(path, session, file);
+		String path="/resources/upload/review/";
+		String fileName=fileManager.fileSave(path, session, file);
 		return path+fileName;
 		
+	}
+	
+	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
+		//폴더 파일 삭제
+		reviewFileDTO=reviewDAO.getFIleDetail(reviewFileDTO);
+		boolean flag=FIleManager.fileDelete(reviewFileDTO, "/resources/upload/review/", session);
+		
+		if(flag) {
+			
+			
+			//db삭제
+			return reviewDAO.setFileDelete(reviewFileDTO);
+		}
+		return 0;
+	}
+	
+		
+	
+	public List<ReviewDTO> list() throws Exception {
+		
+		return reviewDAO.list();
 	}
  //게시물 작성
 	 public int add(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
@@ -49,24 +69,11 @@ public class ReviewService {
  }
 //게시물 조회
 
- 	public ReviewDTO view(long reviewNum) throws Exception {
+ 	public ReviewDTO view(Long reviewNum) throws Exception {
 
  	return reviewDAO.view(reviewNum);
 }
  	
- 	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
-		//폴더 파일 삭제
-		reviewFileDTO=reviewDAO.getFIleDetail(reviewFileDTO);
-		boolean flag=FIleManager.fileDelete(reviewFileDTO, "/resources/upload/notice/", null);
-		
-		if(flag) {
-			
-		
-		//db삭제
-			return reviewDAO.setFileDelete(reviewFileDTO);
-		}
-		return 0;
-		}
  	
  // 게시물 수정
  	
@@ -88,4 +95,5 @@ public class ReviewService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }

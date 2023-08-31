@@ -11,41 +11,38 @@
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 	
-	<table>
+	<table class="border mx-auto p-2" style="width: 1600px;">
 	 <thead>
-	  <table>
-	  <tr>
-	   <th>질문번호</th>
-	   <th>상품번호</th>
-	   <th>작성자</th>
-	   <th>작성내용</th>
-	   <th>질문날짜</th>
-	   <th>질문종류</th>
+	  <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
+	   <th class="p-2 g-col-6 border">질문번호</th>
+	   <th class="p-2 g-col-6 border">상품번호</th>
+	   <th class="p-2 g-col-6 border">작성자</th>
+	   <th class="p-2 g-col-6 border">작성내용</th>
+	   <th class="p-2 g-col-6 border">질문날짜</th>
+	   <th class="p-2 g-col-6 border">질문종류</th>
 	  </tr>
-	  </table>
 	 </thead>
 	 
 	 <tbody>
 			  	<c:forEach items="${list}" var="list">
-	 <table>
 	 
-		 <tr>
-		  <td>${list.questionNum}</td>
-		  <td>
+		 <tr class="grid gap-3">
+		  <td class="p-2 g-col-6 border">${list.questionNum}</td>
+		  <td class="p-2 g-col-6 border">${list.productNum}</td>
+		  <td class="p-2 g-col-6 border">
     		<a href="/question/view?questionNum=${list.questionNum}">${list.id}</a>
 			</td>
-		  <td>${list.productNum}</td>
-		  <td>${list.id}</td>
-		  <td>${list.questionContents}</td>
-		  <td>${list.questionDate}</td>
-		   <td>${list.questionKind}</td>
+		  <td class="p-2 g-col-6 overflow-auto border">${list.questionContents}</td>
+		  <td class="p-2 g-col-6 border">${list.questionDate}</td>
+		   <td class="p-2 g-col-6 border">${list.questionKind}</td>
 		 </tr>
 			
-	</table>
+
 		</c:forEach>
 	 </tbody>
 	
 	</table>
 			
+			<c:import url="../temp/Footer.jsp"></c:import>
 </body>
 </html>

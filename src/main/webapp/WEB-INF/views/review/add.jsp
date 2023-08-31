@@ -8,9 +8,7 @@
 <meta charset="UTF-8">
 	<title>Home</title>
 	<c:import url="../temp/bootStrap.jsp"></c:import>
-<style>
 
-</style>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -60,8 +58,8 @@
 
 
 
-<div>이름
-<br><input name="id" type="text">${com.name}
+<div>ID
+<br><input id="id" name="id" type="text">${com.name}
 </div>
 <br>
 <div>
@@ -70,12 +68,15 @@
 </div>
 <br>
 <br>
-<button type="submit" class="btn btn-warning" style="background-color:rgb(251,255,182)">후기등록</button>
+<button id="btn" type="submit" class="btn btn-warning" style="background-color:rgb(251,255,182)">후기등록</button>
 <a class="btn btn-warning" style="background-color:rgb(251,255,182)" href="../">취소</a>  
 </div>
 
 </form>
 <c:import url="../temp/Footer.jsp"></c:import>
+<script src="../resources/js/file.js" type="text/javascript">
+</script>
+
 </body>
 </html>
 
