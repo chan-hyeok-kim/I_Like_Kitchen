@@ -41,4 +41,8 @@ public class MemberDAO {
 	public int setKakaoJoin(KakaoDTO kakaoDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "setKakaoJoin", kakaoDTO);
 	}
+	
+	public KakaoDTO getKakaoLogin(KakaoDTO kakaoDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", kakaoDTO);
+	}
 }

@@ -57,7 +57,13 @@
     		SET PASSWORD = #{password}, NAME = #{name}, EMAIL = #{email}, EMAILDOMAIN = #{emailDomain}, PHONE = #{phone}
     			WHERE ID = #{id}
     </update>
-      
+    
+    <!-- 카카오로그인 -->
+    <select id="getKakaoLogin" parameterType="KakaoDTO" resultType="Long">
+    	SELECT COUNT(ID) FROM KAKAO 
+    </select>
+    
+    <!-- 카카오회원가입 DB저장 -->
     <insert id="setKakaoJoin" parameterType="KakaoDTO">
     	INSERT INTO KAKAO (ID, KAKAONAME, KAKAOEMAIL)
     		VALUES (#{id}, #{kakaoName}, #{kakaoEmail})
