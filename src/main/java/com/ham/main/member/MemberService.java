@@ -65,6 +65,24 @@ public class MemberService {
 	 public MemberDTO getDetail(MemberDTO memberDTO) throws Exception{
 	    	return memberDAO.getDetail(memberDTO);
 	 }
+	 
+	//  admin 권한 부여, 삭제
+	   public int adminAdd(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.adminAdd(memberDTO);
+	    }
+	    
+	    public int adminRemove(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.adminRemove(memberDTO);
+	    }
+	//  partner 권한 부여, 삭제
+	    public int partnerAdd(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.adminAdd(memberDTO);
+	    }
+	    
+	    public int partnerRemove(MemberDTO memberDTO) throws Exception{
+	    	return memberDAO.adminRemove(memberDTO);
+	    }
+	    
 	
 	
 }

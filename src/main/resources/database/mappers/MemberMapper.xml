@@ -79,11 +79,38 @@
   WHERE ROLENUM IN (SELECT MR.ROLENUM
 		             FROM MEMBER M 
 			         INNER JOIN MEMBERROLE MR
-			         ON(M.ID = MR.ID)
-			         WHERE M.ID = #{id});
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
     </update>
     
-    <update id="adminDelete">
+    <update id="adminRemove" parameterType="MemberDTO">
+    UPDATE MEMBERROLE 
+       SET ROLENUM=2
+     WHERE ROLENUM IN (SELECT MR.ROLENUM
+	     	             FROM MEMBER M 
+	     		         INNER JOIN MEMBERROLE MR
+	      		         ON M.ID = MR.ID
+	    		         WHERE M.ID = #{id})
+    </update>
+  	
+  <update id="partnerAdd" parameterType="MemberDTO">
+  UPDATE MEMBERROLE 
+    SET ROLENUM=2
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
+  </update>	
+  
+   <update id="partnerRemove" parameterType="MemberDTO">
+    UPDATE MEMBERROLE 
+    SET ROLENUM=1
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
     </update>
   	
   </mapper>

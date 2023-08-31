@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.member.MemberService;
 
 @Controller
 @RequestMapping("/admin/*")
 public class AdminController {
 
+	@Autowired
+	private MemberService memberService;
+	
 	@GetMapping("home")
 	public void goHome() throws Exception{
 		
@@ -23,11 +27,18 @@ public class AdminController {
 	}
 	
 	@PostMapping("adminAdd")
-	public String adminAdd(MemberDTO memberDTO)throws Exception{
+	public String adminAdd(MemberDTO memberDTO) throws Exception{
+		int result = memberService.adminAdd(memberDTO);
 		
+		return "admin/home";
+	}
+	
+	@PostMapping("adminRemove")
+	public String adminRemove(MemberDTO memberDTO) throws Exception{
+	    int result = memberService.adminRemove(memberDTO);
+		return "admin/adminAuth";
 	}
 	
 	
-	return "home";
 	
 }

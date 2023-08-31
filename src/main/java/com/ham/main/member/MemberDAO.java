@@ -48,4 +48,22 @@ public class MemberDAO {
     	return sqlSession.selectOne(NAMESPACE+"getDetail",memberDTO);
     }
     
+//  admin 권한 부여, 삭제
+    public int adminAdd(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminAdd", memberDTO);
+    }
+    
+    public int adminRemove(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminRemove", memberDTO);
+    }
+//  partner 권한 부여, 삭제
+    public int partnerAdd(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminAdd", memberDTO);
+    }
+    
+    public int partnerRemove(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminRemove", memberDTO);
+    }
+    
+    
 }

@@ -10,16 +10,18 @@
 </head>
 <body>
    
-   <form action="partner/adminAdd" method="post">
+   <form action="adminAdd" method="post">
    <div>
      관리자 권한을 부여할 사용자의 ID를 입력하세요<input type="text" class="form-control" name="id">
    </div>
+   <button>권한 부여</button>
    </form>
    
-   <form action="partner/adminDelete" method="post">
+   <form action="adminRemove" method="post">
    <div>
      관리자 권한을 삭제할 사용자의 ID를 입력하세요<input type="text" class="form-control" name="id"> 
    </div>
+   <button>권한 수거</button>
     </form>
 </body>
 </html>
