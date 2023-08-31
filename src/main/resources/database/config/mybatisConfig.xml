@@ -7,11 +7,6 @@
 <configuration>
 
     <typeAliases>
-    	<typeAlias type="com.ham.main.board.notice.NoticeDTO" alias="NoticeDTO"/>
-    	<typeAlias type="com.ham.main.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
-    	<typeAlias type="com.ham.main.board.BoardDTO" alias="BoardDTO"/>    	
-  
-
-    <typeAlias type="com.is.main.Board.qna.QnaDTO" alias="qnaDTO"></typeAlias>
+    
   </typeAliases>
 </configuration>
