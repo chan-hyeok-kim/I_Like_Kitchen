@@ -22,7 +22,60 @@ public class MemberController {
 	private MemberService memService;
 
 	
+	@PostMapping("memberEmailCheck")
+	public ModelAndView getMemberEmailCheck(MemberDTO memberDTO)throws Exception {
+	    boolean check = memService.getMemberEmailCheck(memberDTO);
+	    ModelAndView mv = new ModelAndView();
+
+	    mv.addObject("result", check);
+	    mv.setViewName("commons/ajaxResult");
+	    return mv;
+	}
 	
+	//회원가입
+	@GetMapping("memberJoin")
+	public ModelAndView setMemberJoin() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/memberJoin");
+		
+		return mv;
+	}
+	
+	@PostMapping("memberJoin")
+	public ModelAndView setMemberJoin(MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memService.setMemberJoin(memberDTO);
+		mv.setViewName("redirect:../");
+		
+		return mv;
+	}
+	
+	//로그인
+	@GetMapping("memberLogin")
+	public ModelAndView getMemberLogin() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/memberLogin");
+		
+		return mv;
+	}
+	
+	@PostMapping("memberLogin")
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		memberDTO = memService.getMemberLogin(memberDTO);
+		
+		if(memberDTO != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberDTO);
+			
+			mv.setViewName("redirect:../");
+		}else {
+			mv.addObject("errorMessage", "로그인에 실패했습니다.");
+			mv.setViewName("/member/memberLogin");
+		}
+		
+		return mv;
+	}
 		
 	
 	@GetMapping("onGoing")

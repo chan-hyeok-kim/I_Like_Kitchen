@@ -231,7 +231,7 @@ $('#mail-Check-Btn').click(function() {
 
 	$.ajax({
 	    type : 'get',
-	    url : '/member/mailCheck?email=' + email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+	    url : '/mypage/mailCheck?email=' + email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
 	    success : function (data) {
 	        console.log("data : " +  data);  
 	        checkInput.prop('disabled', false);  

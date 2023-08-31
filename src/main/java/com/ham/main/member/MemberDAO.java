@@ -12,7 +12,21 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO."; 
 	
 	
-
+	public MemberDTO getMemberByEmail(MemberDTO memDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getMemberByEmail", memDTO);
+	}
+	
+	public int setMemberJoin(MemberDTO memDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setMemberJoin", memDTO);
+	}
+	
+	public MemberDTO getMemberLogin(MemberDTO memDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getMemberLogin", memDTO);
+	}
+	
+	public int setMemberRole(MemberDTO memDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setMemberRole", memDTO);
+	}
 	
 	
 	public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
