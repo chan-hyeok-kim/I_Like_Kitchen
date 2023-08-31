@@ -101,7 +101,7 @@ public class MemberController {
 	public ModelAndView getMemberLogin(Model model, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String kakaoAuthUrl = kakaoLoginBO.getAuthorizationUrl(session);
-		System.out.println("카카오:" + kakaoAuthUrl);
+		//System.out.println("카카오:" + kakaoAuthUrl);
 		model.addAttribute("urlKakao", kakaoAuthUrl);
 		mv.setViewName("/member/memberLogin");
 		
@@ -189,22 +189,41 @@ public class MemberController {
 		jsonObj = (JSONObject) jsonParser.parse(apiResult);
 		JSONObject response_obj = (JSONObject) jsonObj.get("kakao_account");	
 		JSONObject response_obj2 = (JSONObject) response_obj.get("profile");
+		System.out.println(jsonObj);
+		Long response_obj3 = (Long) jsonObj.get("id");
+		
 		// 프로필 조회
 		String email = (String) response_obj.get("email");
 		String name = (String) response_obj2.get("nickname");
+		System.out.println(response_obj3);
+		String id = response_obj3.toString();
 		// 세션에 사용자 정보 등록
 		// session.setAttribute("islogin_r", "Y");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setName(name);
+		memberDTO.setEmail(email);
 		session.setAttribute("signIn", apiResult);
+		System.out.println(apiResult);
 		session.setAttribute("email", email);
 		session.setAttribute("name", name);
-
-		return "member/loginSuccess";
+		
+		session.setAttribute("member", memberDTO);
+		KakaoDTO kakaoDTO = new KakaoDTO();
+		System.out.println(id);
+		kakaoDTO.setId(id);
+		kakaoDTO.setKakaoName(name);
+		kakaoDTO.setKakaoEmail(email);
+		memberService.setKakaoJoin(kakaoDTO);
+	
+		return "/home";
 	}
+	
+	
 	    
-	// 소셜 로그인 성공 페이지
-	@RequestMapping("/loginSuccess")
-	public String loginSuccess() {
-		return "member/loginSuccess";
-	}
+//	// 소셜 로그인 성공 페이지
+//	@RequestMapping("/loginSuccess")
+//	public String loginSuccess() {
+//		return "member/loginSuccess";
+//	}
 	
 }

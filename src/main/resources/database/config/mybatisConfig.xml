@@ -9,6 +9,8 @@
 		<typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
 		
 		<typeAlias type="com.ham.main.partner.PartnerDTO" alias="PartnerDTO"/>
+		
+		<typeAlias type="com.ham.main.member.KakaoDTO" alias="KakaoDTO"/>
 
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>

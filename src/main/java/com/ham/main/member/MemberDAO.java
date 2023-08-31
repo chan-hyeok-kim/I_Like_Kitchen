@@ -1,5 +1,7 @@
 package com.ham.main.member;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,4 +38,7 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + "getIdCheck", memberDTO);
 	}
 	
+	public int setKakaoJoin(KakaoDTO kakaoDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setKakaoJoin", kakaoDTO);
+	}
 }

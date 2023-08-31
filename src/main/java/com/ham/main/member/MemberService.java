@@ -58,4 +58,9 @@ public class MemberService {
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
 		return memberDAO.setMemberUpdate(memberDTO);
 	}
+	
+	public int setKakaoJoin(KakaoDTO kakaoDTO) throws Exception {
+		return memberDAO.setKakaoJoin(kakaoDTO);
+	}
+
 }
