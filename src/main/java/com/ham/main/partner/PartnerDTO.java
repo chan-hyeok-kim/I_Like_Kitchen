@@ -16,5 +16,10 @@ public class PartnerDTO {
 	private Long partnerAccount;
 	private Date partnerDate;
 	private String partnerName;
+	private String companyName;
+    private Integer partnerCheck;
 	private ProductDTO productDTO;
+
+	
+	
 }

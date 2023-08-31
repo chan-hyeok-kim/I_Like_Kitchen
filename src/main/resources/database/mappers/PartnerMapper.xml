@@ -19,6 +19,8 @@
    <result column="PARTNERACCOUNT" property="partnerAccount"/>
    <result column="PARTNERDATE" property="partnerDate"/>
    <result column="PARTNERNAME" property="partnerName"/>
+   <result column="COMPANYNAME" property="companyName"/>
+   <result column="PARTNERCHECK" property="partnerCheck"/>
    <result column="ID" property="id"/>
    
    <association javaType="ProductDTO" property="productDTO">
@@ -35,6 +37,12 @@
 <select id="getList" resultType="PartnerDTO">
    SELECT * FROM PARTNER
 </select>
+
+<update id="setPermitUpdate" parameterType="PartnerDTO">
+   UPDATE PARTNER
+      SET PARTNERCHECK='1'
+    WHERE PARTNERNUM=#{partnerNum}
+</update>
 
 
 </mapper>

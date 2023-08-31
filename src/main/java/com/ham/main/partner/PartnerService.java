@@ -19,4 +19,8 @@ public class PartnerService {
 		return partnerDAO.getList(partnerDTO);
 	}
 	
+	public int setPermitUpdate(PartnerDTO partnerDTO) throws Exception{
+		return partnerDAO.setPermitUpdate(partnerDTO);
+	}
+	
 }

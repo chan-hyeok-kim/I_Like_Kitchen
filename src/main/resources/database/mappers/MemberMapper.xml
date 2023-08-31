@@ -71,6 +71,20 @@
           FROM MEMBER
          WHERE ID=#{id} 
     </select>
+    
+    
+    <update id="adminAdd" parameterType="MemberDTO">
+ UPDATE MEMBERROLE 
+    SET ROLENUM=3
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON(M.ID = MR.ID)
+			         WHERE M.ID = #{id});
+    </update>
+    
+    <update id="adminDelete">
+    </update>
   	
   </mapper>
   

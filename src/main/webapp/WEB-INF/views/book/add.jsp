@@ -250,7 +250,7 @@ section{
   </div>
 </div>
 <div style="margin-left: 30%;">
-<button>+5</button><button>+10</button><button>+50</button><button>+100</button>
+<button type="button">+5</button><button type="button">+10</button><button type="button">+50</button><button type="button">+100</button>
 </div>
 								<!-- <div class="f1"><label for="headCount">인원 선택</label></div>
 								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1"> -->

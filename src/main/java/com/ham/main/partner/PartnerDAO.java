@@ -21,5 +21,9 @@ public class PartnerDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", partnerDTO);
 	}
 	
+	public int setPermitUpdate(PartnerDTO partnerDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setPermitUpdate", partnerDTO);
+	}
+	
 
 }
