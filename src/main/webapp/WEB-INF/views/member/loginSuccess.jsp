@@ -21,7 +21,7 @@
             	</p>
             </div>
             <div class="d-grid gap-2">
-           		<button type="button" class="btn btn-primary btn-lg" onclick="location.href='redirect:../'">로그아웃</button>
+           		<a href="https://kauth.kakao.com/oauth/logout?client_id=${YOUR_REST_API_KEY}&logout_redirect_uri=${YOUR_LOGOUT_REDIRECT_URI}"></a>
             </div>
         </div>
     </section>
