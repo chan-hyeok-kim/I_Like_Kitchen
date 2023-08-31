@@ -11,19 +11,19 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-
+<h1>Detail</h1>
 <input type="hidden" name="reviewNum" value="${view.reviewNum}">
-<label>작성자</label>
+<label class="border">작성자</label>
 ${view.id}<br />
 
 
-<label>작성날짜</label>
+<label class="border">작성날짜</label>
 ${view.reviewDate}<br />
 
-<label>후기내용</label>
+<label class="border">후기내용</label>
 ${view.reviewContents}<br />
 
-<label>평점</label>
+<label class="border">평점</label>
 ${view.reviewRate}<br />
 		<div>
 			<c:forEach items="${view.ktos}" var="f">

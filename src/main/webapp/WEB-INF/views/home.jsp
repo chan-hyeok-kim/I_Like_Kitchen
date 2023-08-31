@@ -6,16 +6,10 @@
 <html lang="zxx">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Sona Template">
-    <meta name="keywords" content="Sona, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 	<title>Home</title>
 	<c:import url="temp/bootStrap.jsp"></c:import>
-	<style>
-		
-	</style>
-	
+
 </head>
 <body>
 <c:import url="temp/header.jsp"></c:import>
@@ -50,7 +44,7 @@
 						<p>등록된 질문이 없습니다</p>
 					</c:if>
 				<hr />							
-						<a class="btn --bs-warning-bg-subtle" href="question/add">문의등록</a>	
+						<a class="btn" style="background-color:rgb(251,255,182)" href="question/add">문의등록</a>	
 				</div>
 			</div>
 	  
@@ -94,7 +88,7 @@
 				</c:if>	
 				<c:if test="reviewContents=null||reviewContents.length==0">등록된 후기가 없습니다</c:if>
 				<hr />
-					<a class="btn --bs-warning-bg-subtle" href="review/add">후기등록</a>
+					<a class="btn" style="background-color:rgb(251,255,182)" href="review/add">후기등록</a>
 				</div>
 			<div>
 		</div>
@@ -180,5 +174,14 @@ let pn=$("#add").attr("data-add-num");
 	}
 </script>
 <c:import url="temp/Footer.jsp"></c:import>
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

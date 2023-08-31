@@ -17,7 +17,7 @@
 	   <th class="p-2 g-col-6 border">질문번호</th>
 	   <th class="p-2 g-col-6 border">상품번호</th>
 	   <th class="p-2 g-col-6 border">작성자</th>
-	   <th class="p-2 g-col-6 border">작성내용</th>
+	   <th class="p-2 g-col-6 border" style="width:1000px">작성내용</th>
 	   <th class="p-2 g-col-6 border">질문날짜</th>
 	   <th class="p-2 g-col-6 border">질문종류</th>
 	  </tr>

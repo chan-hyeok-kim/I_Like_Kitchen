@@ -71,7 +71,7 @@
 <br>
 <br>
 <button type="submit" class="btn btn-warning">후기수정</button>
-<button type="button" class="btn btn-light">취소</button>  
+<a class="btn" style="background-color:rgb(251,255,182)" href="../review/view?reviewNum=${view.reviewNum}">취소</a>
 </div>
 
 </form>

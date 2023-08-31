@@ -32,7 +32,7 @@
 			</td>
 		 
 		  <td class="p-2 g-col-6 border">${list.reviewRate}</td>
-		  <td class="p-2 g-col-6 border">${list.reviewContents}</td>
+		  <td class="p-2 g-col-6 border" style="width:1000px">${list.reviewContents}</td>
 		  <td class="p-2 g-col-6 border">${list.reviewDate}</td>
 		 </tr>
 		</c:forEach>
