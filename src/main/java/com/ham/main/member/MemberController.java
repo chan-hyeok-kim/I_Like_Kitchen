@@ -213,11 +213,12 @@ public class MemberController {
 		kakaoDTO.setId(id);
 		kakaoDTO.setKakaoName(name);
 		kakaoDTO.setKakaoEmail(email);
-		
-		
-		
-		memberService.setKakaoJoin(kakaoDTO);
-		
+		long result = memberService.getKakaoLogin(kakaoDTO);
+		if(memberService.getKakaoLogin(kakaoDTO)>0) {
+			
+		}else {
+			memberService.setKakaoJoin(kakaoDTO);
+		}
 		
 	
 		return "/home";

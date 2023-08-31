@@ -63,7 +63,7 @@ public class MemberService {
 		return memberDAO.setKakaoJoin(kakaoDTO);
 	}
 	
-	public KakaoDTO getKakaoLogin(KakaoDTO kakaoDTO) throws Exception {
+	public long getKakaoLogin(KakaoDTO kakaoDTO) throws Exception {
 		return memberDAO.getKakaoLogin(kakaoDTO);
 	}
 
