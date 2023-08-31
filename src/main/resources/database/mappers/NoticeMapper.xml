@@ -13,7 +13,7 @@
 		<result column="NOTICEDATE" property="noticeDate"/>
 		<result column="VITALCHECK" property="vitalCheck"/>
 		<collection property="ktos" javaType="List" ofType="NoticeFileDTO">
-			<id column="fileNum" property="fileNum"/>
+			<id column="FILENUM" property="fileNum"/>
 			<result column="FILENAME" property="fileName"/>
 			<result column="ORIGINALNAME" property="originalName"/>
 		</collection>
@@ -41,7 +41,6 @@
 		FROM NOTICE N LEFT JOIN NOTICEFILE NF 
 			ON N.NOTICENUM = NF.NOTICENUM 
 		WHERE N.NOTICENUM = #{noticeNum}
-		
 	</select>
 	
 	<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">

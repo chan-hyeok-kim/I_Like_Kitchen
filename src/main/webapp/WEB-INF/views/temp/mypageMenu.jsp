@@ -21,6 +21,9 @@
 		margin-bottom: 30px;
 	}
 	
+	#listDiv{
+		padding-left: 55px;
+	}
 	#listDiv h3{
 	    border-bottom: 1px solid #ece6cc;
 	    margin: 50px 0 100px 0;
@@ -32,7 +35,7 @@
 	    grid-template-columns: 280px 2fr;
 	    width: 800px;
 	    margin-top: 35px;
-	    border-bottom: 3px solid aliceblue;
+	    border-bottom: 3px solid #ece6cc;
 	    padding-bottom: 35px;
 	}
 	#imgDiv{
@@ -46,6 +49,7 @@
 	}
 	
 	#contentsDiv{
+		position: relative;
 	    max-width: 520px;
 	    max-height: 166px;
 	    padding: 20px;
@@ -57,10 +61,10 @@
 	    text-align: left;
 	    padding-right: 30px;
 	}
-	#detailBtn{
-	    position: relative;
-	    top: 35px;
-	    left: 400px;
+	.detailBtn{
+	    position: absolute;
+	    bottom: 18px;
+	    right: 35px;
 	    border: solid white;
 	    cursor: pointer;
 	    border-radius: 5px;
@@ -76,7 +80,6 @@
         <p class="menuP"><a href="/mypage/cancle">취소/환불 내역</a></p>
         
         <h3>My 정보</h3>
-        <p><a>적립금</a></p>
         <p class="menuP"><a href="/mypage/info">내 정보 관리</a></p>
         
         <h3>My 활동</h3>

@@ -37,9 +37,13 @@
                             <th>사용 기간</th>
                             <td>2023-08-25 ~ 2023-08-25</td>
                         </tr>
+                        <tr>
+                        	<th>취소 사유</th>
+                        	<td>기타</td>
+                        </tr>
                     </table>
 
-                    <button id="detailBtn">상세 내역</button>
+                    <button class="detailBtn">상세 내역</button>
                 </div>
             </div>
             <div id="gridDiv">
@@ -62,7 +66,7 @@
                         </tr>
                     </table>
 
-                    <button id="detailBtn">상세 내역</button>
+                    <button class="detailBtn">상세 내역</button>
                 </div>
             </div>
         </menu>

@@ -7,6 +7,11 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+	<style>
+		table img{
+			width: 200px;
+		}
+	</style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
@@ -22,7 +27,7 @@
             <form id="frm" method="post">
 	            <table>
 	            	<tr>
-	            		<th>이름</th>
+	            		<th><img src="/resources/upload/member/${f.memberFileNum}"></th>
 	            		<td>
 	            			<input type="text" id="name" name="name" value="${kto.name}">
 	            			<input type="hidden" id="id" name="id" value="${kto.id}"> 
@@ -79,7 +84,7 @@
     			alert("전화번호를 입력하세요.");
     			$("#phone").focus();
     			
-    		} /* else{
+    		} else{
     			$.ajax({
     				type:"post",
     				url:"memberUpdate",
@@ -95,11 +100,7 @@
     				}
     				
     			});
-    			
-    			//$("#frm").attr("action", "memberUpdate");
-    			//$("#frm").attr("method", "post");
-    			//$("#frm").submit();
-    		} */
+    		}
     		
 		});
     </script>

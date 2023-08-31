@@ -32,9 +32,12 @@
         .contents{
         	border: 1px solid black;
         }
+        #vitalCheck{
+        	margin-left: 15px;
+        }
         #noticeTitle{
             position: relative;
-            left: 26px;
+            left: 34px;
             width: 803px;
             height: 32px;
             margin-top: 10px;
@@ -120,8 +123,7 @@
                 <tr>
                     <th class="tableTh">제목</th>
                     <td>
-                        <input type="checkbox" id="vitalCheck"> 필독
-                        <input type="hidden" id="checkVal" name="vitalCheck" value="0">
+                        <input type="checkbox" id="vitalCheck" name="vitalCheck" value="${kto.vitalCheck}"> 필독
                         <input type="text" id="noticeTitle" name="noticeTitle" value="${kto.noticeTitle}">
                     </td>
                 </tr>
@@ -169,9 +171,9 @@
 		// 필독 체크시
 		$("#vitalCheck").click(function(){    
             if($("#vitalCheck").is(":checked") == true){
-                $("#checkVal").val("1");
+                $("#vitalCheck").val("1");
             } else{
-                $("#checkVal").val("0");
+                $("#vitalCheck").val("0");
             }
         });
 		

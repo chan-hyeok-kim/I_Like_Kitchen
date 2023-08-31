@@ -76,21 +76,26 @@ public class Pager {
 		}
 		
 		
-		long perBlock = 5;
-		long totalBlock = this.totalPage / perBlock;
+		long perBlock = 5;								// 한 블럭당 보여줄 페이지 수
+		long totalBlock = this.totalPage / perBlock;	// 총 블럭 수
 		if(this.totalPage % perBlock != 0) {
 			totalBlock++;
 		}
 		
 		
-		long block = this.getPage() / perBlock;
+		long block = this.getPage() / perBlock;			// 현재 블럭 
 		if(this.getPage() % perBlock != 0) {
 			block++;
 		}
 		
 		
 		this.startNum = (block - 1)*perBlock + 1;
-		this.lastNum = block * perBlock;
+		
+		if(this.totalPage < perBlock){
+			this.lastNum = block * this.totalPage;
+		} else {
+			this.lastNum = block * perBlock;			
+		}
 		
 		
 		

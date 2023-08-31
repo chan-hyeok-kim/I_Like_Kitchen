@@ -39,7 +39,7 @@
                         </tr>
                     </table>
 
-                    <button id="detailBtn">상세 내역</button>
+                    <button class="detailBtn">상세 내역</button>
                 </div>
             </div>
             <div id="gridDiv">
@@ -62,10 +62,17 @@
                         </tr>
                     </table>
 
-                    <button id="detailBtn">상세 내역</button>
+                    <button class="detailBtn">상세 내역</button>
                 </div>
             </div>
         </menu>
     </div>
+    
+    <script>
+    	$(".detailBtn").click(function() {
+			
+    		$(location).attr("href", "productDetail");
+		});
+    </script>
 </body>
 </html>

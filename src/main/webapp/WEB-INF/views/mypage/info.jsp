@@ -26,7 +26,7 @@
 		#listDiv div:nth-child(2){
 			padding-bottom: 50px;
 		}
-		#listDiv div:nth-child(3) {
+		.contents:nth-child(n+3):nth-child(-n+4) {	
 		    border-bottom: 1px solid black;
 		}
 		#updateBtn{
@@ -47,7 +47,7 @@
             </div>
             
             <div class="contents">
-            	<img src="/resources/img/gallery/gallery-1.jpg">
+            	<img src="/resources/upload/member/${f.memberFileNum}">
             	<span id="nameSpan">${kto.name}</span>님
             </div>
             <div class="contents">
@@ -58,6 +58,11 @@
             	<p>전화번호</p>
             	<span>${kto.phone}</span>
             </div>
+            <div class="contents">
+            	<p>적립금</p>
+            	<span>${kto.point}</span> 포인트
+            </div>
+            
             <form id="frm">
 	            <input type="hidden" name="id" value="${kto.id}">
             </form>
@@ -71,16 +76,22 @@
     	// 수정 버튼 클릭
     	$("#updateBtn").click(function() {
 			
-    		/* $.ajax({
+    		$.ajax({
     			type:"get",
-    			url:"checkInfo"
-    		}); */				
-    		$(location).attr("href", "checkInfo?id=${kto.id}&password=${password}");
+    			url:"checkInfo",
+    			data:{
+    				id:"${kto.id}",
+    				password:"${kto.password}"
+    			},
+    			success:function(){
+    				$(location).attr("href", "checkInfo");
+    			}
+    		});			
 		});
     	
     	// 탈퇴 버튼 클릭
 		$("#deleteBtn").click(function() {
-			let result = confirm("정말 계정을 탈퇴하시겠습니까?");
+			let result = confirm("정말 계정을 탈퇴하시겠습니까?\n(복구불가)");
 			
 			if(!result){
 				return;

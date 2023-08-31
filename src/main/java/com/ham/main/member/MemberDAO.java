@@ -12,6 +12,9 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO."; 
 	
 	
+
+	
+	
 	public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
 		
 		return sqlSession.selectOne(NAMESPACE + "getCheckInfo", memDTO);

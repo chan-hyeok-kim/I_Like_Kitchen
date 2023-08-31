@@ -1,5 +1,7 @@
 package com.ham.main.member;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -17,7 +20,10 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memService;
+
 	
+	
+		
 	
 	@GetMapping("onGoing")
 	public String getOnGoing() throws Exception{
@@ -35,6 +41,12 @@ public class MemberController {
 	public String getCancle() throws Exception{
 		
 		return "/mypage/cancle";
+	}
+	
+	@GetMapping("productDetail")
+	public String getProductDetail() throws Exception {
+		
+		return "/mypage/productDetail";
 	}
 	
 	@GetMapping("info")
@@ -67,11 +79,6 @@ public class MemberController {
 	@PostMapping("memberUpdate")
 	public String setUpdate(MemberDTO memDTO) throws Exception {
 		int result = memService.setUpdate(memDTO);
-		
-		System.out.println(memDTO.getId());
-		System.out.println(memDTO.getPassword());
-		System.out.println(memDTO.getName());
-		System.out.println(result);
 		
 		return "redirect:/mypage/info";
 	}

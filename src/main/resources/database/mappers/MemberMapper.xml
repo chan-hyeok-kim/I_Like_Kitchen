@@ -4,12 +4,24 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.ham.main.member.MemberDAO">
-	<!-- <select id="getLogin">
-		SELECT * 
-		FROM MEMBER
-		WHERE ID = #{id}
-			AND PASSWORD = #{password}
-	</select> -->
+
+	
+
+	<resultMap type="MemberDTO" id="getSelectResult">
+		<id column="ID" property="id"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="NAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PHONE" property="phone"/>
+		<result column="POINT" property="point"/>
+		<collection property="ktos" javaType="List" ofType="MemberFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORIGINALNAME" property="originalName"/>
+		</collection>
+	</resultMap>
+	
+	
 	<select id="getCheckInfo" resultType="MemberDTO" parameterType="MemberDTO">
 		SELECT * 
 		FROM MEMBER

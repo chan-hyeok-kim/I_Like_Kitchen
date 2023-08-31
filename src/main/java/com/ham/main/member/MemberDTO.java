@@ -2,6 +2,8 @@ package com.ham.main.member;
 
 import java.util.List;
 
+import com.ham.main.notice.NoticeFileDTO;
+
 public class MemberDTO {
 	
 	private String id;
@@ -10,8 +12,16 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	private Long point;
+	private List<MemberFileDTO> ktos;
 	private List<RoleDTO> roles;
 	
+	
+	public List<MemberFileDTO> getKtos() {
+		return ktos;
+	}
+	public void setKtos(List<MemberFileDTO> ktos) {
+		this.ktos = ktos;
+	}
 	public String getId() {
 		return id;
 	}

@@ -34,9 +34,13 @@
             padding-left: 30px;
             position: relative;
         }
+        .contents span:nth-child(2){
+        	padding-left: 10px;
+        	font-weight: bold;
+        }
         .contents span:nth-child(3){
             position: absolute;
-            left: 220px;
+            left: 180px;
         }
         .contents span:nth-child(4){
             position: absolute;
@@ -68,8 +72,11 @@
         #nav03{
         	text-align: center;
 		    margin-top: 50px;
-		    font-size: 18px;
+		    font-size: 20px;
 		    font-weight: bold;
+        }
+        #nav03 a{
+        	margin-right: 5px;
         }
         
     </style>
@@ -110,6 +117,7 @@
         	</div>
 		</c:forEach>
     </div>
+    
     <div id="nav03">
     	<c:if test="${pager.page > 1}">
 	    	<a href="list?page=${pager.page - 1}">

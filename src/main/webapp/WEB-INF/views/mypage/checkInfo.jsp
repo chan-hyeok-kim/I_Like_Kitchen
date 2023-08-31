@@ -10,7 +10,7 @@
 	<style>
 		#contents{
 			text-align: center;
-			padding-right: 40px;
+			padding-right: 275px;
 		}
 	</style>
 </head>

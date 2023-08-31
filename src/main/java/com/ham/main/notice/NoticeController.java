@@ -53,9 +53,9 @@ public class NoticeController {
 	
 	@GetMapping("add")
 	public String setAdd(HttpSession session) throws Exception{
-		if(session.getAttribute("kto") == null) {
-			return "/home";
-		}
+//		if(session.getAttribute("kto") == null) {
+//			return "/home";
+//		}
 		
 		return "/admin/notice/add";
 	}
