@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.ham.main.review.ReviewDAO">
+  
+  <!-- 게시물 목록 -->
+<select id="list" resultType="ReviewDTO">
+ select
+  reviewNum, productNum, id, reviewRate, reviewContents, reviewDate
+ from Review ORDER BY reviewNum
+
+</select>
+<!-- 게시물 작성 -->
+<insert id="add" parameterType="ReviewDTO">
+ insert into REVIEW
+   VALUES(review_seq.nextval,#{productNum},#{id},#{reviewContents},sysdate,#{reviewRate})
+</insert>
+  <!-- 게시물 조회 -->
+<select id="view" parameterType="Long" resultType="ReviewDTO">
+ select 
+  reviewNum, productNum, id, reviewRate, reviewContents, reviewDate
+ from 
+  REVIEW
+ where
+  reviewNum = #{reviewNum}
+</select>
+<!-- 게시물 수정 -->
+<update id="update" parameterType="ReviewDTO" >
+ update REVIEW
+  set
+   id = #{id},
+   reviewRate=#{reviewRate},
+   reviewContents = #{reviewContents},
+   reviewDate = sysdate
+  where reviewNum = #{reviewNum}
+</update>
+<!-- 게시물 삭제 -->
+<delete id="delete" parameterType="long">
+ delete
+  from REVIEW
+ where reviewNum = #{reviewNum}
+</delete>
+<!-- 게시물 총 갯수 -->
+<select id="count" resultType="int">
+ select count(reviewNum) from REVIEW
+</select>
+<!-- 게시물 목록 + 페이징 -->
+<select id="listPage" parameterType="hashMap" resultType="ReviewDTO">
+ select
+  reviewNum, productNum, id, reviewRate, reviewContents, reviewDate
+ from REVIEW
+ order by reviewNum desc
+  limit #{displayPost}, #{postNum}
+</select>
+
+	<insert id="setFileAdd" parameterType="ReviewDTO">
+  		INSERT INTO REVIEWFILE
+  		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
+  	</insert>
+
+  </mapper>

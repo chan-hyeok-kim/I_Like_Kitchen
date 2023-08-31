@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ham.main.member.MemberDAO.">
+<!-- 로그인 -->
+	<select id="getLogin" resultMap="getLoginResult" parameterType="MemberDTO">
+		SELECT M.*, MF.* 
+		FROM MEMBER M
+			 LEFT OUTER JOIN
+			 MEMBERFILE MF
+			 ON (M.ID = MF.ID)
+		WHERE M.ID=#{id} AND M.PW=#{password};
+	</select>
+	
+	<resultMap type="MemberDTO" id="getLoginResult">
+		<id column="ID" property="id" />
+		<result column="PW" property="pw"/>
+		<result column="NAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<result column="BIRTH" property="birth"/>
+		
+		<association property="memberFileDTO" javaType="MemberFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORIGINALNAME" property="originalName"/>
+		</association>
+		
+	</resultMap>
+	</mapper>
