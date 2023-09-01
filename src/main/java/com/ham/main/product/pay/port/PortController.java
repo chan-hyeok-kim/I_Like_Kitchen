@@ -125,9 +125,6 @@ public class PortController {
  
 		br.close();
 		conn.disconnect();
-		
-		
-		
 	}
 	
 
