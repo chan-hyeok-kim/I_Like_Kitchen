@@ -45,10 +45,17 @@ public class NoticeController {
 	@GetMapping("detail")
 	public String getDetail(NoticeDTO noDTO, Model model) throws Exception{
 		noDTO = noService.getDetail(noDTO);
+		RoleDTO role = new RoleDTO();
+		role.setRoleNum(9L);
 		
 		model.addAttribute("kto", noDTO);
 		
-		return "/notice/detail";
+		if(role.getRoleNum() == 9) {
+			return "/admin/notice/detail";
+		}else {
+			return "/notice/detail";
+		}
+		
 	}
 	
 	@GetMapping("add")

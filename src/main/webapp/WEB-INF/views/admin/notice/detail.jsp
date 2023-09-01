@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<c:import url="../temp/bootStrap.jsp"></c:import>
+	<c:import url="../../temp/bootStrap.jsp"></c:import>
 	<style>
         #nav01{
         	height: 60px;
@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-	<c:import url="../temp/header.jsp"></c:import>
+	<c:import url="../../temp/header.jsp"></c:import>
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
         <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
@@ -111,9 +111,9 @@
     	
     	// delete 버튼
     	$("#deleteBtn").click(function() {
-    		let result = confirm("삭제 하시겠습니까?");
+    		let check = confirm("삭제 하시겠습니까");
     		
-    		if(!result){
+    		if(!check){
     			return;
     		}
     		

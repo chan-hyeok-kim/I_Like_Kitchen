@@ -16,7 +16,7 @@
 			font-weight: bold;
 		}
 		.contents img{
-			width: 200px;
+			width: 120px;
 		}
 		.contents{
 			width: 750px;
@@ -25,12 +25,25 @@
 		
 		#listDiv div:nth-child(2){
 			padding-bottom: 50px;
+			font-size: 18px;
 		}
 		.contents:nth-child(n+3):nth-child(-n+4) {	
 		    border-bottom: 1px solid black;
 		}
 		#updateBtn{
 			margin-top: 50px;
+			height: 32px;
+            border: none;
+            cursor: pointer;
+            background-color: beige;
+            border-radius: 3px;
+		}
+		#deleteBtn{
+			height: 32px;
+            border: none;
+            cursor: pointer;
+            background-color: beige;
+            border-radius: 3px;
 		}
 		
 	</style>
@@ -47,12 +60,12 @@
             </div>
             
             <div class="contents">
-            	<img src="/resources/upload/member/${f.memberFileNum}">
-            	<span id="nameSpan">${kto.name}</span>님
+            	<img src="/resources/css/images/chef.png">
+            	<span id="nameSpan">${kto.name} </span>님
             </div>
             <div class="contents">
             	<p>이메일</p>
-            	<span>${kto.emailDomain}</span>
+            	<span>${kto.email}</span>
             </div>
             <div class="contents">
             	<p>전화번호</p>

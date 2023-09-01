@@ -15,7 +15,7 @@
     		border-bottom: 1px solid black;
             padding-right: 700px;
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 150px;
             font-size: 18px;
         }
         #nav01 a{
@@ -34,9 +34,13 @@
             padding-left: 30px;
             position: relative;
         }
+        .conTitle{
+        	font-weight: bold;
+        }
         .contents span:nth-child(2){
         	padding-left: 10px;
         	font-weight: bold;
+        	color: red;
         }
         .contents span:nth-child(3){
             position: absolute;
@@ -95,7 +99,7 @@
             <button id="deleteBtn">삭제</button>
         </div>
 
-		<div class="contents">
+		<div class="contents conTitle">
 			<input type="checkbox" id="allCheck">
             <span></span>
             <span>제목</span>

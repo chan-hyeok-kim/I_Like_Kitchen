@@ -9,7 +9,7 @@ public class MemberDTO {
 	private String id;
 	private String password;
 	private String name;
-	private String emailDomain;
+	private String email;
 	private String phone;
 	private Long point;
 	private List<MemberFileDTO> ktos;
@@ -40,11 +40,11 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmailDomain() {
-		return emailDomain;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmailDomain(String emailDomain) {
-		this.emailDomain = emailDomain;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPhone() {
 		return phone;

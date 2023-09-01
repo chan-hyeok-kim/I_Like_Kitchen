@@ -12,6 +12,14 @@
 			text-align: center;
 			padding-right: 275px;
 		}
+		
+		#checkBtn{
+			height: 32px;
+            border: none;
+            cursor: pointer;
+            background-color: beige;
+            border-radius: 3px;
+		}
 	</style>
 </head>
 <body>

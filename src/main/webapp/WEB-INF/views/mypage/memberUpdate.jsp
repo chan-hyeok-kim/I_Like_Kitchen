@@ -8,8 +8,26 @@
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
 	<style>
-		table img{
-			width: 200px;
+		.contents{
+			width: 750px;
+			padding: 25px 0 25px 0;
+		}
+		.contents:nth-child(n+1):nth-child(-n+4) {	
+		    border-bottom: 1px solid black;
+		}
+		
+		.contents span:nth-child(2){
+			position: absolute;
+    		left: 600px;
+		}
+		
+		#updateBtn{
+			height: 32px;
+            border: none;
+            cursor: pointer;
+            background-color: beige;
+            border-radius: 3px;
+            margin-top: 50px;
 		}
 	</style>
 </head>
@@ -25,31 +43,37 @@
             </div>
             
             <form id="frm" method="post">
-	            <table>
-	            	<tr>
-	            		<th><img src="/resources/upload/member/${f.memberFileNum}"></th>
-	            		<td>
-	            			<input type="text" id="name" name="name" value="${kto.name}">
-	            			<input type="hidden" id="id" name="id" value="${kto.id}"> 
-	            		</td>
-	            	</tr>
-	            	<tr>
-	            		<th>새 비밀번호</th>
-	            		<td><input type="password" id="password" name="password" value="${kto.password}"></td>
-	            	</tr>
-	            	<tr>
-	            		<th>새 비밀번호 확인</th>
-	            		<td><input type="password" id="passwordCheck" value="${kto.password}"></td>
-	            	</tr>
-	            	<tr>
-	            		<th>이메일</th>
-	            		<td><input type="email" id="emailDomain" name="emailDomain" value="${kto.emailDomain}"></td>
-	            	</tr>
-	            	<tr>
-	            		<th>전화번호</th>
-	            		<td><input type="tel" id="phone" name="phone" value="${kto.phone}"></td>
-	            	</tr>
-	            </table>
+            	<div class="contents">
+            		<span>이름</span>
+            		<span>
+            			<input type="text" id="name" name="name" value="${kto.name}">
+	            		<input type="hidden" id="id" name="id" value="${kto.id}"> 
+            		</span>
+            	</div>
+            	<div class="contents">
+            		<span>새 비밀번호</span>
+            		<span>
+            			<input type="password" id="password" name="password" value="${kto.password}">
+            		</span>
+            	</div>
+            	<div class="contents">
+            		<span>새 비밀번호 확인</span>
+            		<span>
+            			<input type="password" id="passwordCheck" value="${kto.password}">
+            		</span>
+            	</div>
+            	<div class="contents">
+            		<span>이메일</span>
+            		<span>
+            			<input type="email" id="email" name="email" value="${kto.email}">
+            		</span>
+            	</div>
+            	<div class="contents">
+            		<span>전화번호</span>
+            		<span>
+            			<input type="tel" id="phone" name="phone" value="${kto.phone}">
+            		</span>
+            	</div>
 	            
 	            <button type="submit" id="updateBtn">등록하기</button>
             </form>
@@ -76,9 +100,9 @@
     			alert("비밀번호를 다시 확인해주세요.");
     			$("#password").focus();
     			
-    		} else if($("#emailDomain").val() == ""){
+    		} else if($("#email").val() == ""){
     			alert("이메일을 입력하세요.");
-    			$("#emailDomain").focus();
+    			$("#email").focus();
     			
     		} else if($("#phone").val() == ""){
     			alert("전화번호를 입력하세요.");
@@ -92,7 +116,7 @@
     					id:$("#id").val(),
     					name:$("#name").val(),
     					password:$("#password").val(),
-    					email:$("#emailDomain").val(),
+    					email:$("#email").val(),
     					phone:$("#phone").val()
     				},
     				success:function(result){

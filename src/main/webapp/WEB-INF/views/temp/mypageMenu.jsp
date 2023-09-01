@@ -38,9 +38,6 @@
 	    border-bottom: 3px solid #ece6cc;
 	    padding-bottom: 35px;
 	}
-	#imgDiv{
-	    
-	}
 	#imgDiv img{
 	    width: 250px;
 	    height: 166px;
@@ -83,7 +80,7 @@
         <p class="menuP"><a href="/mypage/info">내 정보 관리</a></p>
         
         <h3>My 활동</h3>
-        <p><a>후기 관리</a></p>
+        <p><a>후기 내역</a></p>
         <p><a>문의 내역</a></p>
     </div>
 </nav>

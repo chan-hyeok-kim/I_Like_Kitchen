@@ -30,4 +30,11 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE + "setDelete", memDTO);
 	}
 	
+	
+	// file(파일)
+	public int setFileAdd(MemberFileDTO memFileDTO) throws Exception{
+		
+		return sqlSession.insert(NAMESPACE + "setFileAdd", memFileDTO);
+	}
+	
 }

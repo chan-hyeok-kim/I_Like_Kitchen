@@ -14,7 +14,7 @@
             border: 1px solid black;
             padding-right: 700px;
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 150px;
             font-size: 18px;
         }
         #nav01 a{
@@ -37,9 +37,10 @@
         }
         #noticeTitle{
             position: relative;
-            left: 34px;
+            left: 11px;
             width: 803px;
             height: 32px;
+            margin-bottom: 5px;
         }
         .tableTh{
             width: 80px;

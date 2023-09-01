@@ -14,7 +14,7 @@
             border: 1px solid black;
             padding-right: 700px;
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 150px;
             font-size: 18px;
         }
         #nav01 a{
@@ -50,25 +50,6 @@
         #title{
         	margin-bottom: 30px;
         }
-        #title h2{
-            display: inline-block;
-        }
-        #updateBtn{
-            position: relative;
-            left: 700px;
-            bottom: 6px;
-            height: 32px;
-            border: none;
-            cursor: pointer;
-        }
-        #deleteBtn{
-            position: relative;
-            left: 700px;
-            bottom: 6px;
-            height: 32px;
-            border: none;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -80,8 +61,6 @@
     <div id="nav02">
     	<div id="title">
         	<h2>공지사항</h2>
-        	<button id="updateBtn">수정</button>
-        	<button id="deleteBtn">삭제</button>
         </div>
 
 		<div class="contents">
