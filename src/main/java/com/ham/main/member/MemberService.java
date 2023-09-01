@@ -61,10 +61,7 @@ public class MemberService {
 		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
-	//회원정보수정
-	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setMemberUpdate(memberDTO);
-	}
+	
 	
 	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
 		return memberDAO.setKakaoJoin(snsMemberDTO);
@@ -120,20 +117,20 @@ public class MemberService {
 	    }
 
 //    민준 업데이트
-       public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
+       public MemberDTO getCheckInfo(MemberDTO memberDTO) throws Exception{
 		
-		   return memDAO.getCheckInfo(memDTO);
+		   return memberDAO.getCheckInfo(memberDTO);
 	}
 	
-	public int setUpdate(MemberDTO memDTO) throws Exception {
-		int result = memDAO.setUpdate(memDTO);
+	public int setUpdate(MemberDTO memberDTO) throws Exception {
+		int result = memberDAO.setUpdate(memberDTO);
 		
-		
+		return result;
 		}
 
-	public int setDelete(MemberDTO memDTO) throws Exception{
+	public int setDelete(MemberDTO memberDTO) throws Exception{
 		
-		return memDAO.setDelete(memDTO);
+		return memberDAO.setDelete(memberDTO);
 	}
 
 }

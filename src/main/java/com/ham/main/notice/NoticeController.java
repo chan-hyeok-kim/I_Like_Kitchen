@@ -27,14 +27,13 @@ public class NoticeController {
 	@GetMapping("list")
 	public String getList(Model model, Pager pager) throws Exception {
 		RoleDTO role = new RoleDTO();
-		role.setRoleNum(9L);
 		
 		List<NoticeDTO> ar = noService.getList(pager);
 		
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		
-		if(role.getRoleNum() == 9) {
+		if(role.getRoleNum() == 3) {
 			return "/admin/notice/list";
 		}else {
 			return "/notice/list";

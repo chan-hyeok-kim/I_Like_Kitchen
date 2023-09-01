@@ -1,7 +1,4 @@
 
-
-
-
 package com.ham.main.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,14 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
-
-	
-
-	
-
-	
-
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -319,76 +308,10 @@ public class MemberController {
 	        return true;
 	    }
 	    
-//       업데이트
+
   
   
-  	@GetMapping("onGoing")
-	public String getOnGoing() throws Exception{
-		
-		return "/mypage/onGoing";
-	}
-	
-	@GetMapping("complete")
-	public String getComplete() throws Exception{
-		
-		return "/mypage/complete";
-	}
-	
-	@GetMapping("cancle")
-	public String getCancle() throws Exception{
-		
-		return "/mypage/cancle";
-	}
-	
-	@GetMapping("productDetail")
-	public String getProductDetail() throws Exception {
-		
-		return "/mypage/productDetail";
-	}
-	
-	@GetMapping("info")
-	public String getInfo(MemberDTO memDTO, HttpSession session) throws Exception{
-		memDTO.setPassword("1234");
-		memDTO.setId("qwe");
-		memDTO = memService.getCheckInfo(memDTO);
-		
-		session.setAttribute("kto", memDTO);
-		
-		return "/mypage/info";
-	}
-	
-	@GetMapping("checkInfo")
-	public String checkInfo(MemberDTO memDTO, HttpSession session, Model model) throws Exception {
-		memDTO = (MemberDTO)session.getAttribute("kto");
-		
-		memDTO = memService.getCheckInfo(memDTO);
-		
-		model.addAttribute("kto", memDTO);
-		
-		return "/mypage/checkInfo";
-	}
-	
-	@GetMapping("memberUpdate")
-	public String setUpdate() throws Exception {
-		
-		return "/mypage/memberUpdate";
-	}
-	@PostMapping("memberUpdate")
-	public String setUpdate(MemberDTO memDTO) throws Exception {
-		int result = memService.setUpdate(memDTO);
-		
-		return "redirect:/mypage/info";
-	}
-	
-	@PostMapping("delete")
-	public String setDelete(MemberDTO memDTO, HttpSession session) throws Exception{
-		memService.setDelete(memDTO);
-		session.invalidate();
-		System.out.println(memDTO.getId());
-		
-		return "redirect:/";
-	}
-	
+
   
   
   

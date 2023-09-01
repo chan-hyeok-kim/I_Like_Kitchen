@@ -8,7 +8,7 @@
   <mapper namespace="com.ham.main.member.MemberDAO">
   
   	<!-- 로그인 -->
-	<select id="getLogin" resultMap="getLoginResult" resultType="MemberDTO">
+	<select id="getMemberLogin" resultMap="getLoginResult" resultType="MemberDTO">
 		SELECT M.*, R.* 
 			FROM MEMBER M 
 			INNER JOIN MEMBERROLE MR

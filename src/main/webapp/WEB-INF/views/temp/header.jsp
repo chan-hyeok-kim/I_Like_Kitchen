@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -144,7 +144,7 @@
 			      		<c:if test="${not empty member}">
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/partner/partnerJoin">공간등록</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/member/memberPage">마이페이지</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
 			      		</c:if>
 			      		<c:if test="${empty member}">
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
