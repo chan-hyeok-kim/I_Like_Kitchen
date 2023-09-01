@@ -25,12 +25,14 @@ ${view.reviewContents}<br />
 
 <label class="border">평점</label>
 ${view.reviewRate}<br />
-		<div>
+		<%-- <div>
 			<c:forEach items="${view.ktos}" var="f">
 				<a href="./fileDown?fileNum=${f.fileNum}">${f.originalName}</a>
 			</c:forEach>
-		</div>
-
+		</div>  --%>
+<c:forEach items="${dto.fileDTOs}" var="f">
+		<img alt="" src="/resources/upload/review/${f.fileName}">
+	</c:forEach>
 <div>
 <a href="/review/update?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 수정</a><a href="/review/delete?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 삭제</a>
 </div>

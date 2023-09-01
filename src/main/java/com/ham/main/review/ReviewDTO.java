@@ -12,8 +12,50 @@ public class ReviewDTO{
 	private Date reviewDate;
 	private Long reviewRate;
 	private List<ReviewDTO> ktos;
+	private Long replyNum;
+	private String replyContents;
+	private Date replyDate;
+	private Long ref;
+	private Long step;
+	private Long depth;
 	
 	
+	public Long getRef() {
+		return ref;
+	}
+	public void setRef(Long ref) {
+		this.ref = ref;
+	}
+	public Long getStep() {
+		return step;
+	}
+	public void setStep(Long step) {
+		this.step = step;
+	}
+	public Long getDepth() {
+		return depth;
+	}
+	public void setDepth(Long depth) {
+		this.depth = depth;
+	}
+	public Long getReplyNum() {
+		return replyNum;
+	}
+	public void setReplyNum(Long replyNum) {
+		this.replyNum = replyNum;
+	}
+	public String getReplyContents() {
+		return replyContents;
+	}
+	public void setReplyContents(String replyContents) {
+		this.replyContents = replyContents;
+	}
+	public Date getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(Date replyDate) {
+		this.replyDate = replyDate;
+	}
 	public List<ReviewDTO> getKtos() {
 		return ktos;
 	}

@@ -12,6 +12,8 @@
  	<typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
  	<typeAlias type="com.ham.main.member.MemberFileDTO" alias="MemberFIleDTO"/>
  	<typeAlias type="com.ham.main.review.ReviewFileDTO" alias="ReviewFileDTO"/>
+ 	<typeAlias type="com.ham.main.review.ReviewService" alias="ReviewService"/>
+ 	<typeAlias type="com.ham.main.util.FileManager" alias="FileManager"/>
   </typeAliases>
 
 </configuration>

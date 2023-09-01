@@ -15,7 +15,7 @@
 
 <div class="mx-auto p-2" style="width: 600px;">
 <h3>후기작성</h3>
-<form method="post" action="/review/add">
+<form method="post" action="/review/add" >
 <div class="input-group mb-3">
   <input type="file" class="form-control" id="inputGroupFile02">
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
@@ -70,9 +70,9 @@
 <br>
 <button id="btn" type="submit" class="btn btn-warning" style="background-color:rgb(251,255,182)">후기등록</button>
 <a class="btn btn-warning" style="background-color:rgb(251,255,182)" href="../">취소</a>  
+</form>
 </div>
 
-</form>
 <c:import url="../temp/Footer.jsp"></c:import>
 <script src="../resources/js/file.js" type="text/javascript">
 </script>

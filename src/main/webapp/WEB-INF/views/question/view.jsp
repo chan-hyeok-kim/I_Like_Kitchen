@@ -21,6 +21,8 @@ ${view.questionDate}<br />
 <label class="border">문의내용</label>
 ${view.questionContents}<br />
 
+
+
 <div>
 <a href="/question/update?questionNum=${view.questionNum}" type="button" class="btn btn-warning p-2 g-col-6">게시물 수정</a><a href="/question/delete?questionNum=${view.questionNum}" type="button" class="btn btn-warning p-2 g-col-6">게시물 삭제</a>
 </div>

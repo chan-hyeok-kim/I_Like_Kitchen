@@ -27,22 +27,7 @@
 	  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" >
       <div class="accordion-body">
 				<div class="mb-3">
-				<c:if test="questionContents!=null||questionContents.length!==0">
-					<c:forEach items="${question}" var="question">
-						<li>
-							<div>
-								<p>${question.id} / ${question.questionDate}</p>
-								<p>${question.questionContents}</p>
-								<p>
-						<a href="question/update">수정</a> / <a href="question/delete">삭제</a>
-					</p>
-							</div>
-						</li>	
-					</c:forEach>
-					</c:if>
-					<c:if test="questionContents=null||questionContents.length==0">
-						<p>등록된 질문이 없습니다</p>
-					</c:if>
+				
 				<hr />							
 						<a class="btn" style="background-color:rgb(251,255,182)" href="question/add">문의등록</a>	
 				</div>
@@ -72,21 +57,8 @@
 		   <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
       <div class="accordion-body">
 		<div class="mb-3">	
-		<c:if test="reviewContents!=null||reviewContents.length!==0">
-		<c:forEach items="${review}" var="review">
-			<li>
-				<div>
-					<p>${review.id} / ${review.reviewDate}</p>
-					<p>${review.reviewContents}</p>
-					
-					<p>
-						<a href="review/update">수정</a> / <a href="review/delete">삭제</a>
-					</p>
-				</div>	
-				</li>
-			</c:forEach>						
-				</c:if>	
-				<c:if test="reviewContents=null||reviewContents.length==0">등록된 후기가 없습니다</c:if>
+	
+				
 				<hr />
 					<a class="btn" style="background-color:rgb(251,255,182)" href="review/add">후기등록</a>
 				</div>
@@ -114,11 +86,11 @@ let pn=$("#add").attr("data-add-num");
 	let tp=0;
 
 
-		$("#questionAdd").click(function(){
+		$("#add").click(function(){
 			let contents=$("#question").val();
 			$.ajax({
 				type:'POST',
-				url:'questionAdd',
+				url:'add',
 				data:{
 					productNum:pn,
 					questionContents:contents
@@ -126,7 +98,7 @@ let pn=$("#add").attr("data-add-num");
 				success:function(reslut){
 					if(result.trim()>0){
 						alert('문의등록');
-						$("questionList").empty();
+						$("list").empty();
 						$("#question").val("");
 						pageNum=1;
 						getQuestionList(pn, 1);
@@ -152,16 +124,16 @@ let pn=$("#add").attr("data-add-num");
 
 	getComentList(productNum,pageNum);
 
-	function getQuestionList(pn, page){
+	function getList(pn, page){
 		$.ajax({
 			type:"get",
-			url:"./questionList",
+			url:"./list",
 			data:{
 				productNum:productNum,
 				page:page
 			},
 			success:function(result){
-				$("#questionList").append(result);
+				$("#list").append(result);
 				tp=$("#totalPage").attr("data-totalPage");
 				let button='<button id="moreButton">더보기('+pageNum+'/'+tp+')</button>'
 				console.log(result)

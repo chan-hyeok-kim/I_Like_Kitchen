@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.file.FileDTO;
-import com.ham.main.util.FIleManager;
+import com.ham.main.util.FileManager;
 
 @Service
 public class ReviewService {
@@ -18,21 +18,21 @@ public class ReviewService {
 	@Autowired
  	private ReviewDAO reviewDAO;
 	@Autowired
-	private FIleManager fileManager;
+	private FileManager fileManager;
  
 
  	public ReviewFileDTO getFileDown(ReviewFileDTO reviewFileDTO)throws Exception{
-		return reviewDAO.getFIleDetail(reviewFileDTO);
+		return reviewDAO.getFileDetail(reviewFileDTO);
 	}
  	
  	public boolean setContentsImgDelete(String path,HttpSession session) throws Exception{
-		//path: /resources/upload/notice/파일명
+		//path: /resources/upload/review/파일명
 		FileDTO fileDTO =new FileDTO();
 //		path=path.substring(0, path.lastIndexOf("\\")+1);
 		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
 		
 		path="/resources/upload/review/";
-		return FIleManager.fileDelete(fileDTO, path, session);
+		return fileManager.fileDelete(fileDTO, path, session);
 	}
 	
 	public String setContentsImg(MultipartFile file,HttpSession session)throws Exception {
@@ -44,8 +44,8 @@ public class ReviewService {
 	
 	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
 		//폴더 파일 삭제
-		reviewFileDTO=reviewDAO.getFIleDetail(reviewFileDTO);
-		boolean flag=FIleManager.fileDelete(reviewFileDTO, "/resources/upload/review/", session);
+		reviewFileDTO=reviewDAO.getFileDetail(reviewFileDTO);
+		boolean flag=FileManager.fileDelete(reviewFileDTO, "/resources/upload/review/", session);
 		
 		if(flag) {
 			
@@ -86,6 +86,8 @@ public class ReviewService {
  	public int delete(long reviewNum) throws Exception {
  	return reviewDAO.delete(reviewNum);
  	}
+ 	
+ 	
  // 게시물 목록 + 페이징
  	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
  	 return reviewDAO.listPage(displayPost, postNum);

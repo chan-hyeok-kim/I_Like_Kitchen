@@ -15,7 +15,7 @@ public class ReviewDAO {
  
  	private final String NAMESPACE="com.ham.main.review.ReviewDAO.";
 
- 	public ReviewFileDTO getFIleDetail(ReviewFileDTO reviewFileDTO) {
+ 	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) throws Exception {
 		return sql.selectOne(NAMESPACE+"getFIleDetail",reviewFileDTO);
 	}
  	
@@ -57,6 +57,12 @@ public class ReviewDAO {
 	public int delete(long reviewNum) throws Exception {
 	return sql.delete(NAMESPACE + "delete", reviewNum);
 	}
+	
+	public int setReplyAdd(ReviewDTO reviewDTO)throws Exception{
+		System.out.println("setReplyAdd");
+		return sql.insert(NAMESPACE+"setReplyAdd", reviewDTO);
+	}
+	
 	// 게시물 총 갯수
 	
 	public int count() throws Exception {

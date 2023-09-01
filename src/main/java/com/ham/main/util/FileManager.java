@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.AbstractView;
 import com.ham.main.file.FileDTO;
 
 @Component
-public class FIleManager extends AbstractView{
+public class FileManager extends AbstractView{
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

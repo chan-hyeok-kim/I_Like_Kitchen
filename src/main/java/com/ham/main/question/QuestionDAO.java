@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.review.ReviewDTO;
+
 @Repository
 public class QuestionDAO {
 
@@ -45,6 +47,16 @@ public class QuestionDAO {
 	public int delete(long questionNum) throws Exception {
 	 return sql.delete(NAMESPACE + "delete", questionNum);
 	}
+	public int setReplyAdd(QuestionDTO questionDTO)throws Exception{
+		System.out.println("setReplyAdd");
+		return sql.insert(NAMESPACE+"setReplyAdd", questionDTO);
+	}
+	
+	public int setStepUpdate(QuestionDTO questionDTO)throws Exception{
+		return sql.update(NAMESPACE +"setStepUpdate", questionDTO);
+	}
+
+	
 	// 게시물 총 갯수
 	
 	public int count() throws Exception {
