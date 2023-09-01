@@ -37,6 +37,7 @@
 				<a href="/member/find/findID">아이디찾기</a>
 				<a href="/member/find/findPW">비밀번호찾기</a> 
 				<a href="/member/memberAgree">회원가입</a>
+
 			</div>
 			<div>
 				<button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button>
@@ -47,5 +48,6 @@
 		   <a href="${naverUrl}"><img width="300" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
 		</div>
 	
+
 	</section>
 </html>

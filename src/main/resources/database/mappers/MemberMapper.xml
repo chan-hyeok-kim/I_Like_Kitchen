@@ -2,7 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
+
+	
   <mapper namespace="com.ham.main.member.MemberDAO">
   
   	<!-- 로그인 -->
@@ -113,5 +115,31 @@
 			         WHERE M.ID = #{id})
     </update>
   	
+<!--민준 업데이트-->
+	
+	<select id="getCheckInfo" resultType="MemberDTO" parameterType="MemberDTO">
+		SELECT * 
+		FROM MEMBER
+		WHERE ID = #{id}
+			AND PASSWORD = #{password}
+	</select>
+
+	<update id="setUpdate" parameterType="MemberDTO">
+		UPDATE MEMBER 
+		SET NAME = #{name}, PASSWORD = #{password}, EMAIL = #{email}, PHONE = #{phone}
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="setDelete" parameterType="MemberDTO">
+		DELETE MEMBER
+		WHERE ID = #{id}
+	</delete>
+	
+
+
+
+
+
   </mapper>
   
+

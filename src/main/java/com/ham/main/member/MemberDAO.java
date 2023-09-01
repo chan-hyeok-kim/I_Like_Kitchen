@@ -1,8 +1,6 @@
 package com.ham.main.member;
 
-
 import java.util.HashMap;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +10,6 @@ public class MemberDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
   public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
@@ -31,9 +28,7 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE + "setMemberRole", memberDTO);
 	}
 	
-	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setMemberUpdate", memberDTO);
-	}
+	
 	
 	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getIdCheck", memberDTO);
@@ -78,6 +73,22 @@ public class MemberDAO {
     	return sqlSession.update(NAMESPACE+"adminRemove", memberDTO);
     }
     
-    
+//    민준 업데이트
+  
+    public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE + "getCheckInfo", memDTO);
+	}
+	
+	public int setUpdate(MemberDTO memDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE + "setUpdate", memDTO);
+	}
+	
+	public int setDelete(MemberDTO memDTO) throws Exception{
+		
+		return sqlSession.delete(NAMESPACE + "setDelete", memDTO);
+	}
+
 
 }

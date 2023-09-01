@@ -1,6 +1,8 @@
 package com.ham.main.member;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Random;
@@ -40,10 +42,15 @@ public class MemberService {
 		int result = memberDAO.setMemberJoin(memberDTO);
 		
 		result = memberDAO.setMemberRole(memberDTO);
+
 		
 		return result;
 	}
 	
+
+
+
+
 	//로그인
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberLogin(memberDTO);
@@ -111,9 +118,28 @@ public class MemberService {
 	    public int partnerRemove(MemberDTO memberDTO) throws Exception{
 	    	return memberDAO.adminRemove(memberDTO);
 	    }
+
+//    민준 업데이트
+       public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
+		
+		   return memDAO.getCheckInfo(memDTO);
+	}
+	
+	public int setUpdate(MemberDTO memDTO) throws Exception {
+		int result = memDAO.setUpdate(memDTO);
+		
+		
+		}
+
+	public int setDelete(MemberDTO memDTO) throws Exception{
+		
+		return memDAO.setDelete(memDTO);
+	}
+
 }
 	    
 	
 	
+
 
 

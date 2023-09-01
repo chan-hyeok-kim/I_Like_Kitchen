@@ -5,4 +5,11 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 전체 upload하는 파일의 총 크기 제한 단위 byte -->
+		<property name="maxUploadSize" value="10485760"></property>
+		<!-- upload하는 파일당 크기 제한 단위 byte -->
+		<property name="maxUploadSizePerFile" value="5242880"></property>
+	</bean>
 </beans>
