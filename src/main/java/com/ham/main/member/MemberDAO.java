@@ -1,5 +1,6 @@
 package com.ham.main.member;
 
+
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +15,7 @@ public class MemberDAO {
 	
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
-	public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
+  public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getMemberByEmail", memberDTO);
 	}
 	
@@ -45,4 +46,38 @@ public class MemberDAO {
 	public long getKakaoLogin(KakaoDTO kakaoDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", kakaoDTO);
 	}
+
+	
+	
+    public Long memberTelCount(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE+"memberTelCount",memberDTO);
+    }
+    
+    public MemberDTO getBySnsNaver(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE+"getBySnsNaver", memberDTO);
+    }
+    
+    public MemberDTO getDetail(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE+"getDetail",memberDTO);
+    }
+    
+//  admin 권한 부여, 삭제
+    public int adminAdd(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminAdd", memberDTO);
+    }
+    
+    public int adminRemove(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminRemove", memberDTO);
+    }
+//  partner 권한 부여, 삭제
+    public int partnerAdd(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminAdd", memberDTO);
+    }
+    
+    public int partnerRemove(MemberDTO memberDTO) throws Exception{
+    	return sqlSession.update(NAMESPACE+"adminRemove", memberDTO);
+    }
+    
+    
+
 }

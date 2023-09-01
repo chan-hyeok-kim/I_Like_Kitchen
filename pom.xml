@@ -7,6 +7,15 @@
 	<name>GDJ68_Sample</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	<!-- import REST API -->
+	<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
 	<properties>
 		<java-version>1.11</java-version>
 		<org.springframework-version>4.3.2.RELEASE</org.springframework-version>
@@ -62,7 +71,9 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
-				
+	
+		
+
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -82,6 +93,60 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- lombok -->
+		<dependency>
+  		<groupId>org.projectlombok</groupId>
+  		<artifactId>lombok</artifactId>
+  		<version>1.18.4</version>
+  		<scope>provided</scope>
+  	</dependency>
+		
+<!-- StringUtils -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.11</version>
+</dependency>		
+
+ 		<!-- import REST API -->
+<dependency>
+    <groupId>com.github.iamport</groupId>
+    <artifactId>iamport-rest-client-java</artifactId>
+    <version>0.2.14</version>
+</dependency>
+
+<!-- json -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
+
+<!-- httpclient5 -->
+<dependency>
+    <groupId>org.apache.httpcomponents.client5</groupId>
+    <artifactId>httpclient5</artifactId>
+    <version>5.2.1</version>
+</dependency>
+
+<!-- scribejava-apis -->
+<dependency>
+    <groupId>com.github.scribejava</groupId>
+    <artifactId>scribejava-apis</artifactId>
+    <version>8.3.1</version>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- scribejava-core -->
+<dependency>
+    <groupId>com.github.scribejava</groupId>
+    <artifactId>scribejava-core</artifactId>
+    <version>8.3.1</version>
+</dependency>
+
+
+		
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

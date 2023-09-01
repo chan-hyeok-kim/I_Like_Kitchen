@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ham.main.product.book.BookDAO">
+  
+  <insert id="setBook" parameterType="BookDTO">
+     INSERT INTO BOOK(ORDERNUM, PRODUCTNUM, ID, CHOICE, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, STATUS, BOOKDATE)
+     VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{choice},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},'예약',#{bookDate})
+  </insert>
+  
+  <select id="getDetail" resultType="BookDTO" parameterType="BookDTO">
+     SELECT * 
+       FROM BOOK
+      WHERE ORDERNUM=#{orderNum} 
+  </select>
+  
+  
+  
+  </mapper>

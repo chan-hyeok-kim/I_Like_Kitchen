@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
   
   <mapper namespace="com.ham.main.partner.PartnerDAO">
   	
@@ -11,5 +12,47 @@
     		PARTNER(PARTNERNUM, ID, PARTNEREMAIL, PARTNEREMAILDOMAIN, PARTNERACCOUNT, PARTNERDATE, PARTNERNAME, PARTNERPHONE, COMPANYNAME)
     			VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerEmailDomain}, #{partnerAccount}, #{partnerDate}, #{partnerName}, #{partnerPhone}, #{companyName})
     </insert>
-  </mapper>
-  
+ 
+
+<select id="getDetail" resultMap="getDetailResult" parameterType="PartnerDTO">
+   SELECT *
+     FROM PARTNER PT LEFT OUTER JOIN PRODUCT PD
+       ON PT.PARTNERNUM = PD.PARTNERNUM
+    WHERE PT.PARTNERNUM = #{partnerNum}
+</select>
+
+<resultMap type="PartnerDTO" id="getDetailResult">
+   <id column="PARTNERNUM" property="partnerNum"/>
+   <result column="PARTNEREMAIL" property="partnerEmail"/>
+   <result column="PARTNERADDRESS" property="partnerAddress"/>
+   <result column="PARTNERACCOUNT" property="partnerAccount"/>
+   <result column="PARTNERDATE" property="partnerDate"/>
+   <result column="PARTNERNAME" property="partnerName"/>
+   <result column="COMPANYNAME" property="companyName"/>
+   <result column="PARTNERCHECK" property="partnerCheck"/>
+   <result column="ID" property="id"/>
+   
+   <association javaType="ProductDTO" property="productDTO">
+      <id column="PRODUCTNUM" property="productNum"/>
+     <result column="REGDATE" property="regDate"/>
+   <result column="ADDRESS" property="address"/>
+   <result column="TELL" property="tell"/>
+   <result column="PRICE" property="price"/>
+   <result column="CONTENTS" property="contents"/>
+   <result column="PRODUCTNAME" property="productName"/>
+   </association>
+</resultMap>
+
+<select id="getList" resultType="PartnerDTO">
+   SELECT * FROM PARTNER
+</select>
+
+<update id="setPermitUpdate" parameterType="PartnerDTO">
+   UPDATE PARTNER
+      SET PARTNERCHECK='1'
+    WHERE PARTNERNUM=#{partnerNum}
+</update>
+
+
+</mapper>
+

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
    
 	<script type="text/javascript">
 		let message = '${result}';
@@ -17,5 +18,7 @@
 		location.href = "${url}"
 	</script>
 	
+
+  
 </body>
 </html>

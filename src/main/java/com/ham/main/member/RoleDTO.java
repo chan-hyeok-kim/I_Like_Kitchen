@@ -1,6 +1,7 @@
 package com.ham.main.member;
 
 public class RoleDTO {
+
 	private Long roleNum;
 	private String roleName;
 	
@@ -16,6 +17,8 @@ public class RoleDTO {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+
 	
 	
 }
+

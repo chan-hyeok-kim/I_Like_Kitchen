@@ -4,6 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.ham.main.member.MemberDAO">
+
   	
   	<!-- 회원가입 -->
   	<insert id="setMemberJoin" parameterType="MemberDTO">
@@ -16,8 +17,9 @@
   	</select>
   	
   	<!-- 로그인 -->
-    <select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberLoginResult">
-    	SELECT M.*, R.* 
+ 
+	<select id="getLogin" resultMap="getLoginResult" resultType="MemberDTO">
+		SELECT M.*, R.* 
 			FROM MEMBER M 
 			INNER JOIN MEMBERROLE MR
 			ON(M.ID = MR.ID)
@@ -25,16 +27,16 @@
 			ON(MR.ROLENUM = R.ROLENUM)
 			WHERE M.ID = #{id} AND M.PASSWORD = #{password}
     </select>
-    
-    <resultMap type="MemberDTO" id="getMemberLoginResult">
+   
+	
+	<resultMap type="MemberDTO" id="getLoginResult">
   		<!-- column의 이름과 setter의 이름이 같아야함. -->
   		<id column="ID" property="id"/>
   		<result column="PASSWORD" property="password"/>
   		<result column="NAME" property="name"/>
   		<result column="EMAIL" property="email"/>
-  		<result column="EMAILDOMAIN" property="emailDomain"/>
   		<result column="PHONE" property="phone"/> 
-
+    
   		<collection property="roles" javaType="List" ofType="RoleDTO">
 			<id column="ROLENUM" property="roleNum"/>
 			<result column="ROLENAME" property="roleName"/>
@@ -68,5 +70,66 @@
     	INSERT INTO KAKAO (ID, KAKAONAME, KAKAOEMAIL)
     		VALUES (#{id}, #{kakaoName}, #{kakaoEmail})
     </insert>
+
+
+  	
+  	
+  	<select id="memberTelCount" resultType="Long" parameterType="MemberDTO">
+  	    SELECT COUNT(PHONE) FROM MEMBER
+  	     WHERE PHONE=#{phone}
+  	</select>
+  	
+  	<select id="getBySnsNaver" resultType="MemberDTO">
+        SELECT * FROM MEMBER WHERE NAVERID = #{naverId}
+    </select>
+    
+    <select id="getDetail" resultType="MemberDTO" parameterType="MemberDTO">
+        SELECT * 
+          FROM MEMBER
+         WHERE ID=#{id} 
+    </select>
+    
+    
+    <update id="adminAdd" parameterType="MemberDTO">
+ UPDATE MEMBERROLE 
+    SET ROLENUM=3
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
+    </update>
+    
+    <update id="adminRemove" parameterType="MemberDTO">
+    UPDATE MEMBERROLE 
+       SET ROLENUM=2
+     WHERE ROLENUM IN (SELECT MR.ROLENUM
+	     	             FROM MEMBER M 
+	     		         INNER JOIN MEMBERROLE MR
+	      		         ON M.ID = MR.ID
+	    		         WHERE M.ID = #{id})
+    </update>
+  	
+  <update id="partnerAdd" parameterType="MemberDTO">
+  UPDATE MEMBERROLE 
+    SET ROLENUM=2
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
+  </update>	
+  
+   <update id="partnerRemove" parameterType="MemberDTO">
+    UPDATE MEMBERROLE 
+    SET ROLENUM=1
+  WHERE ROLENUM IN (SELECT MR.ROLENUM
+		             FROM MEMBER M 
+			         INNER JOIN MEMBERROLE MR
+			         ON M.ID = MR.ID
+			         WHERE M.ID = #{id})
+    </update>
+  	
+
   </mapper>
   

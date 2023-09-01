@@ -1,29 +1,43 @@
-package com.ham.main.member;
 
+package com.ham.main.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+package com.ham.main.member;
+import java.net.http.HttpRequest;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.ham.main.member.mail.MailSendController;
 import com.ham.main.member.mail.MailSendService;
 import com.ham.main.util.auth.KakaoLoginBO;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import com.ham.main.member.MemberDTO;
+import com.ham.main.util.auth.SNSLogin;
+import com.ham.main.util.auth.SnsValue;
+
 
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
+
 
 	@Autowired
 	private MemberService memberService;
@@ -37,16 +51,13 @@ public class MemberController {
 	
 	@Autowired
 	private MailSendService mailSendService;
+
+      @Inject
+	private SnsValue naverSns;
 	
-//	@PostMapping("memberIdCheck")
-//	public ModelAndView getMemberIdCheck(MemberDTO memberDTO)throws Exception{
-//		boolean check = memberService.getMemberIdCheck(memberDTO);
-//		ModelAndView mv = new ModelAndView();
-//		
-//		mv.addObject("result", check);
-//		mv.setViewName("commons/ajaxResult");
-//		return mv;
-//	}
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+    
+
 	
 	@GetMapping(value = "idCheck")
 	public String getIdCheck(MemberDTO memberDTO, Model model) throws Exception {
@@ -104,9 +115,16 @@ public class MemberController {
 		//System.out.println("카카오:" + kakaoAuthUrl);
 		model.addAttribute("urlKakao", kakaoAuthUrl);
 		mv.setViewName("/member/memberLogin");
+    
+    SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naverUrl", snsLogin.getNaverAuthURL("test"));
 		
 		return mv;
 	}
+  
+
+  
+  
 	
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -226,10 +244,81 @@ public class MemberController {
 	
 	
 	    
-//	// 소셜 로그인 성공 페이지
-//	@RequestMapping("/loginSuccess")
-//	public String loginSuccess() {
-//		return "member/loginSuccess";
-//	}
+
+
+
+
 	
-}
+
+	
+	//sns로그인
+	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})
+	public String snsLoginCallback(@PathVariable String service, Model model,@RequestParam("code") String code,@RequestParam("state") String state, HttpSession session) throws Exception{
+	    System.out.println(code);
+	    System.out.println(state);
+		logger.info("snsLoginCallback: service={}", service);
+	      SnsValue sns = null;
+	      if(StringUtils.equals("naver", service)) {
+	    	  sns = naverSns;
+	      }
+	      
+	      //1.code를 이용해서 access_token받기
+	      //2.access_token을 이용해서 profile받아오기
+	      
+	      SNSLogin snsLogin = new SNSLogin(sns);
+	      MemberDTO snsMemberDTO = snsLogin.getUserProfile(code); //1,2번 동시
+	      System.out.println("Profile>>" + snsMemberDTO);
+	      
+//	      3.DB에 해당 유저가 존재하는지 체크
+	      MemberDTO memberDTO = memberService.getBySns(snsMemberDTO);  
+          if(memberDTO == null) {
+        	  model.addAttribute("result","존재하지 않는 사용자입니다 가입해주세요");
+          }else {
+        	  model.addAttribute("result",memberDTO.getName() + "님 반갑습니다.");
+        	  //4. 존재 시 강제 로그인, 미존재시 가입페이지로
+        	  
+        	  session.setAttribute("member", memberDTO);
+          }
+          
+	      return "commons/loginResult";
+	}
+	
+	
+
+	
+	  @PostMapping("phoneAuth")
+	    @ResponseBody
+	    public Boolean phoneAuth(String phone, HttpSession session) {
+            MemberDTO memberDTO = new MemberDTO();
+            memberDTO.setPhone(phone);
+	        try { // 이미 가입된 전화번호가 있으면
+	            if(memberService.memberTelCount(memberDTO) > 0) 
+	                return true; 
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        String code = memberService.sendRandomMessage(phone);
+	        session.setAttribute("rand", code);
+	        
+	        return false;
+	    }
+
+	    @PostMapping("phoneAuthOk")
+	    @ResponseBody
+	    public Boolean phoneAuthOk(HttpServletRequest request) {
+	        String rand = (String) request.getSession().getAttribute("rand");
+	        String code = (String) request.getParameter("code");
+
+	        System.out.println(rand + " : " + code);
+
+	        if (rand.equals(code)) {
+	        	request.getSession().removeAttribute("rand");
+	            return false;
+	        } 
+
+	        return true;
+	    }
+	    
+	   
+	
