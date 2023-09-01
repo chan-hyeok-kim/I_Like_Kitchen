@@ -177,7 +177,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="/">
                                 <h2>I like kitchen</h2>
                             </a>
                         </div>

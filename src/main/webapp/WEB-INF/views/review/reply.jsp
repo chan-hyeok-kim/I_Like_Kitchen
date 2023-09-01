@@ -21,16 +21,16 @@
 		</div>
 		
 		<div class="row justify-content-center my-4">
-			<form class="col-md-7" action="./reply" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="num" value="${num}">
+			<form class="col-md-7" action="/reply" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="reviewNum" value="${reviewNum}">
 				<div class="mb-3">
 				  <label for="writer" class="form-label">작성자</label>
-				  <input type="text" name="id" readonly value="${member.id}" class="form-control" id="id">
+				  <input type="text" name="id" readonly value="${view.id}" class="form-control" id="id">
 				</div>
 				
 				<div class="mb-3">
 				  <label for="title" class="form-label">날짜</label>
-				  <input type="text" name="replyDate" class="form-control" id="replyDate" placeholder="제목 입력">
+				  <input type="text" name="replyDate" class="form-control" id="replyDate">
 				</div>
 		
 				<div class="mb-3">
