@@ -25,19 +25,21 @@ public class NoticeController {
 	
 	
 	@GetMapping("list")
-	public String getList(Model model, Pager pager) throws Exception {
-		RoleDTO role = new RoleDTO();
+	public String getList(Model model, Pager pager, HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		
 		
 		List<NoticeDTO> ar = noService.getList(pager);
 		
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		
-		if(role.getRoleNum() == 3) {
+//		if(role.getRoleNum() == 3) {
 			return "/admin/notice/list";
-		}else {
-			return "/notice/list";
-		}
+//		}else {
+//			return "/notice/list";
+//		}
 		
 	}
 	
@@ -67,8 +69,8 @@ public class NoticeController {
 	}
 	@PostMapping("add")
 	public String setAdd(NoticeDTO noDTO, HttpSession session, MultipartFile[] files) throws Exception{
-		//MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
-		//noDTO.setId(memDTO.getId());
+//		MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
+//		noDTO.setId(memDTO.getId());
 		noDTO.setId("qwe");
 		
 		noService.setAdd(noDTO, files, session);
