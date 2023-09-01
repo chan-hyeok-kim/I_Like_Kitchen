@@ -19,6 +19,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	private final String SERVICE_KEY = "bJ6kMWyyBbwha2z3sjC5XeliD%2F%2FTMdJcXmr9veQc%2BIKmwfUs0IYcoRmG0F7qXaxYkf61qRvzBy67J30mnS64Mg%3D%3D"; 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -32,7 +33,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
+		model.addAttribute("serviceKey", SERVICE_KEY);
 		return "home";
 	}
 	
