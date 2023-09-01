@@ -2,8 +2,10 @@ package com.ham.main.partner;
 
 import java.sql.Date;
 
-import com.ham.main.product.ProductDTO;
+import java.util.List;
 
+
+import com.ham.main.product.ProductDTO;
 import lombok.Data;
 
 @Data
@@ -17,9 +19,10 @@ public class PartnerDTO {
 	private Date partnerDate;
 	private String partnerName;
 	private String companyName;
-    private Integer partnerCheck;
+	private String partnerPhone;
+  private Integer partnerCheck;
 	private ProductDTO productDTO;
 
-	
+
 	
 }

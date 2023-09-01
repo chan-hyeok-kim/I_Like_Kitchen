@@ -1,9 +1,19 @@
 package com.ham.main.util.auth;
 
 
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.builder.api.DefaultApi20;
+import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.github.scribejava.core.model.OAuthRequest;
+import com.github.scribejava.core.model.Response;
+import com.github.scribejava.core.model.Verb;
+import com.github.scribejava.core.oauth.OAuth20Service;
 
 import lombok.Data;
 
@@ -17,7 +27,7 @@ public class SnsValue implements SnsUrls {
 	private String profileUrl;
 	private String state;
 	private boolean isNaver;
-	private String verifyUrl;
+	private boolean isKakao;
 	
 	public SnsValue(String service, String naverClientID, String naverClientSecret, String naverRedirectUrl, String naverState) {
 	    	this.service = service;
@@ -30,10 +40,16 @@ public class SnsValue implements SnsUrls {
 	    	if(isNaver) {
 	    	   this.api20Instance = NaverAPI20.instance();	
 	    	   this.profileUrl = NAVER_PROFILE_URL;
-	    	   this.verifyUrl = NAVER_VERIFY_URL;
+	    	}else if(isKakao){
+	    	   this.api20Instance = KakaoAPI20.instance();
+	    	   this.profileUrl = KAKAO_PROFILE_URL;
 	    	}
 	    	
 	}
+	
+	
+	
+
 	    
 	
 	

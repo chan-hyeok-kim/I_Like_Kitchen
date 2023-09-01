@@ -1,5 +1,8 @@
 package com.ham.main.member;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.Random;
 
 
@@ -9,35 +12,61 @@ import org.springframework.stereotype.Service;
 import com.github.scribejava.core.model.Response;
 import com.ham.main.util.SendMessage;
 
+
 @Service
 public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public int setJoin(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setJoin(memberDTO);
+
+	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getIdCheck(memberDTO);
 	}
 	
-	public MemberDTO getLogin(MemberDTO memberDTO) throws Exception {
-		return memberDAO.getLogin(memberDTO);
+	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
+	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
+
+	    boolean check = true;
+
+	    if (memberDTO != null) {
+	        check = false;
+	    }
+	    return check;
 	}
 	
-	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
-		return memberDAO.getMemberIdCheck(memberDTO);
+	//회원가입
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
+		int result = memberDAO.setMemberJoin(memberDTO);
+		
+		result = memberDAO.setMemberRole(memberDTO);
+		
+		return result;
 	}
 	
-	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
-		return memberDAO.getMemberEmailCheck(memberDTO);
+	//로그인
+	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
-	public int setMemberRole(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setMemberRole(memberDTO);
+	//회원정보
+	public MemberDTO getMemberPage(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
-	public MemberDTO findId(MemberDTO memberDTO) throws Exception {
-		return memberDAO.findId(memberDTO);
+	//회원정보수정
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setMemberUpdate(memberDTO);
 	}
+	
+	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		return memberDAO.setKakaoJoin(snsMemberDTO);
+	}
+	
+	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
+		return memberDAO.getKakaoLogin(snsMemberDTO);
+	}
+
 	
 	public String sendRandomMessage(String phone) {
         SendMessage message = new SendMessage();
@@ -58,8 +87,8 @@ public class MemberService {
 	    	return memberDAO.memberTelCount(memberDTO);
 	 }
 	 
-	 public MemberDTO getBySns(MemberDTO memberDTO) throws Exception{
-	    	return memberDAO.getBySnsNaver(memberDTO);
+	 public SnsMemberDTO getBySns(SnsMemberDTO snsMemberDTO) throws Exception{
+	    	return memberDAO.getBySnsNaver(snsMemberDTO);
 	 }
 	 
 	 public MemberDTO getDetail(MemberDTO memberDTO) throws Exception{
@@ -82,7 +111,9 @@ public class MemberService {
 	    public int partnerRemove(MemberDTO memberDTO) throws Exception{
 	    	return memberDAO.adminRemove(memberDTO);
 	    }
+}
 	    
 	
 	
-}
+
+
