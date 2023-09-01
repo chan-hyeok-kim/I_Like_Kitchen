@@ -52,7 +52,7 @@
             </div>
             <div class="contents">
             	<p>이메일</p>
-            	<span>${kto.email}</span>
+            	<span>${kto.emailDomain}</span>
             </div>
             <div class="contents">
             	<p>전화번호</p>

@@ -11,7 +11,7 @@
 		<id column="ID" property="id"/>
 		<result column="PASSWORD" property="password"/>
 		<result column="NAME" property="name"/>
-		<result column="EMAIL" property="email"/>
+		<result column="EMAILDOMAIN" property="emailDomain"/>
 		<result column="PHONE" property="phone"/>
 		<result column="POINT" property="point"/>
 		<collection property="ktos" javaType="List" ofType="MemberFileDTO">
@@ -31,7 +31,7 @@
 
 	<update id="setUpdate" parameterType="MemberDTO">
 		UPDATE MEMBER 
-		SET NAME = #{name}, PASSWORD = #{password}, EMAIL = #{email}, PHONE = #{phone}
+		SET NAME = #{name}, PASSWORD = #{password}, EMAILDOMAIN = #{emailDomain}, PHONE = #{phone}
 		WHERE ID = #{id}
 	</update>
 	

@@ -43,7 +43,7 @@
 	            	</tr>
 	            	<tr>
 	            		<th>이메일</th>
-	            		<td><input type="email" id="email" name="email" value="${kto.email}"></td>
+	            		<td><input type="email" id="emailDomain" name="emailDomain" value="${kto.emailDomain}"></td>
 	            	</tr>
 	            	<tr>
 	            		<th>전화번호</th>
@@ -76,9 +76,9 @@
     			alert("비밀번호를 다시 확인해주세요.");
     			$("#password").focus();
     			
-    		} else if($("#email").val() == ""){
+    		} else if($("#emailDomain").val() == ""){
     			alert("이메일을 입력하세요.");
-    			$("#email").focus();
+    			$("#emailDomain").focus();
     			
     		} else if($("#phone").val() == ""){
     			alert("전화번호를 입력하세요.");
@@ -92,7 +92,7 @@
     					id:$("#id").val(),
     					name:$("#name").val(),
     					password:$("#password").val(),
-    					email:$("#email").val(),
+    					email:$("#emailDomain").val(),
     					phone:$("#phone").val()
     				},
     				success:function(result){
