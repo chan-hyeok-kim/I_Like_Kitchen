@@ -7,7 +7,7 @@
 <configuration>
    <typeAliases>
         <typeAlias type="java.lang.Long" alias="Long"/>
-        
+        <typeAlias type="com.ham.main.product.ProductFileDTO" alias="ProductFileDTO"/>
         <typeAlias type="com.ham.main.product.ProductDTO" alias="ProductDTO"/>
         <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
         

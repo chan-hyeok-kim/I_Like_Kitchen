@@ -56,7 +56,8 @@
 	        </form>
 	    </div>
 	</div>
-	
+		<button id="identify" class="btn btn-info">휴대폰 본인인증하기</button>
+		<script src="/resources/js/identify.js"></script>
 	<script src="/resources/js/member/findID.js"></script>
 
 </body>

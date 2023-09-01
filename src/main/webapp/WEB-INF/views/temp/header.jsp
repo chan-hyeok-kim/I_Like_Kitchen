@@ -108,17 +108,18 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="/resources/img/logo.png" alt="">
+                        <a href="/">
+                                <img src="/resources/img/2.png" alt="">
                             </a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-10">
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html">Home</a></li>
-                                    <li><a href="./rooms.html">Rooms</a></li>
+                                    <li class="active"><a href="/">Home</a></li>
+                                    <li><a href="/product/list">Share Kitchen</a></li>
                                     <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./pages.html">Pages</a>
                                         <ul class="dropdown">
@@ -131,19 +132,23 @@
                                     <li><a href="./blog.html">News</a></li>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
-                                 <nav>
-		   <ul class="nav">
-			<c:if test="${not empty member}">
-				<li class="nav-item text-white me-3"><a href="/member/logout">logout</a></li>
-			    <li class="nav-item text-white me-3"><a href="/member/mypage">MyPage</a></li>
-			</c:if> 
-			<c:if test="${empty member}">
-			    <li class="nav-item text-white me-3"><a href="/member/login">login</a></li>
-			    <li class="nav-item text-white me-3"><a href="/partner/join">legister partner </a></li>
-			</c:if>
-		</ul>
-	 </nav>
+                                
+		 
+	 <nav>
+			      	<ul class="nav">
+			      		<c:if test="${not empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/partner/partnerJoin">공간등록</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/member/memberPage">마이페이지</a></li>
+			      		</c:if>
+			      		<c:if test="${empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/partner/partnerLogin">호스트 로그인</a></li>
+			      		</c:if>
+			      	</ul>
+			      </nav>
                             </nav>
+            
                             
                             
                             <div class="nav-right search-switch">

@@ -46,6 +46,7 @@
 			<div class="mb-3">
 			  <label for="phone" class="form-label fw-bold">전화번호</label>
 			  <input type="text" name="phone" class="form-control" id="phone" placeholder="전화번호 입력" maxlength="11" required>
+			  
 			  <div id="phoneResult"></div>
 			</div>
 			

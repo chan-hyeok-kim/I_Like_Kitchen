@@ -5,10 +5,101 @@
   
   <mapper namespace="com.ham.main.product.ProductDAO">
   
-  <select id="getDetail" resultType="productDTO" parameterType="productDTO">
-     SELECT * 
-       FROM PRODUCT
-      WHERE PRODUCTNUM=#{productNum}  
-  </select>
-  
-  </mapper>
+  	<sql id="searchSql">
+  		WHERE P.PRODUCTNUM>0 
+  				<choose>
+			<when test="kind=='name'">
+				AND P.PRODUCTNAME LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				AND P.CONTENTS LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+  	</sql>
+  	 
+ 	<select id="getTotal" parameterType="com.ham.main.util.Pager" resultType="Long">
+		SELECT COUNT(P.PRODUCTNUM) FROM PRODUCT P
+		<include refid="searchSql"></include>
+	</select>
+	
+	<select id="getList" parameterType="com.ham.main.util.Pager" resultMap="getListFile" >
+		SELECT * FROM 	
+			(SELECT ROWNUM R, B.* FROM
+				(
+					SELECT * FROM PRODUCT P LEFT OUTER JOIN PRODUCTFILE PF
+					ON P.PRODUCTNUM = PF.PRODUCTNUM
+					<include refid="searchSql"></include>
+						  
+						  <!-- <if test="kind == 'name'">
+						   AND	PRODUCTNUM LIKE '%검색어%' 
+						  </if>
+						  <if test="kind == 'contents'">
+						  	AND	CONTENTS
+						  	 LIKE '%검색어%' 
+						  </if>  -->
+						   
+					ORDER BY P.PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<resultMap type="ProductDTO" id="getListFile">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="TEL" property="tel"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
+	
+ 	<select id="getDetail"  resultMap="getDetailResult"  parameterType="ProductDTO">
+		SELECT P.*, PF.* 
+		FROM PRODUCT P
+			 LEFT JOIN
+			 PRODUCTFILE PF
+			 ON(P.PRODUCTNUM=PF.PRODUCTNUM)
+		WHERE P.PRODUCTNUM=#{productNum}
+	</select>
+	
+	<resultMap type="ProductDTO" id="getDetailResult">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="TEL" property="tel"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
+	
+	<insert id="setAdd" parameterType="ProductDTO">
+		<selectKey keyProperty="productNum" resultType="Long" order="BEFORE">
+			SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO PRODUCT (PRODUCTNUM, PARTNERNUM, REGDATE, ADDRESS, PHONE, PRICE, CONTENTS, PRODUCTNAME)
+		VALUES (#{productNum} , #{partnerNum}, SYSDATE, #{address} , #{phone} , #{price} , #{contents} , #{productName})
+	</insert>
+	
+	<insert id="setFileAdd" parameterType="ProductFileDTO">
+		INSERT INTO PRODUCTFILE (FILENUM, PRODUCTNUM, FILENAME, ORIGINALNAME)
+		VALUES (FILE_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{originalName})
+	</insert>
+	
+	<delete id="setDelete" parameterType="Long">
+		DELETE PRODUCT WHERE PRODUCTNUM=#{num}
+	</delete>
+	
+ </mapper>

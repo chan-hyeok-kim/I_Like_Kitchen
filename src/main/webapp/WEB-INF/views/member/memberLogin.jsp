@@ -42,6 +42,10 @@
 				<button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button>
 			</div>		
 		</form>
-
+		
+<div class="text-center">
+		   <a href="${naverUrl}"><img width="300" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
+		</div>
+	
 	</section>
 </html>
