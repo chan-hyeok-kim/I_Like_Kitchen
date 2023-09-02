@@ -146,8 +146,8 @@ section{
 	<section>
 
 
-						<form action="./add" method="post">
-						<input type="hidden" name="productNum" value="${kto.productNum}">
+						
+						<input type="hidden" name="productNum" value="${kto.productNum}" id="productNum">
 
 							<div class="b1" id="date">
 								<div class="f1"><label for="calendar">날짜를 선택해주세요</label>
@@ -159,7 +159,7 @@ section{
 								</div>
 							</div>
 							<div class="b1" id="selectTime">
-								<div class="f1"><label>이용 시간 선택	&#40;<span id="selectTimeTitle"></span>&#41;</label></div>
+								<div class="f1"><label>이용 시간을 선택해주세요	&#40;<span id="selectTimeTitle"></span>&#41;</label></div>
 
 								<div class="" id="startTime" style="margin-left: 20px">
 									시작 시간 : <select id="selectStartTime" name="start" class="SelectBoxstyle__Select-sc-1i9rrh1-0 jdZFuX">
@@ -223,7 +223,7 @@ section{
 
 
 							<div class="b1">
-                       <div class="f1"><label for="headCount">인원 선택</label></div>
+                       <div class="f1"><label for="headCount">인원을 입력해주세요</label></div>
 <div class="input-group input-number-group">
   <div class="input-group-button">
     <span class="input-number-decrement">-</span>
@@ -238,7 +238,7 @@ section{
 </div>
 								<!-- <div class="f1"><label for="headCount">인원 선택</label></div>
 								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1"> -->
-							<div class="f1"><label for="purpose">목적</label></div>
+							<div class="f1"><label for="purpose">어떤 목적으로 이용하고 싶으신가요?</label></div>
 						<input type="text" class="form-control m2" name="purpose" id="purpose" style="width: 90%">
 							</div>
 					
@@ -248,7 +248,7 @@ section{
 						<div class="mb-3 f1">
 							<label for="ta1" class="form-label">호스트 전달 내용</label>
 						</div>
-						<textarea class="form-control m2" id="ta1" rows="6" cols="7"
+						<textarea class="form-control m2" id="contents" rows="6" cols="7"
 							name="contents" style="width: 90%" placeholder="호스트에게 전달하고 싶은 내용을 적어주세요.&#13;&#10;호스트와 긴밀한 질의 응답이 필요할 경우 상세페이지의 '문의하기'버튼을 이용해주세요"></textarea>
 					</div>
 <div class="b1Last">
@@ -256,11 +256,11 @@ section{
 					<p style="color:red">호스트 승인 후 예약이 가능합니다.</p>
 					</div>
 <div style="margin-bottom: 20px">
-					<button type="submit" class="btn btn-light"
+					<button type="button" class="btn btn-light" id="book-close"
 						style="width: 300px; margin-left: 70px; background-color: rgb(188, 206, 251); color: white">접수</button>
 </div>
 </div>
-					</form>
+					
 <div style="height: 20px">
 </div>
 

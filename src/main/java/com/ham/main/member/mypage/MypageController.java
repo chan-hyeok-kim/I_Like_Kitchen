@@ -60,7 +60,7 @@ public class MypageController {
 		
 		memberDTO = memberService.getCheckInfo(memberDTO);
 		
-		model.addAttribute("member", memberDTO);
+		model.addAttribute("member	", memberDTO);
 		
 		return "/mypage/checkInfo";
 	}

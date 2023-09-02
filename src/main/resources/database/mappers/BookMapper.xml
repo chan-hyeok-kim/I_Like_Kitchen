@@ -6,14 +6,14 @@
   <mapper namespace="com.ham.main.product.book.BookDAO">
   
   <insert id="setBook" parameterType="BookDTO">
-     INSERT INTO BOOK(ORDERNUM, PRODUCTNUM, ID, CHOICE, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, STATUS, BOOKDATE)
-     VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{choice},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},'예약',#{bookDate})
+     INSERT INTO BOOK(BOOKNUM, PRODUCTNUM, ID, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, BOOKDATE, BOOKCHECK)
+     VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},#{bookDate}, 0)
   </insert>
   
   <select id="getDetail" resultType="BookDTO" parameterType="BookDTO">
      SELECT * 
        FROM BOOK
-      WHERE ORDERNUM=#{orderNum} 
+      WHERE BOOKNUM=#{bookNum} 
   </select>
   
   

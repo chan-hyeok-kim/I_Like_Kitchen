@@ -11,11 +11,15 @@ let date = today.getDate();
 if(month<10){
    month = '0'+month; 
 }
+if(date<10){
+	date = '0'+date;
+}
 today = year+'-'+month+'-'+date
+
 console.log(today)
 
 
-
+let setDate = new Date();
 
 
 $('#selectTimeTitle').append(month+'월 '+date+'일')
@@ -51,6 +55,7 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
 						)
 						$('#setDate').val(info.dateStr);
                          console.log($('#setDate').val());
+						 setDate = $('#setDate').val();
                         $('#selectTimeTitle').empty();
 						$('#selectTimeTitle').append(selectMonth+'월 '+selectDate+'일')
 						}
@@ -77,7 +82,7 @@ function bookNoticeStart(){
 		      console.log(typeof start);
 			   start=start.slice(0,2); 
 			   console.log(start)
-			   console.log(start-start)
+			  
 	             if(end-start<4){ 
 	        swal("알림","최소 4시간 이상만 예약 가능합니다.")	
 	        
@@ -112,5 +117,50 @@ $('.input-number-decrement').click(function() {
   $input.val(val - 1);
   }
 })
-	
+
+let productNum = $('#productNum').val();
+console.log(productNum)
+$('#book-close').click(function(){
+	let productNum = $('#productNum').val();
+	let headCount = $('#headCount').val();
+	let purpose = $('#purpose').val();
+	let contents = $('#contents').val();
+	let startTime = $('#selectStartTime option:selected').val();
+	let endTime = $('#selectEndTime option:selected').val();
+	console.log(setDate)
+   
+	console.log(headCount)
+	console.log(purpose)
+	console.log(contents)
+	console.log(startTime)
+	console.log(endTime)
+	$.ajax({
+		type:'POST',
+		 url:'add',
+		data:{ 
+	    productNum: productNum,
+		headCount:headCount,
+		purpose: purpose,
+        contents: contents,
+		bookDate: setDate,
+		start: startTime,
+		end: endTime
+		},success:function(result){
+			console.log(result)
+           if(result.trim()>0){
+			swal("예약이 성공적으로 완료되었습니다").then(function(){
+              window.close();
+			})
+		   }else{
+			swal("예약이 취소되었습니다").then(function(){
+				window.close();
+			  })
+		   }
+		   
+		}
+	})
+})
+
+
+
 

@@ -60,26 +60,18 @@ public class BookController {
             bookDTO.setStartTime(startHour2);
             bookDTO.setEndTime(endHour2);
             
-            
-            
             int result = bookService.setBook(bookDTO);
             
-            String message="";
-            if(result>0) {
-            	message="예약이 성공적으로 완료되었습니다";
-            }else {
-            	message="예약이 취소되셨습니다. 다시 시도해주세요";
-            }
-            
-            model.addAttribute("url", "add");
-            model.addAttribute("message", message);
-            
-            return "commons/result";
+            model.addAttribute("result", result);
+            System.out.println(result);
+            return "commons/ajaxResult";
 	}
 	
 	@GetMapping("detail")
-	public void getDetail(BookDTO bookDTO , Model model, HttpSession session) throws Exception{
-//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+	public void getDetail(Model model, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		BookDTO bookDTO = new BookDTO();
+		bookDTO.setId(memberDTO.getId());
 		bookDTO = bookService.getDetail(bookDTO);
 		
 		ProductDTO productDTO = new ProductDTO();
