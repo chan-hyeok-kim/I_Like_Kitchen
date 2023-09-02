@@ -33,26 +33,31 @@ public class PartnerController {
 	@Autowired
 	private PartnerService partnerService;
 	
-	private final String SERVICE_KEY = "bJ6kMWyyBbwha2z3sjC5XeliD%2F%2FTMdJcXmr9veQc%2BIKmwfUs0IYcoRmG0F7qXaxYkf61qRvzBy67J30mnS64Mg%3D%3D";
-	
 	@Autowired
 	private MemberService memberService;
 	
+	private final String SERVICE_KEY = "bJ6kMWyyBbwha2z3sjC5XeliD%2F%2FTMdJcXmr9veQc%2BIKmwfUs0IYcoRmG0F7qXaxYkf61qRvzBy67J30mnS64Mg%3D%3D";
+	
+	
+	
 	//로그인
-	@GetMapping("Login")
+	@GetMapping("partnerLogin")
 	public void getMemberLogin() throws Exception {
 		
 	}
 	
-	@PostMapping("Login")
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request) throws Exception {
+	@PostMapping("partnerLogin")
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(memberDTO);
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		
+		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
+		
+		System.out.println(memberDTO);
 		if(memberDTO != null) {
-			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);
-			
+			session.setAttribute("partner", partnerDTO);
 			mv.setViewName("redirect:../");
 		}else {
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");

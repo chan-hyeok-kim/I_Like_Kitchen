@@ -23,11 +23,11 @@
 		<form action="./partnerLogin" method="post">
 			<div class="mb-3">
   				<label for="id" class="form-label">ID</label>
-  				<input type="text" name="id" class="form-control" id="id" value="" placeholder="ID를 입력하세요.">
+  				<input type="text" name="id" class="form-control" id="id" value="id7" placeholder="ID를 입력하세요.">
 			</div>
 			<div class="mb-3">
   				<label for="password" class="form-label">PASSWORD</label>
-  				<input type="password" name="password" class="form-control" id="password" value="" placeholder="PW를 입력하세요.">
+  				<input type="password" name="password" class="form-control" id="password" value="123123" placeholder="PW를 입력하세요.">
 			</div>
 
 			<div class="mb-3">

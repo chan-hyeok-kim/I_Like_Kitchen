@@ -69,8 +69,8 @@ public class MemberController {
 
 	
 	@GetMapping(value = "idCheck")
-	public String getIdCheck(MemberDTO memberDTO, Model model) throws Exception {
-		memberDTO = memberService.getIdCheck(memberDTO);
+	public String getMemberIdCheck(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = memberService.getMemberIdCheck(memberDTO);
 		
 		int result = 0;  //중복
 		if(memberDTO == null) {
@@ -118,7 +118,7 @@ public class MemberController {
 	
 	//로그인
 	@GetMapping("memberLogin")
-	public ModelAndView getMemberLogin(Model model, HttpSession session) throws Exception {
+	public ModelAndView getMemberLogin(HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 //		String kakaoAuthUrl = kakaoSns.getAuthorizationUrl(session);
 		//System.out.println("카카오:" + kakaoAuthUrl);
@@ -126,7 +126,7 @@ public class MemberController {
 		mv.setViewName("/member/memberLogin");
     
         SNSLogin snsLogin = new SNSLogin(sns);
-		model.addAttribute("naverUrl", snsLogin.getNaverAuthURL("test"));
+		mv.addObject("naverUrl", snsLogin.getNaverAuthURL("test"));
 		
 		return mv;
 	}
@@ -136,12 +136,12 @@ public class MemberController {
   
 	
 	@PostMapping("memberLogin")
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletResponse response, HttpServletRequest request) throws Exception {
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(memberDTO);
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		
+		System.out.println(memberDTO);
 		if(memberDTO != null) {
-			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);
 			
 			mv.setViewName("redirect:../");

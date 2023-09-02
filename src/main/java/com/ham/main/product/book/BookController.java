@@ -31,16 +31,16 @@ public class BookController {
 	private ProductService productService;
 	
 	@GetMapping("add")
-	public void setBook() throws Exception {
-
+	public void setBook(ProductDTO productDTO, Model model) throws Exception {
+            model.addAttribute("kto",productDTO);
 	}
 
 	@PostMapping("add")
 	public String setBook(BookDTO bookDTO,HttpSession session,Model model, String start, String end) throws Exception {
-            MemberDTO member = (MemberDTO)session.getAttribute("member");
+            MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		   
-            bookDTO.setId("id677");
-      
+            bookDTO.setId(memberDTO.getId());
+            
             Date date=bookDTO.getBookDate();
             SimpleDateFormat dfm = new SimpleDateFormat("yyyy-MM-dd");
             
@@ -61,7 +61,7 @@ public class BookController {
             bookDTO.setEndTime(endHour2);
             
             
-            bookDTO.setStatus("예약");
+            
             int result = bookService.setBook(bookDTO);
             
             String message="";

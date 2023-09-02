@@ -12,7 +12,7 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
-  public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
+    public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getMemberByEmail", memberDTO);
 	}
 	
@@ -30,8 +30,8 @@ public class MemberDAO {
 	
 	
 	
-	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getIdCheck", memberDTO);
+	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getMemberIdCheck", memberDTO);
 	}
 	
 	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {

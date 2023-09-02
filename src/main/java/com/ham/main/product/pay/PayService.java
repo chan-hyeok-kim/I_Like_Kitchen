@@ -1,9 +1,10 @@
 package com.ham.main.product.pay;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ham.main.product.pay.refund.RefundDTO;
 
 @Service
 public class PayService {
@@ -12,6 +13,7 @@ public class PayService {
 	private PayDAO payDAO;
 	
 	public int setPay(PayDTO payDTO) throws Exception{
+	
 		return payDAO.setPay(payDTO);
 	}
 	
@@ -22,9 +24,6 @@ public class PayService {
 	public int setRefund(RefundDTO refundDTO) throws Exception{
 	    return payDAO.setRefund(refundDTO);	
 	}
-	
-	public int setUpdatePay(PayDTO payDTO) throws Exception{
-		return payDAO.setUpdatePay(payDTO);
-	}
+
 
 }

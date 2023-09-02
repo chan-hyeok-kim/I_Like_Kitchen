@@ -1,10 +1,10 @@
 package com.ham.main.product.pay;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.ham.main.product.pay.refund.RefundDTO;
 
 @Repository
 public class PayDAO {
@@ -25,7 +25,5 @@ public class PayDAO {
 	    return sqlSession.insert(NAMESPACE+"setRefund", refundDTO);	
 	}
 	
-	public int setUpdatePay(PayDTO payDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+"setUpdatePay", payDTO);
-	}
+	
 }

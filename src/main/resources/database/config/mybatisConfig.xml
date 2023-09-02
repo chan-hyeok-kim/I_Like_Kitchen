@@ -5,28 +5,31 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd"> 
   
 <configuration>
-
-	
-
    <typeAliases>
         <typeAlias type="java.lang.Long" alias="Long"/>
-        <typeAlias type="com.ham.main.util.Pager" alias="Pager"/>
+        <typeAlias type="java.lang.String" alias="String"/>
         <typeAlias type="java.util.List" alias="List"/>
-     
-        <typeAlias type="com.ham.main.product.ProductFileDTO" alias="ProductFileDTO"/>
-        <typeAlias type="com.ham.main.product.ProductDTO" alias="ProductDTO"/>
-        <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
-        
-        <typeAlias type="com.ham.main.product.pay.PayDTO" alias="PayDTO"/>
-        <typeAlias type="com.ham.main.product.pay.refund.RefundDTO" alias="RefundDTO"/>
+        <typeAlias type="java.util.Map" alias="Map"/>
+        <typeAlias type="com.ham.main.util.Pager" alias="Pager"/>
         
         <typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
-        <typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
-     
-        <typeAlias type="com.ham.main.notice.NoticeDTO" alias="NoticeDTO"/>
-		<typeAlias type="com.ham.main.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
-       
         <typeAlias type="com.ham.main.partner.PartnerDTO" alias="PartnerDTO"/>
+        <typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
+        
+        <typeAlias type="com.ham.main.product.ProductDTO" alias="ProductDTO"/>
+        <typeAlias type="com.ham.main.product.ProductFileDTO" alias="ProductFileDTO"/>
+       
+        <typeAlias type="com.ham.main.product.book.BookDTO" alias="BookDTO"/>
+        <typeAlias type="com.ham.main.product.pay.PayDTO" alias="PayDTO"/>
+        <typeAlias type="com.ham.main.product.pay.RefundDTO" alias="RefundDTO"/>
+       
+        <typeAlias type="com.ham.main.review.ReviewFileDTO" alias="ReviewFileDTO"/>
+ 	    <typeAlias type="com.ham.main.review.ReviewService" alias="ReviewService"/>
+        <typeAlias type="com.ham.main.question.QuestionDTO" alias="QuestionDTO"/>
+	    <typeAlias type="com.ham.main.review.ReviewDTO" alias="ReviewDTO"/>
+       
+        <typeAlias type="com.ham.main.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.ham.main.notice.NoticeFileDTO" alias="NoticeFileDTO"/> 
    
    </typeAliases>
 

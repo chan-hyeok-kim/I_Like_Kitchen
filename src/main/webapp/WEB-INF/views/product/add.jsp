@@ -21,8 +21,8 @@
 		  <input type="text" name="productName" class="form-control" id="productName" placeholder="상품명">
 		</div>
 		<div class="mb-3">
-		  <label for="Contents" class="form-label">상품내용</label>
-		  <textarea class="form-control" name="Contents" id="Contents" rows="3"></textarea>
+		  <label for="contents" class="form-label">상품내용</label>
+		  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
 		</div>	
 		<div class="mb-3">
 		  <label for="address" class="form-label">주소</label>
@@ -34,7 +34,7 @@
 		</div>
 		<div class="mb-3">
 		  <label for="tell" class="form-label">연락처</label>
-		  <input type="text" name="tell" class="form-control" id="tell" placeholder="'-'를 넣어서 입력해주세요">
+		  <input type="text" name="phone" class="form-control" id="phone" placeholder="'-'를 넣어서 입력해주세요">
 		</div>
 
 		

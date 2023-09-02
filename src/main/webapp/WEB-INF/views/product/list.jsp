@@ -167,9 +167,7 @@
 			  <button type="submit" class="btn btn-primary">검색</button>
 		  </form>
 		</div>
-<br><br><br>		
-<a class="btn btn-info" href="./add">상품등록</a>
-<br>
+
 </body>
 <footer>
 <script type="text/javascript"></script>

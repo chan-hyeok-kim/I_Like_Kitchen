@@ -143,7 +143,7 @@
 			      	<ul class="nav">
 			      		<c:if test="${not empty member}">
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/partner/partnerJoin">공간등록</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
 			      		</c:if>
 			      		<c:if test="${empty member}">

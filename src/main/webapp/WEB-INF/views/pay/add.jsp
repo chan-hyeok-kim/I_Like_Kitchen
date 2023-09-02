@@ -344,6 +344,6 @@ $('#bookTime').append(start)
 $('#bookTime').append('~'+end)
 
 </script>
-<script src="/resources/js/pay.js"></script>
+<script src="/resources/js/pay/pay.js"></script>
 </body>
 </html>

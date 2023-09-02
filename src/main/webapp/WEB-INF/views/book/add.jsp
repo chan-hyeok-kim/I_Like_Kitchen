@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약 페이지</title>
 
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
@@ -147,26 +147,10 @@ section{
 
 
 						<form action="./add" method="post">
-						<input type="hidden" name="productNum" value="2">
-							<div class="b1">
-								<div class="f1"><label for="radio1">상품 선택</label></div>
-
-								<div class="form-check cho" style="margin-left: 20px">
-									<input class="form-check-input" type="radio" name="choice"
-										id="radio1" value="1">
-										<label class="form-check-label"
-										for="radio1"><div>일반</div></label>
-								</div>
-								<div class="form-check cho" style="margin-left: 20px">
-									<input class="form-check-input" type="radio" name="choice"
-										id="radio2" value="2"><label class="form-check-label"
-										for="radio2"><div>종일 대관</div></label>
-								</div>
-								
-							</div>
+						<input type="hidden" name="productNum" value="${kto.productNum}">
 
 							<div class="b1" id="date">
-								<div class="f1"><label for="calendar">날짜 선택</label>
+								<div class="f1"><label for="calendar">날짜를 선택해주세요</label>
 								
 								</div>
 								
@@ -292,7 +276,7 @@ section{
 
 
 
-		<script src="/resources/js/calendar.js"></script>
+		<script src="/resources/js/book/calendar.js"></script>
 
 		
 

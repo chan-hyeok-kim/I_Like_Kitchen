@@ -43,7 +43,7 @@ IMP.init('imp27436400')
 						orderNum:"4",
 						payAmount:34000,
 						pay_method : 'card',
-						sid: uid
+						payNum: uid
 						}
 							//기타 필요한 데이터가 있으면 추가 전달
 						,success:function(result){

@@ -98,6 +98,6 @@
   $('#bookTime').append('~'+end)
   
   </script>
-<script src="/resources/js/refund.js"></script>
+<script src="/resources/js/pay/refund.js"></script>
 </body>
 </html>

@@ -33,6 +33,9 @@ public class PartnerDAO {
 		return sqlSession.update(NAMESPACE+"setPermitUpdate", partnerDTO);
 	}
 	
+	public PartnerDTO getPartnerInfo(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPartnerInfo", id);
+	}
 
 
 }

@@ -49,7 +49,7 @@
 		<result column="PARTNERNUM" property="partnerNum"/>
 		<result column="REGDATE" property="regDate"/>
 		<result column="ADDRESS" property="address"/>
-		<result column="TEL" property="tel"/>
+		<result column="PHONE" property="phone"/>
 		<result column="PRICE" property="price"/>
 		<result column="CONTENTS" property="contents"/>
 		<result column="PRODUCTNAME" property="productName"/>

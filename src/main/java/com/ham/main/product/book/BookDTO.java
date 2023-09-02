@@ -11,16 +11,15 @@ import lombok.Data;
 @Data
 public class BookDTO {
 	
-	private Long orderNum;
+	private Long bookNum;
 	private Long productNum;
 	private String id;
-	private Integer choice;
 	private String contents;
 	private Integer headCount;
 	private String purpose;
 	private Date bookDate;
 	private java.util.Date startTime;
 	private java.util.Date endTime;
-	private String status;
+	private String bookCheck;
 
 }

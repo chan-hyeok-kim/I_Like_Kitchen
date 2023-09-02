@@ -8,7 +8,7 @@
   <mapper namespace="com.ham.main.member.MemberDAO">
   
   	<!-- 로그인 -->
-	<select id="getMemberLogin" resultMap="getLoginResult" resultType="MemberDTO">
+	<select id="getMemberLogin" resultMap="getLoginResult" parameterType="MemberDTO">
 		SELECT M.*, R.* 
 			FROM MEMBER M 
 			INNER JOIN MEMBERROLE MR
@@ -25,7 +25,7 @@
   		<result column="NAME" property="name"/>
   		<result column="EMAIL" property="email"/>
   		<result column="PHONE" property="phone"/> 
-  		<result column="NAVERID" property="naverId"/>
+  		<result column="POINT" property="point"/>
   		
   		<collection property="roles" javaType="List" ofType="RoleDTO">
 			<id column="ROLENUM" property="roleNum"/>
@@ -40,8 +40,8 @@
 	
 	<!-- 회원가입 -->
 	<insert id="setJoin" parameterType="MemberDTO">
-		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, NAVERID)
-			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, {#naverId})
+		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
+			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
 	</insert>
 	
 	<!-- ID 중복체크 -->
@@ -50,7 +50,7 @@
   	</select>
   	
   	<!-- EMAIL 중복체크 -->
-  	<select id="getMemberEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
+  	<select id="getMemberByEmail" parameterType="MemberDTO" resultType="MemberDTO">
   		SELECT * FROM MEMBER WHERE EMAIL = #{email}
   	</select>
   	

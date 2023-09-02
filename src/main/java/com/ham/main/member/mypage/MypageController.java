@@ -45,22 +45,22 @@ public class MypageController {
 	
 	@GetMapping("info")
 	public String getInfo(MemberDTO memberDTO, HttpSession session) throws Exception{
-		memberDTO.setPassword("1234");
-		memberDTO.setId("qwe");
+		memberDTO = (MemberDTO) session.getAttribute("member");
+
 		memberDTO = memberService.getCheckInfo(memberDTO);
 		
-		session.setAttribute("kto", memberDTO);
+		session.setAttribute("member", memberDTO);
 		
 		return "/mypage/info";
 	}
 	
 	@GetMapping("checkInfo")
 	public String checkInfo(MemberDTO memberDTO, HttpSession session, Model model) throws Exception {
-		memberDTO = (MemberDTO)session.getAttribute("kto");
+		memberDTO = (MemberDTO)session.getAttribute("member");
 		
 		memberDTO = memberService.getCheckInfo(memberDTO);
 		
-		model.addAttribute("kto", memberDTO);
+		model.addAttribute("member", memberDTO);
 		
 		return "/mypage/checkInfo";
 	}

@@ -22,8 +22,8 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 
-	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
-		return memberDAO.getIdCheck(memberDTO);
+	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberIdCheck(memberDTO);
 	}
 	
 	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {

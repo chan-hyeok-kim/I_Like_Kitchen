@@ -1,4 +1,4 @@
-package com.ham.main.product.pay.refund;
+package com.ham.main.product.pay;
 
 import java.sql.Date;
 
@@ -9,9 +9,15 @@ public class RefundDTO {
 	private Long refundAmount;
 	private Date refundDate;
 	private String refundReason;
+	private String refundCheck;
 	
 	
-	
+	public String getRefundCheck() {
+		return refundCheck;
+	}
+	public void setRefundCheck(String refundCheck) {
+		this.refundCheck = refundCheck;
+	}
 	public String getRefundReason() {
 		return refundReason;
 	}

@@ -15,7 +15,7 @@
 <resultMap type="PartnerDTO" id="getDetailResult">
    <id column="PARTNERNUM" property="partnerNum"/>
    <result column="PARTNEREMAIL" property="partnerEmail"/>
-   <result column="PARTNERADDRESS" property="partnerAddress"/>
+   <result column="PARTNERPHONE" property="partnerPhone"/>
    <result column="PARTNERACCOUNT" property="partnerAccount"/>
    <result column="PARTNERDATE" property="partnerDate"/>
    <result column="PARTNERNAME" property="partnerName"/>
@@ -25,14 +25,20 @@
    
    <association javaType="ProductDTO" property="productDTO">
       <id column="PRODUCTNUM" property="productNum"/>
-     <result column="REGDATE" property="regDate"/>
-   <result column="ADDRESS" property="address"/>
-   <result column="TELL" property="tell"/>
-   <result column="PRICE" property="price"/>
-   <result column="CONTENTS" property="contents"/>
-   <result column="PRODUCTNAME" property="productName"/>
+      <result column="REGDATE" property="regDate"/>
+      <result column="ADDRESS" property="address"/>
+      <result column="PHONE" property="phone"/>
+      <result column="PRICE" property="price"/>
+      <result column="CONTENTS" property="contents"/>
+      <result column="PRODUCTNAME" property="productName"/>
    </association>
 </resultMap>
+
+<select id="getPartnerInfo" resultType="PartnerDTO" parameterType="String">
+   SELECT * 
+     FROM PARTNER
+    WHERE ID = #{id}
+</select>
 
 <select id="getList" resultType="PartnerDTO">
    SELECT * FROM PARTNER

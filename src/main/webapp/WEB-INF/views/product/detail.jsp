@@ -25,7 +25,7 @@
 	    	<p>${dto.contents}</p>
 	    	<p>${dto.price} 원</p>
 	    			
-    
+        <button type="button" id="book-btn" class="btn btn-primary" data-productNum="${dto.productNum}">예약하기</button> 
 		<%-- <h1>${requestScope.dto.address}</h1>
 		<div>
 			${dto.contents}
@@ -35,8 +35,10 @@
 		<a class="btn btn-danger" href="./delete?productNum=${dto.productNum}">삭제</a>
 	</section>
 	<script src="/resources/js/delete.js"></script>
+    <script src="/resources/js/product/productBook.js"></script>	
 </body>
 <footer>
+
 <script src="/resources/js/bootstrap.bundle.min.js"></script>
 <c:import url="../temp/footer.jsp"></c:import>
 </footer>

@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -35,7 +36,6 @@ import com.ham.main.product.ProductService;
 import com.ham.main.product.book.BookDTO;
 import com.ham.main.product.book.BookService;
 import com.ham.main.product.pay.port.PortController;
-import com.ham.main.product.pay.refund.RefundDTO;
 import com.ham.main.util.AlterDate;
 import com.ham.main.util.CreatOrderNum;
 
@@ -81,33 +81,16 @@ public class PayController {
 		PartnerDTO partnerDTO = new PartnerDTO();
 		partnerDTO.setPartnerNum(productDTO.getPartnerNum());
 		partnerDTO = partnerService.getDetail(partnerDTO);
-	    
-//		Date date = new Date(bookDTO.getStartTime());
-//		java.util.Date startDate = bookDTO.getStartTime();
-//		Calendar startCalendar = Calendar.getInstance();
-//		startCalendar.setTime(startDate);
-//		System.out.println(startCalendar.getTime());
-//		String startTime = startCalendar.getTime().toString();
-//		startTime = startTime.substring(11, 16);
-//		System.out.println(startTime);
-//		
-//		java.util.Date endDate = bookDTO.getEndTime();
-//		Calendar endCalendar = Calendar.getInstance();
-//		endCalendar.setTime(endDate);
-//	    String endTime = endCalendar.getTime().toString();
-//		endTime = endTime.substring(11, 16);
-//	    System.out.println(endTime);
-		
+	   
 	
 		model.addAttribute("kto", partnerDTO);
 		model.addAttribute("book", bookDTO);
 	}
 	
 	@PostMapping("add")
-	public String setPay(PayDTO payDTO,Model model, String pay_method) throws Exception{
+	public String setPay(PayDTO payDTO, Model model) throws Exception{
+//	    Pay-method받을까 말까
 		
-		payDTO.setId("id677");
-		payDTO.setProductNum(2L);
 		int result = payService.setPay(payDTO);
 	    
 		Long payNum = payDTO.getPayNum();
@@ -132,7 +115,7 @@ public class PayController {
 	@PostMapping("refund")
 	public String setRefund(Model model,PayDTO payDTO,@RequestParam("reason") String reason) throws Exception{
 //		payDTO =  payService.getDetail(payDTO);
-		int result = payService.setUpdatePay(payDTO);
+		
 		RefundDTO refundDTO = new RefundDTO();
 		refundDTO.setPayNum(payDTO.getPayNum());
 		
@@ -145,14 +128,12 @@ public class PayController {
 		
 		String token = portController.getImportToken();
 		payDTO = payService.getDetail(payDTO);
-		String uid = payDTO.getSid();
-	
+	    String uid = payDTO.getPayNum().toString();
+	    
 		portController.payMentCancle(token, uid, refundDTO.getRefundAmount(), reason);
+	
+		int result = payService.setRefund(refundDTO);
 		
-		if(result>0) {
-			
-			payService.setRefund(refundDTO);
-		}
 		model.addAttribute("result",result);
 		
 		

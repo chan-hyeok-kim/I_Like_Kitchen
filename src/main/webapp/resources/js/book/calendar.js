@@ -13,11 +13,17 @@ if(month<10){
 }
 today = year+'-'+month+'-'+date
 console.log(today)
+
+
+
+
+
 $('#selectTimeTitle').append(month+'월 '+date+'일')
           //  for(c of cho){
 			document.addEventListener('DOMContentLoaded', function() { 
-			  // c.addEventListener("click", function() {
+			  // c.addEventListener("click", function() {	
 
+ 
 				let calendarEl = document.getElementById('calendar');
 				let calendar = new FullCalendar.Calendar(calendarEl, {
 					initialView : 'dayGridMonth',

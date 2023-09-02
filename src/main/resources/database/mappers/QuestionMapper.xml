@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.ham.main.question.QuestionDAO">
+  
+  <!-- 게시물 목록 -->
+<select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
+ SELECT
+  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
+ FROM "QUESTION" ORDER BY QUESTIONNUM 
+</select>
+<!-- 게시물 작성 -->
+<insert id="add" parameterType="QuestionDTO">
+ INSERT INTO QUESTION
+   VALUES(question_seq.nextval, #{productNum},#{id},#{questionContents},SYSDATE, #{questionKind})
+</insert>
+  <!-- 게시물 조회 -->
+<select id="view" parameterType="Long" resultType="com.ham.main.question.QuestionDTO">
+ SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
+   FROM QUESTION
+  WHERE QUESTIONNUM = #{questionNum}   
+</select>
+<!-- 게시물 수정 -->
+<update id="update" parameterType="QuestionDTO" >
+ UPDATE QUESTION
+  SET
+   QUESTIONKIND=#{questionKind},
+   QUESTIONDATE = SYSDATE,
+   QUESTIONCONTENTS = #{questionContents}
+  WHERE QUESTIONNUM = #{questionNum}
+</update>
+<!-- 게시물 삭제 -->
+<delete id="delete" parameterType="Long">
+ DELETE 
+   FROM QUESTION
+  WHERE QUESTIONNUM = #{questionNum}
+</delete>
+<!-- 게시물 총 갯수 -->
+<select id="count" resultType="Long">
+  SELECT COUNT(QUESTIONNUM) FROM QUESTION
+</select>
+<!-- 게시물 목록 + 페이징 -->
+<select id="listPage" parameterType="hashMap" resultType="QuestionDTO">
+  SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
+    FROM QUESTION
+   ORDER BY QUESTIONNUM DESC
+   LIMIT #{displayPost}, #{postNum}
+</select>
+
+  </mapper>

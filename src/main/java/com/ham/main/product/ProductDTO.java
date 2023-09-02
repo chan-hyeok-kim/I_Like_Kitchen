@@ -14,7 +14,7 @@ public class ProductDTO {
 	private String contents;
 	private Date regDate;
 	private String address;
-	private Long tel;
+	private String phone;
 	private Long price;
 	private List<ProductFileDTO> productFileDTOs;
 	

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ham.main.member.MemberDTO;
+import com.ham.main.partner.PartnerDTO;
+import com.ham.main.partner.PartnerService;
 import com.ham.main.util.Pager;
 
 
@@ -23,6 +26,9 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private PartnerService partnerService;
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(Pager pager, Model model)throws Exception{
@@ -36,26 +42,24 @@ public class ProductController {
 	public ModelAndView getDetail(ProductDTO productDTO, ModelAndView mv)throws Exception{
 		productDTO = productService.getDetail(productDTO);
 		
-		List<ProductFileDTO> fileList = productDTO.getProductFileDTOs();
-		
-		for(ProductFileDTO f: fileList) {
-			System.out.println(f.getFileName());
-			System.out.println(f.getOriginalName());
-			System.out.println(f.getFileNum());
-			System.out.println(f.getProductNum());
-		}
-			
-		
 		mv.addObject("dto", productDTO);
 		mv.setViewName("product/detail");
 		return mv;
 	}
+	
 	@RequestMapping(value = "add" , method = RequestMethod.GET)
 	public void setAdd()throws Exception{
 		
 	}
+	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String setAdd(ProductDTO productDTO, HttpSession session, MultipartFile[] files)throws Exception{
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		PartnerDTO partnerDTO = (PartnerDTO) session.getAttribute("partner");
+		
+		System.out.println(partnerDTO.getPartnerNum());
+//		사업자등록번호 상품에 셋팅
+		productDTO.setPartnerNum(partnerDTO.getPartnerNum());
 		
 		int result = productService.setAdd(productDTO, files, session);
 		return "redirect:./list";

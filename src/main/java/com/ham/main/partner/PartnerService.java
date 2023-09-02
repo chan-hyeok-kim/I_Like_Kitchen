@@ -30,7 +30,10 @@ public class PartnerService {
 	
 	public int setPermitUpdate(PartnerDTO partnerDTO) throws Exception{
 		return partnerDAO.setPermitUpdate(partnerDTO);
-
+	}
+	
+	public PartnerDTO getPartnerInfo(String id) throws Exception{
+		return partnerDAO.getPartnerInfo(id);
 	}
 	
 }
