@@ -54,13 +54,6 @@
 			    <label for="email" class="form-label fw-bold">이메일</label>
 			    <div class="input-group">
 			        <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력" >
-			        <select class="form-control" name="emailDomain" id="emailDomain" >
-			        	<option value="" selected="selected">선택</option>
-			            <option value="@naver.com">@naver.com</option>
-			            <option value="@daum.net">@daum.net</option>
-			            <option value="@gmail.com">@gmail.com</option>
-			            <option value="@nate.com">@nate.com</option>
-			        </select>
 			    </div>
 				<div id="emailResult"></div>
 			    <div class="input-group mt-3">
@@ -78,6 +71,6 @@
 		</div>
 	</div>
 
-	<script src="/resources/js/member/memberJoin.js"></script>
+	<script src="/resources/js/member/join.js"></script>
 </body>
 </html>

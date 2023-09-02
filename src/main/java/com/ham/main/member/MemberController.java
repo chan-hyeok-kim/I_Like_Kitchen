@@ -82,15 +82,29 @@ public class MemberController {
 		return "commons/ajaxResult";
 	}
 	
-	@PostMapping("memberEmailCheck")
-	public ModelAndView getMemberEmailCheck(MemberDTO memberDTO)throws Exception {
-	    boolean check = memberService.getMemberEmailCheck(memberDTO);
-	    ModelAndView mv = new ModelAndView();
+	@GetMapping("memberEmailCheck")
+	public String getMemberEmailCheck(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = memberService.getMemberEmailCheck(memberDTO);
 
-	    mv.addObject("result", check);
-	    mv.setViewName("commons/ajaxResult");
-	    return mv;
+		int result = 0;  //중복
+		if(memberDTO == null) {
+			result = 1; //중복x
+		}
+
+		model.addAttribute("result", result);
+
+		return "commons/ajaxResult";
 	}
+
+//	@PostMapping("memberEmailCheck")
+//	public ModelAndView getMemberEmailCheck(MemberDTO memberDTO)throws Exception {
+//	    boolean check = memberService.getMemberEmailCheck(memberDTO);
+//	    ModelAndView mv = new ModelAndView();
+//
+//	    mv.addObject("result", check);
+//	    mv.setViewName("commons/ajaxResult");
+//	    return mv;
+//	}
 	
 	//이용약관
 	@GetMapping("memberAgree")

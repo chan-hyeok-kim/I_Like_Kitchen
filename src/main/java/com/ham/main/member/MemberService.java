@@ -26,16 +26,20 @@ public class MemberService {
 		return memberDAO.getMemberIdCheck(memberDTO);
 	}
 	
-	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
-	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
-
-	    boolean check = true;
-
-	    if (memberDTO != null) {
-	        check = false;
-	    }
-	    return check;
+	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberEmailCheck(memberDTO);
 	}
+
+//	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
+//	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
+//
+//	    boolean check = true;
+//
+//	    if (memberDTO != null) {
+//	        check = false;
+//	    }
+//	    return check;
+//	}
 	
 	//회원가입
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {

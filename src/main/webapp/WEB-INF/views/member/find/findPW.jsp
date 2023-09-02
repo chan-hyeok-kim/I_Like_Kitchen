@@ -41,13 +41,6 @@
 	                <label for="email" class="form-label">이메일</label>
 	                <div class="input-group">
 	                    <input type="text" id="email" name="email" required class="form-control">
-	                    <select id="emailDomain" name="emailDomain" class="form-control">
-	                    	<option value="" selected="selected">선택</option>
-	                        <option value="@naver.com">@naver.com</option>
-	                        <option value="@daum.net">@daum.net</option>
-	                        <option value="@gmail.com">@gmail.com</option>
-	                        <option value="@nate.com">@nate.com</option>
-	                    </select>
 	                </div>
 	                <div id="emailResult"></div>
 					<div class="input-group mt-3">

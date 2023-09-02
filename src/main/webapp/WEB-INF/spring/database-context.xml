@@ -8,13 +8,22 @@
     <context:property-placeholder location="classpath:database/config/database.properties"/>
      
     <!-- mybatis 사용하기 위해 객체 생성 -->
-    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+    <!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
          <property name="username" value="${oracle.user}"></property>
-         <!-- property=setter -->
+         property=setter
          <property name="password" value="${oracle.password}"></property>
          <property name="url" value="${oracle.url}"></property>
          <property name="driverClassName" value="${oracle.driver}"></property>
-    </bean>
+    </bean> -->
+    
+    <!-- mybatis 사용하기 위해 객체 생성 -->
+	<!-- Connection -->
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property name="username" value="${oracle.user}"></property>
+		<property name="password" value="${oracle.password}"></property>
+		<property name="url" value="${oracle.url}"></property>
+		<property name="driverClassName" value="${oracle.dirver}"></property>
+	</bean>
     
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
          <property name="dataSource" ref="dataSource"></property>
