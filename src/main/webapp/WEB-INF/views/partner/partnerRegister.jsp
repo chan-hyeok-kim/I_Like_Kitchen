@@ -58,21 +58,8 @@
 			    <label for="partnerEmail" class="form-label fw-bold">이메일</label>
 			    <div class="input-group">
 			        <input type="text" class="form-control" name="partnerEmail" id="partnerEmail" placeholder="이메일 입력" >
-			        <select class="form-control" name="partnerEmailDomain" id="partnerEmailDomain" >
-			        	<option value="" selected="selected">선택</option>
-			            <option value="@naver.com">@naver.com</option>
-			            <option value="@daum.net">@daum.net</option>
-			            <option value="@gmail.com">@gmail.com</option>
-			            <option value="@nate.com">@nate.com</option>
-			        </select>
 			    </div>
 				<div id="partnerEmailResult"></div>
-			    <!-- <div class="input-group mt-3">
-			        <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-			        <button type="button" class="btn btn-primary" id="mail-Check-Btn">인증번호 발송</button>
-			        <button type="button" class="btn btn-secondary d-none" id="mail-Confirm-Btn">인증번호 확인</button>
-			    </div>
-			    <span id="mail-check-warn"></span> -->
 			</div>
 			
 			<div class="mb-3">

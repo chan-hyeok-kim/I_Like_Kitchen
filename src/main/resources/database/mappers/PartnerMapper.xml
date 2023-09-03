@@ -5,6 +5,13 @@
  
 <mapper namespace="com.ham.main.partner.PartnerDAO"> 
 
+	<!-- 협력업체 사업자 등록 -->
+    <insert id="setPartnerRegisterJoin" parameterType="PartnerDTO">
+    	INSERT INTO 
+    		PARTNER(PARTNERNUM, ID, PARTNEREMAIL, PARTNERACCOUNT, PARTNERDATE, PARTNERNAME, PARTNERPHONE, COMPANYNAME)
+    			VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerAccount}, #{partnerDate}, #{partnerName}, #{partnerPhone}, #{companyName})
+    </insert>
+
 <select id="getDetail" resultMap="getDetailResult" parameterType="PartnerDTO">
    SELECT *
      FROM PARTNER PT LEFT OUTER JOIN PRODUCT PD
