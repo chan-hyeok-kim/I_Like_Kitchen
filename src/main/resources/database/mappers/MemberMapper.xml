@@ -64,8 +64,8 @@
   	     WHERE PHONE=#{phone}
   	</select>
   	
-  	<select id="getBySnsNaver" resultType="MemberDTO">
-        SELECT * FROM MEMBER WHERE NAVERID = #{naverId}
+  	<select id="getBySnsNaver" resultType="SnsMemberDTO">
+        SELECT * FROM SNSMEMBER WHERE SNSID = #{snsId}
     </select>
     
     <select id="getDetail" resultType="MemberDTO" parameterType="MemberDTO">
@@ -135,9 +135,11 @@
 		WHERE ID = #{id}
 	</delete>
 	
-
-
-
+    <insert id="setSnsJoin" parameterType="SnsMemberDTO">
+		INSERT INTO SNSMEMBER (SNSID, PLATFORM, SNSNAME, SNSEMAIL)
+			VALUES (#{snsId}, #{platForm}, #{snsName}, #{snsEmail})
+	</insert>
+    
 
 
   </mapper>

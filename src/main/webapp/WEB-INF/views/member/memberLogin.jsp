@@ -39,10 +39,14 @@
 				<a href="/member/memberAgree">회원가입</a>
 
 			</div>
-			<div>
-				<button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button>
-			</div>		
+		<!-- 	<div>
+				<button type ="button" class = "btn" onclick="location.href='kakao_login'"><img src='/resources/icon/kakao.png'></button>
+			</div>	 -->	
 		</form>
+		
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code">  
+		<img src = "/resources/icon/kakao.png">
+	</a>
 		
 <div class="text-center">
 		   <a href="${naverUrl}"><img width="300" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 

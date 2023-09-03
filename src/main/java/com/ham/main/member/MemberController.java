@@ -7,6 +7,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.net.http.HttpRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,8 +18,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,12 +45,15 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 
 
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.mail.MailSendController;
 import com.ham.main.member.mail.MailSendService;
+import com.ham.main.util.auth.KakaoLogin;
 import com.ham.main.util.auth.SNSLogin;
+import com.ham.main.util.auth.SnsUrls;
 import com.ham.main.util.auth.SnsValue;
 
 
@@ -59,11 +72,12 @@ public class MemberController {
 	@Autowired
 	private MailSendService mailSendService;
 
-      @Inject
-	private SnsValue sns;
-      
-//    @Autowired  
-//	private SNSLogin kakaoSns;
+    @Inject
+	private SnsValue naverSns;
+    
+    @Autowired
+    private KakaoLogin kakaoSns;
+    
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
     
 
@@ -118,21 +132,13 @@ public class MemberController {
 	
 	//로그인
 	@GetMapping("memberLogin")
-	public ModelAndView getMemberLogin(HttpSession session) throws Exception {
-		ModelAndView mv = new ModelAndView();
-//		String kakaoAuthUrl = kakaoSns.getAuthorizationUrl(session);
-		//System.out.println("카카오:" + kakaoAuthUrl);
-//		model.addAttribute("urlKakao", kakaoAuthUrl);
-		mv.setViewName("/member/memberLogin");
-    
-        SNSLogin snsLogin = new SNSLogin(sns);
-		mv.addObject("naverUrl", snsLogin.getNaverAuthURL("test"));
+	public void getMemberLogin(HttpSession session,Model model) throws Exception {
 		
-		return mv;
+		
+        SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naverUrl", snsLogin.getNaverAuthURL("test"));
+		
 	}
-  
-
-  
   
 	
 	@PostMapping("memberLogin")
@@ -176,68 +182,7 @@ public class MemberController {
 		return mv;
 	}
 	
-   
   
-
-	
-	// 카카오 로그인 성공시 callback
-//	@RequestMapping(value = "/callbackKakao", method = { RequestMethod.GET, RequestMethod.POST })
-//	public String callbackKakao(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws Exception {
-//		System.out.println("로그인 성공 callbackKakao");
-//		OAuth2AccessToken oauthToken;
-//		oauthToken = kakaoSns.getAccessToken(session, code, state);
-//		// 로그인 사용자 정보를 읽어온다
-//		String apiResult = kakaoSns.getUserProfile(oauthToken);
-//			
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObj;
-//			
-//		jsonObj = (JSONObject) jsonParser.parse(apiResult);
-//		JSONObject response_obj = (JSONObject) jsonObj.get("kakao_account");	
-//		JSONObject response_obj2 = (JSONObject) response_obj.get("profile");
-//		System.out.println(jsonObj);
-//		Long response_obj3 = (Long) jsonObj.get("id");
-//		
-//		// 프로필 조회
-//		String email = (String) response_obj.get("email");
-//		String name = (String) response_obj2.get("nickname");
-//		System.out.println(response_obj3);
-//		String id = response_obj3.toString();
-//		// 세션에 사용자 정보 등록
-//		// session.setAttribute("islogin_r", "Y");
-//		MemberDTO memberDTO = new MemberDTO();
-//		memberDTO.setName(name);
-//		memberDTO.setEmail(email);
-//		session.setAttribute("signIn", apiResult);
-//		System.out.println(apiResult);
-//		session.setAttribute("email", email);
-//		session.setAttribute("name", name);
-//		
-//		session.setAttribute("member", memberDTO);
-//		SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
-//		System.out.println(id);
-//		snsMemberDTO.setSnsId(id);
-//		snsMemberDTO.setSnsName(name);
-//		snsMemberDTO.setSnsEmail(email);
-//		long result = memberService.getKakaoLogin(snsMemberDTO);
-//		if(memberService.getKakaoLogin(snsMemberDTO)>0) {
-//			
-//		}else {
-//			memberService.setKakaoJoin(snsMemberDTO);
-//		}
-//		
-//	
-//		return "/home";
-//	}
-//	
-	
-	    
-
-
-
-
-	
-
 	
 	//sns로그인
 	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})
@@ -247,7 +192,7 @@ public class MemberController {
 		logger.info("snsLoginCallback: service={}", service);
 	      SnsValue sns = null;
 	      if(StringUtils.equals("naver", service)) {
-	    	  sns = sns;
+	    	  sns = naverSns;
 	      }
 	      
 	      //1.code를 이용해서 access_token받기
@@ -257,20 +202,65 @@ public class MemberController {
 	      SnsMemberDTO snsMemberDTO = snsLogin.getUserProfile(code); //1,2번 동시
 	      System.out.println("Profile>>" + snsMemberDTO);
 		      
-//	      3.DB에 해당 유저가 존재하는지 체크
-	      snsMemberDTO = memberService.getBySns(snsMemberDTO);  
-          if(snsMemberDTO == null) {
-        	  model.addAttribute("result","존재하지 않는 사용자입니다 가입해주세요");
-          }else {
-        	  model.addAttribute("result",snsMemberDTO.getSnsName() + "님 반갑습니다.");
+//	      3.DB에 해당 유저가 존재하는지 체크 ->호스트 가입시에 넣어야할듯
+//	      반드시 memberDTO로 실행해야함
+//	     MemberDTO = memberService.getBySns(MemberDTO);  
+//          if(MemberDTO == null) {
+//        	  model.addAttribute("result","존재하지 않는 사용자입니다 가입해주세요");
+//          }else {
+//        	  model.addAttribute("result",snsMemberDTO.getSnsName() + "님 반갑습니다.");
         	  //4. 존재 시 강제 로그인, 미존재시 가입페이지로
-        	  
-        	  session.setAttribute("member", snsMemberDTO);
+	      if(!(snsMemberDTO == null)) {
+	    	  memberService.setSnsJoin(snsMemberDTO);
+	    	  session.setAttribute("member", snsMemberDTO);
           }
           
-	      return "commons/loginResult";
+	      return "/home";
 	}
 	
+	
+	@RequestMapping("/kakao_login")
+	public String kakao_login() throws Exception {
+		return "callbackKakao";
+	}
+	
+	@RequestMapping("/callbackKakao")
+	public ModelAndView kakao_redirect(@RequestParam("code") String code, HttpSession session) throws Exception  {
+	
+	ModelAndView mav = new ModelAndView();
+	String accessToken = kakaoSns.getAccessToken(code);
+    // 2번 인증코드로 토큰 전달
+    HashMap<String, Object> userInfo = kakaoSns.getUserInfo(accessToken);
+
+    System.out.println("login info : " + userInfo.toString());
+
+    if(userInfo.get("account_email") != null) {
+        session.setAttribute("userId", userInfo.get("account_email"));
+        session.setAttribute("accessToken", accessToken);
+    }
+    mav.addObject("userId", userInfo.get("account_email"));
+    SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
+    snsMemberDTO.setPlatForm("kakao");
+    snsMemberDTO.setSnsEmail(userInfo.get("account_email").toString());
+    snsMemberDTO.setSnsId(userInfo.get("id").toString());
+    snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
+    System.out.println(snsMemberDTO);
+    session.setAttribute("member", snsMemberDTO);
+    mav.setViewName("/home");
+    return mav;
+}
+//	@RequestMapping("/callbackKakao")
+//	public String kakao_redirect(@RequestParam("code") String code) throws Exception  {
+//		System.out.println(kakaoSns.kakao_redirect(code));
+//		String result = kakaoSns.kakao_redirect(code);
+//		
+//        System.out.println(result);
+//		
+//		//		memberService.setSnsJoin(snsMemberDTO);
+////		여기도 중복 체크해야됨
+////        request.getSession().setAttribute("member", snsMemberDTO);
+//	    return "/home";
+//	}
 	
 
 	
