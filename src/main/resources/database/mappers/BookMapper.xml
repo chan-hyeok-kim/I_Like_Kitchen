@@ -16,6 +16,12 @@
       WHERE BOOKNUM=#{bookNum} 
   </select>
   
+  <select id="getList" resultType="BookDTO" parameterType="BookDTO">
+     SELECT *
+       FROM BOOK
+      WHERE id=#{id}
+  </select>
+  
   
   
   </mapper>

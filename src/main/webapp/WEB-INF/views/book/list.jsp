@@ -32,6 +32,7 @@
 
 <table class="book-table">
 <thead>
+<c:forEach items="${list}" var="i"></c:forEach>
    <tr>
       <th rowspan="2">상품사진</th>
       <th>${product.productName}</th>
@@ -45,7 +46,7 @@
    </tr> --%>
       <tr>
          <td>상품 선택</td> 
-         <td>${kto.choice}</td> 
+         <td>${i.choice}</td> 
       </tr>
       <tr>
        <td>예약자</td>
@@ -53,19 +54,19 @@
       </tr>
        <tr>
        <td>예약번호</td>
-       <td>${kto.orderNum}</td>
+       <td>${i.orderNum}</td>
       </tr>
       <tr>
        <td>예약 날짜</td>
-       <td>${kto.bookDate}</td>
+       <td>${i.bookDate}</td>
       </tr>
       <tr>
        <td>사용시간</td>
-       <td id="bookTime" data-startTime="${kto.startTime}" data-endTime="${kto.endTime}"></td>
+       <td id="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></td>
       </tr>
       <tr>
        <td>승인 상태</td>
-       <td>${kto.status}</td>
+       <td>${i.bookCheck}</td>
       </tr>
    </tbody>
 

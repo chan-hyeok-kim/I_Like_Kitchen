@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.MemberService;
+import com.ham.main.product.book.BookDTO;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -20,7 +21,8 @@ public class MypageController {
 	private MemberService memberService;
 	
   	@GetMapping("onGoing")
-	public String getOnGoing() throws Exception{
+	public String getOnGoing(HttpSession session) throws Exception{
+		
 		
 		return "/mypage/onGoing";
 	}

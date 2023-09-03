@@ -33,13 +33,16 @@
 			
     		$(location).attr("href", "productDetail");
 		});
+    	
+    	let id = '${member.id}'
 
-        $.ajax(function(){
-            type:'GET'
-             url:'book/detail?'
-            $('#gridDiv')
+        $.ajax({
+            type:'GET',
+             url:'/book/list?id='+id
+        ,success:function(result){
+        	$('#gridDiv').html(result);
+        }
         })
-        
     </script>
 </body>
 </html>

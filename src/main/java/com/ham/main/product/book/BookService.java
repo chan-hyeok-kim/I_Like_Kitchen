@@ -1,5 +1,7 @@
 package com.ham.main.product.book;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class BookService {
 
 	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
 		return bookDAO.getDetail(bookDTO);
+	}
+	
+	public List<BookDTO> getList(BookDTO bookDTO) throws Exception{
+		return bookDAO.getList(bookDTO);
 	}
 }

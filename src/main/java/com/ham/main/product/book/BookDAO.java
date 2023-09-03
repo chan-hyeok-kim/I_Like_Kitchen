@@ -1,5 +1,7 @@
 package com.ham.main.product.book;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,10 @@ public class BookDAO {
 	
 	public BookDTO getDetail(BookDTO bookDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getDetail", bookDTO);
+	}
+	
+	public List<BookDTO> getList(BookDTO bookDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", bookDTO);
 	}
 
 }

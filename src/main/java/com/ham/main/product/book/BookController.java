@@ -1,6 +1,7 @@
 package com.ham.main.product.book;
 
 import java.util.Date;
+import java.util.List;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 
@@ -84,6 +85,13 @@ public class BookController {
 	
 	}
 	
+	@GetMapping("list")
+	public void getList(BookDTO bookDTO,Model model) throws Exception{
+		 List<BookDTO> bl = bookService.getList(bookDTO);
+//		 상품조회추가
+		 model.addAttribute("list", bl);
+		 
+	}
 	
 
 }
