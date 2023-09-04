@@ -21,8 +21,8 @@ public class BookDAO {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", bookDTO);
 	}
 	
-	public List<BookDTO> getList(BookDTO bookDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList", bookDTO);
+	public List<BookDTO> getBookInfo(BookDTO bookDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getBookInfo", bookDTO);
 	}
 
 }

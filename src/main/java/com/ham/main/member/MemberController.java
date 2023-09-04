@@ -249,19 +249,7 @@ public class MemberController {
     mav.setViewName("/home");
     return mav;
 }
-//	@RequestMapping("/callbackKakao")
-//	public String kakao_redirect(@RequestParam("code") String code) throws Exception  {
-//		System.out.println(kakaoSns.kakao_redirect(code));
-//		String result = kakaoSns.kakao_redirect(code);
-//		
-//        System.out.println(result);
-//		
-//		//		memberService.setSnsJoin(snsMemberDTO);
-////		여기도 중복 체크해야됨
-////        request.getSession().setAttribute("member", snsMemberDTO);
-//	    return "/home";
-//	}
-	
+
 
 	
 	  @PostMapping("phoneAuth")

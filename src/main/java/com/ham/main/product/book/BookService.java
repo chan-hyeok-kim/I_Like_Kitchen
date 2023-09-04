@@ -19,7 +19,7 @@ public class BookService {
 		return bookDAO.getDetail(bookDTO);
 	}
 	
-	public List<BookDTO> getList(BookDTO bookDTO) throws Exception{
-		return bookDAO.getList(bookDTO);
+	public List<BookDTO> getBookInfo(BookDTO bookDTO) throws Exception{
+		return bookDAO.getBookInfo(bookDTO);
 	}
 }

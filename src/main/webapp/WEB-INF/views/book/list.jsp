@@ -17,25 +17,34 @@
  }
  #btn{
       margin-top: 10px;
-      margin-left: 100px;
-      width: 200px;
+      margin-left: 140px;
+      width: 100px;
+      height: 40px;
       /* background: #F4F3EA;
       border: 1px solid black;
        */
  }
-
- 
+ #list-border{
+      width: 1000px;
+ }
 
 </style>
 </head>
 <body>
 
+<section>
+<c:if test="${empty list}">
+진행 중인 예약 내역이 없습니다 
+</c:if>
+
+<c:if test="${not empty list}">
+<c:forEach items="${list}" var="i">
+<div id="book-table-div">
 <table class="book-table">
 <thead>
-<c:forEach items="${list}" var="i"></c:forEach>
    <tr>
       <th rowspan="2">상품사진</th>
-      <th>${product.productName}</th>
+      <th></th>
       
    </tr>
   </thead>
@@ -44,17 +53,14 @@
    <td>상품명</td>
    <td>${product.productName}</td>
    </tr> --%>
-      <tr>
-         <td>상품 선택</td> 
-         <td>${i.choice}</td> 
-      </tr>
+    
       <tr>
        <td>예약자</td>
        <td>${member.name}</td>
       </tr>
        <tr>
        <td>예약번호</td>
-       <td>${i.orderNum}</td>
+       <td>${i.bookNum}</td>
       </tr>
       <tr>
        <td>예약 날짜</td>
@@ -64,6 +70,10 @@
        <td>사용시간</td>
        <td id="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></td>
       </tr>
+        <tr>
+         <td>인원</td> 
+         <td>${i.headCount}</td> 
+      </tr>
       <tr>
        <td>승인 상태</td>
        <td>${i.bookCheck}</td>
@@ -71,18 +81,23 @@
    </tbody>
 
 </table>
+           
+<button id="btn" class="btn btn-outline-primary" data-bookNum="${i.bookNum}">결제하기</button>
 
-<button id="btn" class="btn btn-outline-primary" data-orderNum="${kto.orderNum}">결제하기</button>
-
-
+<div id="list-border"></div>
+</div>        
+            
+</c:forEach>
+</c:if>
+</section>
 
 <script>
-let orderNum = $('#btn').attr("data-orderNum");
-console.log(orderNum);
+let bookNum = $('#btn').attr("data-bookNum");
+console.log(bookNum);
 
 $('#btn').click(function(){
 	
-	    location.href="../pay/add?orderNum="+orderNum;
+	    location.href="../pay/add?bookNum="+bookNum;
 	})
    
 

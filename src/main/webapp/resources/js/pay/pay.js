@@ -40,7 +40,7 @@ IMP.init('imp27436400')
 						url: "/pay/add", //cross-domain error가 발생하지 않도록 주의해주세요
 						type: 'POST',
 						data: {
-						orderNum:"4",
+						bookNum:1,
 						payAmount:34000,
 						pay_method : 'card',
 						payNum: uid

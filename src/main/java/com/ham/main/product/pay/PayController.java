@@ -10,8 +10,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -93,7 +94,7 @@ public class PayController {
 		
 		int result = payService.setPay(payDTO);
 	    
-		Long payNum = payDTO.getPayNum();
+		String payNum = payDTO.getPayNum();
 		model.addAttribute("payNum", payNum);
 //		model.addAttribute("result", result);
 		return "commons/ajaxPayResult"; 
@@ -142,11 +143,29 @@ public class PayController {
 		
 		
 		return "commons/ajaxResult";
+	}
+	
+    @GetMapping("list")
+    public void getList(BookDTO bookDTO,Model model) throws Exception{
+    	List<BookDTO> bl = bookService.getBookInfo(bookDTO);  
+    	
+    	List<PayDTO> pl = new ArrayList<PayDTO>();
+		for(BookDTO b: bl) {
+			PayDTO payDTO = new PayDTO();
+			payDTO.setBookNum(b.getBookNum()); 
+			payDTO = payService.getPayInfo(payDTO);	
+			if(payDTO!=null) {
+			System.out.println(payDTO);
+			pl.add(payDTO);
+			}
+		}
 		
-
-	 	
+		if(pl.size()!=0) {
+			model.addAttribute("payList", pl);
+			model.addAttribute("list", bl);
+		}
 		
-	 	
+		
 		
 	}
 		

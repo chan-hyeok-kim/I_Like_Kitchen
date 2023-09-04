@@ -151,7 +151,7 @@ th:first-child {
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${kto.productDTO.tell}</td>
+				<td>${kto.productDTO.phone}</td>
 			</tr>
 			<tr>
 				<td>EMAIL</td>

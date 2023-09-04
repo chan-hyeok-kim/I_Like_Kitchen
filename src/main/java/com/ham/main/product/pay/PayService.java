@@ -1,6 +1,7 @@
 package com.ham.main.product.pay;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class PayService {
 	
 	public int setRefund(RefundDTO refundDTO) throws Exception{
 	    return payDAO.setRefund(refundDTO);	
+	}
+	
+	public PayDTO getPayInfo(PayDTO payDTO) throws Exception{
+		return payDAO.getPayInfo(payDTO); 
 	}
 
 

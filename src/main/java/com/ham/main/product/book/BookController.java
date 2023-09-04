@@ -86,8 +86,8 @@ public class BookController {
 	}
 	
 	@GetMapping("list")
-	public void getList(BookDTO bookDTO,Model model) throws Exception{
-		 List<BookDTO> bl = bookService.getList(bookDTO);
+	public void getBookInfo(BookDTO bookDTO,Model model) throws Exception{
+		 List<BookDTO> bl = bookService.getBookInfo(bookDTO);
 //		 상품조회추가
 		 model.addAttribute("list", bl);
 		 

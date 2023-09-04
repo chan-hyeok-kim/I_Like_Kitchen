@@ -91,5 +91,7 @@ public class MemberDAO {
 		System.out.println(snsMemberDTO);
 		return sqlSession.insert(NAMESPACE+"setSnsJoin", snsMemberDTO);
 	}
+	
+
 
 }
