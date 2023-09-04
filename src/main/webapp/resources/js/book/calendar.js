@@ -37,11 +37,11 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
 	                start: '0000-00-00',
 				    end: today,
 				    display: 'background',
-				    backgroundColor:'gray'
+				    backgroundColor:'gray',			
 				    }],
 					 dateClick : function(info) {
-					 	console.log(info.date)
-		               
+						console.log(info.date)
+		          //    info.dayEl.style.backgroundColor = 'yellow';
 					 	console.log(today)
 					    if(info.dateStr<today){ 
 						

@@ -149,6 +149,8 @@ public class PayController {
     public void getList(BookDTO bookDTO,Model model) throws Exception{
     	List<BookDTO> bl = bookService.getBookInfo(bookDTO);  
     	
+    	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
+		
     	List<PayDTO> pl = new ArrayList<PayDTO>();
 		for(BookDTO b: bl) {
 			PayDTO payDTO = new PayDTO();
@@ -158,11 +160,20 @@ public class PayController {
 			System.out.println(payDTO);
 			pl.add(payDTO);
 			}
+			
+			ProductDTO productDTO = new ProductDTO();
+			 productDTO.setProductNum(b.getProductNum());
+			 
+			 productDTO = productService.getDetail(productDTO);
+			 if(productDTO!=null) {
+			    pdl.add(productDTO);
+			 }
 		}
 		
 		if(pl.size()!=0) {
 			model.addAttribute("payList", pl);
 			model.addAttribute("list", bl);
+			model.addAttribute("productList", pdl);
 		}
 		
 		

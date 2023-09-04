@@ -20,29 +20,7 @@
             </div>
 
             <div id="gridDiv">
-                <div id="imgDiv">
-                    <img src="../../img/kitchen01.jpg">
-                </div>            
-                <div id="contentsDiv">
-                    <table>
-                        <tr>
-                            <th>상품명</th>
-                            <td>공유 주방</td>
-                        </tr>
-                        <tr>
-                            <th>예약 번호</th>
-                            <td>80286</td>
-                        </tr>
-                        <tr>
-                            <th>사용 기간</th>
-                            <td>2023-08-25 ~ 2023-08-25</td>
-                        </tr>
-                        <tr>
-                        	<th>취소 사유</th>
-                        	<td>기타</td>
-                        </tr>
-                    </table>
-
+                
                     <button class="detailBtn">상세 내역</button>
                 </div>
             </div>
@@ -51,21 +29,7 @@
                     <img src="../../img/kitchen01.jpg">
                 </div>            
                 <div id="contentsDiv">
-                    <table>
-                        <tr>
-                            <th>상품명</th>
-                            <td>공유 주방</td>
-                        </tr>
-                        <tr>
-                            <th>예약 번호</th>
-                            <td>80286</td>
-                        </tr>
-                        <tr>
-                            <th>사용 기간</th>
-                            <td>2023-08-25 ~ 2023-08-25</td>
-                        </tr>
-                    </table>
-
+                
                     <button class="detailBtn">상세 내역</button>
                 </div>
             </div>

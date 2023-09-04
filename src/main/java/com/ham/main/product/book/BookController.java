@@ -1,5 +1,6 @@
 package com.ham.main.product.book;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ham.main.member.MemberDTO;
 import com.ham.main.product.ProductDTO;
 import com.ham.main.product.ProductService;
+import com.ham.main.util.Pager;
 
 
 @Controller
@@ -88,9 +90,22 @@ public class BookController {
 	@GetMapping("list")
 	public void getBookInfo(BookDTO bookDTO,Model model) throws Exception{
 		 List<BookDTO> bl = bookService.getBookInfo(bookDTO);
-//		 상품조회추가
+
+		 List<ProductDTO> pl = new ArrayList<ProductDTO>();
+		
+		 for(BookDTO b: bl) {
+			 ProductDTO productDTO = new ProductDTO();
+			 productDTO.setProductNum(b.getProductNum());
+			 
+			 productDTO = productService.getDetail(productDTO);
+			 if(productDTO!=null) {
+			    pl.add(productDTO);
+			 }
+		 }
+		 System.out.println(pl);
+		 System.out.println(pl.size());
 		 model.addAttribute("list", bl);
-		 
+		 model.addAttribute("productList", pl);
 	}
 	
 

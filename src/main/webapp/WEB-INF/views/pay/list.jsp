@@ -12,7 +12,8 @@
 <style type="text/css">
  table{
       width: 400px;
-      background: #F8F9FA;
+      /* background: #F8F9FA; */
+      background: #cde7ff8f;
       text-align: center;
  }
  #btnHome{
@@ -39,14 +40,14 @@
 
 
 <c:if test="${not empty payList}">
-<c:forEach items="${payList}" var="p">
+<c:forEach items="${payList}" var="p" varStatus="fi">
 <div id="pay-table-div">
 <table class="pay-table">
 <thead>
    <tr>
-      <th rowspan="2">사진</th>
-      <th>상품명</th>
-      
+      <th rowspan="2"><img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}"></th>
+      <th><p>${productList[fi.index].productName}</p>
+      연락처: ${productList[fi.index].phone}</th>
    </tr>
     
   </thead>
@@ -60,10 +61,7 @@
         <td>결제 날짜</td>
         <td>${p.payDate}</td>
        </tr>
-      <tr>
-       <td>사용시간</td>
-       <td id="bookTime" data-startTime="${list.startTime}" data-endTime="${list.endTime}"></td>
-      </tr>
+      
       <tr>
        <td>결제 금액</td>
        <td>${p.payAmount}</td>

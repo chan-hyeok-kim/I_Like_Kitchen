@@ -27,7 +27,29 @@
  #list-border{
       width: 1000px;
  }
-
+ 
+ #book-table-div div{
+     display: flex;
+     
+ }
+ #book-table-div{
+     margin-left: 30px;
+     vertical-align: top;
+     
+ }
+ #book-table-div div p{
+     width: 103px;
+ }
+ #book-list-unorder{
+    list-style: none;
+ }
+ #book-img{
+    
+ }
+ #book-table-list{
+    display: flex;
+    width: 800px;
+ }
 </style>
 </head>
 <body>
@@ -38,83 +60,41 @@
 </c:if>
 
 <c:if test="${not empty list}">
-<c:forEach items="${list}" var="i">
-<div id="book-table-div">
-<table class="book-table">
-<thead>
-   <tr>
-      <th rowspan="2">상품사진</th>
-      <th></th>
-      
-   </tr>
-  </thead>
-   <tbody>
-  <%--  <tr>
-   <td>상품명</td>
-   <td>${product.productName}</td>
-   </tr> --%>
-    
-      <tr>
-       <td>예약자</td>
-       <td>${member.name}</td>
-      </tr>
-       <tr>
-       <td>예약번호</td>
-       <td>${i.bookNum}</td>
-      </tr>
-      <tr>
-       <td>예약 날짜</td>
-       <td>${i.bookDate}</td>
-      </tr>
-      <tr>
-       <td>사용시간</td>
-       <td id="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></td>
-      </tr>
-        <tr>
-         <td>인원</td> 
-         <td>${i.headCount}</td> 
-      </tr>
-      <tr>
-       <td>승인 상태</td>
-       <td>${i.bookCheck}</td>
-      </tr>
-   </tbody>
+<c:forEach items="${list}" var="i" varStatus="fi">
 
-</table>
-           
-<button id="btn" class="btn btn-outline-primary" data-bookNum="${i.bookNum}">결제하기</button>
+<div>
+<div id="book-table-list">
+<div id="book-img">
+<img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}">
+</div>
+
+<div id="book-table-div">
+   <div><p>예약자</p><p>예약번호</p></div>
+   <div><p>${member.name}</p><p>${i.bookNum}</p></div>
+   <div><p>예약 날짜</p><p>사용시간</p></div>
+   <div><p>${i.bookDate}</p><p id="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
+   <div><p>인원</p><p>승인 상태</p></div>
+   <div><p>${i.headCount}</p><p id="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
+   
+   <div><p></p><p></p></div>
+   </div>
+    <button id="btn" class="btn btn-outline-primary" data-bookNum="${i.bookNum}">결제하기</button>
+  
+  </div>
+ 
+</div>
+
+   
+   
+ 
 
 <div id="list-border"></div>
-</div>        
-            
+         
 </c:forEach>
 </c:if>
 </section>
 
 <script>
-let bookNum = $('#btn').attr("data-bookNum");
-console.log(bookNum);
-
-$('#btn').click(function(){
-	
-	    location.href="../pay/add?bookNum="+bookNum;
-	})
-   
-
-
-start = $('#bookTime').attr('data-startTime');
-end = $('#bookTime').attr('data-endTime')
-console.log(typeof start);
-console.log(start);
-console.log(end);
-
-start=start.substring(11,16);
-end=end.substring(11,16);
-console.log(start);
-
-$('#bookTime').append(start)
-$('#bookTime').append('~'+end)
-
 
 
 </script>
