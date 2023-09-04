@@ -17,7 +17,7 @@
             <div class="terms-container">
                 <div class="terms-title">
 					<h2 class="header-news text-center">Welcome I Like Kitchen</h2>
-					<h3 class="my-4 text-center">Partner Login Page</h3>
+					<h3 class="my-4 text-center">Partner Login</h3>
 				</div>
 
 				<c:if test="${not empty errorMessage}">
@@ -48,6 +48,6 @@
 		</div>
 	</div>
 
-	<script src="/resources/js/partner/partnerRegister.js"></script>
+	<!-- <script src="/resources/js/partner/"></script> -->
 </body>
 </html>

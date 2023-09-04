@@ -66,6 +66,14 @@
                         <div class="swiper-slide swiper-slide-active" style="width: 464px; margin-right: 18px;">
                             <button type="button" class="btnss">
                                 <div class="part3_1">
+                                    <p class="part3_2 text-center">사업자 정보를 등록해주세요!</p>
+                                    <p class="part3_2 text-center">등록 후 파트너 가입승인이 완료됩니다.</p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" style="width: 464px; margin-right: 18px;">
+                            <button type="button" class="btnss">
+                                <div>
                                     <p>사업자 정보를 등록해주세요!</p>
                                     <p>등록 후 파트너 가입승인이 완료됩니다.</p>
                                 </div>
@@ -73,7 +81,7 @@
                         </div>
                         <div class="swiper-slide swiper-slide-active" style="width: 464px; margin-right: 18px;">
                             <button type="button" class="btnss">
-                                <div class="part3_1">
+                                <div>
                                     <p>사업자 정보를 등록해주세요!</p>
                                     <p>등록 후 파트너 가입승인이 완료됩니다.</p>
                                 </div>
@@ -81,15 +89,7 @@
                         </div>
                         <div class="swiper-slide swiper-slide-active" style="width: 464px; margin-right: 18px;">
                             <button type="button" class="btnss">
-                                <div class="part3_1">
-                                    <p>사업자 정보를 등록해주세요!</p>
-                                    <p>등록 후 파트너 가입승인이 완료됩니다.</p>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="swiper-slide swiper-slide-active" style="width: 464px; margin-right: 18px;">
-                            <button type="button" class="btnss">
-                                <div class="part3_1">
+                                <div>
                                     <p>사업자 정보를 등록해주세요!</p>
                                     <p>등록 후 파트너 가입승인이 완료됩니다.</p>
                                 </div>

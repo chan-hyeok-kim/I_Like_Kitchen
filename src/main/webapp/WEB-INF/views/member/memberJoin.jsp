@@ -14,7 +14,7 @@
 	
 	<div class="container-fluid page-content">
 		<div class="row justify-content-center">
-			<h1 class="col-md-7 my-5 text-center fw-bold">회원가입</h1>
+			<h2 class="col-md-7 my-5 text-center fw-bold">회원가입</h2>
 		</div>
 		<div class = "row justify-content-center">
 			<form class="col-md-6" id="frm" action="./memberJoin" method="post">
@@ -64,8 +64,8 @@
 			    <span id="mail-check-warn"></span>
 			</div>
 	
-			<div class="mb-3">
-				<button class="btn btn-outline-success fw-bold" id="btn" type="button">회원가입</button> 
+			<div class="mb-3 text-center">
+				<button class="btn btn-outline-secondary fw-bold" id="btn" type="button">회원가입</button> 
 			</div>
 			</form>
 		</div>

@@ -162,6 +162,14 @@ align-items: flex-start;
     overflow: hidden;
 }
 
+.part3_2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    }
+
 .swiper-backface-hidden .swiper-slide {
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
