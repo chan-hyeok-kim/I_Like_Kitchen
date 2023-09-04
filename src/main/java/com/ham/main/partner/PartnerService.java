@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ham.main.member.MemberDTO;
+
 @Service
 public class PartnerService {
 
@@ -14,12 +16,10 @@ public class PartnerService {
 	@Autowired
 	private PartnerDAO partnerDAO;
 	
-	public int setPartnerRegisterJoin(PartnerDTO partnerDTO) throws Exception {
-		return partnerDAO.setPartnerRegisterJoin(partnerDTO);
-  }
+	public int setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
+		return partnerDAO.setPartnerJoin(partnerDTO);
+    }
 
-
-	
 	public PartnerDTO getDetail(PartnerDTO partnerDTO) throws Exception{
 		return partnerDAO.getDetail(partnerDTO);
 	}

@@ -7,8 +7,8 @@
   
     <!-- 회원가입 -->
   	<insert id="setMemberJoin" parameterType="MemberDTO">
-  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE)
-  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
+  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
+  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
   	</insert>
 
   	<select id="getMemberByEmail" resultType="MemberDTO">
@@ -62,11 +62,6 @@
   		SELECT * FROM MEMBER WHERE EMAIL = #{email}
   	</select>
   	
-  	<!-- ID찾기 -->
-  	<!-- <select id="findId" parameterType="MemberDTO" resultType="MemberDTO">
-  		SELECT ID FROM MEMBER WHERE EMAIL = #{email}
-  	</select> -->
-  	
   	<select id="memberTelCount" resultType="Long" parameterType="MemberDTO">
   	    SELECT COUNT(PHONE) FROM MEMBER
   	     WHERE PHONE=#{phone}
@@ -82,7 +77,7 @@
          WHERE ID=#{id} 
     </select>
     
-    
+    <!-- 관리자용 -->
     <update id="adminAdd" parameterType="MemberDTO">
  UPDATE MEMBERROLE 
     SET ROLENUM=3

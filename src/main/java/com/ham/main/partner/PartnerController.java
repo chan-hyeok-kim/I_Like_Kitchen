@@ -53,23 +53,33 @@ public class PartnerController {
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		
 		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
-		
-		System.out.println(memberDTO);
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			session.setAttribute("partner", partnerDTO);
+			//session.setAttribute("partner", partnerDTO);
+			if(partnerDTO != null) {
+				session.setAttribute("partner", partnerDTO);
+			}else {
+				mv.addObject("errormessage", "파트너로그인에 실패했습니다.");
+			}
 			mv.setViewName("redirect:../");
 		}else {
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");
 			mv.setViewName("/partner/partnerLogin");
 		}
-		
+	
 		return mv;
 	}
 	
+	//파트너페이지
+	@GetMapping("partnerPage")
+	public void getPartnerPage() throws Exception {
+		
+	}
+	
+	
 	//사업자등록
 	@GetMapping("partnerRegister")
-	public ModelAndView setPartnerRegisterJoin() throws Exception {
+	public ModelAndView setPartnerJoin() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("serviceKey", SERVICE_KEY);
 		mv.setViewName("/partner/partnerRegister");
@@ -78,9 +88,9 @@ public class PartnerController {
 	}
 	
 	@PostMapping("partnerRegister")
-	public ModelAndView setPartnerRegisterJoin(PartnerDTO partnerDTO) throws Exception {
+	public ModelAndView setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = partnerService.setPartnerRegisterJoin(partnerDTO);
+		int result = partnerService.setPartnerJoin(partnerDTO);
 		mv.setViewName("redirect:../");
 		
 		return mv;
