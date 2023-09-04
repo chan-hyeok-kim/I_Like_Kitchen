@@ -10,39 +10,35 @@
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
+	<div>
 	
-	<table class="border mx-auto p-2" style="width: 1600px;">
-	 <thead>
-	  <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
-	   <th class="p-2 g-col-6 border">질문번호</th>
-	   <th class="p-2 g-col-6 border">상품번호</th>
-	   <th class="p-2 g-col-6 border">작성자</th>
-	   <th class="p-2 g-col-6 border" style="width:1000px">작성내용</th>
-	   <th class="p-2 g-col-6 border">질문날짜</th>
-	   <th class="p-2 g-col-6 border">질문종류</th>
-	  </tr>
-	 </thead>
+		<div>
+	 <a href="/question/add" class="btn btn-warning">문의등록</a>
+	 	</div>
+	 </div>
 	 
 	 <tbody>
-			  	<c:forEach items="${list}" var="list">
-	 
-		 <tr class="grid gap-3">
-		  <td class="p-2 g-col-6 border">${list.questionNum}</td>
-		  <td class="p-2 g-col-6 border">${list.productNum}</td>
-		  <td class="p-2 g-col-6 border">
+		  	<c:forEach items="${list}" var="list">
+		<div>
+	 	
+		 <tr class="grid gap-3" href="/question/view?questionNum=${list.questionNum}">
+		  <td type="hidden" ${list.questionNum}></td>
+		  <td type="hidden" ${list.productNum}></td>
+		   <span class="p-2 g-col-6 ">[${list.questionKind}]</span>
+		  <td class="p-2 g-col-6 ">
     		<a href="/question/view?questionNum=${list.questionNum}">${list.id}</a>
 			</td>
-		  <td class="p-2 g-col-6 overflow-auto border">${list.questionContents}</td>
-		  <td class="p-2 g-col-6 border">${list.questionDate}</td>
-		   <td class="p-2 g-col-6 border">${list.questionKind}</td>
+		  <span>|</span>
+		  <span class="p-2 g-col-6 ">${list.questionDate}</span>
+		</div>	
+		  <div class="p-2 g-col-6 overflow-auto border">${list.questionContents}</div>
 		 </tr>
 			
 
 		</c:forEach>
 	 </tbody>
-	
-	</table>
-			
+	</div>
+		
 			<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -8,13 +8,13 @@
   <!-- 게시물 목록 -->
 <select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
  SELECT
-  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
+  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
  FROM "QUESTION" ORDER BY QUESTIONNUM 
 </select>
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="QuestionDTO">
  INSERT INTO QUESTION
-   VALUES(question_seq.nextval, #{productNum},#{id},#{questionContents},SYSDATE, #{questionKind})
+   VALUES(question_seq.nextval, #{productNum},#{id},#{questionKind},#{questionContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="com.ham.main.question.QuestionDTO">
@@ -43,7 +43,7 @@
 </select>
 <!-- 게시물 목록 + 페이징 -->
 <select id="listPage" parameterType="hashMap" resultType="QuestionDTO">
-  SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
+  SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
     FROM QUESTION
    ORDER BY QUESTIONNUM DESC
    LIMIT #{displayPost}, #{postNum}

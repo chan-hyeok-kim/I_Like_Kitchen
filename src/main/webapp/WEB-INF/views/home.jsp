@@ -55,7 +55,5 @@
 
 
 </body>
-<footer>
-<c:import url="./temp/footer.jsp"></c:import>
-</footer>
+<c:import url="temp/footer.jsp"></c:import>
 </html>

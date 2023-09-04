@@ -32,31 +32,7 @@ public class ReviewController {
 	  return "review/list";
  }
 
-	@GetMapping("fileDown")
-	public String getFileDown(ReviewFileDTO reviewFileDTO, Model model)throws Exception{
-		reviewFileDTO = reviewService.getFileDown(reviewFileDTO);
-		model.addAttribute("file", reviewFileDTO);
-		
-		return "fileManager";
-	}
-	
-	@PostMapping("setContentsImgDelete")
-	public String setContentsImgDelete(String path,HttpSession session,Model model) throws Exception{
-		boolean check=reviewService.setContentsImgDelete(path, session);
-		model.addAttribute("result", check);
-		
-		return "commons/ajaxResult";
-	}
-	
-	@PostMapping("setContentsImg")
-	public String setContentsImg(MultipartFile files,HttpSession session,Model model) throws Exception{
-		System.out.println("setContentsImg");
-		System.out.println(files.getOriginalFilename());
-		String path=reviewService.setContentsImg(files, session);
-		model.addAttribute("result",path);
-		
-		return "commons/ajaxResult";
-	}
+
 	
 	@GetMapping("fileDelete")
 	public String setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session ,Model model)throws Exception{

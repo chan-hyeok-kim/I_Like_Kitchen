@@ -16,7 +16,7 @@
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="ReviewDTO">
  INSERT INTO REVIEW
-  VALUES(review_seq.nextval,#{productNum},#{id},#{reviewContents},sysdate,#{reviewRate})
+  VALUES(review_seq.nextval,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="ReviewDTO">
@@ -56,7 +56,8 @@ SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE,
   		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
   	</insert>
 <delete id="setFileDelete" parameterType="ReviewFileDTO">
-		DELETE REVIEWFILE WHERE FILENUM=#{fileNum}
+		DELETE REVIEWFILE 
+		WHERE FILENUM=#{fileNum}
 	</delete>
 	
 	<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">

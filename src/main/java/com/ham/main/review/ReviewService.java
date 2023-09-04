@@ -21,26 +21,6 @@ public class ReviewService {
 	private FileManager fileManager;
  
 
- 	public ReviewFileDTO getFileDown(ReviewFileDTO reviewFileDTO)throws Exception{
-		return reviewDAO.getFileDetail(reviewFileDTO);
-	}
- 	
- 	public boolean setContentsImgDelete(String path,HttpSession session) throws Exception{
-		//path: /resources/upload/review/파일명
-		FileDTO fileDTO =new FileDTO();
-//		path=path.substring(0, path.lastIndexOf("\\")+1);
-		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
-		
-		path="/resources/upload/review/";
-		return fileManager.fileDelete(fileDTO, path, session);
-	}
-	
-	public String setContentsImg(MultipartFile file,HttpSession session)throws Exception {
-		String path="/resources/upload/review/";
-		String fileName=fileManager.fileSave(path, session, file);
-		return path+fileName;
-		
-	}
 	
 	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
 		//폴더 파일 삭제

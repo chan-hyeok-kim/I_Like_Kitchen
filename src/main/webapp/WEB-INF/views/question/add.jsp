@@ -25,8 +25,8 @@
   <option disabled>문의유형을 선택하세요</option>
   <option value="일정문의">일정문의</option>
   <option value="가격문의">가격문의</option>
-  <option value="공간정보문의">공간정보문의</option>
-  <option value="물품이용문의">물품이용문의</option>
+  <option value="공간문의">공간정보문의</option>
+  <option value="물품문의">물품이용문의</option>
   <option value="기타">기타</option>
 </select>
  </div>
@@ -49,7 +49,7 @@
 
 <br>
 	<button type="submit" class="btn" style="background-color:rgb(251,255,182)">문의등록</button>
-	<a class="btn" style="background-color:rgb(251,255,182)" href="../">취소</a>  
+	<a class="btn" style="background-color:rgb(251,255,182)" href="/question/list">취소</a>  
 </div>
 </form>
 <c:import url="../temp/footer.jsp"></c:import>

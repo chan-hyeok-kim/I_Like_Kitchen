@@ -69,7 +69,7 @@
 <br>
 <br>
 <button id="btn" type="submit" class="btn btn-warning" style="background-color:rgb(251,255,182)">후기등록</button>
-<a class="btn btn-warning" style="background-color:rgb(251,255,182)" href="../">취소</a>  
+<a class="btn btn-warning" style="background-color:rgb(251,255,182)" href="/review/list">취소</a>  
 </form>
 </div>
 
