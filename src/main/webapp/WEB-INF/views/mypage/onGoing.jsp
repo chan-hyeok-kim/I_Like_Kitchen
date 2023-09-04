@@ -44,7 +44,6 @@
             </c:if>    
         </menu>
     
-    <script src="/resources/js/book/list.js"/>
     <script>
     	$(".detailBtn").click(function() {
 			

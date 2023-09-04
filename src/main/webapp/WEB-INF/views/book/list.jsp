@@ -72,13 +72,13 @@
    <div><p>예약자</p><p>예약번호</p></div>
    <div><p>${member.name}</p><p>${i.bookNum}</p></div>
    <div><p>예약 날짜</p><p>사용시간</p></div>
-   <div><p>${i.bookDate}</p><p id="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
+   <div><p>${i.bookDate}</p><p class="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
    <div><p>인원</p><p>승인 상태</p></div>
-   <div><p>${i.headCount}</p><p id="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
+   <div><p>${i.headCount}</p><p class="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
    
    <div><p></p><p></p></div>
    </div>
-    <button id="btn" class="btn btn-outline-primary" data-bookNum="${i.bookNum}">결제하기</button>
+    <button id="btn" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
   
   </div>
  
@@ -93,10 +93,7 @@
 </c:forEach>
 </c:if>
 </section>
+<script src="/resources/js/book/list.js"/>
 
-<script>
-
-
-</script>
 </body>
 </html>
