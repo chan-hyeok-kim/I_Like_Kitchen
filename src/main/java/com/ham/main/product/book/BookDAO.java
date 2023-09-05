@@ -1,10 +1,14 @@
 package com.ham.main.product.book;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.ham.main.member.MemberDTO;
+import com.ham.main.product.ProductDTO;
 
 @Repository
 public class BookDAO {
@@ -21,8 +25,21 @@ public class BookDAO {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", bookDTO);
 	}
 	
-	public List<BookDTO> getBookInfo(BookDTO bookDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getBookInfo", bookDTO);
+	public List<BookDTO> getBookInfo(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getBookInfo", map);
 	}
+	
+	public List<BookDTO> getBook(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getBook", productDTO);
+	}
+	
+	public long getInfoTotal(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getInfoTotal", memberDTO);
+	}
+	
+	public int setBookCheck(BookDTO bookDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setBookCheck", bookDTO);
+	}
+	
 
 }

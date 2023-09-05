@@ -29,6 +29,10 @@ public class PayService {
 	public PayDTO getPayInfo(PayDTO payDTO) throws Exception{
 		return payDAO.getPayInfo(payDTO); 
 	}
+	
+	public RefundDTO getRefundInfo(RefundDTO refundDTO) throws Exception{
+		return payDAO.getRefundInfo(refundDTO);
+	}
 
 
 }

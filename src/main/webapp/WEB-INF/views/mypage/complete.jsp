@@ -7,7 +7,15 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<style type="text/css">
+
+#book-detail-title{
+	margin-bottom: 40px;
+}
+
+</style>
 </head>
+
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
 

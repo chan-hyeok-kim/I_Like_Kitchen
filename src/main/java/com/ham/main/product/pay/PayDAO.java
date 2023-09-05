@@ -30,4 +30,8 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE+"getPayInfo", payDTO); 
 	}
 	
+	public RefundDTO getRefundInfo(RefundDTO refundDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getRefundInfo", refundDTO);
+	}
+	
 }

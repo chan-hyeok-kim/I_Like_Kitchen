@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonObject;
+import com.ham.main.member.MemberDTO;
 import com.ham.main.member.MemberService;
 import com.ham.main.partner.PartnerDTO;
 import com.ham.main.partner.PartnerService;
@@ -39,6 +40,7 @@ import com.ham.main.product.book.BookService;
 import com.ham.main.product.pay.port.PortController;
 import com.ham.main.util.AlterDate;
 import com.ham.main.util.CreatOrderNum;
+import com.ham.main.util.Pager;
 
 @Controller
 @RequestMapping("/pay/*")
@@ -146,8 +148,8 @@ public class PayController {
 	}
 	
     @GetMapping("list")
-    public void getList(BookDTO bookDTO,Model model) throws Exception{
-    	List<BookDTO> bl = bookService.getBookInfo(bookDTO);  
+    public void getList(MemberDTO memberDTO,Model model,Pager pager) throws Exception{
+    	List<BookDTO> bl = bookService.getBookInfo(memberDTO, pager);  
     	
     	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
 		
@@ -179,6 +181,52 @@ public class PayController {
 		
 		
 	}
+    
+    @GetMapping("refundList")
+    public void getRefundList(MemberDTO memberDTO,Model model,Pager pager) throws Exception{
+        List<BookDTO> bl = bookService.getBookInfo(memberDTO,pager);  
+    	
+    	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
+		
+    	List<PayDTO> pl = new ArrayList<PayDTO>();
+    	
+    	List<RefundDTO> rl = new ArrayList<RefundDTO>();
+		for(BookDTO b: bl) {
+			PayDTO payDTO = new PayDTO();
+			payDTO.setBookNum(b.getBookNum()); 
+			payDTO = payService.getPayInfo(payDTO);	
+			if(payDTO!=null) {
+			System.out.println(payDTO);
+			pl.add(payDTO);
+			}
+			
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProductNum(b.getProductNum());
+			 
+			 productDTO = productService.getDetail(productDTO);
+			 if(productDTO!=null) {
+			    pdl.add(productDTO);
+			 }
+		}
+		
+		for(PayDTO p:pl) {
+			RefundDTO refundDTO = new RefundDTO();
+			refundDTO.setPayNum(p.getPayNum());
+			refundDTO= payService.getRefundInfo(refundDTO);
+			if(refundDTO!=null) {
+			rl.add(refundDTO);
+			}
+		}
+			
+		
+		if(rl.size()!=0) {
+			model.addAttribute("payList", pl);
+			model.addAttribute("list", bl);
+			model.addAttribute("productList", pdl);
+			model.addAttribute("refundList", rl);
+		}
+    	
+    }
 		
 		
 		

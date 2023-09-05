@@ -13,12 +13,7 @@
 	margin-bottom: 40px;
 }
 
-#list-border{
-    margin-top:20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ece6cc;
-    height: 10px;
-}
+
 </style>
 </head>
 <body>
@@ -41,9 +36,18 @@
                 
             </div>
 
-            </c:if>    
+            </c:if>   
+             <form action="./onGoing" method="get">
+			<div class="col-sm-3">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="Search" aria-label="Search">
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-dark" type="submit">검색</button>
+				</form>
+             
         </menu>
-    
+       
     <script>
     	$(".detailBtn").click(function() {
 			
@@ -57,7 +61,7 @@
              url:'/book/list?id='+id
         ,success:function(result){
         	$('#gridDiv').append(result);
-        	console.log(result);
+        	
         }
         })
     </script>

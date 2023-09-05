@@ -49,7 +49,7 @@
  #book-img{
     
  }
- .book-table-list{
+ #book-table-list{
     display: flex;
     width: 800px;
  }
@@ -77,33 +77,27 @@
 <body>
 
 <section>
-<c:if test="${empty list}">
-진행 중인 예약 내역이 없습니다 
-</c:if>
 
-<c:if test="${not empty list}">
-<c:forEach items="${list}" var="i" varStatus="fi">
+
+<c:forEach items="${refundList}" var="r" varStatus="fi">
 
 <div>
-<div class="book-table-list" data-list="${fi.count}">
+<div id="book-table-list">
 <div id="book-img">
 <img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}">
 <div id="detail-link" style="display: flex; padding-top: 10px;"><p><a href="../product/detail?productNum=${productList[fi.index].productNum}"> ${productList[fi.index].productName} > </a></p></div>
    
 </div>
-
 <div id="book-table-div">
+   <div><p>예약 장소</p><p>${productList[fi.index].productName}</p></div>
    <div><p>예약자</p><p>${member.name}</p></div>
-   <div><p>예약번호</p><p>${i.bookNum}</p></div>
-   <div><p>예약 날짜</p><p>${i.bookDate}</p></div>
-   <div><p>사용시간</p><p class="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
-   <div><p>인원</p><p>${i.headCount}</p></div>
-   <div><p>승인 상태</p><p class="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
-   
+   <div><p>환불 사유</p><p>${r.refundReason}</p></div>
+   <div><p>환불 날짜</p><p>${r.refundDate}</p></div>
+   <div><p>환불 금액</p><p>${r.refundAmount}</p></div>
+  
   
    </div>
-    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
-  
+    
   </div>
  
 </div>
@@ -113,32 +107,9 @@
 <div id="list-border"></div>
          
 </c:forEach>
-</c:if>
-<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:if test="${pager.startNum eq 1}">
-					<li class="page-item"><a class="page-link move"
-						href="#" data-num="${pager.startNum}">Previous</a></li>
-				</c:if>
-				<c:if test="${pager.startNum ne 1}">
-					<li class="page-item"><a class="page-link move"
-						href="#" data-num="${pager.startNum-1}">Previous</a></li>
-				</c:if>
-
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link move"
-						href="#" data-num="${i}">${i}</a></li>
-				</c:forEach>
-
-
-				<li class="page-item ${pager.next?'':'disabled'}"><a
-					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
-
-			</ul>
-		</nav>
 
 </section>
-<script src="/resources/js/book/list.js"/>
+
 
 </body>
 </html>

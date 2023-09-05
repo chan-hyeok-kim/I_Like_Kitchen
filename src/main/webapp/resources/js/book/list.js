@@ -1,10 +1,32 @@
-let bookNum = $('.btn-pay').attr("data-bookNum");
-console.log(bookNum);
+let count = $('.book-table-list').length
 
-$('.btn-pay').click(function(){
+
+console.log(count)
+
+for(let i=0; i<count; i++){
+
+   
+	let check = $('.check').eq(i).attr('data-check')
+	if(check=="승인"){
+		
+	let bookNum = $('.btn-pay').eq(i).attr("data-bookNum");
+	console.log(bookNum);
 	
-	    location.href="../pay/add?bookNum="+bookNum;
+	$('.btn-pay').eq(i).click(function(){
+		
+			location.href="../pay/add?bookNum="+bookNum;
+		})
+	}else{
+	
+	$('.btn-pay').eq(i).click(function(){
+	 swal('아직 예약이 승인되지 않았습니다.')
 	})
+	}
+}
+
+
+
+
    
 
 
@@ -21,9 +43,5 @@ console.log(start);
 $('.bookTime').append(start)
 $('.bookTime').append('~'+end)
 
-let check = $('.check').attr('data-check')
-if(check>0){
-$('.check').html('승인')
-}else{
-$('.check').html('미승인')
-}
+
+

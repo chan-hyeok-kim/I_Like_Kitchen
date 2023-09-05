@@ -51,7 +51,8 @@
  }
  .book-table-list{
     display: flex;
-    width: 800px;
+    width: 600px;
+    margin-right: 0px;
  }
  #btn-home{
       width: 100px;
@@ -72,19 +73,18 @@
  a:visited{
       color: (52, 111, 238, 0.699);
  }
+ #checklist{
+      width:600px;
+ }
 </style>
 </head>
 <body>
 
-<section>
-<c:if test="${empty list}">
-진행 중인 예약 내역이 없습니다 
-</c:if>
+<section id="checklist">
 
-<c:if test="${not empty list}">
 <c:forEach items="${list}" var="i" varStatus="fi">
 
-<div>
+<div style="width: 600px">
 <div class="book-table-list" data-list="${fi.count}">
 <div id="book-img">
 <img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}">
@@ -94,7 +94,7 @@
 
 <div id="book-table-div">
    <div><p>예약자</p><p>${member.name}</p></div>
-   <div><p>예약번호</p><p>${i.bookNum}</p></div>
+   <div><p>예약번호</p><p id="book-num">${i.bookNum}</p></div>
    <div><p>예약 날짜</p><p>${i.bookDate}</p></div>
    <div><p>사용시간</p><p class="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
    <div><p>인원</p><p>${i.headCount}</p></div>
@@ -102,7 +102,7 @@
    
   
    </div>
-    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
+    <button id="btn-home" class="btn btn-primary btn-pay" data-bookNum="${i.bookNum}">승인</button>
   
   </div>
  
@@ -113,7 +113,7 @@
 <div id="list-border"></div>
          
 </c:forEach>
-</c:if>
+
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
@@ -138,7 +138,49 @@
 		</nav>
 
 </section>
-<script src="/resources/js/book/list.js"/>
+<script type="text/javascript">
+
+let count = $('.book-table-list').length
+let bookNum = $('#book-num').text()
+
+console.log(count)
+
+for(let i=0; i<count; i++){
+
+   
+
+	$('.btn-pay').eq(i).click(function(){
+		if(confirm("승인하시겠습니까?")){
+          $.ajax({
+               type:'POST',
+                url:'/bookCheck',
+               data: {
+               bookNum:bookNum
+               },success:function(result){
+                    swal('승인되었습니다')
+               }
+            
+          })
+          
+         }
+	})
+	
+}
+
+start = $('.bookTime').attr('data-startTime');
+end = $('.bookTime').attr('data-endTime')
+console.log(typeof start);
+console.log(start);
+console.log(end);
+
+start=start.substring(11,16);
+end=end.substring(11,16);
+console.log(start);
+
+$('.bookTime').append(start)
+$('.bookTime').append('~'+end)
+
+</script>
 
 </body>
 </html>

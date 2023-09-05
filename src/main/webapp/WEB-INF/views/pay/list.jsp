@@ -10,77 +10,112 @@
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style type="text/css">
- table{
+table{
       width: 400px;
-      /* background: #F8F9FA; */
-      background: #cde7ff8f;
+      background: #F8F9FA;
       text-align: center;
  }
- #btnHome{
-      margin-top: 10px;
-      margin-left: 140px;
+ .btn{
+      margin-top: 0px;
+      margin-left: 10px;
       width: 100px;
       height: 40px;
+      /* background: #F4F3EA;
+      border: 1px solid black;
+       */
+ }
+ #btn-home{
+      width: 100px;
+      height:40px;
+      margin-top:150px;
+      margin-left:20px;
  }
  #list-border{
       width: 1000px;
       margin-top:20px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ece6cc;
-      height: 10px;
-}
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ece6cc;
+    height: 10px;
+ }
+ 
+ #book-table-div div{
+     display: flex;
+     
+ }
+ #book-table-div{
+     margin-left: 30px;
+     vertical-align: top;
+     
+ }
+ #book-table-div div p{
+     width: 103px;
+ }
+ #book-list-unorder{
+    list-style: none;
+ }
+ #book-img{
+    
+ }
+ #book-table-list{
+    display: flex;
+    width: 800px;
+ }
+ a:hover{
+      color: black;
+ }
+ a:active{
+      color: black;
+ }
+ a:visited{
+      color: (52, 111, 238, 0.699);
+ }
+ #detail-link a{
+      text-decoration: none;
+ }
 </style>
 </head>
 <body>
 
 <section>
-<c:if test="${empty payList}">
-<h3>완료하신 결제 내역이 없습니다</h3>
-</c:if>
 
 
-<c:if test="${not empty payList}">
 <c:forEach items="${payList}" var="p" varStatus="fi">
-<div id="pay-table-div">
-<table class="pay-table">
-<thead>
-   <tr>
-      <th rowspan="2"><img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}"></th>
-      <th><p>${productList[fi.index].productName}</p>
-      연락처: ${productList[fi.index].phone}</th>
-   </tr>
-    
-  </thead>
-   <tbody>
-  
-      <tr>
-       <td>예약자</td>
-       <td>${member.name}</td>
-      </tr>
-      <tr>
-        <td>결제 날짜</td>
-        <td>${p.payDate}</td>
-       </tr>
-      
-      <tr>
-       <td>결제 금액</td>
-       <td>${p.payAmount}</td>
-      </tr>
-   </tbody>
-</table>
-
-
-<!-- Button trigger modal -->
-<button id="btnHome" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  환불하기
-</button>
-
-<div id="list-border"></div>
+<div>
+<div id="book-table-list">
+<div id="book-img">
+<img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}">
+<div id="detail-link" style="display: flex; padding-top: 10px;"><p><a href="../product/detail?productNum=${productList[fi.index].productNum}"> ${productList[fi.index].productName} > </a></p></div>
+ 
 </div>
 
+<div id="book-table-div">
+   <div id="detail-link"><p>예약 장소</p><p>${productList[fi.index].productName}</p></div>
+   <div><p>예약자</p><p>${member.name}</p></div>
+   <div><p>연락처</p><p>${productList[fi.index].phone}</p></div>
+   <div><p>결제 날짜</p><p>${p.payDate}</p></div>
+   <div><p>결제 금액</p><p>${p.payAmount}</p></div>
+   
+   <div><p></p><p></p></div>
+   </div>
+    
+<!-- Button trigger modal -->
+<button id="btn-home" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  환불하기
+</button>
+  </div>
+ 
+</div>
+
+   
+
+
+<div id="list-border"></div>
+
+        
 </c:forEach>
 
-</c:if>
+
+
 </section>
 
 
@@ -97,13 +132,35 @@
       <input class="form-control" name="reason" id="reason">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" id="btn">환불하기</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" class="btn">닫기</button>
+        <button type="button" class="btn btn-primary" class="btn">환불하기</button>
       </div>
     </div>
   </div>
 </div>
 
+<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${pager.startNum eq 1}">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${pager.startNum}">Previous</a></li>
+				</c:if>
+				<c:if test="${pager.startNum ne 1}">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${pager.startNum-1}">Previous</a></li>
+				</c:if>
+
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${i}">${i}</a></li>
+				</c:forEach>
+
+
+				<li class="page-item ${pager.next?'':'disabled'}"><a
+					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
+
+			</ul>
+		</nav>
 
 <script type="text/javascript">
 

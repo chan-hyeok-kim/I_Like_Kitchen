@@ -17,12 +17,12 @@
 		</choose>
   	</sql>
   	 
- 	<select id="getTotal" parameterType="com.ham.main.util.Pager" resultType="Long">
+ 	<select id="getTotal" parameterType="Pager" resultType="Long">
 		SELECT COUNT(P.PRODUCTNUM) FROM PRODUCT P
 		<include refid="searchSql"></include>
 	</select>
 	
-	<select id="getList" parameterType="com.ham.main.util.Pager" resultMap="getListFile" >
+	<select id="getList" parameterType="Pager" resultMap="getListFile" >
 		SELECT * FROM 	
 			(SELECT ROWNUM R, B.* FROM
 				(
@@ -101,5 +101,11 @@
 	<delete id="setDelete" parameterType="Long">
 		DELETE PRODUCT WHERE PRODUCTNUM=#{num}
 	</delete>
+	
+	 <select id="getInfo" resultType="ProductDTO" parameterType="PartnerDTO">
+        SELECT *
+          FROM PRODUCT
+         WHERE PARTNERNUM=#{partnerNum}
+     </select>
 	
  </mapper>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.partner.PartnerDTO;
 import com.ham.main.product.ProductDTO;
 import com.ham.main.product.ProductService;
 import com.ham.main.util.Pager;
@@ -88,12 +89,22 @@ public class BookController {
 	}
 	
 	@GetMapping("list")
-	public void getBookInfo(BookDTO bookDTO,Model model) throws Exception{
-		 List<BookDTO> bl = bookService.getBookInfo(bookDTO);
+	public void getBookInfo(MemberDTO memberDTO,Model model, Pager pager) throws Exception{
+		 System.out.println(pager);
+		 pager.setStartRow(1L);
+		 pager.setLastRow(2L);
+		 List<BookDTO> bl = bookService.getBookInfo(memberDTO, pager);
 
 		 List<ProductDTO> pl = new ArrayList<ProductDTO>();
 		
 		 for(BookDTO b: bl) {
+			
+			if(Integer.parseInt(b.getBookCheck())>0) {
+				b.setBookCheck("승인");
+			}else {
+				b.setBookCheck("미승인");
+			}
+				
 			 ProductDTO productDTO = new ProductDTO();
 			 productDTO.setProductNum(b.getProductNum());
 			 
@@ -106,7 +117,55 @@ public class BookController {
 		 System.out.println(pl.size());
 		 model.addAttribute("list", bl);
 		 model.addAttribute("productList", pl);
+		 model.addAttribute("pager", pager);
 	}
 	
-
+	
+	@GetMapping("manage")
+    public void bookManage(HttpSession session,Model model) throws Exception{
+		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+		
+		
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		for(ProductDTO p: pl) {
+			List<BookDTO> bl = bookService.getBook(p);
+//		지금은 하나니깐 이렇게 되는데 상품선택이 추가된다면
+//		add로해야됨
+		System.out.println(pl);
+			model.addAttribute("list",bl);
+			model.addAttribute("productList", pl);
+		}
+		
+	}
+	
+	@PostMapping("checklist")
+	public void getChecklist(String clickDay,HttpSession session,Model model) throws Exception{
+        PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+		
+		
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		for(ProductDTO p: pl) {
+			List<BookDTO> bl = bookService.getBook(p);
+		    System.out.println(bl);
+			for(BookDTO b: bl) {
+			if(Integer.parseInt(b.getBookCheck())>0) {
+				b.setBookCheck("승인");
+			}else {
+				b.setBookCheck("미승인");
+			}
+			}
+			if(bl.size()!=0) {
+	        	model.addAttribute("list", bl);
+		}
+		
+        
+        }
+       
+	}
+	
+	@PostMapping("bookCheck")
+	public void setBookCheck(BookDTO bookDTO) throws Exception{
+		  bookService.setBookCheck(bookDTO);
+	}
+    
 }
