@@ -27,7 +27,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check1">
 				         <label class="form-check-label ml-2" for="check1">
-				            만 14세이상 입니다(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만 14세이상 입니다(필수)
 				         </label>
                 	</div>
                 </div>
@@ -37,7 +37,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check2">
 				         <label class="form-check-label ml-2" for="check2">
-				            이용약관 동의(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용약관 동의(필수)
 				         </label>
                 	</div>
                 	<div class="card-body">
@@ -283,7 +283,7 @@
 				    <div class="card-header">
 				        <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check3">
 				        <label class="form-check-label ml-2" for="check3">
-				            개인정보 수집이용 동의(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개인정보 수집이용 동의(필수)
 				        </label>
 				    </div>
 				    <div class="card-body">
@@ -388,7 +388,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check ml-1" type="checkbox" value="" id="check4">
 				         <label class="form-check-label ml-2" for="check4">
-				            마케팅 알림수신 동의(선택)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마케팅 알림수신 동의(선택)
 				         </label>
                 	</div>
                 </div>

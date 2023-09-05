@@ -10,7 +10,7 @@
   		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
   			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
   	</insert>
-
+  	
   	<select id="getMemberByEmail" resultType="MemberDTO">
   		SELECT * FROM MEMBER WHERE EMAIL = #{email}
   	</select>
@@ -138,10 +138,6 @@
 		WHERE ID = #{id}
 	</delete>
 	
-
-
-
-
 
   </mapper>
   

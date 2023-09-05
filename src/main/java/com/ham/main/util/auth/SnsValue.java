@@ -40,9 +40,6 @@ public class SnsValue implements SnsUrls {
 	    	if(isNaver) {
 	    	   this.api20Instance = NaverAPI20.instance();	
 	    	   this.profileUrl = NAVER_PROFILE_URL;
-	    	}else if(isKakao){
-	    	   this.api20Instance = KakaoAPI20.instance();
-	    	   this.profileUrl = KAKAO_PROFILE_URL;
 	    	}
 	    	
 	}

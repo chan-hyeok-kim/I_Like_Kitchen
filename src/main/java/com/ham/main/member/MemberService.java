@@ -50,9 +50,6 @@ public class MemberService {
 		
 		return result;
 	}
-	
-
-
 
 
 	//로그인

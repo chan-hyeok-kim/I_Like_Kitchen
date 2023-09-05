@@ -41,34 +41,34 @@ public class PartnerController {
 	
 	
 	//로그인
-	@GetMapping("partnerLogin")
-	public void getMemberLogin() throws Exception {
-		
-	}
-	
-	@PostMapping("partnerLogin")
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		System.out.println(memberDTO);
-		memberDTO = memberService.getMemberLogin(memberDTO);
-		
-		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
-		if(memberDTO != null) {
-			session.setAttribute("member", memberDTO);
-			//session.setAttribute("partner", partnerDTO);
-			if(partnerDTO != null) {
-				session.setAttribute("partner", partnerDTO);
-			}else {
-				mv.addObject("errormessage", "파트너로그인에 실패했습니다.");
-			}
-			mv.setViewName("redirect:../");
-		}else {
-			mv.addObject("errorMessage", "로그인에 실패했습니다.");
-			mv.setViewName("/partner/partnerLogin");
-		}
-	
-		return mv;
-	}
+//	@GetMapping("partnerLogin")
+//	public void getMemberLogin() throws Exception {
+//		
+//	}
+//	
+//	@PostMapping("partnerLogin")
+//	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println(memberDTO);
+//		memberDTO = memberService.getMemberLogin(memberDTO);
+//		
+//		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
+//		if(memberDTO != null) {
+//			session.setAttribute("member", memberDTO);
+//			//session.setAttribute("partner", partnerDTO);
+//			if(partnerDTO != null) {
+//				session.setAttribute("partner", partnerDTO);
+//			}else {
+//				mv.addObject("errormessage", "파트너로그인에 실패했습니다.");
+//			}
+//			mv.setViewName("redirect:../");
+//		}else {
+//			mv.addObject("errorMessage", "로그인에 실패했습니다.");
+//			mv.setViewName("/partner/partnerLogin");
+//		}
+//	
+//		return mv;
+//	}
 	
 	//파트너페이지
 	@GetMapping("partnerPage")

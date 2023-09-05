@@ -7,6 +7,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.net.http.HttpRequest;
+import java.util.HashMap;
+import java.util.UUID;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,6 +43,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.mail.MailSendController;
 import com.ham.main.member.mail.MailSendService;
+import com.ham.main.partner.PartnerDTO;
+import com.ham.main.partner.PartnerService;
+import com.ham.main.util.auth.KakaoLogin;
 import com.ham.main.util.auth.SNSLogin;
 import com.ham.main.util.auth.SnsValue;
 
@@ -59,8 +65,14 @@ public class MemberController {
 	@Autowired
 	private MailSendService mailSendService;
 
-      @Inject
+    @Inject
 	private SnsValue sns;
+      
+    @Autowired
+    private KakaoLogin kakaoSns;
+    
+    @Autowired
+    private PartnerService partnerService;
       
 //    @Autowired  
 //	private SNSLogin kakaoSns;
@@ -144,10 +156,6 @@ public class MemberController {
 		
 		return mv;
 	}
-  
-
-  
-  
 	
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
@@ -155,11 +163,18 @@ public class MemberController {
 		System.out.println(memberDTO);
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		System.out.println(memberDTO);
+		
+		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
+		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			
+			if(memberDTO.getRoles().size() == 2) {
+				if(partnerDTO != null) {
+					session.setAttribute("partner", partnerDTO);
+				}
+			}
 			mv.setViewName("redirect:../");
-		}else {
+		}else{
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");
 			mv.setViewName("/member/memberLogin");
 		}
@@ -190,68 +205,32 @@ public class MemberController {
 		return mv;
 	}
 	
-   
-  
+	@RequestMapping("/callbackKakao")
+	public ModelAndView kakao_redirect(@RequestParam("code") String code, HttpSession session) throws Exception  {
+	
+	ModelAndView mav = new ModelAndView();
+	String accessToken = kakaoSns.getAccessToken(code);
+    // 2번 인증코드로 토큰 전달
+    HashMap<String, Object> userInfo = kakaoSns.getUserInfo(accessToken);
 
-	
-	// 카카오 로그인 성공시 callback
-//	@RequestMapping(value = "/callbackKakao", method = { RequestMethod.GET, RequestMethod.POST })
-//	public String callbackKakao(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws Exception {
-//		System.out.println("로그인 성공 callbackKakao");
-//		OAuth2AccessToken oauthToken;
-//		oauthToken = kakaoSns.getAccessToken(session, code, state);
-//		// 로그인 사용자 정보를 읽어온다
-//		String apiResult = kakaoSns.getUserProfile(oauthToken);
-//			
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObj;
-//			
-//		jsonObj = (JSONObject) jsonParser.parse(apiResult);
-//		JSONObject response_obj = (JSONObject) jsonObj.get("kakao_account");	
-//		JSONObject response_obj2 = (JSONObject) response_obj.get("profile");
-//		System.out.println(jsonObj);
-//		Long response_obj3 = (Long) jsonObj.get("id");
-//		
-//		// 프로필 조회
-//		String email = (String) response_obj.get("email");
-//		String name = (String) response_obj2.get("nickname");
-//		System.out.println(response_obj3);
-//		String id = response_obj3.toString();
-//		// 세션에 사용자 정보 등록
-//		// session.setAttribute("islogin_r", "Y");
-//		MemberDTO memberDTO = new MemberDTO();
-//		memberDTO.setName(name);
-//		memberDTO.setEmail(email);
-//		session.setAttribute("signIn", apiResult);
-//		System.out.println(apiResult);
-//		session.setAttribute("email", email);
-//		session.setAttribute("name", name);
-//		
-//		session.setAttribute("member", memberDTO);
-//		SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
-//		System.out.println(id);
-//		snsMemberDTO.setSnsId(id);
-//		snsMemberDTO.setSnsName(name);
-//		snsMemberDTO.setSnsEmail(email);
-//		long result = memberService.getKakaoLogin(snsMemberDTO);
-//		if(memberService.getKakaoLogin(snsMemberDTO)>0) {
-//			
-//		}else {
-//			memberService.setKakaoJoin(snsMemberDTO);
-//		}
-//		
-//	
-//		return "/home";
-//	}
-//	
-	
+    System.out.println("login info : " + userInfo.toString());
+
+	    if(userInfo.get("account_email") != null) {
+	        session.setAttribute("userId", userInfo.get("account_email"));
+	        session.setAttribute("accessToken", accessToken);
+	    }
+	    mav.addObject("userId", userInfo.get("account_email"));
+	    SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
+	    snsMemberDTO.setPlatForm("kakao");
+	    snsMemberDTO.setSnsEmail(userInfo.get("account_email").toString());
+	    snsMemberDTO.setSnsId(userInfo.get("id").toString());
+	    snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
+	    System.out.println(snsMemberDTO);
+	    session.setAttribute("member", snsMemberDTO);
 	    
-
-
-
-
-	
-
+	    mav.setViewName("/member/snsJoin");
+	    return mav;
+	}	
 	
 	//sns로그인
 	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})

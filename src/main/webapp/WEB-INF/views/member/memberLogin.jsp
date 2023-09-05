@@ -17,7 +17,7 @@
             <div class="terms-container">
                 <div class="terms-title">
 					<h2 class="header-news text-center">Welcome I Like Kitchen</h2>
-					<h3 class="my-4 text-center">Member Login</h3>
+					<h3 class="my-4 text-center">Login</h3>
 				</div>
 
 				<c:if test="${not empty errorMessage}">
@@ -45,7 +45,9 @@
 							</div>
 							<div class="text-center">
 								<!-- <button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button> -->
-								<a href="${urlKakao}"><img src='/resources/icon/kakao.png '></a>
+								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code">  
+									<img src = "/resources/icon/kakao.png">
+								</a>
 								<a href="${naverUrl}"><img width="200" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
 							</div>		
 						</form>
