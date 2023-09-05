@@ -17,7 +17,7 @@
 	<div class="container-fluid">
 	
 		<div class="row justify-content-center my-4">
-			<h1 class="col-md-7 text-center">${board} Reply Page</h1>
+			<h1 class="col-md-7 text-center">${review} Reply Page</h1>
 		</div>
 		
 		<div class="row justify-content-center my-4">

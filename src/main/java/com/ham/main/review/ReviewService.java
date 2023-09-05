@@ -67,15 +67,16 @@ public class ReviewService {
  	return reviewDAO.delete(reviewNum);
  	}
  	
+ // 게시물 총 갯수
+ 	
+ 	public String count() throws Exception {
+ 	 return reviewDAO.count();
+ 	}
  	
  // 게시물 목록 + 페이징
  	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
  	 return reviewDAO.listPage(displayPost, postNum);
  	}
 
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

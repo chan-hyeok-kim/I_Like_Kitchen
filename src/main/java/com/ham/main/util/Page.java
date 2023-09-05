@@ -38,8 +38,8 @@ public class Page {
 	public int getCount() {
 		return count;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setCount(int string) {
+		this.count = string;
 	}
 	public int getPostNum() {
 		return postNum;
@@ -110,4 +110,8 @@ public class Page {
 		 displayPost = (num - 1) * postNum;
 		 
 		}
+	public void setCount(String count2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

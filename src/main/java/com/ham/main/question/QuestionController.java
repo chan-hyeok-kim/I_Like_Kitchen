@@ -36,7 +36,7 @@ public void Add() throws Exception {
 	@RequestMapping(value="add",method = RequestMethod.POST)
 	public String Add(QuestionDTO questionDTO)throws Exception{
 		System.out.println(questionDTO.getId());
-		questionDTO.setProductNum(1L);
+		questionDTO.setProductNum(2L);
 		questionService.add(questionDTO);
 
 		return "redirect:/question/list";

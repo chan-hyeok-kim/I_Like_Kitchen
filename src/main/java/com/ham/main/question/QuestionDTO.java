@@ -19,6 +19,8 @@ public class QuestionDTO {
 	private Long ref;
 	private Long step;
 	private Long depth;
+	
+	
 	public Long getQuestionNum() {
 		return questionNum;
 	}

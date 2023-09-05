@@ -30,12 +30,38 @@ ${view.reviewRate}<br />
 				<a href="./fileDown?fileNum=${f.fileNum}">${f.originalName}</a>
 			</c:forEach>
 		</div>  --%>
+		
+		<div>
+
+    <form method="post" action="/reply/write">
+    
+        <p>
+            <label>댓글 작성자</label> <input type="text" name="id">
+        </p>
+        <p>
+            <textarea rows="5" cols="50" name="replyContents"></textarea>
+        </p>
+        <p>
+        	<input type="hidden" name="reviewNum" value="${view.reviewNum}">
+            <button type="submit">댓글 작성</button>
+        </p>
+    </form>
+    
+</div>
 <c:forEach items="${dto.fileDTOs}" var="f">
 		<img alt="" src="/resources/upload/review/${f.fileName}">
 	</c:forEach>
 <div>
 <a href="/review/update?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 수정</a><a href="/review/delete?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 삭제</a>
 </div>
+<c:forEach items="${reply}" var="reply">
+<li>
+    <div>
+        <p>${reply.writer} / ${reply.regDate}</p>
+        <p>${reply.content }</p>
+    </div>
+</li>    
+</c:forEach>
 <c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

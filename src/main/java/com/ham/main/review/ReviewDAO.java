@@ -65,14 +65,14 @@ public class ReviewDAO {
 	
 	// 게시물 총 갯수
 	
-	public int count() throws Exception {
-	 return sql.selectOne(NAMESPACE + "count"); 
+	public String count() throws Exception {
+	 return String.valueOf(sql.selectOne(NAMESPACE + "count")); 
 	}
 	// 게시물 목록 + 페이징
 	
 	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
 
-	 HashMap<String, Integer> data = new HashMap<String, Integer>();
+	 HashMap data = new HashMap();
 	  
 	 data.put("displayPost", displayPost);
 	 data.put("postNum", postNum);

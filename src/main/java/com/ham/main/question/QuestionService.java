@@ -14,7 +14,7 @@ public class QuestionService {
  
  	public List<QuestionDTO> list() throws Exception {
 
-  	return questionDAO.list();
+  	return questionDAO.list(null);
  }
 //게시물 작성
 	 public int add(QuestionDTO questionDTO)throws Exception{

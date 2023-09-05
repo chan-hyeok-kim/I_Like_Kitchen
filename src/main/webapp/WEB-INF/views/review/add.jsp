@@ -21,10 +21,10 @@
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 </div>
 
-
+<input type="hidden" id="productNum"/>
   <br>
   <p class="text-start fs-4">후기작성</p>
- <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">후기를 입력하세요</textarea>
+ <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents" placeholder="후기를 입력하세요"></textarea>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="reviewRate" id="exampleRadios1" value="1" checked>
   <label class="form-check-label" for="exampleRadios1">

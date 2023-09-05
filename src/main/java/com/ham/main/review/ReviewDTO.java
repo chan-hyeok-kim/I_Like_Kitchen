@@ -58,9 +58,9 @@ public class ReviewDTO{
 		this.ktos = ktos;
 	}
 	
-//	private Long replyNum;
-//	private String replyContents;
-//	private Date replyDate;
+	private Long replyNum;
+	private String replyContents;
+	private Date replyDate;
 //	private Long ref;
 //	private Long step;
 //	private Long depth;

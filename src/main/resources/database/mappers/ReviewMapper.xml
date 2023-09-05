@@ -11,6 +11,7 @@
  REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
  FROM REVIEW ORDER BY REVIEWNUM
 
+
 </select>
 
 <!-- 게시물 작성 -->
@@ -45,14 +46,14 @@ SELECT COUNT(REVIEWNUM) FROM REVIEW
 </select>
 <!-- 게시물 목록 + 페이징 -->
 <select id="listPage" parameterType="hashMap" resultType="ReviewDTO">
-SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE,
+SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
   FROM REVIEW
  ORDER BY REVIEWNUM DESC
- LIMIT #{displayPost}, #{postNum}
+
 </select>
 
-	<insert id="setFileAdd" parameterType="ReviewDTO">
-  		INSERT INTO REVIEWFILE
+	<insert id="setFileAdd" parameterType="ReviewFileDTO">
+  		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
   		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
   	</insert>
 <delete id="setFileDelete" parameterType="ReviewFileDTO">

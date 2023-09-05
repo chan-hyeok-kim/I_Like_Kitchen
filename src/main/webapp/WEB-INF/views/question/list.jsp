@@ -19,7 +19,7 @@
 	 
 	 <tbody>
 		  	<c:forEach items="${list}" var="list">
-		<div>
+		<div class="border">
 	 	
 		 <tr class="grid gap-3" href="/question/view?questionNum=${list.questionNum}">
 		  <td type="hidden" ${list.questionNum}></td>
@@ -30,14 +30,31 @@
 			</td>
 		  <span>|</span>
 		  <span class="p-2 g-col-6 ">${list.questionDate}</span>
+		  <div class="p-2 g-col-6 overflow-auto ">${list.questionContents}</div>
 		</div>	
-		  <div class="p-2 g-col-6 overflow-auto border">${list.questionContents}</div>
 		 </tr>
 			
 
 		</c:forEach>
 	 </tbody>
 	</div>
+	<div id="nav03">
+    	<c:if test="${pager.page > 1}">
+	    	<a href="list?page=${pager.page - 1}">
+		    	<span>◁</span>
+	    	</a>
+	    </c:if>
+    
+    	<c:forEach var="i" begin="${pager.startNum}" end="${pager.lastNum}">
+    		<a href="list?page=${i}" class="pageColor">${i}</a>
+    	</c:forEach>
+    	
+    	<c:if test="${pager.page < pager.totalPage}">
+	    	<a href="list?page=${pager.page + 1}">
+	    		<span>▷</span>
+	    	</a>
+    	</c:if>
+    </div>
 		
 			<c:import url="../temp/footer.jsp"></c:import>
 </body>

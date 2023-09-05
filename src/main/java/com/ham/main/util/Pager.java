@@ -41,7 +41,7 @@ public class Pager {
 		
 		//2. 전체 페이지수로 전체 block 수 구하기
 		//한페이지에 출력할 번호의 갯수
-		long perBlock=5;
+		long perBlock=3;
 		
 		long totalBlock = this.totalPage/perBlock;
 		if(this.totalPage%perBlock !=0 ) {

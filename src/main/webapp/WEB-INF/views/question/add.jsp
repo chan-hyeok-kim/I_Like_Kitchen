@@ -33,7 +33,7 @@
 
   <br>
   <p class="text-start fs-4">문의사항</p>
- <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6">문의사항을입력하세요</textarea>
+ <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" placeholder="문의사항을입력하세요"></textarea>
 	<input type="hidden" value="productNum"></input>
 
 <div>ID
