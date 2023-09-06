@@ -61,6 +61,27 @@ public class ReviewDTO{
 	private Long replyNum;
 	private String replyContents;
 	private Date replyDate;
+	
+	
+	public Long getReplyNum() {
+		return replyNum;
+	}
+	public void setReplyNum(Long replyNum) {
+		this.replyNum = replyNum;
+	}
+	public String getReplyContents() {
+		return replyContents;
+	}
+	public void setReplyContents(String replyContents) {
+		this.replyContents = replyContents;
+	}
+	public Date getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(Date replyDate) {
+		this.replyDate = replyDate;
+	}
+
 //	private Long ref;
 //	private Long step;
 //	private Long depth;

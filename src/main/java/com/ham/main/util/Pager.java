@@ -6,7 +6,7 @@ public class Pager {
 	private String kind;
 	private String search;
 	
-	private Long startRow;
+	private long startRow;
 	private Long lastRow;
 	
 	private Long page;
@@ -132,8 +132,8 @@ public class Pager {
 
 
 
-	public void setStartRow(Long startRow) {
-		this.startRow = startRow;
+	public void setStartRow(long pager) {
+		this.startRow = pager;
 	}
 
 

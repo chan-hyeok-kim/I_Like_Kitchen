@@ -129,7 +129,7 @@
                                         <ul class="dropdown">
                                             <li><a href="/question/list">Room Details</a></li>
                                             <li><a href="/review/list">Blog Details</a></li>
-                                            <li><a href="/review/listPage?num=1">Family Room</a></li>
+                                            <li><a href="#">Family Room</a></li>
                                             <li><a href="#">Premium Room</a></li>
                                         </ul>
                                     </li>

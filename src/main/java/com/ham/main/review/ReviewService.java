@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.file.FileDTO;
 import com.ham.main.util.FileManager;
+import com.ham.main.util.Pager;
 
 @Service
 public class ReviewService {
@@ -38,9 +39,11 @@ public class ReviewService {
 	
 		
 	
-	public List<ReviewDTO> list() throws Exception {
+	public List<ReviewDTO> list(Pager pager) throws Exception {
+		pager.makeRowNum();
+		pager.makePageNum(reviewDAO.getTotal(pager));
 		
-		return reviewDAO.list();
+		return reviewDAO.list(pager);
 	}
  //게시물 작성
 	 public int add(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
@@ -66,17 +69,14 @@ public class ReviewService {
  	public int delete(long reviewNum) throws Exception {
  	return reviewDAO.delete(reviewNum);
  	}
+
+
+
+	public List<ReviewDTO> list(Long reviewNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  	
- // 게시물 총 갯수
- 	
- 	public String count() throws Exception {
- 	 return reviewDAO.count();
- 	}
- 	
- // 게시물 목록 + 페이징
- 	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
- 	 return reviewDAO.listPage(displayPost, postNum);
- 	}
 
 
 }

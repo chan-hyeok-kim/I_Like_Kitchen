@@ -38,7 +38,7 @@
 		</c:forEach>
 	 </tbody>
 	</div>
-	<div id="nav03">
+	 <div id="nav03" class="container text-center fs-3">
     	<c:if test="${pager.page > 1}">
 	    	<a href="list?page=${pager.page - 1}">
 		    	<span>◁</span>

@@ -5,12 +5,18 @@
 
   <mapper namespace="com.ham.main.review.ReviewDAO">
   
+  	<select id="getTotal" resultType="Long">
+		SELECT COUNT(REVIEWNUM) 
+		FROM REVIEW
+	</select>
   <!-- 게시물 목록 -->
 <select id="list" resultType="ReviewDTO">
- SELECT 
- REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
- FROM REVIEW ORDER BY REVIEWNUM
-
+  SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM REVIEW 
+			  		ORDER BY REVIEWNUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 
 </select>
 
@@ -39,18 +45,7 @@
   WHERE REVIEWNUM = #{reviewNum}
 </delete>
 
-<!-- 게시물 총 갯수 -->
-<select id="count" resultType="long">
-SELECT COUNT(REVIEWNUM) FROM REVIEW
 
-</select>
-<!-- 게시물 목록 + 페이징 -->
-<select id="listPage" parameterType="hashMap" resultType="ReviewDTO">
-SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
-  FROM REVIEW
- ORDER BY REVIEWNUM DESC
-
-</select>
 
 	<insert id="setFileAdd" parameterType="ReviewFileDTO">
   		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)

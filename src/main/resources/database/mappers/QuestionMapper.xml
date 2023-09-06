@@ -5,11 +5,27 @@
 
   <mapper namespace="com.ham.main.question.QuestionDAO">
   
+  <resultMap type="QuestionDTO" id="getSelectResult">
+		<id column="QUESTIONNUM" property="questionNum"/>
+		<result column="ID" property="id"/>
+		<result column="QUESTIONKIND" property="questionKind"/>
+		<result column="QUESTIONCONTENTS" property="questionContents"/>
+		<result column="QUESTIONDATE" property="questionDate"/>
+		
+	</resultMap>
+	
+	<select id="getTotal" resultType="Long">
+		SELECT COUNT(QUESTIONNUM) 
+		FROM QUESTION
+	</select>
   <!-- 게시물 목록 -->
 <select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
- SELECT
-  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
- FROM "QUESTION" ORDER BY QUESTIONNUM 
+ SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM QUESTION 
+			  		ORDER BY QUESTIONNUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 </select>
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="QuestionDTO">
@@ -18,7 +34,7 @@
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="com.ham.main.question.QuestionDTO">
- SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
+SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
    FROM QUESTION
   WHERE QUESTIONNUM = #{questionNum}   
 </select>
@@ -37,16 +53,6 @@
    FROM QUESTION
   WHERE QUESTIONNUM = #{questionNum}
 </delete>
-<!-- 게시물 총 갯수 -->
-<select id="count" resultType="Long">
-  SELECT COUNT(QUESTIONNUM) FROM QUESTION
-</select>
-<!-- 게시물 목록 + 페이징 -->
-<select id="listPage" parameterType="hashMap" resultType="QuestionDTO">
-  SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
-    FROM QUESTION
-   ORDER BY QUESTIONNUM DESC
-   LIMIT #{displayPost}, #{postNum}
-</select>
+
 
   </mapper>

@@ -8,15 +8,15 @@
   	<!-- 댓글 조회 -->
 <select id="replyList" parameterType="int" resultType="com.ham.main.reply.ReplyDTO">
     select
-        replyNum, reviewNum, id, replyContent, replyDate
+        replyNum, reviewNum, id, replyContents, replyDate
     from reply
         where reviewNum = #{reviewNum}        
 </select>
 
 <!-- 댓글 작성 -->
 <insert id="replyWrite" parameterType="com.ham.main.reply.ReplyDTO">
-    insert into reply(reviewNum, id, replyContent, replyDate)
-        value(#{reviewNum}, #{id}, #{replyContent}, #{replyDate})
+    insert into reply(replyNum,reviewNum, id, replyContents, replyDate)
+        value(#{replyNum},#{reviewNum}, #{id}, #{replyContents}, #{replyDate})
 </insert>
     
 <!-- 댓글 수정 -->
@@ -34,4 +34,13 @@
     where replyNum = #{replyNum}
         and reviewNum = ${reviewNum}    
 </delete>
+
+<!-- 단일 댓글 조회 -->
+<select id="replySelect" parameterType="com.ham.main.reply.ReplyDTO" resultType="com.ham.main.reply.ReplyDTO">
+    select
+        replyNum, reviewNum, id, replyContent, replyDate
+    from tbl_reply
+        where replyNum = #{replyNum}
+        and replyNum = #{replyNum}                    
+</select>
   </mapper>

@@ -22,13 +22,15 @@
 		 <div class="border">
 		 <tr class="grid gap-3">
 		  <td type="hidden" ${list.reviewNum}></td>
+		  <i class="bi bi-star-fill"></i>
 		  <h4>${list.reviewRate}</h4>	  <td class="p-2 g-col-6 ">
     		<a href="/review/view?reviewNum=${list.reviewNum}">${list.id}</a>
-			</td>|
+			</td>
 		  <td class="p-2 g-col-6 border">${list.reviewDate}</td>
 		 <br>
 		  <td class="p-2 g-col-6 border" style="width:1000px">${list.reviewContents}</td>
 		 </tr>
+		
 		 </div>
 		 <div>
 	        <c:forEach items="${kto.ktos}" var="f">
@@ -38,7 +40,7 @@
 		</c:forEach>
 		
 	 </tbody>
-	 <div id="nav03">
+	 <div id="nav03" class="container text-center fs-3">
     	<c:if test="${pager.page > 1}">
 	    	<a href="list?page=${pager.page - 1}">
 		    	<span>◁</span>

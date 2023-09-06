@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.util.Pager;
+
 @Repository
 public class ReviewDAO {
 
@@ -30,9 +32,9 @@ public class ReviewDAO {
 
  // 게시물 목록
  
- 	public List<ReviewDTO> list() throws Exception { 
+ 	public List<ReviewDTO> list(Pager pager) throws Exception { 
   
-	 return sql.selectList(NAMESPACE + "list");
+	 return sql.selectList(NAMESPACE + "list",pager);
  	}
 
 //게시물 작성
@@ -63,20 +65,8 @@ public class ReviewDAO {
 		return sql.insert(NAMESPACE+"setReplyAdd", reviewDTO);
 	}
 	
-	// 게시물 총 갯수
-	
-	public String count() throws Exception {
-	 return String.valueOf(sql.selectOne(NAMESPACE + "count")); 
-	}
-	// 게시물 목록 + 페이징
-	
-	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
-
-	 HashMap data = new HashMap();
-	  
-	 data.put("displayPost", displayPost);
-	 data.put("postNum", postNum);
-	  
-	 return sql.selectList(NAMESPACE + "listPage", data);
+		public Long getTotal(Pager pager) {
+		
+		return sql.selectOne(NAMESPACE + "getTotal");
 	}
 }
