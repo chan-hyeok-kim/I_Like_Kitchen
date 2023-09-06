@@ -24,7 +24,7 @@
       border: 1px solid black;
        */
  }
- #list-border{
+ .list-border{
       width: 1000px;
       margin-top:20px;
     margin-bottom: 20px;
@@ -73,16 +73,17 @@
  a:visited{
       color: (52, 111, 238, 0.699);
  }
- #checklist{
+ .checklist{
       width:600px;
  }
 </style>
 </head>
 <body>
 
-<section id="checklist">
+<section class="checklist">
 
-<c:forEach items="${list}" var="i" varStatus="fi">
+<c:forEach items="${bookList}" var="i" varStatus="fi">
+
 
 <div style="width: 600px">
 <div class="book-table-list" data-list="${fi.count}">
@@ -110,11 +111,11 @@
 
 
 
-<div id="list-border"></div>
+<div class="list-border"></div>
          
 </c:forEach>
 
-<nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
 					<li class="page-item"><a class="page-link move"
@@ -135,10 +136,11 @@
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
 			</ul>
-		</nav>
+		</nav> 
 
 </section>
 <script type="text/javascript">
+
 
 let count = $('.book-table-list').length
 let bookNum = $('#book-num').text()
@@ -146,8 +148,6 @@ let bookNum = $('#book-num').text()
 console.log(count)
 
 for(let i=0; i<count; i++){
-
-   
 
 	$('.btn-pay').eq(i).click(function(){
 		if(confirm("승인하시겠습니까?")){

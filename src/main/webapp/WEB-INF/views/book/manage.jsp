@@ -61,6 +61,7 @@
 <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded', function() {
+    let eventArr = getCalendarDataInDB();
     let calendarEl = document.getElementById('calendar');
     let calendar = new FullCalendar.Calendar(calendarEl, {
     	headerToolbar: {
@@ -79,11 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		      dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
 		    }
 		  },
-	    events: [{
-			   id: '예약자명',
-			title: 'reserved',
-			start: '2023-09-05'
-		}],
+	    events: eventArr,
+      eventTimeFormat: { // like '14:30:00'
+					    hour: '2-digit',
+					    minute: '2-digit',
+					    hour12: false
+					  },
 		eventClick: function(info) {
 			    console.log('Event: ' + info.event.title);
 			    info.el.style.backgroundColor = 'yellowgreen'
@@ -95,20 +97,40 @@ document.addEventListener('DOMContentLoaded', function() {
     	$.ajax({
     		type: 'POST',
         url: 'checklist',
-        data:{
-             clickDay: info.dateStr
-        },success:function(result){
+       data:{
+          clickDay: info.dateStr
+       },
+         success:function(result){
             $('#book-date-info').html(result)
         }    	
     	})
     },
-    unselect:function(blur,timeGridWeek){
-    	
-    }
+    
     })
+  
     calendar.render();
   });
 
+
+
+
+function getCalendarDataInDB(){
+    let arr = [];
+    
+    $.ajax({
+        url:'getAjaxEvent',
+        type:'post',
+        success:function(res){
+            arr = res;
+            console.log(res)
+            
+        },
+        error:function(){
+            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
+        }
+    });
+    return arr;
+}
 
 </script>
 </html>

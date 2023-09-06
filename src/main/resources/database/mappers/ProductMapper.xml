@@ -102,10 +102,29 @@
 		DELETE PRODUCT WHERE PRODUCTNUM=#{num}
 	</delete>
 	
-	 <select id="getInfo" resultType="ProductDTO" parameterType="PartnerDTO">
-        SELECT *
-          FROM PRODUCT
-         WHERE PARTNERNUM=#{partnerNum}
+	 <select id="getInfo" resultMap="getListInfo" parameterType="PartnerDTO">
+        SELECT P.*, PF.* 
+		  FROM PRODUCT P
+		       LEFT JOIN
+		       PRODUCTFILE PF
+			   ON(P.PRODUCTNUM=PF.PRODUCTNUM)  
+         WHERE P.PARTNERNUM=#{partnerNum}
      </select>
+     
+     <resultMap type="ProductDTO" id="getListInfo">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="PHONE" property="phone"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
 	
  </mapper>

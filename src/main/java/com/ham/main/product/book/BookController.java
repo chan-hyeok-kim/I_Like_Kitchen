@@ -2,7 +2,9 @@ package com.ham.main.product.book;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.member.MemberService;
 import com.ham.main.partner.PartnerDTO;
 import com.ham.main.product.ProductDTO;
 import com.ham.main.product.ProductService;
@@ -33,6 +36,9 @@ public class BookController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("add")
 	public void setBook(ProductDTO productDTO, Model model) throws Exception {
@@ -127,14 +133,20 @@ public class BookController {
 		
 		
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		List<BookDTO> newBl = new ArrayList<BookDTO>();
 		for(ProductDTO p: pl) {
 			List<BookDTO> bl = bookService.getBook(p);
-//		지금은 하나니깐 이렇게 되는데 상품선택이 추가된다면
-//		add로해야됨
-		System.out.println(pl);
-			model.addAttribute("list",bl);
-			model.addAttribute("productList", pl);
+            for(BookDTO b: bl) {
+            	newBl.add(b);
+            }
+		 
+			model.addAttribute("list",newBl);
+			
 		}
+		
+		
+		
+
 		
 	}
 	
@@ -144,24 +156,80 @@ public class BookController {
 		
 		
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+//		가져온 자료 담아둘 애들 객체 생성 
+		List<ProductDTO> newPl = new ArrayList<ProductDTO>();
+		List<BookDTO> newBl = new ArrayList<BookDTO>();
 		for(ProductDTO p: pl) {
 			List<BookDTO> bl = bookService.getBook(p);
-		    System.out.println(bl);
-			for(BookDTO b: bl) {
+		  
+		    for(BookDTO b: bl) {
 			if(Integer.parseInt(b.getBookCheck())>0) {
 				b.setBookCheck("승인");
 			}else {
 				b.setBookCheck("미승인");
 			}
+			newBl.add(b);
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.setProductNum(b.getProductNum());
+                newPl.add(productService.getDetail(productDTO));
 			}
+			
 			if(bl.size()!=0) {
-	        	model.addAttribute("list", bl);
+	        	model.addAttribute("bookList", newBl);
+	        	model.addAttribute("productList", newPl);
 		}
-		
+		  
         
         }
        
 	}
+	
+	
+	@PostMapping("getAjaxEvent")
+	public String getAjaxEvent(HttpSession session,Model model) throws Exception{
+        PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+		
+        
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+//		가져온 자료 담아둘 애들 객체 생성 
+		List<ProductDTO> newPl = new ArrayList<ProductDTO>();
+		List<BookDTO> newBl = new ArrayList<BookDTO>();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map> eventList = new ArrayList<Map>(); 
+		for(ProductDTO p: pl) {
+			List<BookDTO> bl = bookService.getBook(p);
+		  
+
+		    for(BookDTO b: bl) {
+			    if(Integer.parseInt(b.getBookCheck())>0) {
+			     	b.setBookCheck("승인");
+		     	}else {
+			     	b.setBookCheck("미승인");
+			    }
+			    newBl.add(b);
+                    ProductDTO productDTO = new ProductDTO();
+                    productDTO.setProductNum(b.getProductNum());
+                    newPl.add(productService.getDetail(productDTO));
+                    
+                map.put("id",b.getId());
+                map.put("start",b.getStartTime());
+                map.put("end", b.getEndTime());
+                eventList.add(map);
+                System.out.println(eventList);
+                model.addAttribute("result", eventList);     
+			}
+		
+//			if(bl.size()!=0) {
+//	        	model.addAttribute("bookList", newBl);
+//	        	model.addAttribute("productList", newPl);
+//		    }  
+		    System.out.println(eventList);
+        }
+       
+        return "commons/ajaxResult";
+	}
+	
 	
 	@PostMapping("bookCheck")
 	public void setBookCheck(BookDTO bookDTO) throws Exception{

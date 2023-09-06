@@ -77,11 +77,7 @@
 <body>
 
 <section>
-<c:if test="${empty list}">
-진행 중인 예약 내역이 없습니다 
-</c:if>
 
-<c:if test="${not empty list}">
 <c:forEach items="${list}" var="i" varStatus="fi">
 
 <div>
@@ -113,7 +109,7 @@
 <div id="list-border"></div>
          
 </c:forEach>
-</c:if>
+
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
@@ -138,6 +134,10 @@
 		</nav>
 
 </section>
+<script type="text/javascript">
+
+
+</script>
 <script src="/resources/js/book/list.js"/>
 
 </body>
