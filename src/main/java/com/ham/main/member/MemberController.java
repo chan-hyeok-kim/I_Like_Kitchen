@@ -8,6 +8,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.net.http.HttpRequest;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -137,8 +138,35 @@ public class MemberController {
 	public ModelAndView setMemberJoin(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setMemberJoin(memberDTO);
+		
 		mv.setViewName("redirect:../");
 		
+		return mv;
+	}
+	
+	@GetMapping("snsJoin")
+	public ModelAndView setSnsAdd() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/snsJoin");
+		
+		return mv;
+	}
+	
+	@PostMapping("snsJoin")
+	public ModelAndView setSnsAdd(MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
+		memberDTO.setId(snsMemberDTO.getSnsId());
+		memberDTO.getPassword();
+		memberDTO.setName(snsMemberDTO.getSnsName());
+		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
+		memberDTO.getPhone();
+		System.out.println(memberDTO);
+		//memberDTO2.setPoint(snsMemberDTO.get("0"));
+		
+		int result = memberService.setSnsAdd(memberDTO);
+		
+		mv.setViewName("redirect:../");
 		return mv;
 	}
 	
@@ -168,10 +196,15 @@ public class MemberController {
 		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			if(memberDTO.getRoles().size() == 2) {
-				if(partnerDTO != null) {
-					session.setAttribute("partner", partnerDTO);
-				}
+//			if(memberDTO.getRoles().size() == 2) {
+//				if(partnerDTO != null) {
+//					session.setAttribute("partner", partnerDTO);
+//				}
+//			}
+			if(partnerDTO != null) {
+				if(memberDTO.getRoles().get(0).getRoleName().equals("PARTNER"))
+					System.out.println(memberDTO.getRoles().get(0));
+				session.setAttribute("partner", partnerDTO);
 			}
 			mv.setViewName("redirect:../");
 		}else{
@@ -228,7 +261,10 @@ public class MemberController {
 	    System.out.println(snsMemberDTO);
 	    session.setAttribute("member", snsMemberDTO);
 	    
-	    mav.setViewName("/member/snsJoin");
+	    memberService.setSnsJoin(snsMemberDTO);
+	    
+	    //mav.setViewName("redirect:../");
+	    mav.setViewName("member/snsJoin");
 	    return mav;
 	}	
 	
@@ -260,6 +296,8 @@ public class MemberController {
         	  
         	  session.setAttribute("member", snsMemberDTO);
           }
+          
+          memberService.setSnsJoin(snsMemberDTO);
           
 	      return "commons/loginResult";
 	}

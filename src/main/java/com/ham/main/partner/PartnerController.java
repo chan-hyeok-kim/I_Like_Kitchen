@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.MemberService;
+import com.ham.main.product.ProductDTO;
+import com.ham.main.product.ProductService;
 
 import java.util.List;
 
@@ -35,6 +37,9 @@ public class PartnerController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	private final String SERVICE_KEY = "bJ6kMWyyBbwha2z3sjC5XeliD%2F%2FTMdJcXmr9veQc%2BIKmwfUs0IYcoRmG0F7qXaxYkf61qRvzBy67J30mnS64Mg%3D%3D";
 	
@@ -74,8 +79,17 @@ public class PartnerController {
 	@GetMapping("partnerPage")
 	public void getPartnerPage() throws Exception {
 		
+	
 	}
 	
+	@GetMapping("manage")
+	public void getPartnerManage(HttpSession session, Model model) throws Exception {
+		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		model.addAttribute("kto", pl);
+		
+	}
+
 	
 	//사업자등록
 	@GetMapping("partnerRegister")

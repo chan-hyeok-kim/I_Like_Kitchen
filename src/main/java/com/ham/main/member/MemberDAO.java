@@ -12,6 +12,22 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
+	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setSnsJoin", snsMemberDTO);
+	}
+	
+	public int setSnsAdd(MemberDTO memberDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setSnsAdd", memberDTO);
+	}
+	
+//	public SnsMemberDTO setSnsLogin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.selectOne(NAMESPACE + "setSnsLogin", snsMemberDTO);
+//	}
+//	
+//	public int setSnsMemberRole(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.insert(NAMESPACE + "setSnsMemberRole", snsMemberDTO);
+//	}
+	
 	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE +"getMemberEmailCheck", memberDTO);
 	}

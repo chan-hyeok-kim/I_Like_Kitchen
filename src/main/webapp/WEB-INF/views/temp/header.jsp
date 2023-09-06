@@ -145,7 +145,7 @@
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
 			      			<c:if test="${not empty partner}">
 			      				<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
-			      				<li class="nav-item text-white me-3"><a href="/partner/parterPage">파트너페이지</a></li>
+			      				<li class="nav-item text-white me-3"><a href="/partner/partnerPage">파트너페이지</a></li>
 			      			</c:if>
 			      			<li class="nav-item text-white me-3"><a href="/partner/partnerRegister">사업자등록</a></li>
 			      			<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
@@ -154,6 +154,42 @@
 			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
 			      			<!-- <li class="nav-item text-white me-3"><a href="/partner/partnerLogin">호스트 로그인</a></li> -->
 			      		</c:if>
+			      		
+			      		<%-- <c:if test="${empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
+			      		</c:if>
+			      		<c:if test="${not empty member}">
+			      			<c:forEach items="${sessionScope.member.roles}" var="r">
+			      			<c:if test="${member.roles[2].roleName == 'PARTNER'}">
+			      			<c:if test="${r.getRoleName() eq 'PARTNER'}">
+			      				<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
+			      				<li class="nav-item text-white me-3"><a href="/partner/parterPage">파트너페이지</a></li>
+			      			</c:if>
+			      			</c:forEach>
+			      			<c:if test="${member.roles[1].roleName == 'MEMBER'}">
+			      			<c:forEach items="${sessionScope.member.roles}" var="r">
+			      			<c:if test="${r.getRoleName() eq 'MEMBER'}">
+			      				<li class="nav-item text-white me-3"><a href="/partner/partnerRegister">사업자등록</a></li>
+			      				<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
+			      			</c:if>
+			      			</c:forEach>
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+			      		</c:if> --%>
+			      		
+			      		<%-- <c:if test="${empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
+			      		</c:if>
+			      		<c:if test="${not empty member}">
+			      			<c:if test="${member.roles[2].roleName == 'PARTNER'}">
+			      				<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
+			      				<li class="nav-item text-white me-3"><a href="/partner/parterPage">파트너페이지</a></li>
+			      			</c:if>
+			      			<c:if test="${member.roles[1].roleName == 'MEMBER'}">
+			      				<li class="nav-item text-white me-3"><a href="/partner/partnerRegister">사업자등록</a></li>
+			      				<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
+			      			</c:if>
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+			      		</c:if> --%>
 			      	</ul>
 			      </nav>
                             </nav>

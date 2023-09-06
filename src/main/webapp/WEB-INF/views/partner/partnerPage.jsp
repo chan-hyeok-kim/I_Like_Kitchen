@@ -132,7 +132,7 @@
         })
 
         btn4.addEventListener("click", function(){
-            location.href=""
+            location.href="./manage"
         })
     </script>
     
