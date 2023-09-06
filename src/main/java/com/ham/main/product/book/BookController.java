@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ham.main.member.MemberDTO;
@@ -184,9 +185,9 @@ public class BookController {
        
 	}
 	
-	
+	@ResponseBody
 	@PostMapping("getAjaxEvent")
-	public String getAjaxEvent(HttpSession session,Model model) throws Exception{
+	public Object getAjaxEvent(HttpSession session,Model model) throws Exception{
         PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
 		
         
@@ -215,9 +216,10 @@ public class BookController {
                 map.put("id",b.getId());
                 map.put("start",b.getStartTime());
                 map.put("end", b.getEndTime());
+//                map.put("color", "#778899");
                 eventList.add(map);
                 System.out.println(eventList);
-                model.addAttribute("result", eventList);     
+//                model.addAttribute("result", eventList);     
 			}
 		
 //			if(bl.size()!=0) {
@@ -227,7 +229,7 @@ public class BookController {
 		    System.out.println(eventList);
         }
        
-        return "commons/ajaxResult";
+        return eventList;
 	}
 	
 	
