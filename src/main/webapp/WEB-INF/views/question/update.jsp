@@ -19,7 +19,7 @@
 <input type="text" name="questionNum" value="${view.questionNum}" readonly></input>
 
 <div>문의유형
-<select class="form-select w-75" aria-label="Default select example" name="questionKind">
+<select class="form-select w-75" aria-label="Default select example" name="questionKind" value="${view.questionKind}">
   <option value="일정문의">일정문의</option>
   <option value="가격문의">가격문의</option>
   <option value="공간정보문의">공간정보문의</option>

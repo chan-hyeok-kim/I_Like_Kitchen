@@ -21,8 +21,7 @@
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 
 
-<div>${com.productName}</div>
-<a href="">${com.productName}</a>
+	<input type="hidden" value="${view.reviewNum}">
  </div>
   <br>
   <p class="text-start fs-4">후기작성</p>

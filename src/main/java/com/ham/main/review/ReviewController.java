@@ -24,6 +24,8 @@ import com.ham.main.util.Pager;
 public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private ReplyService replyService;
 	
  @RequestMapping(value = "list", method = RequestMethod.GET)
  public String getList(Model model,Pager pager) throws Exception {
@@ -73,15 +75,17 @@ public void getAdd(HttpSession session) throws Exception {
 	}
 	// 게시물 수정 폼
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void getUpdate(@RequestParam("reviewNum") Long reviewNum, Model model) throws Exception {
+	public String getUpdate(@RequestParam("reviewNum") Long reviewNum, Model model) throws Exception {
 
 	 ReviewDTO reviewDTO = reviewService.view(reviewNum);
 	   
 	 model.addAttribute("view", reviewDTO);
+	 
+	 return "/review/update";
 	}
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String postUpdate(ReviewDTO reviewDTO,MultipartFile[] files, HttpSession session) throws Exception {
+	public String update(ReviewDTO reviewDTO,MultipartFile[] files, HttpSession session) throws Exception {
     
 	 reviewService.update(reviewDTO, files, session);
 	   

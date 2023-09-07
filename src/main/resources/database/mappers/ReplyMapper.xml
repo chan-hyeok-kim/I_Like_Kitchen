@@ -14,13 +14,13 @@
 </select>
 
 <!-- 댓글 작성 -->
-<insert id="replyWrite" parameterType="com.ham.main.reply.ReplyDTO">
+<insert id="Write" parameterType="com.ham.main.reply.ReplyDTO">
     insert into reply(replyNum,reviewNum, id, replyContents, replyDate)
         value(#{replyNum},#{reviewNum}, #{id}, #{replyContents}, #{replyDate})
 </insert>
     
 <!-- 댓글 수정 -->
-<update id="replyModify" parameterType="com.ham.main.reply.ReplyDTO">
+<update id="Modify" parameterType="com.ham.main.reply.ReplyDTO">
     update reply set
         id = #{id},
         replyContent = #{replyContent}
@@ -29,7 +29,7 @@
 </update>
 
 <!-- 댓글 삭제 -->
-<delete id="replyDelete" parameterType="com.ham.main.reply.ReplyDTO">
+<delete id="Delete" parameterType="com.ham.main.reply.ReplyDTO">
     delete from reply
     where replyNum = #{replyNum}
         and reviewNum = ${reviewNum}    
