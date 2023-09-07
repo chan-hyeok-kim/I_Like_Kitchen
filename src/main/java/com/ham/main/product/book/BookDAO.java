@@ -41,5 +41,8 @@ public class BookDAO {
 		return sqlSession.update(NAMESPACE+"setBookCheck", bookDTO);
 	}
 	
+	public List<BookDTO> getBookTime(BookDTO bookDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getBookTime", bookDTO);
+	}
 
 }

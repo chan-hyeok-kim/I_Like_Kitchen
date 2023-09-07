@@ -24,12 +24,30 @@ let setDate = new Date();
 
 $('#selectTimeTitle').append(month+'월 '+date+'일')
           //  for(c of cho){
+
+
 			document.addEventListener('DOMContentLoaded', function() { 
 			  // c.addEventListener("click", function() {	
 
  
 				let calendarEl = document.getElementById('calendar');
 				let calendar = new FullCalendar.Calendar(calendarEl, {
+				events: [
+    {
+      id: 'a',
+      title: 'my event',
+      start: '2023-09-07'
+    }
+  ],
+					buttonText: {
+						today: '오늘',
+						month: '월간',
+					  },
+					  headerToolbar: {
+						start: 'prev',
+						center: 'title',
+						end: 'next'
+					  },
 					initialView : 'dayGridMonth',
 					selectable : true,
 					locale : 'ko',
@@ -50,9 +68,19 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
 						console.log(typeof info.dateStr)
 						let selectMonth = info.date.getMonth()+1;
 					 	let selectDate = info.date.getDate();
-						swal(
-						   '알림','선택하신 날짜는 '+ selectMonth+'월'+selectDate+'일'+'입니다'
-						)
+						console.log(typeof info.date)
+						console.log(typeof selectDate)
+						swal('알림','선택하신 날짜는 '+ selectMonth+'월'+selectDate+'일'+'입니다')
+						   $.ajax({
+                                 type:'POST',
+								 url:'bookTime',
+								 data: {
+									infoDate: info.date
+								 },success:function(result){
+                                        console.log(result);
+								 }
+						   })
+						   
 						$('#setDate').val(info.dateStr);
                          console.log($('#setDate').val());
 						 setDate = $('#setDate').val();

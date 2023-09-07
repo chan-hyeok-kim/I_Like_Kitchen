@@ -46,6 +46,10 @@ public class BookService {
 		return bookDAO.setBookCheck(bookDTO);
 	}
 	
+	public List<BookDTO> getBookTime(BookDTO bookDTO) throws Exception{
+		return bookDAO.getBookTime(bookDTO);
+	}
+	
 	
 	
 	

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonObject;
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.MemberService;
 import com.ham.main.partner.PartnerDTO;
@@ -152,9 +153,10 @@ public class BookController {
 	}
 	
 	@PostMapping("checklist")
-	public void getChecklist(String clickDay,HttpSession session,Model model) throws Exception{
+	public void getChecklist(java.sql.Date clickDay,HttpSession session,Model model) throws Exception{
         PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
 		
+		System.out.println(clickDay);
 		
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
 //		가져온 자료 담아둘 애들 객체 생성 
@@ -169,12 +171,16 @@ public class BookController {
 			}else {
 				b.setBookCheck("미승인");
 			}
+			System.out.println(b.getBookDate());
+			Date bookToday = (java.util.Date)b.getBookDate();
+			Date clickToday = (java.util.Date)clickDay;
+			if(bookToday.equals(clickToday)){
 			newBl.add(b);
                 ProductDTO productDTO = new ProductDTO();
                 productDTO.setProductNum(b.getProductNum());
                 newPl.add(productService.getDetail(productDTO));
 			}
-			
+		    }
 			if(bl.size()!=0) {
 	        	model.addAttribute("bookList", newBl);
 	        	model.addAttribute("productList", newPl);
@@ -193,12 +199,14 @@ public class BookController {
         
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
 //		가져온 자료 담아둘 애들 객체 생성 
+	
 		List<ProductDTO> newPl = new ArrayList<ProductDTO>();
 		List<BookDTO> newBl = new ArrayList<BookDTO>();
 		
-		Map<String, Object> map = new HashMap<String, Object>();
+		
 		List<Map> eventList = new ArrayList<Map>(); 
 		for(ProductDTO p: pl) {
+			
 			List<BookDTO> bl = bookService.getBook(p);
 		  
 
@@ -208,34 +216,78 @@ public class BookController {
 		     	}else {
 			     	b.setBookCheck("미승인");
 			    }
+			   
+			    
 			    newBl.add(b);
-                    ProductDTO productDTO = new ProductDTO();
-                    productDTO.setProductNum(b.getProductNum());
-                    newPl.add(productService.getDetail(productDTO));
-                    
+			    
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.setProductNum(b.getProductNum());
+                newPl.add(productService.getDetail(productDTO));
+
+                System.out.println(b);  
+                
+                Map<String, Object> map = new HashMap<String, Object>();
                 map.put("id",b.getId());
                 map.put("start",b.getStartTime());
                 map.put("end", b.getEndTime());
-//                map.put("color", "#778899");
+                
+                
+                if(b.getBookCheck().equals("미승인")) {
+                map.put("title", "미승인 건");
+                }else {
+                map.put("title", "예약");
+                map.put("borderColor", "#9FF781");
+                }
+                System.out.println(map);
                 eventList.add(map);
                 System.out.println(eventList);
-//                model.addAttribute("result", eventList);     
+                }  
 			}
 		
-//			if(bl.size()!=0) {
-//	        	model.addAttribute("bookList", newBl);
-//	        	model.addAttribute("productList", newPl);
-//		    }  
-		    System.out.println(eventList);
-        }
        
         return eventList;
 	}
 	
 	
 	@PostMapping("bookCheck")
-	public void setBookCheck(BookDTO bookDTO) throws Exception{
-		  bookService.setBookCheck(bookDTO);
+	public String setBookCheck(BookDTO bookDTO,Model model) throws Exception{
+		  int result = bookService.setBookCheck(bookDTO);
+		  model.addAttribute("result", result);
+		  
+		  return "commons/ajaxResult";
 	}
     
+    @ResponseBody 
+	@PostMapping("bookTime") 
+	public Date getBookTime(String infoDate) throws Exception{
+    	
+    	infoDate = infoDate.substring(0,infoDate.lastIndexOf('('));
+    	infoDate = infoDate.trim();
+  
+    	SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z");
+    	Date formatDate = format.parse(infoDate);
+    	System.out.println(formatDate);
+//    	SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	 
+		BookDTO bookDTO = new BookDTO();
+		bookDTO.setBookDate((java.sql.Date) formatDate);
+    	List<BookDTO> bl = bookService.getBookTime(bookDTO);
+		List<JsonObject> dl = new ArrayList<JsonObject>();
+         
+		 Date date1 = new Date();
+	     
+	  	 for(BookDTO b: bl) {
+//			 Date date = new Date(b.getStartTime());
+		 JsonObject jsonObject = new JsonObject();
+		 
+		 System.out.println(b.getStartTime());
+//		 jsonObject.addProperty("bookDay", b.getBookDate();
+//		 jsonObject.addProperty("start", b.getStartTime().toString());
+//		 jsonObject.addProperty("end", b.getEndTime().);
+		 dl.add(jsonObject);
+         }
+		 return bl.get(0).getEndTime();
+	}
+	
+	
 }

@@ -32,15 +32,17 @@
     height: 10px;
  }
  
- #book-table-div div{
+ .book-table-div div{
      display: flex;
      
  }
- #book-table-div{
+  
+ 
+ .book-table-div{
      margin-left: 30px;
      
  }
- #book-table-div div p{
+ .book-table-div div p{
      width: 103px;
  }
  #book-list-unorder{
@@ -51,14 +53,14 @@
  }
  .book-table-list{
     display: flex;
-    width: 600px;
+    width: 800px;
     margin-right: 0px;
  }
  #btn-home{
-      width: 100px;
+      width: 90px;
       height:40px;
-      margin-top:150px;
-      margin-left:20px;
+      margin-top: 100px;
+      
  }
  #detail-link a{
       text-decoration: none;
@@ -76,16 +78,20 @@
  .checklist{
       width:600px;
  }
+
 </style>
 </head>
 <body>
 
 <section class="checklist">
+<c:if test="${empty bookList}">
+해당 날짜에 예약 내역이 없습니다 </c:if>
+<c:if test="${not empty bookList}"></c:if>
 
 <c:forEach items="${bookList}" var="i" varStatus="fi">
 
 
-<div style="width: 600px">
+<div style="width: 700px">
 <div class="book-table-list" data-list="${fi.count}">
 <div id="book-img">
 <img style="width: 250px; height: 200px;" src="/resources/upload/product/${productList[fi.index].productFileDTOs[0].fileName}">
@@ -93,7 +99,7 @@
    
 </div>
 
-<div id="book-table-div">
+<div class="book-table-div">
    <div><p>예약자</p><p>${member.name}</p></div>
    <div><p>예약번호</p><p id="book-num">${i.bookNum}</p></div>
    <div><p>예약 날짜</p><p>${i.bookDate}</p></div>
@@ -103,8 +109,20 @@
    
   
    </div>
-    <button id="btn-home" class="btn btn-primary btn-pay" data-bookNum="${i.bookNum}">승인</button>
+   <div class="book-table-div">
+      <div><p>목적</p><p>${i.purpose}</p></div>
+      <div><p>
+      <button type="button" id="btn-contents" data-contents="${i.contents}" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal${fi.index}">
+      전달사항
+      </button>
+      </p><p style="width: 200px"></p></div>
+  <button id="btn-home" class="btn btn-primary btn-pay" data-bookNum="${i.bookNum}">승인</button>
   
+
+
+  
+   </div>
+    
   </div>
  
 </div>
@@ -113,7 +131,26 @@
 
 <div class="list-border"></div>
          
+         <div class="modal fade" id="exampleModal${fi.index}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">전달사항</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ${i.contents}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 </c:forEach>
+<!-- Modal -->
+
 
     <nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -141,19 +178,19 @@
 </section>
 <script type="text/javascript">
 
-
-let count = $('.book-table-list').length
-let bookNum = $('#book-num').text()
+count = $('.book-table-list').length
+bookNum = $('#book-num').text()
 
 console.log(count)
 
 for(let i=0; i<count; i++){
-
+	
+	
 	$('.btn-pay').eq(i).click(function(){
 		if(confirm("승인하시겠습니까?")){
           $.ajax({
                type:'POST',
-                url:'/bookCheck',
+                url:'bookCheck',
                data: {
                bookNum:bookNum
                },success:function(result){

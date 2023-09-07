@@ -51,4 +51,10 @@
       WHERE BOOKNUM=#{bookNum} 
   </update>
   
+  <select id="getBookTime" resultType="BookDTO" parameterType="BookDTO">
+     SELECT *
+       FROM BOOK
+      WHERE BOOKDATE=#{bookDate}
+  </select>
+  
   </mapper>

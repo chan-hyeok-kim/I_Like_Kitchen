@@ -42,7 +42,7 @@ section{
 
 
 .b1 {
-    border-bottom: solid rgb(188, 206, 251) 4px;
+    border-bottom: solid #FAAC58 4px;
 	margin: auto;
 	width: 90%;
 	padding-top: 20px;
@@ -69,7 +69,7 @@ section{
 	font-size: 14px;
 	
 	border-radius: 2px;
-	color: #dfa974;
+	color: #FAAC58;
 	font-weight: 500;
 	background: transparent;
 	height: 46px;
@@ -137,6 +137,28 @@ section{
 
 .input-number-group .input-number-increment {
   margin-left: 0.3rem;
+}
+
+#calendar{
+  color:#FAAC58;
+}
+#calendar button{
+  background-color:#FAAC58;
+  border-color:#FAAC58;
+}
+#book-close-div button:hover{
+  border-width: 2px;
+  border-color: black;
+}
+#book-close-div button:active{
+  border-color: black;
+}
+#book-close{
+width: 300px; 
+margin-left: 70px;  
+color: white; 
+font-weight: bold;
+background-color: #FAAC58;
 }
 
 </style>
@@ -255,9 +277,9 @@ section{
 <div>
 					<p style="color:red">호스트 승인 후 예약이 가능합니다.</p>
 					</div>
-<div style="margin-bottom: 20px">
-					<button type="button" class="btn btn-light" id="book-close"
-						style="width: 300px; margin-left: 70px; background-color: rgb(188, 206, 251); color: white">접수</button>
+<div id="book-close-div" style="margin-bottom: 20px">
+					<button type="button" class="btn" id="book-close"
+						>접수</button>
 </div>
 </div>
 					
