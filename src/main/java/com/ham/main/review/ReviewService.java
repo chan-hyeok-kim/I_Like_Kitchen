@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.file.FileDTO;
+import com.ham.main.notice.NoticeDTO;
+import com.ham.main.notice.NoticeFileDTO;
 import com.ham.main.util.FileManager;
 import com.ham.main.util.Pager;
 
@@ -22,20 +24,7 @@ public class ReviewService {
 	private FileManager fileManager;
  
 
-	
-	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
-		//폴더 파일 삭제
-		reviewFileDTO=reviewDAO.getFileDetail(reviewFileDTO);
-		boolean flag=fileManager.fileDelete(reviewFileDTO, "/resources/upload/review/", session);
-		
-		if(flag) {
-			
-			
-			//db삭제
-			return reviewDAO.setFileDelete(reviewFileDTO);
-		}
-		return 0;
-	}
+
 	
 		
 	
@@ -46,10 +35,26 @@ public class ReviewService {
 		return reviewDAO.list(pager);
 	}
  //게시물 작성
-	 public int add(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
-	 
-	 return reviewDAO.add(reviewDTO);
- }
+	public int add(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = reviewDAO.add(reviewDTO);
+		
+		String path = "/resources/upload/review/";
+		
+		for(MultipartFile file: files) {
+			if(!file.isEmpty()) {
+				String fileName = fileManager.fileSave(path, session, file);
+				ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
+				
+				reviewFileDTO.setReviewNum(reviewDTO.getReviewNum());
+				reviewFileDTO.setFileName(fileName);
+				reviewFileDTO.setOriginalName(file.getOriginalFilename());
+				
+				result = reviewDAO.setFileAdd(reviewFileDTO);
+			}
+		}
+		
+		return result;
+	}
 //게시물 조회
 
  	public ReviewDTO view(Long reviewNum) throws Exception {
@@ -59,24 +64,51 @@ public class ReviewService {
  	
  	
  // 게시물 수정
- 	
- 	public int update(ReviewDTO reviewDTO) throws Exception {
- 	   
- 	return reviewDAO.update(reviewDTO);
- 	}
+ 	public int update(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = reviewDAO.update(reviewDTO);
+		
+		String path = "/resources/upload/review/";
+		
+		for(MultipartFile file: files) {
+			if(!file.isEmpty()) {
+				String fileName = fileManager.fileSave(path, session, file);
+				ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
+				
+				reviewFileDTO.setReviewNum(reviewDTO.getReviewNum());
+				reviewFileDTO.setFileName(fileName);
+				reviewFileDTO.setOriginalName(file.getOriginalFilename());
+				
+				result = reviewDAO.setFileAdd(reviewFileDTO);
+			}
+		}
+		
+		return result;
+	}
  	
  // 게시물 삭제
  	public int delete(long reviewNum) throws Exception {
- 	return reviewDAO.delete(reviewNum);
+ 	
+ 		return reviewDAO.delete(reviewNum);
  	}
 
 
 
-	public List<ReviewDTO> list(Long reviewNum) {
-		// TODO Auto-generated method stub
-		return null;
-	}
- 	
+
+	// file(파일)
+		public int setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session) throws Exception {
+			reviewFileDTO = reviewDAO.getFileDetail(reviewFileDTO);
+			boolean flag = fileManager.fileDelete(reviewFileDTO, "/resources/upload/notice", session);
+			
+			if(flag) {
+				return reviewDAO.setFileDelete(reviewFileDTO);
+			}
+			
+			return 0;
+		}
+		public List<ReviewDTO> list(Long reviewNum) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 
 }

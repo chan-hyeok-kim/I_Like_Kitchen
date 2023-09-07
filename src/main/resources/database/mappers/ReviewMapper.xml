@@ -45,19 +45,19 @@
   WHERE REVIEWNUM = #{reviewNum}
 </delete>
 
-
-
-	<insert id="setFileAdd" parameterType="ReviewFileDTO">
-  		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
-  		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
-  	</insert>
-<delete id="setFileDelete" parameterType="ReviewFileDTO">
-		DELETE REVIEWFILE 
-		WHERE FILENUM=#{fileNum}
-	</delete>
-	
-	<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
-		SELECT FILENUM, FILENAME, ORIGINALNAME FROM REVIEWFILE WHERE FILENUM=#{fileNum}
+<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
+		SELECT FILENUM, FILENAME 
+		FROM REVIEWFILE
+		WHERE FILENUM = #{fileNum} 
 	</select>
+	
+	<insert id="setFileAdd" parameterType="ReviewFileDTO">
+		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
+		VALUES(FILE_SEQ.NEXTVAL, #{reviewNum}, #{fileName}, #{originalName})
+	</insert>
 
+	<delete id="setFileDelete" parameterType="ReviewFileDTO">
+		DELETE REVIEWFILE
+		WHERE FILENUM = #{fileNum}
+	</delete>
   </mapper>

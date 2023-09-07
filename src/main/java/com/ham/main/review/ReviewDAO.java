@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.notice.NoticeFileDTO;
 import com.ham.main.util.Pager;
 
 @Repository
@@ -17,16 +18,6 @@ public class ReviewDAO {
  
  	private final String NAMESPACE="com.ham.main.review.ReviewDAO.";
 
- 	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) throws Exception {
-		return sql.selectOne(NAMESPACE+"getFIleDetail",reviewFileDTO);
-	}
- 	
-	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception{
-		return sql.delete(NAMESPACE+"setFileDelete",reviewFileDTO);
-	}
-	public int setFileAdd(ReviewFileDTO reviewFileDTO)throws Exception{
-		return sql.insert(NAMESPACE+"setFileAdd", reviewFileDTO);
-	}
 
 	
 
@@ -69,4 +60,19 @@ public class ReviewDAO {
 		
 		return sql.selectOne(NAMESPACE + "getTotal");
 	}
+		// file(파일)
+		public int setFileAdd(ReviewFileDTO reviewFileDTO) throws Exception {
+			
+			return sql.insert(NAMESPACE + "setFileAdd", reviewFileDTO);
+		}
+		
+		public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
+			
+			return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
+		}
+		
+		public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
+			
+			return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+		}
 }

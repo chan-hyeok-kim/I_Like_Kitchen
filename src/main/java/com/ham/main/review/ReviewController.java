@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ham.main.notice.NoticeFileDTO;
 import com.ham.main.reply.ReplyDTO;
 import com.ham.main.reply.ReplyService;
 import com.ham.main.util.Pager;
@@ -38,23 +39,16 @@ public class ReviewController {
 
 
 	
-	@GetMapping("fileDelete")
-	public String setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session ,Model model)throws Exception{
-		int result = reviewService.setFileDelete(reviewFileDTO, session);
-		model.addAttribute("result", result);
-		return "commons/ajaxResult";
-		
-	}
 //게시물 작성 폼
 @RequestMapping(value = "add", method = RequestMethod.GET)
-public void getAdd() throws Exception {
- 
+public void getAdd(HttpSession session) throws Exception {
+	
 }
 //게시물 작성
 	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
+	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session)throws Exception{
 		reviewDTO.setProductNum(2L);
-		reviewService.add(reviewDTO,photos,session,model);
+		reviewService.add(reviewDTO,photos,session);
 		
 		return "redirect:/review/list";
 		
@@ -79,7 +73,7 @@ public void getAdd() throws Exception {
 	}
 	// 게시물 수정 폼
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void getUpdate(@RequestParam("reviewNum") long reviewNum, Model model) throws Exception {
+	public void getUpdate(@RequestParam("reviewNum") Long reviewNum, Model model) throws Exception {
 
 	 ReviewDTO reviewDTO = reviewService.view(reviewNum);
 	   
@@ -87,11 +81,11 @@ public void getAdd() throws Exception {
 	}
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String postUpdate(ReviewDTO reviewDTO) throws Exception {
+	public String postUpdate(ReviewDTO reviewDTO,MultipartFile[] files, HttpSession session) throws Exception {
     
-	 int result= reviewService.update(reviewDTO);
+	 reviewService.update(reviewDTO, files, session);
 	   
-	 return "redirect:/review/list";
+	 return "redirect:/review/view?Num=" + reviewDTO.getReviewNum();
 	}
 	// 게시물 삭제
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
@@ -101,7 +95,11 @@ public void getAdd() throws Exception {
 
 	 return "redirect:/review/list";
 	}
-	
+	@GetMapping("fileDelete")
+	public void setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session) throws Exception {
+		reviewService.setFileDelete(reviewFileDTO, session);
+	}
+
 	
 
 }

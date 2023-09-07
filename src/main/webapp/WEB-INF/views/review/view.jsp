@@ -31,10 +31,11 @@ ${view.reviewRate}<br />
 			</c:forEach>
 		</div>  --%>
 		
-<c:forEach items="${dto.fileDTOs}" var="f">
-		<img alt="" src="/resources/upload/review/${f.fileName}">
-	</c:forEach>
-<div>
+ <div>
+	        <c:forEach items="${kto.ktos}" var="f">
+		        <img src="/resources/upload/review/${f.fileName}">
+	        </c:forEach>
+  </div>
 <a href="/review/update?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 수정</a><a href="/review/delete?reviewNum=${view.reviewNum}" class="btn btn-warning">게시물 삭제</a>
 </div>
 <br>
