@@ -24,18 +24,6 @@ public class MemberService {
 	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
 		return memberDAO.setSnsJoin(snsMemberDTO);
 	}
-	
-	public int setSnsAdd(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setSnsAdd(memberDTO);
-	}
-	
-//	public SnsMemberDTO setSnsLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return memberDAO.setSnsLogin(snsMemberDTO);
-//	}
-//	
-//	public int setSnsMemberRole(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return memberDAO.setSnsMemberRole(snsMemberDTO);
-//	}
 
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberIdCheck(memberDTO);
@@ -44,17 +32,6 @@ public class MemberService {
 	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberEmailCheck(memberDTO);
 	}
-
-//	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
-//	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
-//
-//	    boolean check = true;
-//
-//	    if (memberDTO != null) {
-//	        check = false;
-//	    }
-//	    return check;
-//	}
 	
 	//회원가입
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {

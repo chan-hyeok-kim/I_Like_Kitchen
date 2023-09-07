@@ -16,18 +16,6 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE + "setSnsJoin", snsMemberDTO);
 	}
 	
-	public int setSnsAdd(MemberDTO memberDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setSnsAdd", memberDTO);
-	}
-	
-//	public SnsMemberDTO setSnsLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return sqlSession.selectOne(NAMESPACE + "setSnsLogin", snsMemberDTO);
-//	}
-//	
-//	public int setSnsMemberRole(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return sqlSession.insert(NAMESPACE + "setSnsMemberRole", snsMemberDTO);
-//	}
-	
 	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE +"getMemberEmailCheck", memberDTO);
 	}
@@ -50,13 +38,13 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + "getMemberIdCheck", memberDTO);
 	}
 	
-	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setKakaoJoin", snsMemberDTO);
-	}
-	
-	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", snsMemberDTO);
-	}
+//	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.insert(NAMESPACE + "setKakaoJoin", snsMemberDTO);
+//	}
+//	
+//	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", snsMemberDTO);
+//	}
 
 	
 	

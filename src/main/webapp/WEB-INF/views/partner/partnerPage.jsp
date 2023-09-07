@@ -21,7 +21,7 @@
         <div class="part1">
             <button type="button" class="btns" style="background-color: white;">
                 <div class="part1_1">
-                    <img src="/resources/icon/home.png" class="img1">
+                    <img src="/resources/icon/homes.png" class="img1">
                     <div class="part1_2">내용</div>
                 </div>
             </button>

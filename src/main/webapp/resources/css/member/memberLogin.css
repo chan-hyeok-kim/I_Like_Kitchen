@@ -1,3 +1,11 @@
+.f {
+	color: red;
+}
+	
+.s {
+	color: blue;
+}
+
 .terms-container {
 	margin-top: 2rem;
 	padding: 2rem;
@@ -26,7 +34,7 @@
   	font-size: 12px;
 }
 
-a{ 
+a:hover{ 
     color: black; 
     text-decoration: none; 
 }

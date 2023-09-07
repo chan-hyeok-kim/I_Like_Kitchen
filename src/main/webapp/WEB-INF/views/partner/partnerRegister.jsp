@@ -27,7 +27,7 @@
 			
 			<div class="mb-3">
 			  <label for="id" class="form-label fw-bold">ID</label>
-			  <input type="text" name="id" class="form-control" id="id" placeholder="아이디를 입력해주세요." value="test4" required>
+			  <input type="text" name="id" class="form-control" id="id" placeholder="아이디를 입력해주세요." required>
 			  <div id="idResult"></div>
 			</div>
 			
@@ -44,13 +44,13 @@
 			
 			<div class="mb-3">
 			  <label for="companyName" class="form-label fw-bold">상호명</label>
-			  <input type="text" name="companyName" class="form-control" id="companyName" value="구디아카데미" placeholder="상호명을 입력해주세요.">
+			  <input type="text" name="companyName" class="form-control" id="companyName" placeholder="상호명을 입력해주세요.">
 			  <div id="companyNameResult"></div>
 			</div>
 			
 			<div class="mb-3">
 			  <label for="partnerPhone" class="form-label fw-bold">전화번호</label>
-			  <input type="text" name="partnerPhone" class="form-control" id="partnerPhone" value="01012345678" placeholder="전화번호를 입력해주세요.">
+			  <input type="text" name="partnerPhone" class="form-control" id="partnerPhone" placeholder="전화번호를 입력해주세요.">
 			  <div id="partnerPhoneResult"></div>
 			</div>
 			
@@ -64,7 +64,7 @@
 			
 			<div class="mb-3">
 			  <label for="partnerAccount" class="form-label fw-bold">계좌번호</label>
-			  <input type="text" name="partnerAccount" class="form-control" id="partnerAccount" value="1111222233334444" placeholder="계좌번호를 입력해주세요.">
+			  <input type="text" name="partnerAccount" class="form-control" id="partnerAccount" placeholder="계좌번호를 입력해주세요.">
 			  <div id="partnerAccountResult"></div>
 			</div>
 	

@@ -108,16 +108,6 @@ public class MemberController {
 
 		return "commons/ajaxResult";
 	}
-
-//	@PostMapping("memberEmailCheck")
-//	public ModelAndView getMemberEmailCheck(MemberDTO memberDTO)throws Exception {
-//	    boolean check = memberService.getMemberEmailCheck(memberDTO);
-//	    ModelAndView mv = new ModelAndView();
-//
-//	    mv.addObject("result", check);
-//	    mv.setViewName("commons/ajaxResult");
-//	    return mv;
-//	}
 	
 	//이용약관
 	@GetMapping("memberAgree")
@@ -153,18 +143,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("snsJoin")
-	public ModelAndView setSnsAdd(MemberDTO memberDTO) throws Exception {
+	public ModelAndView setSnsAdd(HttpSession session, MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
-		memberDTO.setId(snsMemberDTO.getSnsId());
-		memberDTO.getPassword();
+		
+		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("member");
+		
+		memberDTO.setId(snsMemberDTO.getSnsEmail());
 		memberDTO.setName(snsMemberDTO.getSnsName());
 		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
-		memberDTO.getPhone();
-		System.out.println(memberDTO);
-		//memberDTO2.setPoint(snsMemberDTO.get("0"));
 		
-		int result = memberService.setSnsAdd(memberDTO);
+		int result = memberService.setMemberJoin(memberDTO);
 		
 		mv.setViewName("redirect:../");
 		return mv;
@@ -196,11 +184,6 @@ public class MemberController {
 		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-//			if(memberDTO.getRoles().size() == 2) {
-//				if(partnerDTO != null) {
-//					session.setAttribute("partner", partnerDTO);
-//				}
-//			}
 			if(partnerDTO != null) {
 				if(memberDTO.getRoles().get(0).getRoleName().equals("PARTNER"))
 					System.out.println(memberDTO.getRoles().get(0));
@@ -261,7 +244,7 @@ public class MemberController {
 	    System.out.println(snsMemberDTO);
 	    session.setAttribute("member", snsMemberDTO);
 	    
-	    memberService.setSnsJoin(snsMemberDTO);
+	    int result = memberService.setSnsJoin(snsMemberDTO);
 	    
 	    //mav.setViewName("redirect:../");
 	    mav.setViewName("member/snsJoin");

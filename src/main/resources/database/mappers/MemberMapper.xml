@@ -11,48 +11,12 @@
   			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
   	</insert>
   	
-  	<select id="getMemberByEmail" resultType="MemberDTO">
-  		SELECT * FROM MEMBER WHERE EMAIL = #{email}
-  	</select>
-  	
+  	<!-- SNS정보 DB저장 -->
   	<insert id="setSnsJoin" parameterType="SnsMemberDTO">
   		INSERT INTO SNSMEMBER (SNSID, PLATFORM, SNSNAME, SNSEMAIL)
   			VALUES (#{snsId}, #{platForm}, #{snsName}, #{snsEmail})
   	</insert>
-  	
-  	<insert id="setSnsAdd" parameterType="MemberDTO">
-  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
-  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
-  	</insert>
-  	
-  	<!-- <select id="getSnsLogin" resultMap="getSnsLoginResult" parameterType="SnsMemberDTO">
-  		SELECT SM.*, R.* 
-			FROM SMSMEMBER SM 
-			INNER JOIN MEMBERROLE MR
-			ON(M.SNSID = MR.ID)
-			INNER JOIN ROLE R
-			ON(MR.ROLENUM = R.ROLENUM)
-			WHERE SM.SNSID = #{snsId}
-  	</select>
-  	
-  	<resultMap type="SnsMemberDTO" id="getSnsLoginResult">
-  		column의 이름과 setter의 이름이 같아야함.
-  		<id column="SNSID" property="snsId"/>
-  		<result column="PLATFORM" property="platForm"/>
-  		<result column="SNSNAME" property="snsName"/>
-  		<result column="SNSEMAIL" property="snsEmail"/>
-  		
-  		<collection property="roles" javaType="List" ofType="RoleDTO">
-			<id column="ROLENUM" property="roleNum"/>
-			<result column="ROLENAME" property="roleName"/>
-		</collection>
-  	</resultMap> -->
-  	
-  	<!-- <insert id="setSnsMemberRole" parameterType="SnsMemberDTO">
-  		INSERT INTO MEMBERROLE (ID, ROLENUM) 
-  			VALUES (#{snsId}, 1)
-  	</insert> -->
-  
+  	  
   	<!-- 로그인 -->
 	<select id="getMemberLogin" resultMap="getLoginResult" parameterType="MemberDTO">
 		SELECT M.*, R.* 

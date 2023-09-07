@@ -17,7 +17,7 @@
             <div class="terms-container">
                 <div class="terms-title">
 					<h2 class="header-news text-center">Welcome I Like Kitchen</h2>
-					<h3 class="my-4 text-center">Login</h3>
+					<h3 class="my-4 text-center">로그인</h3>
 				</div>
 
 				<c:if test="${not empty errorMessage}">
@@ -28,17 +28,19 @@
 
                 <div class="card mb-4">
                 	<div class="card-header">
-						<form action="./memberLogin" method="post">
+						<form action="./memberLogin" method="post" id="frm">
 							<div class="mb-3">
 								  <label for="id" class="form-label"></label>
 								  <input type="text" name="id" class="form-control" id="id" value="" placeholder="ID를 입력해주세요.">
+								  <div id="idResult"></div>
 							</div>
 							<div class="mb-3">
 								  <label for="password" class="form-label"></label>
 								  <input type="password" name="password" class="form-control" id="password" value="" placeholder="PW를 입력해주세요.">
+								  <div id="passwordResult"></div>
 							</div>
 							<div class="mb-3 text-center">
-								<button class="btn btn-primary">로그인</button>
+								<button id="btn" class="btn btn-outline-primary">로그인</button>
 							</div>
 							<div class="mb-3 text-center">
 								<a href="/member/find/findID">아이디찾기</a> | <a href="/member/find/findPW">비밀번호찾기</a> | <a href="/member/memberAgree">회원가입</a>
@@ -56,6 +58,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- <script src="/resources/js/member/memberLogin.js"></script> -->
 
 </body>
 </html>

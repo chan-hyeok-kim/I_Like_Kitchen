@@ -17,7 +17,7 @@
             <div class="terms-container">
                 <div class="terms-title">
 					<h2 class="header-news text-center"></h2>
-					<h3 class="my-4 text-center">Login</h3>
+					<h3 class="my-4 text-center">SNS추가</h3>
 				</div>
 
                 <div class="card mb-4">
