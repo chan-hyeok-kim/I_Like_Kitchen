@@ -259,7 +259,7 @@ public class BookController {
     
     @ResponseBody 
 	@PostMapping("bookTime") 
-	public Date getBookTime(String infoDate) throws Exception{
+	public List<BookDTO> getBookTime(String infoDate) throws Exception{
     	
     	infoDate = infoDate.trim();
         System.out.println(infoDate);
@@ -272,21 +272,10 @@ public class BookController {
 		BookDTO bookDTO = new BookDTO();
 		bookDTO.setBookDate(sqlDate);
     	List<BookDTO> bl = bookService.getBookTime(bookDTO);
-		List<JsonObject> dl = new ArrayList<JsonObject>();
-         
-		 Date date1 = new Date();
-	     
-	  	 for(BookDTO b: bl) {
-//			 Date date = new Date(b.getStartTime());
-		 JsonObject jsonObject = new JsonObject();
-		 
-		 System.out.println(b.getStartTime());
-//		 jsonObject.addProperty("bookDay", b.getBookDate();
-//		 jsonObject.addProperty("start", b.getStartTime().toString());
-//		 jsonObject.addProperty("end", b.getEndTime().);
-		 dl.add(jsonObject);
-         }
-		 return bl.get(0).getEndTime();
+    	System.out.println(bl);
+		
+		
+		 return bl;
 	}
 	
 	

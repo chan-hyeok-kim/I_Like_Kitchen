@@ -195,6 +195,7 @@ for(let i=0; i<count; i++){
                bookNum:bookNum
                },success:function(result){
                     swal('승인되었습니다')
+                    location.replace('manage')
                }
             
           })

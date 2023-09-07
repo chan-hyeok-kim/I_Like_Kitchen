@@ -120,12 +120,12 @@
               locale: 'ko',
               //          navLinks: true,
               editable: true,
-              // dayMaxEventRows: true, // for all non-TimeGrid views
-              // views: {
-              //   timeGrid: {
-              //     dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
-              //   }
-              // },
+               dayMaxEventRows: true, // for all non-TimeGrid views
+               views: {
+                 dayGridMonth: {
+                   dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+                 }
+               },
               events: arr,
               eventColor: 'rgb(255,0,0)',
               eventBackgroundColor: '#FBF4AD',
