@@ -261,16 +261,16 @@ public class BookController {
 	@PostMapping("bookTime") 
 	public Date getBookTime(String infoDate) throws Exception{
     	
-    	infoDate = infoDate.substring(0,infoDate.lastIndexOf('('));
     	infoDate = infoDate.trim();
-  
-    	SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z");
-    	Date formatDate = format.parse(infoDate);
-    	System.out.println(formatDate);
-//    	SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
-    	 
+        System.out.println(infoDate);
+     	SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	Date format = newDtFormat.parse(infoDate);
+    	long timeInMilliSeconds = format.getTime();
+    	
+    	java.sql.Date sqlDate = new java.sql.Date(timeInMilliSeconds);
+    	
 		BookDTO bookDTO = new BookDTO();
-		bookDTO.setBookDate((java.sql.Date) formatDate);
+		bookDTO.setBookDate(sqlDate);
     	List<BookDTO> bl = bookService.getBookTime(bookDTO);
 		List<JsonObject> dl = new ArrayList<JsonObject>();
          

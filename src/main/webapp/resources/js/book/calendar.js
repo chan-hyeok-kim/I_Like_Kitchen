@@ -66,8 +66,12 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
 						swal('알림',month+'월'+date+'일'+'부터 예약이 가능합니다')
 						}else{
 						console.log(typeof info.dateStr)
+						let selectYear = info.date.getFullYear();
 						let selectMonth = info.date.getMonth()+1;
 					 	let selectDate = info.date.getDate();
+						if(selectMonth<10){
+							selectMonth='0'+selectMonth
+						}
 						console.log(typeof info.date)
 						console.log(typeof selectDate)
 						swal('알림','선택하신 날짜는 '+ selectMonth+'월'+selectDate+'일'+'입니다')
@@ -75,7 +79,7 @@ $('#selectTimeTitle').append(month+'월 '+date+'일')
                                  type:'POST',
 								 url:'bookTime',
 								 data: {
-									infoDate: info.date
+									infoDate: selectYear+'-'+selectMonth+'-'+selectDate
 								 },success:function(result){
                                         console.log(result);
 								 }
