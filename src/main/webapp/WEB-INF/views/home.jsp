@@ -24,22 +24,19 @@
     <div class="carousel-item active">
       <img src="/resources/images/img1.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>서울시 구디구 구디동 12-34</p>
+        <h5>서울시 구디구 구디동 12-34</h5>
       </div>
     </div>
     <div class="carousel-item">
       <img src="/resources/images/img2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>서울시 여기구 여기동 1-2</p>
+        <h5>서울시 여기구 여기동 1-2</h5>
       </div>
     </div>
     <div class="carousel-item">
       <img src="/resources/images/img3.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>서울시 저기구 저기동 1002-305호</p>
+        <h5>서울시 저기구 저기동 1002-305호</h5>
       </div>
     </div>
   </div>

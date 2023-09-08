@@ -34,6 +34,8 @@ public class PartnerDAO {
 	}
 	
 	public PartnerDTO getPartnerInfo(String id) throws Exception{
+		System.out.println(id);
+		System.out.println("1");
 		return sqlSession.selectOne(NAMESPACE+"getPartnerInfo", id);
 	}
 

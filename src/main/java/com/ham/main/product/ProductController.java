@@ -42,7 +42,7 @@ public class ProductController {
 	public ModelAndView getDetail(ProductDTO productDTO, ModelAndView mv)throws Exception{
 		productDTO = productService.getDetail(productDTO);
 		
-		mv.addObject("dto", productDTO);
+		mv.addObject("kto", productDTO);
 		mv.setViewName("product/detail");
 		return mv;
 	}
@@ -55,12 +55,15 @@ public class ProductController {
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String setAdd(ProductDTO productDTO, HttpSession session, MultipartFile[] files)throws Exception{
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-		PartnerDTO partnerDTO = (PartnerDTO) session.getAttribute("partner");
+//		PartnerDTO partnerDTO = (PartnerDTO) session.getAttribute("partner");
+//		
+//		System.out.println(partnerDTO.getPartnerNum());
+////		사업자등록번호 상품에 셋팅
+//		productDTO.setPartnerNum(partnerDTO.getPartnerNum());
+		PartnerDTO partnerDTO = new PartnerDTO();
 		
-		System.out.println(partnerDTO.getPartnerNum());
-//		사업자등록번호 상품에 셋팅
-		productDTO.setPartnerNum(partnerDTO.getPartnerNum());
 		
+		productDTO.setPartnerNum(2211653390L);
 		int result = productService.setAdd(productDTO, files, session);
 		return "redirect:./list";
 	}

@@ -46,15 +46,17 @@ public class PartnerController {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	@PostMapping("partnerLogin")
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(memberDTO);
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		
+		System.out.println(memberDTO);
 		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
 		
 		System.out.println(memberDTO);
+		System.out.println(partnerDTO);
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("partner", partnerDTO);

@@ -1,8 +1,8 @@
  
  <!DOCTYPE html>
 <html lang="zxx">
- 
- <!-- Footer Section Begin -->
+
+<!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -10,15 +10,19 @@
                     <div class="col-lg-4">
                         <div class="ft-about">
                             <div class="logo">
-                                <a href="#">
-                                    <img src="img/1.png" alt="">
+                                <a href="/">
+                                    <img src="/resources/img/1.png" alt="">
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <ul>
+                            	<li><a href="#">이용약관</a></li>
+                            	<li><a href="#">개인정보처리방침</a></li>
+                            	<li><a href="#">운영정책</a></li>
+                            	<li><a href="#">콘텐츠산업진흥법에 의한 표시</a></li>
+                            </ul>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </div>
@@ -26,11 +30,14 @@
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-contact">
-                            <h6>Contact Us</h6>
+                            <h6>(주)아이라이크키친</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>대표: 김찬혁</li>
+                                <li>사업자등록번호: 0000000000</li>
+                                <li>통신판매업신고번호:2018-서울강남-00000</li>
+                                <li>영업소재지:서울특별시 강남구 삼성로 00-00</li>
+                                <li>이메일:goodee@naver.com</li>
+                                <li>대표전화:0000-0000(평일오후2시~오후6시)</li>
                             </ul>
                         </div>
                     </div>
@@ -52,10 +59,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Environmental Policy</a></li>
+                            <li><a href="#">아이라이크키친은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 스페이스클라우드는 공간 거래정보 및 거래에 대해 책임지지 않습니다/</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-5">
