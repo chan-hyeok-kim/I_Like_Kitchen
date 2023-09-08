@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +18,6 @@ import com.ham.main.member.MemberDTO;
 import com.ham.main.partner.PartnerDTO;
 import com.ham.main.partner.PartnerService;
 import com.ham.main.util.Pager;
-
-
 
 @Controller
 @RequestMapping("/product/*")
@@ -70,5 +69,14 @@ public class ProductController {
 		int result = productService.setDelete(num);
 		return "redirect:./list";
 	}
+	
+	@GetMapping("homeList")
+	public void getHomeList(Pager pager,Model model) throws Exception {
+		List<ProductDTO> pl = productService.getList(pager);
+		System.out.println(pl);
+		model.addAttribute("list", pl);
+	}
+	
+	
 
 }
