@@ -22,7 +22,7 @@
 	<div id="bigDiv">
         <c:import url="/WEB-INF/views/temp/mypageMenu.jsp"></c:import>
     
-        <menu id="listDiv">
+        <menu id="listDiv" data-member-id="${member.id}">
             <div id="book-detail-title">
                 <h3>진행 내역</h3>
             </div>
@@ -37,15 +37,7 @@
             </div>
 
             </c:if>   
-             <form action="./onGoing" method="get">
-			<div class="col-sm-3">
-				<input class="form-control me-2" type="search" name="search"
-					placeholder="Search" aria-label="Search">
-			</div>
-			<div class="col-auto">
-				<button class="btn btn-dark" type="submit">검색</button>
-				</form>
-             
+            
         </menu>
        
     <script>
@@ -54,7 +46,7 @@
     		$(location).attr("href", "productDetail");
 		});
     	
-    	let id = '${member.id}'
+    	let id = $('#listDiv').attr('data-member-id')
 
         $.ajax({
             type:'GET',

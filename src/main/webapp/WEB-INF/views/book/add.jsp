@@ -256,7 +256,7 @@ background-color: #FAAC58;
   </div>
 </div>
 <div style="margin-left: 30%;">
-<button type="button">+5</button><button type="button">+10</button><button type="button">+50</button><button type="button">+100</button>
+<button type="button" id="inc-five">+5</button><button type="button" id="inc-ten">+10</button><button type="button" id="inc-fifty">+50</button><button type="button" id="inc-hundred">+100</button>
 </div>
 								<!-- <div class="f1"><label for="headCount">인원 선택</label></div>
 								<input type="number" min="1" style="width: 30%" class="form-control m2" name="headCount" id="headCount" value="1"> -->
@@ -266,7 +266,7 @@ background-color: #FAAC58;
 					
 					
 
-					<div class="b1">
+					<div class="b1" id="resultCheck6">
 						<div class="mb-3 f1">
 							<label for="ta1" class="form-label">호스트 전달 내용</label>
 						</div>
@@ -278,8 +278,8 @@ background-color: #FAAC58;
 					<p style="color:red">호스트 승인 후 예약이 가능합니다.</p>
 					</div>
 <div id="book-close-div" style="margin-bottom: 20px">
-					<button type="button" class="btn" id="book-close"
-						>접수</button>
+					<button type="button" class="btn" id="book-close">
+					접수</button>
 </div>
 </div>
 					

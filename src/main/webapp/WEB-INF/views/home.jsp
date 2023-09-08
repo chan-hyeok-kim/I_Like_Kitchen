@@ -13,6 +13,8 @@
 	            height: 500px;
 	            width: 80%;
 	            padding-left: 15%;
+	            margin-right: 0;
+	            /* 패딩마진 나중에 다시줘야함  */
 	 }
 	 .carousel-indicators{
 	            height: 500px;
@@ -135,7 +137,7 @@
     
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="carousel-control-prev-icon" style="color: black;" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">

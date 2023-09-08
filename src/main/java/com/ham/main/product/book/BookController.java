@@ -99,8 +99,8 @@ public class BookController {
 	@GetMapping("list")
 	public void getBookInfo(MemberDTO memberDTO,Model model, Pager pager) throws Exception{
 		 System.out.println(pager);
-		 pager.setStartRow(1L);
-		 pager.setLastRow(2L);
+		
+		 pager.setPerPage(3L);
 		 List<BookDTO> bl = bookService.getBookInfo(memberDTO, pager);
 
 		 List<ProductDTO> pl = new ArrayList<ProductDTO>();

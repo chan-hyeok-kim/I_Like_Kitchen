@@ -99,9 +99,16 @@ table{
    </div>
     
 <!-- Button trigger modal -->
+<c:if test="${empty refundList}">
 <button id="btn-home" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   환불하기
 </button>
+</c:if>
+<c:if test="${not empty refundList}">
+<button type="button" class="btn btn-outline-primary">
+환불 완료
+</button>
+</c:if>
   </div>
  
 </div>
@@ -113,32 +120,6 @@ table{
 
         
 </c:forEach>
-
-
-
-</section>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">환불 요청</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="data-refund" data-refund-payNum="${kto.payNum}" data-refund-amount="${kto.payAmount}" data-refund-orderNum="${kto.orderNum}">
-        환불 사유를 입력해주세요
-      <input class="form-control" name="reason" id="reason">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" class="btn">닫기</button>
-        <button type="button" class="btn btn-primary" class="btn">환불하기</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
@@ -162,20 +143,35 @@ table{
 			</ul>
 		</nav>
 
+
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">환불 요청</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="data-refund" data-refund-payNum="${kto.payNum}" data-refund-amount="${kto.payAmount}" data-refund-orderNum="${kto.orderNum}">
+        환불 사유를 입력해주세요
+      <input class="form-control" name="reason" id="reason">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" class="btn">닫기</button>
+        <button type="button" class="btn btn-primary" class="btn-refund">환불하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript">
 
- let start = $('#bookTime').attr('data-startTime');
- let end = $('#bookTime').attr('data-endTime')
-  console.log(typeof start);
-  console.log(start);
-  console.log(end);
-  
-  start=start.substring(11,16);
-  end=end.substring(11,16);
-  console.log(start);
-  
-  $('#bookTime').append(start)
-  $('#bookTime').append('~'+end)
+
   
   </script>
 <script src="/resources/js/pay/refund.js"></script>

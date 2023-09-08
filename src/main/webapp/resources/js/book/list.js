@@ -5,7 +5,7 @@ console.log(count)
 
 for(let i=0; i<count; i++){
 
-   
+    
 	let check = $('.check').eq(i).attr('data-check')
 	if(check=="승인"){
 		
@@ -43,5 +43,24 @@ console.log(start);
 $('.bookTime').append(start)
 $('.bookTime').append('~'+end)
 
+
+
+// 페이지 버튼
+// id = $('#data-id').attr('data-id')
+
+// $('.move').click(function(){
+//   $('#page').val($(this).attr('data-num'));
+//  let listPage = $('#page').val(); 
+//  let listSearch = $('#search').val(); 
+//  $.ajax({
+// 	type:'GET',
+// 	url:'/book/list?id='+id+'&page='+listPage+'&search='+listSearch
+//     ,success:function(result){
+// 		$('#gridDiv').remove();
+// 		console.log(result)
+// 		$('#gridDiv').append(result);
+// 	}  
+// })
+// })
 
 

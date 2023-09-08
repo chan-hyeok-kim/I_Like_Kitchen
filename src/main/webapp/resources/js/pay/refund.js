@@ -11,7 +11,7 @@ $('#btnHome').click(function(){
 
 
 
-$('#btn').click(function(){
+$('.btn-refund').click(function(){
   
   let cancelReason = $('#reason').val();
   console.log(cancelReason)

@@ -132,11 +132,36 @@
 
 			</ul>
 		</nav>
+		 <form action="../book/list" method="get" id="frm">
+		 <input type="hidden" value="${pager.page}" name="page" id="page">
+			<div class="col-sm-3">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="Search" aria-label="Search">
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
+				</form>
+             
 
 </section>
 <script type="text/javascript">
+id = '${member.id}'
+	//$('#data-id').attr('data-id')
 
-
+$('.move').click(function(){
+  $('#page').val($(this).attr('data-num'));
+ let listPage = $('#page').val(); 
+ let listSearch = $('#search').val(); 
+ $.ajax({
+	type:'GET',
+	url:'/book/list?id='+id+'&page='+listPage+'&search='+listSearch
+    ,success:function(result){
+		$('#gridDiv').remove();
+		console.log(result)
+		$('#gridDiv').append(result);
+	}  
+})
+})
 </script>
 <script src="/resources/js/book/list.js"/>
 
