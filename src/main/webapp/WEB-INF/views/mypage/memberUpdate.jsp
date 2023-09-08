@@ -80,6 +80,7 @@
         </menu>
     </div>
     
+    <c:import url="../temp/footer.jsp"></c:import>
     <script>
     	// 등록하기 버튼을 눌렀을때
     	$("#updateBtn").click(function() {

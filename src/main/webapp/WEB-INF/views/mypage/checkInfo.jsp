@@ -44,6 +44,7 @@
         </menu>
     </div>
     
+    <c:import url="../temp/footer.jsp"></c:import>
     <script>
     	$("#checkBtn").click(function() {
     		

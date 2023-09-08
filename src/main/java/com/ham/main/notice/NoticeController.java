@@ -45,19 +45,17 @@ public class NoticeController {
 	@GetMapping("detail")
 	public String getDetail(NoticeDTO noDTO, Model model, HttpSession session) throws Exception{
 		MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
-		System.out.println(memDTO.getId());
+		//System.out.println(memDTO.getId());
 		
 		noDTO = noService.getDetail(noDTO);
-		RoleDTO role = new RoleDTO();
-		role.setRoleNum(9L);
 		
 		model.addAttribute("kto", noDTO);
 		
-		if(role.getRoleNum() == 9) {
+		//if(role.getRoleNum() == 9) {
 			return "/admin/notice/detail";
-		}else {
-			return "/notice/detail";
-		}
+		//}else {
+		//	return "/notice/detail";
+		//}
 		
 	}
 	

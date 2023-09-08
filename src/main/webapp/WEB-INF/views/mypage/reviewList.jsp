@@ -49,5 +49,6 @@
         </menu>
     </div>
     
+    <c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

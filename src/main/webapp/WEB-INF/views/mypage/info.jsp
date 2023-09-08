@@ -85,6 +85,7 @@
         </menu>
     </div>
     
+    <c:import url="../temp/footer.jsp"></c:import>
     <script>
     	// 수정 버튼 클릭
     	$("#updateBtn").click(function() {
