@@ -1,8 +1,10 @@
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  
  <!DOCTYPE html>
 <html lang="zxx">
 
 <!-- Footer Section Begin -->
+    <meta charset="UTF-8">
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -59,7 +61,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <ul>
-                            <li><a href="#">아이라이크키친은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 스페이스클라우드는 공간 거래정보 및 거래에 대해 책임지지 않습니다/</a></li>
+                            <li>아이라이크키친은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 스페이스클라우드는 공간 거래정보 및 거래에 대해 책임지지 않습니다.</li>
                         </ul>
                     </div>
                     <div class="col-lg-5">
