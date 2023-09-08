@@ -1,4 +1,4 @@
-let count = $('.book-table-list').length
+count = $('.book-table-list').length
 
 
 console.log(count)

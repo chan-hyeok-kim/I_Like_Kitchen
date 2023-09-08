@@ -99,12 +99,12 @@ table{
    </div>
     
 <!-- Button trigger modal -->
-<c:if test="${empty refundList}">
+<c:if test="${empty refundList[fi.index]}">
 <button id="btn-home${fi.count}" type="button" class="btn btn-outline-primary btn-home" data-bs-toggle="modal" data-bs-target="#exampleModal${fi.count}">
   환불하기
 </button>
 </c:if>
-<c:if test="${not empty refundList}">
+<c:if test="${not empty refundList[fi.index]}">
 <button type="button" class="btn btn-outline-primary">
 환불 완료
 </button>

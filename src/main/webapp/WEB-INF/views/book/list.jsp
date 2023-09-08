@@ -76,7 +76,7 @@
 </head>
 <body>
 
-<section>
+<section id="entire">
 
 <c:forEach items="${list}" var="i" varStatus="fi">
 
@@ -101,14 +101,16 @@
     <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
   
   </div>
- 
-</div>
+   </div>   
+
 
 
 
 <div id="list-border"></div>
-         
+      
 </c:forEach>
+
+
 
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -132,21 +134,25 @@
 
 			</ul>
 		</nav>
-		 <form action="../book/list" method="get" id="frm">
+		 
 		 <input type="hidden" value="${pager.page}" name="page" id="page">
 			<div class="col-sm-3">
 				<input class="form-control me-2" type="search" name="search"
-					placeholder="Search" aria-label="Search">
+					placeholder="Search" aria-label="Search" id="search" style="width:200px;">
 			</div>
 			<div class="col-auto">
 				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
-				</form>
+				
+
+
+
              
 
 </section>
 <script type="text/javascript">
-id = '${member.id}'
+ id = '${member.id}'
 	//$('#data-id').attr('data-id')
+page = '${pager.page}'
 
 $('.move').click(function(){
   $('#page').val($(this).attr('data-num'));
@@ -156,12 +162,27 @@ $('.move').click(function(){
 	type:'GET',
 	url:'/book/list?id='+id+'&page='+listPage+'&search='+listSearch
     ,success:function(result){
-		$('#gridDiv').remove();
+		$('#entire').empty();
 		console.log(result)
-		$('#gridDiv').append(result);
+		$('#entire').append(result);
 	}  
 })
-})
+}) 
+
+$('#search-btn').click(function(){
+	  $('#page').val($(this).attr('data-num'));
+	  
+	  let listSearch = $('#search').val(); 
+	  $.ajax({
+	 	type:'GET',
+	 	url:'/book/list?id='+id+'&page='+page+'&search='+listSearch
+	     ,success:function(result){
+	 		$('#entire').empty();
+	 		console.log(result)
+	 		$('#entire').append(result);
+	 	}  
+	 })
+	 }) 
 </script>
 <script src="/resources/js/book/list.js"/>
 
