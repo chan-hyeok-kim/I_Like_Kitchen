@@ -86,10 +86,10 @@ public void getAdd(HttpSession session) throws Exception {
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(ReviewDTO reviewDTO,MultipartFile[] files, HttpSession session) throws Exception {
-    
+
 	 reviewService.update(reviewDTO, files, session);
 	   
-	 return "redirect:/review/view?Num=" + reviewDTO.getReviewNum();
+	 return "redirect:/review/view?reviewNum=" + reviewDTO.getReviewNum();
 	}
 	// 게시물 삭제
 	@RequestMapping(value = "delete", method = RequestMethod.GET)

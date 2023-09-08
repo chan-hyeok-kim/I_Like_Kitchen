@@ -38,21 +38,7 @@ public class ReviewService {
 	public int add(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		int result = reviewDAO.add(reviewDTO);
 		
-		String path = "/resources/upload/review/";
-		
-		for(MultipartFile file: files) {
-			if(!file.isEmpty()) {
-				String fileName = fileManager.fileSave(path, session, file);
-				ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
-				
-				reviewFileDTO.setReviewNum(reviewDTO.getReviewNum());
-				reviewFileDTO.setFileName(fileName);
-				reviewFileDTO.setOriginalName(file.getOriginalFilename());
-				
-				result = reviewDAO.setFileAdd(reviewFileDTO);
-			}
-		}
-		
+
 		return result;
 	}
 //게시물 조회
@@ -67,20 +53,7 @@ public class ReviewService {
  	public int update(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		int result = reviewDAO.update(reviewDTO);
 		
-		String path = "/resources/upload/review/";
-		
-		for(MultipartFile file: files) {
-			if(!file.isEmpty()) {
-				String fileName = fileManager.fileSave(path, session, file);
-				ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
-				
-				reviewFileDTO.setReviewNum(reviewDTO.getReviewNum());
-				reviewFileDTO.setFileName(fileName);
-				reviewFileDTO.setOriginalName(file.getOriginalFilename());
-				
-				result = reviewDAO.setFileAdd(reviewFileDTO);
-			}
-		}
+
 		
 		return result;
 	}
