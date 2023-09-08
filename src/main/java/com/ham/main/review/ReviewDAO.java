@@ -34,6 +34,10 @@ public class ReviewDAO {
   
 	 return sql.selectList(NAMESPACE + "list");
  	}
+ 	public List<ReviewDTO> myList() throws Exception { 
+ 		  
+	 return sql.selectList(NAMESPACE + "myList");
+ 	}
 
 //게시물 작성
  	public int add(ReviewDTO reviewDTO) throws Exception{

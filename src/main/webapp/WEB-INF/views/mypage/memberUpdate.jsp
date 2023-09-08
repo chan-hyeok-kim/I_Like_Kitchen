@@ -75,7 +75,7 @@
             		</span>
             	</div>
 	            
-	            <button type="submit" id="updateBtn">등록하기</button>
+	            <button type="button" id="updateBtn">등록하기</button>
             </form>
         </menu>
     </div>

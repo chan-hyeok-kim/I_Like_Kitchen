@@ -80,7 +80,7 @@
         <p class="menuP"><a href="/mypage/info">내 정보 관리</a></p>
         
         <h3>My 활동</h3>
-        <p><a>후기 내역</a></p>
+        <p><a href="/mypage/reviewList">후기 내역</a></p>
         <p><a>문의 내역</a></p>
     </div>
 </nav>

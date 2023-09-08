@@ -24,6 +24,10 @@ public class QuestionDAO {
   
 	 return sql.selectList(NAMESPACE + "list");
  	}
+ 	public List<QuestionDTO> myList() throws Exception { 
+ 		  
+	 return sql.selectList(NAMESPACE + "myList");
+ 	}
 
 //게시물 작성
  	public int add(QuestionDTO questionDTO) throws Exception{

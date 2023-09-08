@@ -5,11 +5,19 @@
 
   <mapper namespace="com.ham.main.question.QuestionDAO">
   
-  <!-- 게시물 목록 -->
-<select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
- SELECT
+    <sql id="myQuestionList">
+  SELECT
   QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
  FROM "QUESTION" ORDER BY QUESTIONNUM 
+  </sql>
+  
+<select id="myList" parameterType="QuestionDTO" resultType="QuestionDTO">
+	<include refid="myQuestionList"></include>
+	WHERE ID = #{id}
+</select>
+  <!-- 게시물 목록 -->
+<select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
+ <include refid="myQuestionList"></include>
 </select>
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="QuestionDTO">

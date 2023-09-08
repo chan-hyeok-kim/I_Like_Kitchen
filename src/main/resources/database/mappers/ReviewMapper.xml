@@ -5,12 +5,20 @@
 
   <mapper namespace="com.ham.main.review.ReviewDAO">
   
+  <sql id="myReviewList">
+  SELECT 
+  REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
+  FROM REVIEW ORDER BY REVIEWNUM
+  	
+  </sql>
   <!-- 게시물 목록 -->
 <select id="list" resultType="ReviewDTO">
- SELECT 
- REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
- FROM REVIEW ORDER BY REVIEWNUM
+ <include refid="myReviewList"></include>
+</select>
 
+<select id="myList">
+	<include refid="myReviewList"></include>
+	WHERE ID = #{id}
 </select>
 
 <!-- 게시물 작성 -->
