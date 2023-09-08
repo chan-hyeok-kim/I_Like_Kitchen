@@ -1,25 +1,42 @@
-let orderNum = $('#data-refund').attr("data-refund-orderNum");
-let amount = $('#data-refund').attr("data-refund-amount");
-let payNum = $('#data-refund').attr("data-refund-payNum");
 
-$('#btnHome').click(function(){
-  console.log(amount)
-  console.log(orderNum) 
-  console.log(payNum)
- 
+let countNum = 0;
+countNum = countNum+1
+
+$('#btn-home'+countNum).click(function(){
+  console.log('클릭됨')
 })
 
+let count = $('.book-table-list').length
+console.log(count)
 
+$('#btn-refund'+countNum).click(function(){
+  if($('#reason'+countNum).val()==''){
+    swal('환불 사유를 입력해주세요')
+  }else{
+    
+ 
 
-$('.btn-refund').click(function(){
-  
-  let cancelReason = $('#reason').val();
+  let cancelReason = $('#reason'+countNum).val();
   console.log(cancelReason)
   if(confirm("환불하시겠습니까?")){
      cancelPay(cancelReason)
   }
   
+  }
+})
 
+
+let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
+let amount = $('#data-refund'+countNum).attr("data-refund-amount");
+let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
+
+
+
+$('.btn-Home'+countNum).click(function(){
+  console.log(amount)
+  console.log(bookNum) 
+  console.log(payNum)
+ 
 })
 
 
@@ -29,7 +46,7 @@ function cancelPay(cancelReason) {
     url: "/pay/refund", 
     type: "POST",
     data: {
-      orderNum:orderNum, // 예: ORD20180131-0000011
+      bookNum:bookNum, // 예: ORD20180131-0000011
       payAmount:amount, // 환불금액
       payNum:payNum,
       reason:cancelReason // 환불사유

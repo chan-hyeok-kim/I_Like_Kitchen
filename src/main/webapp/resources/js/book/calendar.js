@@ -177,18 +177,28 @@ function bookNoticeStart() {
 		start = start.slice(0, 2);
 		console.log(start)
 
-		if (end - start < 4) {
+		
+		let startTimelength = $('#selectStartTime option:selected').text()
+		let endTimelength = $('#selectEndTime option:selected').text()
+		console.log(startTimelength)
+		console.log(startTimelength.length)
+		if (startTimelength.length>12 || endTimelength.length>12){
+			swal('알림','이미 예약된 시간은 선택하실 수 없습니다')
+			resultCheck[1]=false;
+			resultCheck[2]=false;
+		}else{
+			resultCheck[1]=true;
+			resultCheck[2]=true;
+		}
+
+		if (end - start < 4 && endTimelength.length<7) {
 			swal("알림", "최소 4시간 이상만 예약 가능합니다.")
 			resultCheck[1]=false;
 			resultCheck[2]=false;
  
-		}
-		let startTimelength = $('#selectStartTime option:selected').text()
-		let endTimelength = $('#selectEndTime option:selected').text()
-		if (startTimelength.length>8 || endTimelength.length>8){
-			swal('알림','이미 예약된 시간은 선택하실 수 없습니다')
-			resultCheck[1]=false;
-			resultCheck[2]=false;
+		}else{
+			resultCheck[1]=true;
+			resultCheck[2]=true;
 		}
 
 	})
@@ -251,6 +261,8 @@ $('#selectTime').change(function(){
 	if ($('#setDate').val() == '') {
 		swal('날짜를 먼저 선택해주세요')
 		resultCheck[0] = false;
+	}else{
+		resultCheck[0] = true;
 	}
 })
 
@@ -294,9 +306,8 @@ $('#purpose').blur(function () {
 
 })
 
-$('#resultCheck').blur(function () {
+$('#contents').blur(function () {
 	if ($('#contents').val() == '') {
-
 		resultCheck[5] = false;
 	} else {
 		resultCheck[5] = true;
@@ -323,6 +334,7 @@ $('#book-close').click(function () {
 
 	if (resultCheck.includes(false)) {
 		swal('필수 내용들을 입력해주세요')
+		console.log(resultCheck)
 	} else {
 
 
@@ -365,9 +377,8 @@ let curCount = $('#headCount').val()
 function countAlert(maxCount) {
 	if ((maxCount * 1) > 100) {
 		swal('인원은 최대 100명까지만 가능합니다')
-		resultCheck[3] = false;
-	} else {
-		resultCheck[3] = true;
+		$('#headCount').val(100);
+	    
 	}
 }
 
