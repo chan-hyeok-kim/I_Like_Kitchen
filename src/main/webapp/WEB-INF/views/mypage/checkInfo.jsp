@@ -47,7 +47,7 @@
     <script>
     	$("#checkBtn").click(function() {
     		
-    		if(${kto.password} == $("#checkPW").val()){
+    		if(${member.password} == $("#checkPW").val()){
     			$(location).attr("href", "memberUpdate");
     			
     		} else{

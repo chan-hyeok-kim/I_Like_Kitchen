@@ -29,7 +29,6 @@ public class NoticeController {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		
 		
-		
 		List<NoticeDTO> ar = noService.getList(pager);
 		
 		model.addAttribute("list", ar);

@@ -46,32 +46,32 @@
             	<div class="contents">
             		<span>이름</span>
             		<span>
-            			<input type="text" id="name" name="name" value="${kto.name}">
-	            		<input type="hidden" id="id" name="id" value="${kto.id}"> 
+            			<input type="text" id="name" name="name" value="${member.name}">
+	            		<input type="hidden" id="id" name="id" value="${member.id}"> 
             		</span>
             	</div>
             	<div class="contents">
             		<span>새 비밀번호</span>
             		<span>
-            			<input type="password" id="password" name="password" value="${kto.password}">
+            			<input type="password" id="password" name="password" value="${member.password}">
             		</span>
             	</div>
             	<div class="contents">
             		<span>새 비밀번호 확인</span>
             		<span>
-            			<input type="password" id="passwordCheck" value="${kto.password}">
+            			<input type="password" id="passwordCheck" value="${member.password}">
             		</span>
             	</div>
             	<div class="contents">
             		<span>이메일</span>
             		<span>
-            			<input type="email" id="email" name="email" value="${kto.email}">
+            			<input type="email" id="email" name="email" value="${member.email}">
             		</span>
             	</div>
             	<div class="contents">
             		<span>전화번호</span>
             		<span>
-            			<input type="tel" id="phone" name="phone" value="${kto.phone}">
+            			<input type="tel" id="phone" name="phone" value="${member.phone}">
             		</span>
             	</div>
 	            

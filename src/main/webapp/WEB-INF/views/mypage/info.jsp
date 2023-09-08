@@ -61,23 +61,23 @@
             
             <div class="contents">
             	<img src="/resources/css/images/chef.png">
-            	<span id="nameSpan">${kto.name} </span>님
+            	<span id="nameSpan">${member.name} </span>님
             </div>
             <div class="contents">
             	<p>이메일</p>
-            	<span>${kto.email}</span>
+            	<span>${member.email}</span>
             </div>
             <div class="contents">
             	<p>전화번호</p>
-            	<span>${kto.phone}</span>
+            	<span>${member.phone}</span>
             </div>
             <div class="contents">
             	<p>적립금</p>
-            	<span>${kto.point}</span> 포인트
+            	<span>${member.point}</span> 포인트
             </div>
             
             <form id="frm">
-	            <input type="hidden" name="id" value="${kto.id}">
+	            <input type="hidden" name="id" value="${member.id}">
             </form>
             
             <button id="updateBtn">계정 수정</button>
@@ -93,8 +93,8 @@
     			type:"get",
     			url:"checkInfo",
     			data:{
-    				id:"${kto.id}",
-    				password:"${kto.password}"
+    				id:"${member.id}",
+    				password:"${member.password}"
     			},
     			success:function(){
     				$(location).attr("href", "checkInfo");
