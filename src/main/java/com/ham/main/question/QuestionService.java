@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ham.main.util.Pager;
+
 @Service
 public class QuestionService {
 
@@ -12,9 +14,11 @@ public class QuestionService {
  private QuestionDAO questionDAO;
  
  
- 	public List<QuestionDTO> list() throws Exception {
-
-  	return questionDAO.list();
+ 	public List<QuestionDTO> list(Pager pager) throws Exception {
+ 		pager.makeRowNum();
+		pager.makePageNum(questionDAO.getTotal(pager));
+  	
+		return questionDAO.list(pager);
  }
  	public List<QuestionDTO> myList() throws Exception { 
 		  
@@ -41,15 +45,6 @@ public class QuestionService {
  // 게시물 삭제
  	public int delete(long questionNum) throws Exception {
  	 return questionDAO.delete(questionNum);
- 	}
- // 게시물 총 갯수
- 	
- 	public int count() throws Exception {
- 	 return questionDAO.count();
- 	}
- // 게시물 목록 + 페이징
- 	public List<QuestionDTO> listPage(int displayPost, int postNum) throws Exception {
- 	 return questionDAO.listPage(displayPost, postNum);
  	}
 
 	

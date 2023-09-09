@@ -3,10 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-	
   <mapper namespace="com.ham.main.member.MemberDAO">
   
+    <!-- 회원가입 -->
+  	<insert id="setMemberJoin" parameterType="MemberDTO">
+  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
+  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
+  	</insert>
+  	
+  	<!-- SNS정보 DB저장 -->
+  	<insert id="setSnsJoin" parameterType="SnsMemberDTO">
+  		INSERT INTO SNSMEMBER (SNSID, PLATFORM, SNSNAME, SNSEMAIL)
+  			VALUES (#{snsId}, #{platForm}, #{snsName}, #{snsEmail})
+  	</insert>
+  	  
   	<!-- 로그인 -->
 	<select id="getMemberLogin" resultMap="getLoginResult" parameterType="MemberDTO">
 		SELECT M.*, R.* 
@@ -39,10 +49,10 @@
   	</insert>
 	
 	<!-- 회원가입 -->
-	<insert id="setJoin" parameterType="MemberDTO">
+	<!-- <insert id="setJoin" parameterType="MemberDTO">
 		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
 			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
-	</insert>
+	</insert> -->
 	
 	<!-- ID 중복체크 -->
   	<select id="getMemberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
@@ -50,13 +60,8 @@
   	</select>
   	
   	<!-- EMAIL 중복체크 -->
-  	<select id="getMemberByEmail" parameterType="MemberDTO" resultType="MemberDTO">
+  	<select id="getMemberEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
   		SELECT * FROM MEMBER WHERE EMAIL = #{email}
-  	</select>
-  	
-  	<!-- ID찾기 -->
-  	<select id="findId" parameterType="MemberDTO" resultType="MemberDTO">
-  		SELECT ID FROM MEMBER WHERE EMAIL = #{email}
   	</select>
   	
   	<select id="memberTelCount" resultType="Long" parameterType="MemberDTO">
@@ -74,7 +79,7 @@
          WHERE ID=#{id} 
     </select>
     
-    
+    <!-- 관리자용 -->
     <update id="adminAdd" parameterType="MemberDTO">
  UPDATE MEMBERROLE 
     SET ROLENUM=3
@@ -134,12 +139,13 @@
 		DELETE MEMBER
 		WHERE ID = #{id}
 	</delete>
-	
+
     <insert id="setSnsJoin" parameterType="SnsMemberDTO">
 		INSERT INTO SNSMEMBER (SNSID, PLATFORM, SNSNAME, SNSEMAIL)
 			VALUES (#{snsId}, #{platForm}, #{snsName}, #{snsEmail})
 	</insert>
     
+
 
 
   </mapper>

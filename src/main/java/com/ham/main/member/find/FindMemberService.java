@@ -16,7 +16,7 @@ public class FindMemberService {
 	private MemberDAO memberDAO;
 	
 	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
-	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
+	    memberDTO = memberDAO.getMemberEmailCheck(memberDTO);
 
 	    boolean check = true;
 

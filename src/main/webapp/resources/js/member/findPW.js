@@ -1,7 +1,6 @@
 const id = document.getElementById("id");
 const idResult = document.getElementById("idResult");
 const email = document.getElementById("email");
-const emailDomain = document.getElementById("emailDomain");
 const emailResult = document.getElementById("emailResult");
 const frm = document.getElementById("frm");
 const btn = document.getElementById("btn");
@@ -37,7 +36,7 @@ email.addEventListener("blur", function(){
 //이메일 인증확인
 // email 발송 버튼 클릭 시
 $('#mail-Check-Btn').click(function() {
-    const email = $('#email').val() + $('#emailDomain').val(); // 이메일 주소값 얻어오기!
+    const email = $('#email').val(); // 이메일 주소값 얻어오기!
     const checkInput = $('.mail-check-input'); // 인증번호 입력하는곳
 
 	$.ajax({
@@ -63,7 +62,7 @@ $('#mail-Confirm-Btn').click(function() {
 	    $resultMsg.html('인증번호가 일치합니다.');
 	    $resultMsg.css('color', 'green');
 	    $('.mail-check-input').prop('disabled', true);
-	    $('#email, #emailDomain').prop('readonly', true);
+	    $('#email').prop('readonly', true);
 	    $('#mail-Check-Btn, #mail-Confirm-Btn').prop('disabled', true); // 버튼 모두 비활성화
 	} else {
 	    $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
@@ -90,4 +89,3 @@ btn.addEventListener("click", function(){
         alert("필수 항목을 입력해주세요.");
     }
 });
-

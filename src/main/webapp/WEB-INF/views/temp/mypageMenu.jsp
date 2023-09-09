@@ -27,7 +27,7 @@
 	}
 	#listDiv h3{
 	    border-bottom: 1px solid #ece6cc;
-	    margin: 50px 0 100px 0;
+	    margin: 50px 0 40px 0;
 	    padding-bottom: 10px;
 	}
 	
@@ -69,6 +69,7 @@
 	    height: 30px;
 	    background-color: aliceblue;
 	}
+
 </style>
 <nav id="menuDiv">
     <div>

@@ -7,6 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.util.Pager;
+
 @Repository
 public class ReviewDAO {
 
@@ -15,24 +18,14 @@ public class ReviewDAO {
  
  	private final String NAMESPACE="com.ham.main.review.ReviewDAO.";
 
- 	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) throws Exception {
-		return sql.selectOne(NAMESPACE+"getFIleDetail",reviewFileDTO);
-	}
- 	
-	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception{
-		return sql.delete(NAMESPACE+"setFileDelete",reviewFileDTO);
-	}
-	public int setFileAdd(ReviewFileDTO reviewFileDTO)throws Exception{
-		return sql.insert(NAMESPACE+"setFileAdd", reviewFileDTO);
-	}
 
 	
 
  // 게시물 목록
  
- 	public List<ReviewDTO> list() throws Exception { 
+ 	public List<ReviewDTO> list(Pager pager) throws Exception { 
   
-	 return sql.selectList(NAMESPACE + "list");
+	 return sql.selectList(NAMESPACE + "list",pager);
  	}
  	public List<ReviewDTO> myList() throws Exception { 
  		  
@@ -67,20 +60,23 @@ public class ReviewDAO {
 		return sql.insert(NAMESPACE+"setReplyAdd", reviewDTO);
 	}
 	
-	// 게시물 총 갯수
-	
-	public int count() throws Exception {
-	 return sql.selectOne(NAMESPACE + "count"); 
+		public Long getTotal(Pager pager) {
+		
+		return sql.selectOne(NAMESPACE + "getTotal");
 	}
-	// 게시물 목록 + 페이징
-	
-	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
-
-	 HashMap<String, Integer> data = new HashMap<String, Integer>();
-	  
-	 data.put("displayPost", displayPost);
-	 data.put("postNum", postNum);
-	  
-	 return sql.selectList(NAMESPACE + "listPage", data);
-	}
+		// file(파일)
+		public int setFileAdd(ReviewFileDTO reviewFileDTO) throws Exception {
+			
+			return sql.insert(NAMESPACE + "setFileAdd", reviewFileDTO);
+		}
+		
+		public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
+			
+			return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
+		}
+		
+		public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
+			
+			return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+		}
 }

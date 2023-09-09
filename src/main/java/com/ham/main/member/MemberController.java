@@ -10,6 +10,9 @@ import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.UUID;
+
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -51,6 +54,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.mail.MailSendController;
 import com.ham.main.member.mail.MailSendService;
+
+import com.ham.main.partner.PartnerDTO;
+import com.ham.main.partner.PartnerService;
+
 import com.ham.main.util.auth.KakaoLogin;
 import com.ham.main.util.auth.SNSLogin;
 import com.ham.main.util.auth.SnsUrls;
@@ -64,21 +71,24 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	
+
 	@Autowired
 	private MailSendController mailSendController;
 	
 	@Autowired
 	private MailSendService mailSendService;
 
-    @Inject
+  @Autowired
+  private PartnerService partnerService;
+      
+  @Inject
 	private SnsValue naverSns;
     
-    @Autowired
-    private KakaoLogin kakaoSns;
+  @Autowired
+  private KakaoLogin kakaoSns;
     
-    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+  
+  private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
     
 
 	
@@ -96,14 +106,18 @@ public class MemberController {
 		return "commons/ajaxResult";
 	}
 	
-	@PostMapping("memberEmailCheck")
-	public ModelAndView getMemberEmailCheck(MemberDTO memberDTO)throws Exception {
-	    boolean check = memberService.getMemberEmailCheck(memberDTO);
-	    ModelAndView mv = new ModelAndView();
+	@GetMapping("memberEmailCheck")
+	public String getMemberEmailCheck(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = memberService.getMemberEmailCheck(memberDTO);
 
-	    mv.addObject("result", check);
-	    mv.setViewName("commons/ajaxResult");
-	    return mv;
+		int result = 0;  //중복
+		if(memberDTO == null) {
+			result = 1; //중복x
+		}
+
+		model.addAttribute("result", result);
+
+		return "commons/ajaxResult";
 	}
 	
 	//이용약관
@@ -125,8 +139,33 @@ public class MemberController {
 	public ModelAndView setMemberJoin(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setMemberJoin(memberDTO);
+		
 		mv.setViewName("redirect:../");
 		
+		return mv;
+	}
+	
+	@GetMapping("snsJoin")
+	public ModelAndView setSnsAdd() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/snsJoin");
+		
+		return mv;
+	}
+	
+	@PostMapping("snsJoin")
+	public ModelAndView setSnsAdd(HttpSession session, MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("member");
+		
+		memberDTO.setId(snsMemberDTO.getSnsEmail());
+		memberDTO.setName(snsMemberDTO.getSnsName());
+		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
+		
+		int result = memberService.setMemberJoin(memberDTO);
+		
+		mv.setViewName("redirect:../");
 		return mv;
 	}
 	
@@ -139,7 +178,7 @@ public class MemberController {
 		model.addAttribute("naverUrl", snsLogin.getNaverAuthURL("test"));
 		
 	}
-  
+
 	
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
@@ -147,11 +186,18 @@ public class MemberController {
 		System.out.println(memberDTO);
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		System.out.println(memberDTO);
+		
+		//PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
+		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			
+//			if(partnerDTO != null) {
+//				if(memberDTO.getRoles().get(0).getRoleName().equals("PARTNER"))
+//					System.out.println(memberDTO.getRoles().get(0));
+//				session.setAttribute("partner", partnerDTO);
+//			}
 			mv.setViewName("redirect:../");
-		}else {
+		}else{
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");
 			mv.setViewName("/member/memberLogin");
 		}
@@ -182,7 +228,7 @@ public class MemberController {
 		return mv;
 	}
 	
-  
+
 	
 	//sns로그인
 	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})
@@ -215,6 +261,9 @@ public class MemberController {
 	    	  session.setAttribute("member", snsMemberDTO);
           }
           
+
+          memberService.setSnsJoin(snsMemberDTO);
+         
 	      return "/home";
 	}
 	
@@ -222,6 +271,7 @@ public class MemberController {
 	@RequestMapping("/kakao_login")
 	public String kakao_login() throws Exception {
 		return "callbackKakao";
+
 	}
 	
 	@RequestMapping("/callbackKakao")
@@ -245,23 +295,12 @@ public class MemberController {
     snsMemberDTO.setSnsId(userInfo.get("id").toString());
     snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
     System.out.println(snsMemberDTO);
+    
     session.setAttribute("member", snsMemberDTO);
     mav.setViewName("/home");
     return mav;
 }
-//	@RequestMapping("/callbackKakao")
-//	public String kakao_redirect(@RequestParam("code") String code) throws Exception  {
-//		System.out.println(kakaoSns.kakao_redirect(code));
-//		String result = kakaoSns.kakao_redirect(code);
-//		
-//        System.out.println(result);
-//		
-//		//		memberService.setSnsJoin(snsMemberDTO);
-////		여기도 중복 체크해야됨
-////        request.getSession().setAttribute("member", snsMemberDTO);
-//	    return "/home";
-//	}
-	
+
 
 	
 	  @PostMapping("phoneAuth")

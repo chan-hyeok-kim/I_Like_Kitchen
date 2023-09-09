@@ -7,7 +7,15 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+<style type="text/css">
+
+#book-detail-title{
+	margin-bottom: 40px;
+}
+
+</style>
 </head>
+
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
 
@@ -19,55 +27,33 @@
                 <h3>지난 내역</h3>
             </div>
 
+            <c:if test="${empty payList}">
+            현재 ${member.name}님께서 결제하신 완료 내역이 없습니다
+            </c:if>
+            <c:if test="${not empty payList}">
             <div id="gridDiv">
-                <div id="imgDiv">
-                    <img src="../../img/kitchen01.jpg">
-                </div>            
-                <div id="contentsDiv">
-                    <table>
-                        <tr>
-                            <th>상품명</th>
-                            <td>공유 주방</td>
-                        </tr>
-                        <tr>
-                            <th>예약 번호</th>
-                            <td>80286</td>
-                        </tr>
-                        <tr>
-                            <th>사용 기간</th>
-                            <td>2023-08-25 ~ 2023-08-25</td>
-                        </tr>
-                    </table>
-
-                    <button class="detailBtn">상세 내역</button>
-                </div>
+                
+                
             </div>
-            <div id="gridDiv">
-                <div id="imgDiv">
-                    <img src="../../img/kitchen01.jpg">
-                </div>            
-                <div id="contentsDiv">
-                    <table>
-                        <tr>
-                            <th>상품명</th>
-                            <td>공유 주방</td>
-                        </tr>
-                        <tr>
-                            <th>예약 번호</th>
-                            <td>80286</td>
-                        </tr>
-                        <tr>
-                            <th>사용 기간</th>
-                            <td>2023-08-25 ~ 2023-08-25</td>
-                        </tr>
-                    </table>
-
-                    <button class="detailBtn">상세 내역</button>
-                </div>
-            </div>
+            </c:if>    
         </menu>
     </div>
+
     
     <c:import url="../temp/footer.jsp"></c:import>
+
+    <script>
+    let id = '${member.id}'
+
+        $.ajax({
+            type:'GET',
+             url:'/pay/list?id='+id
+        ,success:function(result){
+        	$('#gridDiv').html(result);
+        }
+        })
+    
+    </script>
+
 </body>
 </html>

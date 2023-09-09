@@ -135,7 +135,7 @@ th:first-child {
 		<tbody>
 			<tr>
 				<td>상호명</td>
-				<td>kto.</td>
+				<td>${kto.companyName}</td>
 			</tr>
 			<tr>
 				<td>대표자명</td>
@@ -143,7 +143,7 @@ th:first-child {
 			</tr>
 			<tr>
 				<td>소재지</td>
-				<td>${kto.partnerAddress}</td>
+				<td>${kto.productDTO.address}</td>
 			</tr>
 			<tr>
 				<td>사업자번호</td>
@@ -151,7 +151,7 @@ th:first-child {
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${kto.productDTO.tell}</td>
+				<td>${kto.productDTO.phone}</td>
 			</tr>
 			<tr>
 				<td>EMAIL</td>
@@ -161,7 +161,6 @@ th:first-child {
 
 
 	</table>
-
 
 
 	<table class="table1" id="tbl2">
@@ -294,7 +293,8 @@ th:first-child {
 						</tr>
 						<tr>
 							<td>결제예정금액</td>
-							<td>${kto.productDTO.price}</td>
+							<td id="pay-info" data-phone="${member.phone}" data-email="${member.email}" data-name="${member.name}" data-book-num="${book.bookNum}"
+							>${kto.productDTO.price}</td>
 						</tr>
 					</table>
 				</div>

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class RefundDTO {
 
 	private Long refundNum;
-	private Long payNum;
+	private String payNum;
 	private Long refundAmount;
 	private Date refundDate;
 	private String refundReason;
@@ -30,10 +30,11 @@ public class RefundDTO {
 	public void setRefundNum(Long refundNum) {
 		this.refundNum = refundNum;
 	}
-	public Long getPayNum() {
+	
+	public String getPayNum() {
 		return payNum;
 	}
-	public void setPayNum(Long payNum) {
+	public void setPayNum(String payNum) {
 		this.payNum = payNum;
 	}
 	public Long getRefundAmount() {
