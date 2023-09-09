@@ -37,7 +37,9 @@ import lombok.Data;
 @Component
 public class KakaoLogin {
 
+
 //	kakao
+
 	private String state = "test";
 	private String kakaoClientId = "ad31c6a5aaaa8e58d6a71df13e7a8cbd";
     private String kakaoRedirectUri = "http://localhost:82/member/callbackKakao";
@@ -172,8 +174,5 @@ public class KakaoLogin {
 	            e.printStackTrace();
 	        }
 	    }
-	
-	
-	
-	
+	    
 }

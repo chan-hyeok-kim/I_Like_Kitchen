@@ -1,4 +1,8 @@
-
+let amount = $('#pay-info').text();
+let email = $('#pay-info').attr('data-email');
+let buyer_name = $('#pay-info').attr('data-name');
+let phone = $('#pay-info').attr('data-phone');
+let bookNum = $('#pay-info').attr('data-book-num');
 
 
 $('#btn').click(function(){
@@ -14,12 +18,12 @@ IMP.init('imp27436400')
     // pg : 'bluewalnut'
 	pg: 'tosspay',
     pay_method : 'tosspay',
-    merchant_uid: "5", // 상점에서 관리하는 주문 번호
+    merchant_uid: bookNum, // 상점에서 관리하는 주문 번호
     name : '주문명:결제테스트',
-    amount : 34000,
-    buyer_email : 'test@naver.com',
-    buyer_name : '김찬혁',
-    buyer_tel : '010-2645-9730',
+    amount : amount,
+    buyer_email : email,
+    buyer_name : buyer_name,
+    buyer_tel : phone,
 }, function(rsp) {
 	if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
 		uid = rsp.imp_uid;
@@ -40,7 +44,7 @@ IMP.init('imp27436400')
 						url: "/pay/add", //cross-domain error가 발생하지 않도록 주의해주세요
 						type: 'POST',
 						data: {
-						orderNum:"4",
+						bookNum:1,
 						payAmount:34000,
 						pay_method : 'card',
 						payNum: uid

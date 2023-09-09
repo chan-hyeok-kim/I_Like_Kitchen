@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.member.MemberDTO;
+
 @Repository
 public class PartnerDAO {
 
@@ -17,8 +19,8 @@ public class PartnerDAO {
 	
 	private final String NAMESPACE = "com.ham.main.partner.PartnerDAO.";
 	
-	public int setPartnerRegisterJoin(PartnerDTO partnerDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setPartnerRegisterJoin", partnerDTO);
+	public int setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setPartnerJoin", partnerDTO);
 	}
 	
 	public PartnerDTO getDetail(PartnerDTO partnerDTO) throws Exception{

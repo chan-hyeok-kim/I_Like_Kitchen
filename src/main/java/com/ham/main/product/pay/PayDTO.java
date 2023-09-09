@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class PayDTO {
 	
-	private Long payNum;
+	private String payNum;
 	private Long bookNum;
 	private Date payDate;
 	private Long payAmount;

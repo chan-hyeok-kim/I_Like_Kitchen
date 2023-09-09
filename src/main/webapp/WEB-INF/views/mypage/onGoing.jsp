@@ -7,6 +7,14 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+    <link rel="stylesheet" href="/resources/css/mypage/mypage.css">
+<style>
+#book-detail-title{
+	margin-bottom: 40px;
+}
+
+
+</style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
@@ -14,32 +22,40 @@
 	<div id="bigDiv">
         <c:import url="/WEB-INF/views/temp/mypageMenu.jsp"></c:import>
     
-        <menu id="listDiv">
-            <div>
+        <menu id="listDiv" data-member-id="${member.id}">
+            <div id="book-detail-title">
                 <h3>진행 내역</h3>
             </div>
-
+            
+            <c:if test="${empty list}">
+            진행 중인 예약 내역이 없습니다
+            </c:if>
+            <c:if test="${not empty list}">
             <div id="gridDiv">
-                <div id="imgDiv">
-                    
-                </div>            
-                <div id="contentsDiv">
-                </div>
+                           
+                
+            </div>
+
+            </c:if>   
+            
         </menu>
-    
-    
+       
     <script>
     	$(".detailBtn").click(function() {
 			
     		$(location).attr("href", "productDetail");
 		});
+    	
+    	let id = $('#listDiv').attr('data-member-id')
 
-        $.ajax(function(){
-            type:'GET'
-             url:'book/detail?'
-            $('#gridDiv')
+        $.ajax({
+            type:'GET',
+             url:'/book/list?id='+id
+        ,success:function(result){
+        	$('#gridDiv').append(result);
+        	
+        }
         })
-        
     </script>
 </body>
 </html>

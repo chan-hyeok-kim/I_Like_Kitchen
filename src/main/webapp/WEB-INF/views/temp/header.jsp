@@ -85,7 +85,7 @@
                     <div class="col-lg-6">
                         <ul class="tn-left">
                             <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+                            <li><i class="fa fa-envelope"></i> info.ILikeKitchen@gmail.com</li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
@@ -103,63 +103,71 @@
                 </div>
             </div>
         </div>
+
         <div class="menu-item">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-
-                        <a href="/">
+                            <a href="/">
                                 <img src="/resources/img/2.png" alt="">
                             </a>
-                            
-
                         </div>
                     </div>
+
                     <div class="col-lg-10">
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-
                                     <li class="active"><a href="/">Home</a></li>
                                     <li><a href="/product/list">Share Kitchen</a></li>
 
-                                    <li><a href="/question/list">About Us</a></li>
-                                    <li><a href="./pages.html">Pages</a>
+                                    <li><a href="/">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="/question/list">Room Details</a></li>
-                                            <li><a href="/review/list">Blog Details</a></li>
-                                            <li><a href="/notice/list">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'MEMBER'}">
+                                                        <li><a href="/mypage/onGoing">마이페이지</a></li>
+                                                        <li><a href="/partner/partnerRegister">사업자등록</a></li>
+                                                    </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'PARTNER'}">
+                                                        <li><a href="/product/add">공간등록</a></li>
+                                                        <li><a href="/partner/partnerPage">파트너페이지</a></li>
+                                                    </c:if>
+                                                
+                                            </c:forEach>
+
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
+                                    <li>
+                                        <c:if test="${empty member}">
+                                            <li><a href="/member/memberLogin">로그인/회원가입</a></li>
+                                        </c:if>
+                                        <c:if test="${not empty member}">
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'PARTNER'}">
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 관리자님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                                    </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'MEMBER'}">
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                                    </c:if>
+                                            </c:forEach>
+                                            <li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+                                        </c:if>
+                                    </li>
                                 </ul>
 
-                                
-		 
-	 <nav>
-			      	<ul class="nav">
-			      		<c:if test="${not empty member}">
-			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
-			      		</c:if>
-			      		<c:if test="${empty member}">
-			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
-			      			<li class="nav-item text-white me-3"><a href="/partner/partnerLogin">호스트 로그인</a></li>
-			      		</c:if>
-			      	</ul>
-			      </nav>
-                            </nav>
-            
-                            
-                            
 
-                            <div class="nav-right search-switch">
+                                
+
+
+                            </nav>
+                            <!-- <div class="nav-right search-switch">
                                 <i class="icon_search"></i>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,15 @@
 package com.ham.main.product;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.ham.main.partner.PartnerDTO;
+
+import com.ham.main.product.book.BookDTO;
 
 import com.ham.main.util.Pager;
 
@@ -16,6 +21,7 @@ public class ProductDAO {
 	
 	private final String NAMESPACE="com.ham.main.product.ProductDAO.";
 	
+
 	public Long getTotal(Pager pager)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
 	}
@@ -39,5 +45,9 @@ public class ProductDAO {
 	
 	public int setDelete(Long num)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", num);
+	}
+	
+	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getInfo", partnerDTO);
 	}
 }
