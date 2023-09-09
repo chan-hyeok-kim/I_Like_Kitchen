@@ -9,11 +9,13 @@
 	<c:import url="temp/bootStrap.jsp"></c:import>
 
   <style>
-    .div1 {
-      margin: 100px;
+    #div1-ad {
+      
       display: block;
       padding: 50px 10px;
-      background: none rgb(249, 247, 235);
+      padding-left:100px;
+      padding-right:100px;
+      background-color: rgb(249, 247, 235);
       border: 0px solid transparent;
       border-radius: 0px;
     }
@@ -22,9 +24,7 @@
       max-width: 700px;
       max-height: 700px;
     }
-  </style>
-	
-	<style type="text/css">
+
 	 #carouselExampleCaptions{
 	            height: 500px;
 	            width: 80%;
@@ -38,14 +38,12 @@
 	 #carouselExampleCaptions img{
 	            height: 500px;
 	 }
-	 .footer-section{
-	            height: 200px;
-	 }
+	
 	 .col-lg-3 offset-lg-1{
 	            margin-top: 100px;
 	 }
 	 #home-contents{
-	      border-bottom: 1px solid gainsboro;     
+	       border-bottom: 1px solid gainsboro;      
 	 }
 	 
 	 
@@ -73,7 +71,7 @@
           margin-top: 25px;
      }
      #main-home-section{
-          border-top: 1px solid gainsboro; 
+     /*      border-top: 1px solid gainsboro;  */
      }
      
     /* .product-img-list img{
@@ -168,12 +166,12 @@
 </div>
 
 <!-- 추가 -->
-  <div class="div1" style="text-align: center;">
+  <div id="div1-ad" class="div1" style="text-align: center;">
     <div class="div2" style="text-align: center;">
       <h2>쾌적한 주방환경만을 제공합니다.</h2>
     </div>
     <div class="div3" style="text-align: center;">
-      <p>공유주방에 오신것을 환영합니다.</p>
+      <p>아이라이크키친에 오신것을 환영합니다.</p>
     </div>
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">

@@ -49,7 +49,7 @@ public class KakaoLogin {
 							+ "&state=" + state;
     private String kakaoToken = "https://kauth.kakao.com/oauth/token";
     private String kakaoClientSecret = "jXYjRZugqnjo6BWGDzuCy3bkbu6dGtpB";  
-   
+    private String kakaoAuth = "https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code";
 	
 	public String getAccessToken(String code) throws Exception {
 		// 카카오에서 전달해준 code 값 가져오기

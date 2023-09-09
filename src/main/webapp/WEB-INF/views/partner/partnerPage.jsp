@@ -37,7 +37,7 @@
                     <button type="button" class="btn1" id="btn2">
                         <img src="/resources/icon/reservation.png">
                         <div>
-                            <p class="part2_2">예약관리</p>
+                            <p class="part2_2">예약관리</a></p>
                             <p class="part2_2">예약 요청 건 처리</p>
                         </div>
                     </button>
@@ -124,7 +124,7 @@
         })
 
         btn2.addEventListener("click", function(){
-            location.href=""
+            location.href="/book/manage"
         })
 
         btn3.addEventListener("click", function(){

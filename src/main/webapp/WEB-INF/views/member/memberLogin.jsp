@@ -46,10 +46,8 @@
 								<a href="/member/find/findID">아이디찾기</a> | <a href="/member/find/findPW">비밀번호찾기</a> | <a href="/member/memberAgree">회원가입</a>
 							</div>
 							<div class="text-center">
-								<!-- <button type ="button" class = "btn" onclick="location.href='${urlKakao}'"><img src='/resources/icon/kakao.png '></button> -->
-								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code">  
-									<img src = "/resources/icon/kakao.png">
-								</a>
+								<button type ="button" class = "btn" onclick="location.href='${kakaoUrl}'"><img src='/resources/icon/kakao.png '></button> 
+								
 								<a href="${naverUrl}"><img width="200" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
 							</div>		
 						</form>
@@ -57,30 +55,10 @@
 				</div>
 			</div>
 
-			<div class="mb-3">
-				<a href="/member/find/findID">아이디찾기</a>
-				<a href="/member/find/findPW">비밀번호찾기</a> 
-				<a href="/member/memberAgree">회원가입</a>
-
-			</div>
-		
+			
 		</form>
 		
-  	<div>
-				<button type ="button" class = "btn" onclick="location.href='kakao_login'"><img src='/resources/icon/kakao.png'></button>
-			</div>	 
-  
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code">  
-		<img src = "/resources/icon/kakao.png">
-	</a>
-		
-<div class="text-center">
-		   <a href="${naverUrl}"><img width="300" alt="Naver Login" src="/resources/img/naverLogin.png"></a> 
-
-		</div>
-	</div>
-
-	<!-- <script src="/resources/js/member/memberLogin.js"></script> -->
+  	
 
 </body>
 </html>

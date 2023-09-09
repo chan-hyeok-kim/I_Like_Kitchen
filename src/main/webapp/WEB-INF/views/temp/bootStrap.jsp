@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/resources/css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/resources/css/jquery-ui.min.css" type="text/css">
+
     <link rel="stylesheet" href="/resources/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/style.css" type="text/css">
@@ -27,7 +27,14 @@
 <!-- swal -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- bootstrap -->
+
+<!-- summernote -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+
+ <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>   
 
