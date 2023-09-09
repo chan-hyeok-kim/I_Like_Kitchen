@@ -11,7 +11,7 @@
         #nav01{
         	height: 60px;
         	line-height: 60px; 
-            border: 1px solid black;
+            border: 1px solid #ece6cc;
             padding-right: 700px;
             text-align: center;
             margin-bottom: 150px;
@@ -25,6 +25,7 @@
         #nav02{
             width: 1000px;
             margin: auto;
+            margin-bottom: 200px;
         }
         #title{
         	margin-bottom: 30px;
@@ -103,6 +104,7 @@
         </form>
     </div>
 	
+	<c:import url="../../temp/footer.jsp"></c:import>
 	<script>
 		// 필독 체크시
 		$("#vitalCheck").click(function(){    

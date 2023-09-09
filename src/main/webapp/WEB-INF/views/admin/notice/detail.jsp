@@ -11,7 +11,7 @@
         #nav01{
         	height: 60px;
         	line-height: 60px; 
-            border: 1px solid black;
+            border: 1px solid #ece6cc;
             padding-right: 700px;
             text-align: center;
             margin-bottom: 100px;
@@ -25,6 +25,7 @@
         #nav02{
             width: 1000px;
             margin: auto;
+            margin-bottom: 200px;
         }
         .contents{
         	height: 30px;
@@ -69,6 +70,11 @@
             border: none;
             cursor: pointer;
         }
+        
+        #imgDiv img{
+        	max-width: 60%;
+        	border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -96,13 +102,14 @@
         <form id="frm">
         	<input type="hidden" name="noticeNum" value="${kto.noticeNum}">
         </form>
-        <div>
+        <div id="imgDiv">
 	        <c:forEach items="${kto.ktos}" var="f">
 		        <img src="/resources/upload/notice/${f.fileName}">
 	        </c:forEach>
         </div>
     </div>
     
+    <c:import url="../../temp/footer.jsp"></c:import>
     <script>
     	// update 버튼
     	$("#updateBtn").click(function() {

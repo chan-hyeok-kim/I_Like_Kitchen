@@ -34,6 +34,10 @@ public class ReviewService {
 		
 		return reviewDAO.list(pager);
 	}
+	public List<ReviewDTO> myList() throws Exception { 
+		  
+	 return reviewDAO.myList();
+ 	}
  //게시물 작성
 	public int add(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		int result = reviewDAO.add(reviewDTO);

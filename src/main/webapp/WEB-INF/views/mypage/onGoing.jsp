@@ -39,7 +39,14 @@
             </c:if>   
             
         </menu>
+
+    </div>
+	        
+    
+    <c:import url="../temp/footer.jsp"></c:import>
+
        
+
     <script>
     	$(".detailBtn").click(function() {
 			

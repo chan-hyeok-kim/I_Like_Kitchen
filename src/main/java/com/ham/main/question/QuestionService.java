@@ -20,6 +20,10 @@ public class QuestionService {
   	
 		return questionDAO.list(pager);
  }
+ 	public List<QuestionDTO> myList() throws Exception { 
+		  
+	 return questionDAO.myList();
+ 	}
 //게시물 작성
 	 public int add(QuestionDTO questionDTO)throws Exception{
 	 

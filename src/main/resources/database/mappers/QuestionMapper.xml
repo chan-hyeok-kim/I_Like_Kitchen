@@ -5,6 +5,20 @@
 
   <mapper namespace="com.ham.main.question.QuestionDAO">
   
+    <sql id="myQuestionList">
+  SELECT
+  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
+ FROM "QUESTION" ORDER BY QUESTIONNUM 
+  </sql>
+  
+<select id="myList" parameterType="QuestionDTO" resultType="QuestionDTO">
+	<include refid="myQuestionList"></include>
+	WHERE ID = #{id}
+</select>
+  <!-- 게시물 목록 -->
+<select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
+ <include refid="myQuestionList"></include>
+
   <resultMap type="QuestionDTO" id="getSelectResult">
 		<id column="QUESTIONNUM" property="questionNum"/>
 		<result column="ID" property="id"/>
@@ -26,6 +40,7 @@
 			  		FROM QUESTION 
 			  		ORDER BY QUESTIONNUM DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
+
 </select>
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="QuestionDTO">

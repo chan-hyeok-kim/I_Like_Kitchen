@@ -11,8 +11,8 @@
         #nav01{
         	height: 60px;
         	line-height: 60px; 
-            border-top: 1px solid black;
-    		border-bottom: 1px solid black;
+            border-top: 1px solid #ece6cc;
+    		border-bottom: 1px solid #ece6cc;
             padding-right: 700px;
             text-align: center;
             margin-bottom: 150px;
@@ -75,7 +75,7 @@
         
         #nav03{
         	text-align: center;
-		    margin-top: 50px;
+		    margin: 50px 0 200px 0;
 		    font-size: 20px;
 		    font-weight: bold;
         }
@@ -140,6 +140,7 @@
     	</c:if>
     </div>
 
+	<c:import url="../../temp/footer.jsp"></c:import>
     <script>
     	// 현재 페이지의 a태그 색깔 변화
     	$(".pageColor").each(function(i, e) {

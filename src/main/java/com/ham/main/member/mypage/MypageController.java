@@ -1,6 +1,7 @@
 package com.ham.main.member.mypage;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.member.MemberService;
+
+import com.ham.main.question.QuestionDTO;
+import com.ham.main.question.QuestionService;
+import com.ham.main.review.ReviewDTO;
+import com.ham.main.review.ReviewService;
+
 import com.ham.main.product.ProductDTO;
 import com.ham.main.product.book.BookDTO;
 import com.ham.main.product.book.BookService;
@@ -28,12 +35,38 @@ public class MypageController {
 
 	@Autowired
 	private MemberService memberService;
-	
+  
+	@Autowired
+	private ReviewService reviewService;
+  
+	@Autowired
+	private QuestionService questionService;
+
 	@Autowired
 	private BookService bookService;
 	
 	@Autowired
 	private PayService payService;
+	
+	// My활동
+	@GetMapping("reviewList")
+	public String getReviewList(Model model, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
+		List<ReviewDTO> ar = reviewService.myList();
+		
+		model.addAttribute("list", ar);
+		
+		return "/mypage/reviewList";
+	}
+	
+	@GetMapping("questionList")
+	public String getQuestionList(Model model, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
+		List<QuestionDTO> ar = questionService.myList();
+		
+		model.addAttribute("list", ar);
+
+
 	
   	@GetMapping("onGoing")
 	public String getOnGoing(HttpSession session,Model model,Pager pager) throws Exception{
@@ -78,11 +111,38 @@ public class MypageController {
 			model.addAttribute("payList", pl);
 			model.addAttribute("pager", pager);
 		}
+
 		
-		return "/mypage/complete";
+		return "/mypage/questionList";
+	}
+	
+	
+	// 예약정보
+  	@GetMapping("onGoing")
+	public String getOnGoing(MemberDTO memberDTO, HttpSession session) throws Exception{
+  		memberDTO = (MemberDTO) session.getAttribute("member");
+  		
+  		if(memberDTO != null) {
+  			return "/mypage/onGoing";
+  		} else {
+  			return "redirect:/member/memberLogin";
+  		}
+	}
+	
+	@GetMapping("complete")
+	public String getComplete(MemberDTO memberDTO, HttpSession session) throws Exception{
+		memberDTO = (MemberDTO) session.getAttribute("member");
+  		
+  		if(memberDTO != null) {
+  			return "/mypage/complete";
+  		} else {
+  			return "redirect:/member/memberLogin";
+  		}
 	}
 	 
-	@GetMapping("cancle")
+
+
+  @GetMapping("cancle")   
 	public String getCancle(HttpSession session,Model model,Pager pager) throws Exception{
 		 MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 			
@@ -116,6 +176,7 @@ public class MypageController {
 				model.addAttribute("refundList", rl);
 			}
 		return "/mypage/cancle";
+
 	}
 	
 	@GetMapping("productDetail")
@@ -124,15 +185,20 @@ public class MypageController {
 		return "/mypage/productDetail";
 	}
 	
+	// My정보
 	@GetMapping("info")
 	public String getInfo(MemberDTO memberDTO, HttpSession session) throws Exception{
 		memberDTO = (MemberDTO) session.getAttribute("member");
-
-		memberDTO = memberService.getCheckInfo(memberDTO);
 		
-		session.setAttribute("member", memberDTO);
-		
-		return "/mypage/info";
+		if(memberDTO != null) {
+			memberDTO = memberService.getCheckInfo(memberDTO);
+			
+			session.setAttribute("member", memberDTO);
+			
+  			return "/mypage/info";
+  		} else {
+  			return "redirect:/member/memberLogin";
+  		}
 	}
 	
 	@GetMapping("checkInfo")
