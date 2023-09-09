@@ -21,10 +21,7 @@ public class ProductDAO {
 	
 	private final String NAMESPACE="com.ham.main.product.ProductDAO.";
 	
-	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getInfo", partnerDTO);
-	}
-	
+
 	public Long getTotal(Pager pager)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
 	}

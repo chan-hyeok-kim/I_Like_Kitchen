@@ -21,9 +21,7 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return memberDAO.setSnsJoin(snsMemberDTO);
-	}
+	
 
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberIdCheck(memberDTO);

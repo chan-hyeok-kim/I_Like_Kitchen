@@ -25,9 +25,7 @@ public class ProductService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
-		return productDAO.getInfo(partnerDTO);
-	}
+	
 	
 	public List<ProductDTO> getList(Pager pager)throws Exception{
 		pager.makeRowNum();
