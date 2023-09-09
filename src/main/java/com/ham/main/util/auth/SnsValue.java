@@ -6,6 +6,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.builder.api.DefaultApi20;
@@ -27,19 +29,21 @@ public class SnsValue implements SnsUrls {
 	private String profileUrl;
 	private String state;
 	private boolean isNaver;
-	private boolean isKakao;
 	
-	public SnsValue(String service, String naverClientID, String naverClientSecret, String naverRedirectUrl, String naverState) {
+
+    
+	public SnsValue(String service, String snsClientID, String snsClientSecret, String snsRedirectUrl, String snsState) {
 	    	this.service = service;
-	    	this.clientId = naverClientID;
-	    	this.cleintSecret = naverClientSecret;
-	    	this.redirectURL = naverRedirectUrl;
-	    	this.state = naverState;
+	    	this.clientId = snsClientID;
+	    	this.cleintSecret = snsClientSecret;
+	    	this.redirectURL = snsRedirectUrl;
+	    	this.state = snsState;
 	    	this.isNaver = StringUtils.equalsIgnoreCase("naver", this.service);
-	    	
+
 	    	if(isNaver) {
 	    	   this.api20Instance = NaverAPI20.instance();	
 	    	   this.profileUrl = NAVER_PROFILE_URL;
+
 	    	}
 	    	
 	}

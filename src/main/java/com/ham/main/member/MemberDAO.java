@@ -80,19 +80,22 @@ public class MemberDAO {
 //    민준 업데이트
   
     public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
-		
 		return sqlSession.selectOne(NAMESPACE + "getCheckInfo", memDTO);
 	}
 	
 	public int setUpdate(MemberDTO memDTO) throws Exception {
-		
 		return sqlSession.update(NAMESPACE + "setUpdate", memDTO);
 	}
 	
-	public int setDelete(MemberDTO memDTO) throws Exception{
-		
+	public int setDelete(MemberDTO memDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "setDelete", memDTO);
 	}
+
+	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		System.out.println(snsMemberDTO);
+		return sqlSession.insert(NAMESPACE+"setSnsJoin", snsMemberDTO);
+	}
+	
 
 
 }

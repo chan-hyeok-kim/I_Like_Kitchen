@@ -157,6 +157,25 @@
                                         </c:if>
                                     </li>
                                 </ul>
+
+
+                                
+		 
+	 <nav>
+			      	<ul class="nav">
+			      		<c:if test="${not empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/product/add">공간등록</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/mypage/onGoing">마이페이지</a></li>
+			      		
+			      		</c:if>
+			      		<c:if test="${empty member}">
+			      			<li class="nav-item text-white me-3"><a href="/member/memberLogin">로그인</a></li>
+			      			<li class="nav-item text-white me-3"><a href="/partner/partnerLogin">호스트 로그인</a></li>
+			      		</c:if>
+			      	</ul>
+			      </nav>
+
                             </nav>
                             <!-- <div class="nav-right search-switch">
                                 <i class="icon_search"></i>

@@ -110,22 +110,22 @@ public class MemberService {
 	    }
 
 //    민준 업데이트
-       public MemberDTO getCheckInfo(MemberDTO memberDTO) throws Exception{
-		
+    public MemberDTO getCheckInfo(MemberDTO memberDTO) throws Exception{
 		   return memberDAO.getCheckInfo(memberDTO);
 	}
 	
 	public int setUpdate(MemberDTO memberDTO) throws Exception {
 		int result = memberDAO.setUpdate(memberDTO);
-		
 		return result;
-		}
+    }
 
 	public int setDelete(MemberDTO memberDTO) throws Exception{
-		
 		return memberDAO.setDelete(memberDTO);
 	}
 
+	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		return memberDAO.setSnsJoin(snsMemberDTO);
+	}
 }
 	    
 	

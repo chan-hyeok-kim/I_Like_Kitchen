@@ -1,5 +1,6 @@
 package com.ham.main.product.pay;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -25,5 +26,12 @@ public class PayDAO {
 	    return sqlSession.insert(NAMESPACE+"setRefund", refundDTO);	
 	}
 	
+	public PayDTO getPayInfo(PayDTO payDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPayInfo", payDTO); 
+	}
+	
+	public RefundDTO getRefundInfo(RefundDTO refundDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getRefundInfo", refundDTO);
+	}
 	
 }

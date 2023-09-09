@@ -19,8 +19,6 @@ import com.ham.main.partner.PartnerDTO;
 import com.ham.main.partner.PartnerService;
 import com.ham.main.util.Pager;
 
-
-
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
@@ -71,6 +69,17 @@ public class ProductController {
 		int result = productService.setDelete(num);
 		return "redirect:./list";
 	}
+	
+
+
+
+	@GetMapping("homeList")
+	public void getHomeList(Pager pager,Model model) throws Exception {
+		List<ProductDTO> pl = productService.getList(pager);
+		System.out.println(pl);
+		model.addAttribute("list", pl);
+	}
+	
 	
 
 

@@ -5,17 +5,56 @@
   
   <mapper namespace="com.ham.main.product.book.BookDAO">
   
+  <sql id="searchSql">
+		WHERE BOOKNUM>0
+		AND BOOKNUM LIKE '%' || #{search} || '%'
+		AND id=#{id}
+  </sql>
+  
   <insert id="setBook" parameterType="BookDTO">
-     INSERT INTO BOOK(ORDERNUM, PRODUCTNUM, ID, CHOICE, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, STATUS, BOOKDATE)
-     VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{choice},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},'예약',#{bookDate})
+     INSERT INTO BOOK(BOOKNUM, PRODUCTNUM, ID, CONTENTS, HEADCOUNT, PURPOSE, STARTTIME, ENDTIME, BOOKDATE, BOOKCHECK)
+     VALUES (BOOK_SEQ.NEXTVAL,#{productNum},#{id},#{contents},#{headCount},#{purpose},#{startTime},#{endTime},#{bookDate}, 0)
   </insert>
   
   <select id="getDetail" resultType="BookDTO" parameterType="BookDTO">
      SELECT * 
        FROM BOOK
-      WHERE ORDERNUM=#{orderNum} 
+      WHERE BOOKNUM=#{bookNum} 
   </select>
   
+  <select id="getBookInfo" resultType="BookDTO" parameterType="Map">
+     SELECT * FROM
+		(SELECT ROWNUM R, B.*
+		 FROM(SELECT * FROM BOOK
+		 WHERE BOOKNUM>0
+		   AND BOOKNUM LIKE '%' || #{pager.search} || '%'
+		   AND ID=#{member.id}
+		 ORDER BY BOOKNUM DESC) B)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+  </select>
   
+  <select id="getInfoTotal" resultType="Long" parameterType="MemberDTO">
+		SELECT COUNT(BOOKNUM)
+		FROM BOOK
+		WHERE ID=#{id}
+	</select>
+  
+  <select id="getBook" resultType="BookDTO" parameterType="ProductDTO">
+     SELECT *
+       FROM BOOK
+      WHERE PRODUCTNUM=#{productNum}
+  </select>
+  
+  <update id="setBookCheck" parameterType="BookDTO">
+     UPDATE BOOK
+        SET BOOKCHECK='1'
+      WHERE BOOKNUM=#{bookNum} 
+  </update>
+  
+  <select id="getBookTime" resultType="BookDTO" parameterType="BookDTO">
+     SELECT *
+       FROM BOOK
+      WHERE BOOKDATE=#{bookDate}
+  </select>
   
   </mapper>

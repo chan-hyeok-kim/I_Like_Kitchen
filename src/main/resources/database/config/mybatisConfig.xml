@@ -14,6 +14,7 @@
         
         <typeAlias type="com.ham.main.member.SnsMemberDTO" alias="SnsMemberDTO"/>
         <typeAlias type="com.ham.main.member.MemberDTO" alias="MemberDTO"/>
+        <typeAlias type="com.ham.main.member.SnsMemberDTO" alias="SnsMemberDTO"/>
         <typeAlias type="com.ham.main.partner.PartnerDTO" alias="PartnerDTO"/>
         <typeAlias type="com.ham.main.member.RoleDTO" alias="RoleDTO"/>
         
