@@ -76,7 +76,7 @@ table{
 </head>
 <body>
 
-<section>
+<section id="entire">
 
 
 <c:forEach items="${payList}" var="p" varStatus="fi">
@@ -161,19 +161,51 @@ table{
 			</ul>
 		</nav>
 
+         <input type="hidden" value="${pager.page}" name="page" id="page">
+			<div class="col-sm-3">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="Search" aria-label="Search" id="search" style="width:200px;">
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
+				
 
 </section>
-
-
-
-
-
-
 <script type="text/javascript">
+ id = '${member.id}'
+	//$('#data-id').attr('data-id')
+page = '${pager.page}'
 
+$('.move').click(function(){
+  $('#page').val($(this).attr('data-num'));
+ let listPage = $('#page').val(); 
+ let listSearch = $('#search').val(); 
+ $.ajax({
+	type:'GET',
+	url:'/pay/list?id='+id+'&page='+listPage+'&search='+listSearch
+    ,success:function(result){
+		$('#entire').empty();
+		console.log(result)
+		$('#entire').append(result);
+	}  
+})
+}) 
 
-  
-  </script>
+$('#search-btn').click(function(){
+	  $('#page').val($(this).attr('data-num'));
+	  
+	  let listSearch = $('#search').val(); 
+	  $.ajax({
+	 	type:'GET',
+	 	url:'/book/list?id='+id+'&page='+page+'&search='+listSearch
+	     ,success:function(result){
+	 		$('#entire').empty();
+	 		console.log(result)
+	 		$('#entire').append(result);
+	 	}  
+	 })
+	 }) 
+</script>
 <script src="/resources/js/pay/refund.js"></script>
 </body>
 </html>

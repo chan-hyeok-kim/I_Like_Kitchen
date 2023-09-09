@@ -45,7 +45,7 @@
             type:'GET',
              url:'/pay/list?id='+id
         ,success:function(result){
-        	$('#gridDiv').html(result);
+        	$('#gridDiv').append(result);
         }
         })
     
