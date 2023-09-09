@@ -149,6 +149,7 @@ public class PayController {
 	
     @GetMapping("list")
     public void getList(MemberDTO memberDTO,Model model,Pager pager) throws Exception{
+    	pager.setPerPage(3L);
     	List<BookDTO> bl = bookService.getBookInfo(memberDTO, pager);  
     	
     	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
@@ -196,7 +197,8 @@ public class PayController {
     
     @GetMapping("refundList")
     public void getRefundList(MemberDTO memberDTO,Model model,Pager pager) throws Exception{
-        List<BookDTO> bl = bookService.getBookInfo(memberDTO,pager);  
+        pager.setPerPage(3L);
+    	List<BookDTO> bl = bookService.getBookInfo(memberDTO,pager);  
     	
     	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
 		
@@ -224,6 +226,8 @@ public class PayController {
 		for(PayDTO p:pl) {
 			RefundDTO refundDTO = new RefundDTO();
 			refundDTO.setPayNum(p.getPayNum());
+			
+			pager.makePageNum(payService.getRefundTotal(refundDTO)); 
 			refundDTO= payService.getRefundInfo(refundDTO);
 			if(refundDTO!=null) {
 			rl.add(refundDTO);

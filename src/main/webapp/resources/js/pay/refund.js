@@ -1,12 +1,12 @@
 
-let countNum = 0;
+countNum = 0;
 countNum = countNum+1
 
 $('#btn-home'+countNum).click(function(){
   console.log('클릭됨')
 })
 
-let count = $('.book-table-list').length
+count = $('.book-table-list').length
 console.log(count)
 
 $('#btn-refund'+countNum).click(function(){
@@ -26,9 +26,9 @@ $('#btn-refund'+countNum).click(function(){
 })
 
 
-let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
-let amount = $('#data-refund'+countNum).attr("data-refund-amount");
-let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
+bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
+amount = $('#data-refund'+countNum).attr("data-refund-amount");
+payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
 
 
 

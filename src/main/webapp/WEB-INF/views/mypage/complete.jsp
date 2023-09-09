@@ -28,7 +28,7 @@
             </div>
 
             <c:if test="${empty payList}">
-            현재 ${member.name}님께서 결제하신 완료 내역이 없습니다
+            결제하신 완료 내역이 없습니다
             </c:if>
             <c:if test="${not empty payList}">
             <div id="gridDiv">

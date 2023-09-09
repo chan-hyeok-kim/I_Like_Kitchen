@@ -28,7 +28,7 @@
             </div>
 
             <c:if test="${empty refundList}">
-            현재 ${member.name}님께서 취소하신 환불 내역이 없습니다
+            취소하신 환불 내역이 없습니다
             </c:if>
             <c:if test="${not empty refundList}">
             <div id="gridDiv">
@@ -45,7 +45,7 @@
             type:'GET',
              url:'/pay/refundList?id='+id
         ,success:function(result){
-        	$('#gridDiv').html(result);
+        	$('#gridDiv').append(result);
         }
         })
     

@@ -98,7 +98,7 @@
    
   
    </div>
-    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
+    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제</button>
   
   </div>
    </div>   
@@ -132,17 +132,21 @@
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
-			</ul>
-		</nav>
-		 
-		 <input type="hidden" value="${pager.page}" name="page" id="page">
+		  <li style="margin-left:250px;"><input type="hidden" value="${pager.page}" name="page" id="page">
+			
 			<div class="col-sm-3">
 				<input class="form-control me-2" type="search" name="search"
-					placeholder="Search" aria-label="Search" id="search" style="width:200px;">
+					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
 			</div>
-			<div class="col-auto">
+			
+			<div class="col" style="display: flex">
 				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
-				
+				</div></li>
+			</ul>
+		
+		</nav>
+		 
+		 
 
 
 

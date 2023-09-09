@@ -34,4 +34,8 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE+"getRefundInfo", refundDTO);
 	}
 	
+	public long getRefundTotal(RefundDTO refundDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getRefundTotal", refundDTO);
+	}
+	
 }

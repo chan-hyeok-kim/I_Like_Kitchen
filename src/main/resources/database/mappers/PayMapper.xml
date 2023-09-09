@@ -38,4 +38,10 @@
        WHERE PAYNUM=#{payNum}
   </select>
   
+  <select id="getRefundTotal" resultType="Long" parameterType="refundDTO">
+      SELECT COUNT(REFUNDNUM)
+        FROM REFUND
+       WHERE PAYNUM=#{payNum}
+  </select>
+  
   </mapper>

@@ -89,8 +89,8 @@ table{
 </div>
 
 <div class="book-table-div">
-   <div id="detail-link"><p>예약 장소</p><p>${productList[fi.index].productName}</p></div>
    <div><p>예약자</p><p>${member.name}</p></div>
+   <div><p>예약번호</p><p>${list[fi.index].bookNum}</p></div>
    <div><p>연락처</p><p>${productList[fi.index].phone}</p></div>
    <div><p>결제 날짜</p><p>${p.payDate}</p></div>
    <div><p>결제 금액</p><p>${p.payAmount}</p></div>
@@ -101,12 +101,12 @@ table{
 <!-- Button trigger modal -->
 <c:if test="${empty refundList[fi.index]}">
 <button id="btn-home${fi.count}" type="button" class="btn btn-outline-primary btn-home" data-bs-toggle="modal" data-bs-target="#exampleModal${fi.count}">
-  환불하기
+환불
 </button>
 </c:if>
 <c:if test="${not empty refundList[fi.index]}">
 <button type="button" class="btn btn-outline-primary">
-환불 완료
+환불완료
 </button>
 </c:if>
   </div>
@@ -158,17 +158,20 @@ table{
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
-			</ul>
-		</nav>
-
-         <input type="hidden" value="${pager.page}" name="page" id="page">
+            <li style="margin-left:250px;"> <input type="hidden" value="${pager.page}" name="page" id="page">
 			<div class="col-sm-3">
 				<input class="form-control me-2" type="search" name="search"
-					placeholder="Search" aria-label="Search" id="search" style="width:200px;">
+					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
 			</div>
-			<div class="col-auto">
-				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
-				
+			</li><li>
+			<div class="col" style="padding-left: 0px">
+				<button style="margin-left: 0px" class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
+				</li>
+			</ul>
+
+		</nav>
+
+        
 
 </section>
 <script type="text/javascript">
@@ -197,7 +200,7 @@ $('#search-btn').click(function(){
 	  let listSearch = $('#search').val(); 
 	  $.ajax({
 	 	type:'GET',
-	 	url:'/book/list?id='+id+'&page='+page+'&search='+listSearch
+	 	url:'/pay/list?id='+id+'&page='+page+'&search='+listSearch
 	     ,success:function(result){
 	 		$('#entire').empty();
 	 		console.log(result)
