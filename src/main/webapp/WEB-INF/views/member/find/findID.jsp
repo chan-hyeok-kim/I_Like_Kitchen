@@ -38,13 +38,13 @@
 						<form id="frm" action="./findID" method="post">
 							<div class="mb-3">
 								<label for="name" class="form-label">이름</label>
-								<input type="text" class="form-control" id="name" name="name">
+								<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요.">
 								<div id="nameResult"></div>
 							</div>
 							<div class="mb-3">
 								<label for="email" class="form-label">이메일</label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력">
+									<input type="text" class="form-control" name="email" id="email" placeholder="이메일을 입력해주세요.">
 								</div>
 								<div id="emailResult"></div>
 							</div>

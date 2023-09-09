@@ -68,8 +68,8 @@
 			  <div id="partnerAccountResult"></div>
 			</div>
 	
-			<div class="mb-3">
-				<button class="btn btn-outline-success fw-bold" id="partnerBtn" type="button">사업자 등록</button> 
+			<div class="mb-3 text-center">
+				<button class="btn btn-outline-secondary fw-bold" id="partnerBtn" type="button">사업자 등록</button> 
 			</div>
 			</form>
 		</div>

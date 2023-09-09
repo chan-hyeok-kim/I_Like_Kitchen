@@ -37,13 +37,13 @@
 						<form id="frm" action="./findPW" method="post">
 							<div class="mb-3">
 								<label for="id" class="form-label">아이디</label>
-								<input type="text" id="id" name="id" required class="form-control">
+								<input type="text" id="id" name="id" required class="form-control" placeholder="아이디를 입력해주세요.">
 								<div id="idResult"></div>
 							</div>
 							<div class="mb-3">
 								<label for="email" class="form-label">이메일</label>
 								<div class="input-group">
-									<input type="text" id="email" name="email" required class="form-control">
+									<input type="text" id="email" name="email" required class="form-control" placeholder="이메일을 입력해주세요.">
 								</div>
 								<div id="emailResult"></div>
 								<div class="input-group mt-3">

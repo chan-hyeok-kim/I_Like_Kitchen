@@ -40,7 +40,7 @@
 								  <div id="passwordResult"></div>
 							</div>
 							<div class="mb-3 text-center">
-								<button id="btn" class="btn btn-outline-primary">로그인</button>
+								<button id="btn" class="btn btn-outline-secondary">로그인</button>
 							</div>
 							<div class="mb-3 text-center">
 								<a href="/member/find/findID">아이디찾기</a> | <a href="/member/find/findPW">비밀번호찾기</a> | <a href="/member/memberAgree">회원가입</a>
