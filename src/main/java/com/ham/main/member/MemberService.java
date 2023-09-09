@@ -21,20 +21,14 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	
 
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberIdCheck(memberDTO);
 	}
 	
-	public boolean getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
-	    memberDTO = memberDAO.getMemberByEmail(memberDTO);
-
-	    boolean check = true;
-
-	    if (memberDTO != null) {
-	        check = false;
-	    }
-	    return check;
+	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getMemberEmailCheck(memberDTO);
 	}
 	
 	//회원가입
@@ -46,9 +40,6 @@ public class MemberService {
 		
 		return result;
 	}
-	
-
-
 
 
 	//로그인
@@ -63,13 +54,13 @@ public class MemberService {
 	
 	
 	
-	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return memberDAO.setKakaoJoin(snsMemberDTO);
-	}
-	
-	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return memberDAO.getKakaoLogin(snsMemberDTO);
-	}
+//	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return memberDAO.setKakaoJoin(snsMemberDTO);
+//	}
+//	
+//	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return memberDAO.getKakaoLogin(snsMemberDTO);
+//	}
 
 	
 	public String sendRandomMessage(String phone) {
@@ -117,22 +108,22 @@ public class MemberService {
 	    }
 
 //    민준 업데이트
-       public MemberDTO getCheckInfo(MemberDTO memberDTO) throws Exception{
-		
+    public MemberDTO getCheckInfo(MemberDTO memberDTO) throws Exception{
 		   return memberDAO.getCheckInfo(memberDTO);
 	}
 	
 	public int setUpdate(MemberDTO memberDTO) throws Exception {
 		int result = memberDAO.setUpdate(memberDTO);
-		
 		return result;
-		}
+    }
 
 	public int setDelete(MemberDTO memberDTO) throws Exception{
-		
 		return memberDAO.setDelete(memberDTO);
 	}
 
+	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		return memberDAO.setSnsJoin(snsMemberDTO);
+	}
 }
 	    
 	

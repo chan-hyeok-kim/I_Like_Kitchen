@@ -4,19 +4,38 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="com.ham.main.review.ReviewDAO">
-  
+
+  <sql id="myReviewList">
+  SELECT 
+  REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
+  FROM REVIEW ORDER BY REVIEWNUM
+  	
+  </sql>
+
+
+  	<select id="getTotal" resultType="Long">
+		SELECT COUNT(REVIEWNUM) 
+		FROM REVIEW
+	</select>
   <!-- 게시물 목록 -->
 <select id="list" resultType="ReviewDTO">
- SELECT 
- REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
- FROM REVIEW ORDER BY REVIEWNUM
+  SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM REVIEW 
+			  		ORDER BY REVIEWNUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+</select>
 
+<select id="myList">
+	<include refid="myReviewList"></include>
+	WHERE ID = #{id}
 </select>
 
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="ReviewDTO">
  INSERT INTO REVIEW
-  VALUES(review_seq.nextval,#{productNum},#{id},#{reviewContents},sysdate,#{reviewRate})
+  VALUES(review_seq.nextval,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="ReviewDTO">
@@ -38,29 +57,19 @@
   WHERE REVIEWNUM = #{reviewNum}
 </delete>
 
-<!-- 게시물 총 갯수 -->
-<select id="count" resultType="long">
-SELECT COUNT(REVIEWNUM) FROM REVIEW
-
-</select>
-<!-- 게시물 목록 + 페이징 -->
-<select id="listPage" parameterType="hashMap" resultType="ReviewDTO">
-SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE,
-  FROM REVIEW
- ORDER BY REVIEWNUM DESC
- LIMIT #{displayPost}, #{postNum}
-</select>
-
-	<insert id="setFileAdd" parameterType="ReviewDTO">
-  		INSERT INTO REVIEWFILE
-  		VALUES (FILE_SEQ.NEXTVAL,#{reviewNum}, #{fileName}, #{originalName} )
-  	</insert>
-<delete id="setFileDelete" parameterType="ReviewFileDTO">
-		DELETE REVIEWFILE WHERE FILENUM=#{fileNum}
-	</delete>
-	
-	<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
-		SELECT FILENUM, FILENAME, ORIGINALNAME FROM REVIEWFILE WHERE FILENUM=#{fileNum}
+<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
+		SELECT FILENUM, FILENAME 
+		FROM REVIEWFILE
+		WHERE FILENUM = #{fileNum} 
 	</select>
+	
+	<insert id="setFileAdd" parameterType="ReviewFileDTO">
+		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
+		VALUES(FILE_SEQ.NEXTVAL, #{reviewNum}, #{fileName}, #{originalName})
+	</insert>
 
+	<delete id="setFileDelete" parameterType="ReviewFileDTO">
+		DELETE REVIEWFILE
+		WHERE FILENUM = #{fileNum}
+	</delete>
   </mapper>

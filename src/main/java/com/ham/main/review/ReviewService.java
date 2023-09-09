@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.file.FileDTO;
+import com.ham.main.notice.NoticeDTO;
+import com.ham.main.notice.NoticeFileDTO;
 import com.ham.main.util.FileManager;
+import com.ham.main.util.Pager;
 
 @Service
 public class ReviewService {
@@ -21,52 +24,27 @@ public class ReviewService {
 	private FileManager fileManager;
  
 
- 	public ReviewFileDTO getFileDown(ReviewFileDTO reviewFileDTO)throws Exception{
-		return reviewDAO.getFileDetail(reviewFileDTO);
-	}
- 	
- 	public boolean setContentsImgDelete(String path,HttpSession session) throws Exception{
-		//path: /resources/upload/review/파일명
-		FileDTO fileDTO =new FileDTO();
-//		path=path.substring(0, path.lastIndexOf("\\")+1);
-		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
-		
-		path="/resources/upload/review/";
-		return fileManager.fileDelete(fileDTO, path, session);
-	}
-	
-	public String setContentsImg(MultipartFile file,HttpSession session)throws Exception {
-		String path="/resources/upload/review/";
-		String fileName=fileManager.fileSave(path, session, file);
-		return path+fileName;
-		
-	}
-	
-	public int setFileDelete(ReviewFileDTO reviewFileDTO,HttpSession session) throws Exception{
-		//폴더 파일 삭제
-		reviewFileDTO=reviewDAO.getFileDetail(reviewFileDTO);
-		boolean flag=fileManager.fileDelete(reviewFileDTO, "/resources/upload/review/", session);
-		
-		if(flag) {
-			
-			
-			//db삭제
-			return reviewDAO.setFileDelete(reviewFileDTO);
-		}
-		return 0;
-	}
+
 	
 		
 	
-	public List<ReviewDTO> list() throws Exception {
+	public List<ReviewDTO> list(Pager pager) throws Exception {
+		pager.makeRowNum();
+		pager.makePageNum(reviewDAO.getTotal(pager));
 		
-		return reviewDAO.list();
+		return reviewDAO.list(pager);
 	}
+	public List<ReviewDTO> myList() throws Exception { 
+		  
+	 return reviewDAO.myList();
+ 	}
  //게시물 작성
-	 public int add(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
-	 
-	 return reviewDAO.add(reviewDTO);
- }
+	public int add(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = reviewDAO.add(reviewDTO);
+		
+
+		return result;
+	}
 //게시물 조회
 
  	public ReviewDTO view(Long reviewNum) throws Exception {
@@ -76,26 +54,38 @@ public class ReviewService {
  	
  	
  // 게시물 수정
- 	
- 	public int update(ReviewDTO reviewDTO) throws Exception {
- 	   
- 	return reviewDAO.update(reviewDTO);
- 	}
+ 	public int update(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = reviewDAO.update(reviewDTO);
+		
+
+		
+		return result;
+	}
  	
  // 게시물 삭제
  	public int delete(long reviewNum) throws Exception {
- 	return reviewDAO.delete(reviewNum);
- 	}
  	
- 	
- // 게시물 목록 + 페이징
- 	public List<ReviewDTO> listPage(int displayPost, int postNum) throws Exception {
- 	 return reviewDAO.listPage(displayPost, postNum);
+ 		return reviewDAO.delete(reviewNum);
  	}
 
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+
+
+	// file(파일)
+		public int setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session) throws Exception {
+			reviewFileDTO = reviewDAO.getFileDetail(reviewFileDTO);
+			boolean flag = fileManager.fileDelete(reviewFileDTO, "/resources/upload/notice", session);
+			
+			if(flag) {
+				return reviewDAO.setFileDelete(reviewFileDTO);
+			}
+			
+			return 0;
+		}
+		public List<ReviewDTO> list(Long reviewNum) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 
 }

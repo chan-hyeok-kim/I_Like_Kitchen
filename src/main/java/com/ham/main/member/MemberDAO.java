@@ -12,10 +12,12 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
-    public MemberDTO getMemberByEmail(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getMemberByEmail", memberDTO);
-	}
 	
+	
+	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE +"getMemberEmailCheck", memberDTO);
+	}
+
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "setMemberJoin", memberDTO);
 	}
@@ -34,13 +36,13 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + "getMemberIdCheck", memberDTO);
 	}
 	
-	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setKakaoJoin", snsMemberDTO);
-	}
-	
-	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", snsMemberDTO);
-	}
+//	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.insert(NAMESPACE + "setKakaoJoin", snsMemberDTO);
+//	}
+//	
+//	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
+//		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", snsMemberDTO);
+//	}
 
 	
 	
@@ -76,19 +78,22 @@ public class MemberDAO {
 //    민준 업데이트
   
     public MemberDTO getCheckInfo(MemberDTO memDTO) throws Exception{
-		
 		return sqlSession.selectOne(NAMESPACE + "getCheckInfo", memDTO);
 	}
 	
 	public int setUpdate(MemberDTO memDTO) throws Exception {
-		
 		return sqlSession.update(NAMESPACE + "setUpdate", memDTO);
 	}
 	
-	public int setDelete(MemberDTO memDTO) throws Exception{
-		
+	public int setDelete(MemberDTO memDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "setDelete", memDTO);
 	}
+
+	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
+		System.out.println(snsMemberDTO);
+		return sqlSession.insert(NAMESPACE+"setSnsJoin", snsMemberDTO);
+	}
+	
 
 
 }

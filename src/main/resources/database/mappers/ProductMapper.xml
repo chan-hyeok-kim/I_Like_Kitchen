@@ -17,12 +17,12 @@
 		</choose>
   	</sql>
   	 
- 	<select id="getTotal" parameterType="com.ham.main.util.Pager" resultType="Long">
+ 	<select id="getTotal" parameterType="Pager" resultType="Long">
 		SELECT COUNT(P.PRODUCTNUM) FROM PRODUCT P
 		<include refid="searchSql"></include>
 	</select>
 	
-	<select id="getList" parameterType="com.ham.main.util.Pager" resultMap="getListFile" >
+	<select id="getList" parameterType="Pager" resultMap="getListFile" >
 		SELECT * FROM 	
 			(SELECT ROWNUM R, B.* FROM
 				(
@@ -74,7 +74,7 @@
 		<result column="PARTNERNUM" property="partnerNum"/>
 		<result column="REGDATE" property="regDate"/>
 		<result column="ADDRESS" property="address"/>
-		<result column="TEL" property="tel"/>
+		<result column="PHONE" property="phone"/>
 		<result column="PRICE" property="price"/>
 		<result column="CONTENTS" property="contents"/>
 		<result column="PRODUCTNAME" property="productName"/>
@@ -99,7 +99,34 @@
 	</insert>
 	
 	<delete id="setDelete" parameterType="Long">
-		DELETE PRODUCT WHERE PRODUCTNUM=#{num}
+		DELETE PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</delete>
 	
+
+	
+	 <select id="getInfo" resultMap="getListInfo" parameterType="PartnerDTO">
+        SELECT P.*, PF.* 
+		  FROM PRODUCT P
+		       LEFT JOIN
+		       PRODUCTFILE PF
+			   ON(P.PRODUCTNUM=PF.PRODUCTNUM)  
+         WHERE P.PARTNERNUM=#{partnerNum}
+     </select>
+     
+     <resultMap type="ProductDTO" id="getListInfo">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="PHONE" property="phone"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
+
  </mapper>

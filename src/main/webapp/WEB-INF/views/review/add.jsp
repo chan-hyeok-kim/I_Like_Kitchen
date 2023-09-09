@@ -8,7 +8,27 @@
 <meta charset="UTF-8">
 	<title>Home</title>
 	<c:import url="../temp/bootStrap.jsp"></c:import>
-
+<style>
+	#submit{
+	background-color:rgb(251,255,182);
+	border-radius: 20px;
+	width:100px;
+	height:40px;
+	}
+	#cancel{
+	background-color:rgb(251,255,182);
+	border-radius: 20px;
+	border:2px solid black;
+	width:100px;
+	height:40px;
+	color:black;
+	margin-left:10px;
+	}
+	#btn button:hover{
+	background-color: black;
+	color:white;
+	}
+</style>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -21,10 +41,11 @@
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 </div>
 
-
+<input type="hidden" id="productNum"/>
   <br>
   <p class="text-start fs-4">후기작성</p>
- <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">후기를 입력하세요</textarea>
+ <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents" placeholder="후기를 입력하세요"></textarea>
+	<h3>평점</h3>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="reviewRate" id="exampleRadios1" value="1" checked>
   <label class="form-check-label" for="exampleRadios1">
@@ -68,8 +89,10 @@
 </div>
 <br>
 <br>
-<button id="btn" type="submit" class="btn btn-warning" style="background-color:rgb(251,255,182)">후기등록</button>
-<a class="btn btn-warning" style="background-color:rgb(251,255,182)" href="../">취소</a>  
+<div id="btn">
+	<button type="submit" id="submit">후기등록</button>
+	<button type="button" onclick="location.href='../review/list'" id="cancel">취소</button>  
+</div>
 </form>
 </div>
 

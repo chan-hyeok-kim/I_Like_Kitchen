@@ -11,53 +11,55 @@
 </head>
 <body>
 	<c:import url="../../temp/header.jsp"></c:import>
-	
-	<div class="container-fluid page-content">
-	    <div class="row justify-content-center">
-	        <h1 class="col-md-7 my-5">아이디 찾기</h1>
-	    </div>
-	    
-	    <!-- 성공 메시지 출력 -->
-	    <c:if test="${not empty successMessage}">
-	        <div class="alert alert-success" role="alert">
-	            ${successMessage}
-	        </div>
-	    </c:if>
-	
-	    <!-- 에러 메시지 출력 -->
-	    <c:if test="${not empty errorMessage}">
-	        <div class="alert alert-danger" role="alert">
-	            ${errorMessage}
-	        </div>
-	    </c:if>
-	    
-	    <div class="row justify-content-center my-5">
-	        <form class="col-md-7" id="frm" action="./findID" method="post">
-	            <div class="mb-3">
-	                <label for="name" class="form-label">이름</label>
-	                <input type="text" class="form-control" id="name" name="name">
-					<div id="nameResult"></div>
-	            </div>
-	            <div class="mb-3">
-	                <label for="email" class="form-label">이메일</label>
-	                <div class="input-group">
-	                    <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력">
-	                    <select class="form-control" name="emailDomain" id="emailDomain">
-	                    	<option value="" selected="selected">선택</option>
-	                        <option value="@naver.com">@naver.com</option>
-	                        <option value="@daum.net">@daum.net</option>
-	                        <option value="@gmail.com">@gmail.com</option>
-	                        <option value="@nate.com">@nate.com</option>
-	                    </select>
-	                </div>
-					<div id="emailResult"></div>
-	            </div>
-	            <button type="button" id="btn" class="btn btn-outline-secondary">아이디 찾기</button>
-	        </form>
-	    </div>
+
+	<div class="row">
+        <div class="col-md-8 mx-auto checkboxGroup">
+            <div class="terms-container">
+                <div class="terms-title">
+					<h3 class="my-4 text-center">아이디 찾기</h3>
+				</div>
+
+				<!-- 성공 메시지 출력 -->
+				<c:if test="${not empty successMessage}">
+					<div class="alert alert-success" role="alert">
+						${successMessage}
+					</div>
+				</c:if>
+			
+				<!-- 에러 메시지 출력 -->
+				<c:if test="${not empty errorMessage}">
+					<div class="alert alert-danger" role="alert">
+						${errorMessage}
+					</div>
+				</c:if>
+
+                <div class="card mb-4">
+                	<div class="card-header">
+						<form id="frm" action="./findID" method="post">
+							<div class="mb-3">
+								<label for="name" class="form-label">이름</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요.">
+								<div id="nameResult"></div>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">이메일</label>
+								<div class="input-group">
+									<input type="text" class="form-control" name="email" id="email" placeholder="이메일을 입력해주세요.">
+								</div>
+								<div id="emailResult"></div>
+							</div>
+							<div class="text-center">
+								<button type="button" id="btn" class="btn btn-outline-secondary">아이디 찾기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-		<button id="identify" class="btn btn-info">휴대폰 본인인증하기</button>
-		<script src="/resources/js/member/identify.js"></script>
+	
+		<!-- <button id="identify" class="btn btn-info">휴대폰 본인인증하기</button>
+		<script src="/resources/js/member/identify.js"></script> -->
 	<script src="/resources/js/member/findID.js"></script>
 
 </body>

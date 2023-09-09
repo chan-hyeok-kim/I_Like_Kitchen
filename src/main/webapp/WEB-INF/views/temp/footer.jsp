@@ -1,11 +1,14 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  
  <!DOCTYPE html>
+
 <html lang="zxx">
 
 <!-- Footer Section Begin -->
     <meta charset="UTF-8">
     <footer class="footer-section">
+      
+      
         <div class="container">
             <div class="footer-text">
                 <div class="row">
@@ -56,6 +59,10 @@
                 </div>
             </div>
         </div>
+
+
+    
+
         <div class="copyright-option">
             <div class="container">
                 <div class="row">

@@ -14,7 +14,7 @@
 	
 	<div class="container-fluid page-content">
 		<div class="row justify-content-center">
-			<h1 class="col-md-7 my-5 text-center fw-bold">회원가입</h1>
+			<h2 class="col-md-7 my-5 text-center fw-bold">회원가입</h2>
 		</div>
 		<div class = "row justify-content-center">
 			<form class="col-md-6" id="frm" action="./memberJoin" method="post">
@@ -46,7 +46,6 @@
 			<div class="mb-3">
 			  <label for="phone" class="form-label fw-bold">전화번호</label>
 			  <input type="text" name="phone" class="form-control" id="phone" placeholder="전화번호 입력" maxlength="11" required>
-
 			  <div id="phoneResult"></div>
 			</div>
 			
@@ -54,13 +53,6 @@
 			    <label for="email" class="form-label fw-bold">이메일</label>
 			    <div class="input-group">
 			        <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력" >
-			        <select class="form-control" name="emailDomain" id="emailDomain" >
-			        	<option value="" selected="selected">선택</option>
-			            <option value="@naver.com">@naver.com</option>
-			            <option value="@daum.net">@daum.net</option>
-			            <option value="@gmail.com">@gmail.com</option>
-			            <option value="@nate.com">@nate.com</option>
-			        </select>
 			    </div>
 				<div id="emailResult"></div>
 			    <div class="input-group mt-3">
@@ -71,13 +63,13 @@
 			    <span id="mail-check-warn"></span>
 			</div>
 	
-			<div class="mb-3">
-				<button class="btn btn-outline-success fw-bold" id="btn" type="button">회원가입</button> 
+			<div class="mb-3 text-center">
+				<button class="btn btn-outline-secondary fw-bold" id="btn" type="button">회원가입</button> 
 			</div>
 			</form>
 		</div>
 	</div>
 
-	<script src="/resources/js/member/memberJoin.js"></script>
+	<script src="/resources/js/member/join.js"></script>
 </body>
 </html>

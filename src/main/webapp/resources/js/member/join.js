@@ -8,44 +8,12 @@ const pwCheckResult = document.getElementById("pwCheckResult");
 const nameAdd = document.getElementById("name");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
-const emailDomain = document.getElementById("emailDomain");
 const emailResult = document.getElementById("emailResult");
 
 const frm = document.getElementById("frm");
 const btn = document.getElementById("btn");
 
-let checkResult = [false, false, false, false, false, false]
-
-
-// //------ID CHECK---------
-// id.addEventListener("blur", function(){
-//     //중복검사
-//     let xhttp = new XMLHttpRequest();
-
-//     //url, method
-//     xhttp.open("POST", "./memberIdCheck");
-
-//     //header
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-//     //요청 발생 POST일 경우 parameter 전송
-//     xhttp.send("id="+id.value);
-
-//     //응답 처리
-//     xhttp.addEventListener("readystatechange", function(){
-//         if(this.readyState==4 && this.status==200){
-//             if(this.responseText.trim()=='true'){
-//                 checkResult[0]=true;
-//                 idResult.innerHTML="사용 가능한 ID입니다.";
-//                 idResult.className = "s";
-//             }else {
-//                 checkResult[0]=false;
-//                 idResult.innerHTML="중복된 ID입니다.";
-//                 idResult.className = "f";
-//             }
-//         }
-//     });
-// });
+let checkResult = [false, false, false, false, false, false, false]
 
 //------ID CHECK---------
 id.addEventListener("blur", function(){
@@ -78,49 +46,6 @@ id.addEventListener("blur", function(){
             }
         })
 });
-
-// //PW 검증
-// password.addEventListener("keyup", function(){
-//     if(password.value.length>5 && password.value.length<13){
-//         pwResult.innerHTML='올바른 비밀번호입니다.'
-//         checks[1]=true;
-//         passwordResult.className = "s";
-//     }else {
-//         pwResult.innerHTML='비밀번호는 6글자 이상 12자 이하여야 합니다.'
-//         checks[1]=false;
-//         idResult.classList.add("redResult");
-//     }
-// })
-
-// password.addEventListener("blur", function(){
-//     if(password.value!=''){
-//         //pwNullCheck=true;
-//         checks[2]=true;
-//     }else {
-//         pwResult.innerHTML='비밀번호는 필수 입니다.'
-//         checks[2]=false;
-//     }
-// })
-
-// password.addEventListener("change", function(){
-//     checks[3]=false;
-//     pwCheck.value='';
-//     pwCheckResult.innerHTML='비밀번호가 틀립니다.';
-//     idResult.classList.add("redResult");
-// })
-
-// //pw Equal 검증
-// pwCheck.addEventListener("blur", function(){
-//     if(pwCheck.value == password.value){
-//         pwCheckResult.innerHTML="동일한 비밀번호입니다."
-//         checks[3]=true;
-//         idResult.classList.add("redResult");
-//     }else {
-//         pwCheckResult.innerHTML="비밀번호가 틀립니다."
-//         checks[3]=false;
-//         idResult.classList.add("redResult");
-//     }
-// });
 
 //------PASSWORD CHECK---------
 password.addEventListener("blur", function(){
@@ -184,49 +109,42 @@ phone.addEventListener("blur", function(){
     }
 });
 
-
 //------EMAIL CHECK---------
-function validateEmail() {
-    // 중복 검사
-    let xhttp = new XMLHttpRequest();
+email.addEventListener("blur", function(){
+    const emailResult = document.getElementById(email.id + "Result");
 
-    // URL, method 설정
-    xhttp.open("POST", "./memberEmailCheck");
+    fetch("./memberEmailCheck?email="+email.value, {method:"GET"})
+        .then((response)=>{return response.text()})
+        .then((r)=>{
+            //alert(r.trim());
+            if(r.trim() == '1'){
+                if(email.value == "" || email.value.length > 50){
+                    //console.log("x");
+                    emailResult.innerHTML = "이메일을 입력해주세요.";
+                    emailResult.className = "f";
+                    checkResult[5] = false;
+                    checkResult[7] = false;
+                }else{
+                    //console.log("0");
+                    emailResult.innerHTML = "사용 가능한 이메일입니다.";
+                    emailResult.className = "s";
+                    checkResult[5] = true;
+                    checkResult[7] = true;
+                }
+            }else{
+                emailResult.innerHTML = "이미 사용중인 이메일입니다.";
+                emailResult.className = "f";
+                checkResult[5] = false;
+                checkResult[7] = false;
+            }
+        })
+});
 
-    // 헤더 설정
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    // 요청 발생 POST일 경우 파라미터 전송
-    xhttp.send("email=" + email.value + "&emailDomain=" + emailDomain.value);
-
-	// 응답 처리
-	xhttp.addEventListener("readystatechange", function () {
-	    if (this.readyState == 4 && this.status == 200) {
-	        const mailCheckBtn = document.getElementById("mail-Check-Btn");
-	        if (this.responseText.trim() == "true") {
-	            checkResult[5] = true;
-	            emailResult.innerHTML = "사용 가능한 이메일 입니다.";
-	            emailResult.classList.add("blueResult");
-	            emailResult.classList.remove("redResult");
-	            mailCheckBtn.disabled = false;
-	        } else {
-	            checkResult[5] = false;
-	            emailResult.innerHTML = "이미 등록된 이메일 입니다.";
-	            emailResult.classList.add("redResult");
-	            emailResult.classList.remove("blueResult");
-	            mailCheckBtn.disabled = true;
-	        }
-	    }
-	});
-}
-
-email.addEventListener("blur", validateEmail);
-emailDomain.addEventListener("change", validateEmail);
 
 //이메일 인증확인
 // email 발송 버튼 클릭 시
 $('#mail-Check-Btn').click(function() {
-    const email = $('#email').val() + $('#emailDomain').val(); // 이메일 주소값 얻어오기!
+    const email = $('#email').val(); // 이메일 주소값 얻어오기!
     const checkInput = $('.mail-check-input'); // 인증번호 입력하는곳
 
 	$.ajax({
@@ -252,7 +170,7 @@ $('#mail-Confirm-Btn').click(function() {
 	    $resultMsg.html('인증번호가 일치합니다.');
 	    $resultMsg.css('color', 'green');
 	    $('.mail-check-input').prop('disabled', true);
-	    $('#email, #emailDomain').prop('readonly', true);
+	    $('#email').prop('readonly', true);
 	    $('#mail-Check-Btn, #mail-Confirm-Btn').prop('disabled', true); // 버튼 모두 비활성화
 	} else {
 	    $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');

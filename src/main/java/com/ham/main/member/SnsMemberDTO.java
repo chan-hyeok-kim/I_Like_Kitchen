@@ -1,5 +1,7 @@
 package com.ham.main.member;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,5 +15,5 @@ public class SnsMemberDTO {
 	private String platForm;
 	private String snsName;
 	private String snsEmail;
-	
+
 }

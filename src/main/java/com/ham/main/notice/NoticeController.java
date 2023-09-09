@@ -29,7 +29,6 @@ public class NoticeController {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		
 		
-		
 		List<NoticeDTO> ar = noService.getList(pager);
 		
 		model.addAttribute("list", ar);
@@ -44,18 +43,19 @@ public class NoticeController {
 	}
 	
 	@GetMapping("detail")
-	public String getDetail(NoticeDTO noDTO, Model model) throws Exception{
+	public String getDetail(NoticeDTO noDTO, Model model, HttpSession session) throws Exception{
+		MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
+		//System.out.println(memDTO.getId());
+		
 		noDTO = noService.getDetail(noDTO);
-		RoleDTO role = new RoleDTO();
-		role.setRoleNum(9L);
 		
 		model.addAttribute("kto", noDTO);
 		
-		if(role.getRoleNum() == 9) {
+		//if(role.getRoleNum() == 9) {
 			return "/admin/notice/detail";
-		}else {
-			return "/notice/detail";
-		}
+		//}else {
+		//	return "/notice/detail";
+		//}
 		
 	}
 	
@@ -69,9 +69,9 @@ public class NoticeController {
 	}
 	@PostMapping("add")
 	public String setAdd(NoticeDTO noDTO, HttpSession session, MultipartFile[] files) throws Exception{
-//		MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
-//		noDTO.setId(memDTO.getId());
-		noDTO.setId("qwe");
+		//MemberDTO memDTO = (MemberDTO)session.getAttribute("member");
+		//noDTO.setId(memDTO.getId());
+		noDTO.setId("id1");
 		
 		noService.setAdd(noDTO, files, session);
 		
