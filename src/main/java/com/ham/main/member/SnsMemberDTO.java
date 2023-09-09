@@ -11,4 +11,5 @@ public class SnsMemberDTO {
 	private String platForm;
 	private String snsName;
 	private String snsEmail;
+
 }

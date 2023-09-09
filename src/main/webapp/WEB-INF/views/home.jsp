@@ -247,6 +247,7 @@
 </body>
 
 
+
 <footer>
 <c:import url="./temp/footer.jsp"></c:import>
 </footer>
@@ -262,5 +263,6 @@
   }) */
 
 </script>
+
 
 </html>

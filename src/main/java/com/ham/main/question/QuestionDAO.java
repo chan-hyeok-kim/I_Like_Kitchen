@@ -1,13 +1,12 @@
 package com.ham.main.question;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ham.main.review.ReviewDTO;
+import com.ham.main.util.Pager;
 
 @Repository
 public class QuestionDAO {
@@ -20,9 +19,9 @@ public class QuestionDAO {
 
  	// 게시물 목록
  
- 	public List<QuestionDTO> list() throws Exception { 
+ 	public List<QuestionDTO> list(Pager pager) throws Exception { 
   
-	 return sql.selectList(NAMESPACE + "list");
+	 return sql.selectList(NAMESPACE + "list",pager);
  	}
 
 //게시물 작성
@@ -56,21 +55,9 @@ public class QuestionDAO {
 		return sql.update(NAMESPACE +"setStepUpdate", questionDTO);
 	}
 
-	
-	// 게시물 총 갯수
-	
-	public int count() throws Exception {
-	 return sql.selectOne(NAMESPACE + "count"); 
+		public Long getTotal(Pager pager) {
+		
+		return sql.selectOne(NAMESPACE + "getTotal");
 	}
-	// 게시물 목록 + 페이징
-	
-	public List<QuestionDTO> listPage(int displayPost, int postNum) throws Exception {
 
-	 HashMap<String, Integer> data = new HashMap<String, Integer>();
-	  
-	 data.put("displayPost", displayPost);
-	 data.put("postNum", postNum);
-	  
-	 return sql.selectList(NAMESPACE + "listPage", data);
-	}
 }

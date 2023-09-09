@@ -121,6 +121,7 @@
                                 <ul>
                                     <li class="active"><a href="/">Home</a></li>
                                     <li><a href="/product/list">Share Kitchen</a></li>
+
                                     <li><a href="/">Pages</a>
                                         <ul class="dropdown">
                                             <c:forEach items="${sessionScope.member.roles}" var="r">
@@ -136,6 +137,7 @@
                                                     </c:if>
                                                 
                                             </c:forEach>
+
                                         </ul>
                                     </li>
                                     <li>

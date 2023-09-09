@@ -1,6 +1,6 @@
  
  <!DOCTYPE html>
-<html lang="zxx">
+
  
  <!-- Footer Section Begin -->
     <footer class="footer-section">

@@ -9,6 +9,30 @@
 <title>Insert title here</title>
  
 <c:import url="../temp/bootStrap.jsp"></c:import>
+	<style>
+
+	#submit{
+	background-color:rgb(251,255,182);
+	border-radius: 20px;
+	width:100px;
+	height:40px;
+	}
+	#cancel{
+	background-color:rgb(251,255,182);
+	border-radius: 20px;
+	border:2px solid black;
+	width:100px;
+	height:40px;
+	color:black;
+	margin-left:10px;
+	}
+	#btn button:hover{
+	background-color: black;
+	color:white;
+	}
+	
+	</style>
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -16,11 +40,10 @@
 <h3>문의수정하기</h3>
 <form method="post" action="update">
 
-<input type="text" name="questionNum" value="${view.questionNum}" readonly></input>
+<input type="hidden" name="questionNum" value="${view.questionNum}"></input>
 
 <div>문의유형
-<select class="form-select w-75" aria-label="Default select example" name="questionKind">
-  <option value="일정문의">일정문의</option>
+<select class="form-select w-75" aria-label="Default select example" name="questionKind" value="${view.questionKind}">
   <option value="가격문의">가격문의</option>
   <option value="공간정보문의">공간정보문의</option>
   <option value="물품이용문의">물품이용문의</option>
@@ -42,8 +65,10 @@
 </div>
 <br>
 <br>
-<button type="submit" class="btn btn-warning">문의수정</button>
-<a class="btn" style="background-color:rgb(251,255,182)" href="../question/view?questionNum=${view.questionNum}">취소</a>  
+<div id="btn">
+<button type="submit"  id="submit">문의수정</button>
+<button type="button" onclick="location.href='../question/list'" id="cancel">취소</button>  
+</div>
 </form>
 </div>
 <c:import url="../temp/footer.jsp"></c:import>

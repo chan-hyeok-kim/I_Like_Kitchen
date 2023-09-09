@@ -14,67 +14,43 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ham.main.util.Page;
+import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.reply.ReplyDTO;
+import com.ham.main.reply.ReplyService;
+import com.ham.main.util.Pager;
 
 @Controller
 @RequestMapping("/review/*")
 public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private ReplyService replyService;
 	
  @RequestMapping(value = "list", method = RequestMethod.GET)
- public String getList(Model model) throws Exception {
+ public String getList(Model model,Pager pager) throws Exception {
   
 	
-	  List<ReviewDTO> list = reviewService.list();
+	  List<ReviewDTO> list = reviewService.list(pager);
 	  model.addAttribute("list", list);
+	  model.addAttribute("Pager",pager);
+	  
 	  
 	  return "review/list";
  }
 
-	@GetMapping("fileDown")
-	public String getFileDown(ReviewFileDTO reviewFileDTO, Model model)throws Exception{
-		reviewFileDTO = reviewService.getFileDown(reviewFileDTO);
-		model.addAttribute("file", reviewFileDTO);
-		
-		return "fileManager";
-	}
+
 	
-	@PostMapping("setContentsImgDelete")
-	public String setContentsImgDelete(String path,HttpSession session,Model model) throws Exception{
-		boolean check=reviewService.setContentsImgDelete(path, session);
-		model.addAttribute("result", check);
-		
-		return "commons/ajaxResult";
-	}
-	
-	@PostMapping("setContentsImg")
-	public String setContentsImg(MultipartFile files,HttpSession session,Model model) throws Exception{
-		System.out.println("setContentsImg");
-		System.out.println(files.getOriginalFilename());
-		String path=reviewService.setContentsImg(files, session);
-		model.addAttribute("result",path);
-		
-		return "commons/ajaxResult";
-	}
-	
-	@GetMapping("fileDelete")
-	public String setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session ,Model model)throws Exception{
-		int result = reviewService.setFileDelete(reviewFileDTO, session);
-		model.addAttribute("result", result);
-		return "commons/ajaxResult";
-		
-	}
 //게시물 작성 폼
 @RequestMapping(value = "add", method = RequestMethod.GET)
-public void getAdd() throws Exception {
- 
+public void getAdd(HttpSession session) throws Exception {
+	
 }
 //게시물 작성
 	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
-		reviewDTO.setProductNum(1L);
-		reviewService.add(reviewDTO,photos,session,model);
+	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session)throws Exception{
+		reviewDTO.setProductNum(2L);
+		reviewService.add(reviewDTO,photos,session);
 		
 		return "redirect:/review/list";
 		
@@ -86,22 +62,34 @@ public void getAdd() throws Exception {
 		ReviewDTO reviewDTO = reviewService.view(reviewNum);
 		
 		model.addAttribute("view",reviewDTO);
+		
+		
+		// 댓글 조회
+		
+	
+		
+	  List<ReviewDTO> replyDTO = reviewService.list(reviewNum);
+	  model.addAttribute("reply",replyDTO);
+	 
+		 
 	}
 	// 게시물 수정 폼
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void getUpdate(@RequestParam("reviewNum") long reviewNum, Model model) throws Exception {
+	public String getUpdate(@RequestParam("reviewNum") Long reviewNum, Model model) throws Exception {
 
 	 ReviewDTO reviewDTO = reviewService.view(reviewNum);
 	   
 	 model.addAttribute("view", reviewDTO);
+	 
+	 return "/review/update";
 	}
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String postUpdate(ReviewDTO reviewDTO) throws Exception {
-    System.out.println(reviewDTO.getReviewContents());
-	 int result= reviewService.update(reviewDTO);
-	   System.out.println(result);
-	 return "redirect:/review/list";
+	public String update(ReviewDTO reviewDTO,MultipartFile[] files, HttpSession session) throws Exception {
+
+	 reviewService.update(reviewDTO, files, session);
+	   
+	 return "redirect:/review/view?reviewNum=" + reviewDTO.getReviewNum();
 	}
 	// 게시물 삭제
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
@@ -111,30 +99,11 @@ public void getAdd() throws Exception {
 
 	 return "redirect:/review/list";
 	}
-	// 게시물 목록 + 페이징 추가
-	@RequestMapping(value = "listpage", method = RequestMethod.GET)
-	public void getListPage(Model model) throws Exception {
-	  
-	 List<ReviewDTO> list = null; 
-	 list = reviewService.list();
-	 model.addAttribute("list", list);   
+	@GetMapping("fileDelete")
+	public void setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session) throws Exception {
+		reviewService.setFileDelete(reviewFileDTO, session);
 	}
-	// 게시물 목록 + 페이징 추가
-	@RequestMapping(value = "listPage", method = RequestMethod.GET)
-	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
 
-		Page page = new Page();
-		page.setNum(num);
-		page.setCount(reviewService.count());  
-
-		List<ReviewDTO> list = null; 
-		list = reviewService.listPage(page.getDisplayPost(), page.getPostNum());
-
-		model.addAttribute("list", list);   
 	
 
-		model.addAttribute("page", page);
-		model.addAttribute("select", num);
-		
-	}	
 }
