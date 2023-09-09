@@ -1,7 +1,6 @@
 const nameAdd = document.getElementById("name");
 const nameResult = document.getElementById("nameResult");
 const email = document.getElementById("email");
-const emailDomain = document.getElementById("emailDomain");
 const emailResult = document.getElementById("emailResult");
 const btn = document.getElementById("btn");
 const frm = document.getElementById("frm");

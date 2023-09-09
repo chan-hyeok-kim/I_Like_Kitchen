@@ -56,7 +56,7 @@ public class ProductController {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		PartnerDTO partnerDTO = (PartnerDTO) session.getAttribute("partner");
 		
-		System.out.println(partnerDTO.getPartnerNum());
+		//System.out.println(partnerDTO.getPartnerNum());
 //		사업자등록번호 상품에 셋팅
 		productDTO.setPartnerNum(partnerDTO.getPartnerNum());
 		
@@ -70,6 +70,9 @@ public class ProductController {
 		return "redirect:./list";
 	}
 	
+
+
+
 	@GetMapping("homeList")
 	public void getHomeList(Pager pager,Model model) throws Exception {
 		List<ProductDTO> pl = productService.getList(pager);
@@ -78,5 +81,6 @@ public class ProductController {
 	}
 	
 	
+
 
 }
