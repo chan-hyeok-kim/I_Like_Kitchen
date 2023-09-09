@@ -82,12 +82,14 @@ public class PartnerController {
 	
 	}
 	
+
 	@GetMapping("manage")
 	public void getPartnerManage(HttpSession session, Model model) throws Exception {
 		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
 		model.addAttribute("kto", pl);
 		
+
 	}
 
 	

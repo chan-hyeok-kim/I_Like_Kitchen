@@ -2,13 +2,17 @@ package com.ham.main.partner;
 
 import java.sql.Date;
 
-import java.util.List;
 
 
 import com.ham.main.product.ProductDTO;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
+
 public class PartnerDTO {
 
 	private Long partnerNum;

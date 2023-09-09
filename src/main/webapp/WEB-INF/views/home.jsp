@@ -128,12 +128,15 @@
   
   
   <div class="carousel-inner">
+
+
    
      <div class="carousel-item active">
   <img src="/resources/upload/product/${list[0].productFileDTOs[0].fileName}" class="d-block w-100" alt="...">
      <div class="carousel-caption d-none d-md-block">
         <h5>${list[0].productName}</h5>
         <p></p>
+
       </div>
     </div>
      
@@ -142,8 +145,10 @@
     <div class="carousel-item">
       <img src="/resources/upload/product/${d.productFileDTOs[0].fileName}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
+
         <h5>${d.productName}</h5>
         <p></p>
+
       </div>
     </div>
     </c:if>

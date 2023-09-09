@@ -51,6 +51,8 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("serviceKey", SERVICE_KEY);
 		return "home";
+		
+		
 	}
 	
 }

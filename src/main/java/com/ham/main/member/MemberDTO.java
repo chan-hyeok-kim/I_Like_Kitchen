@@ -3,7 +3,11 @@ import java.util.List;
 import com.ham.main.notice.NoticeFileDTO;
 import com.ham.main.member.RoleDTO;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 public class MemberDTO {
 

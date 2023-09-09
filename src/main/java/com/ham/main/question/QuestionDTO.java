@@ -3,7 +3,11 @@ package com.ham.main.question;
 import java.sql.Date;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 public class QuestionDTO {
 
