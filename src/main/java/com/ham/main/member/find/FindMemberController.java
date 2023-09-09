@@ -32,12 +32,8 @@ public class FindMemberController {
 	}
 	
 	@PostMapping("findID")
-	public ModelAndView findIdResult(MemberDTO memberDTO, String emailDomain) throws Exception {
+	public ModelAndView findIdResult(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		String email = memberDTO.getEmail();
-		
-		memberDTO.setEmail(email+emailDomain);
-		System.out.println(email+emailDomain);
 		memberDTO = findMemberService.getMemberId(memberDTO);
 		
 		if(memberDTO != null) {
@@ -61,12 +57,11 @@ public class FindMemberController {
 	}
 	
 	@PostMapping("findPW")
-	public ModelAndView findPasswordProcess(MemberDTO memberDTO, String emailDomain) throws Exception {
+	public ModelAndView findPasswordProcess(String id, String email) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		String email = memberDTO.getEmail()+emailDomain;
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId(id);
 		memberDTO.setEmail(email);
-		System.out.println(email);
-		mv.setViewName("member/find/findPW");
 		
 		try {
 			MemberDTO foundMember = findMemberService.findMemberByIdAndEmail(memberDTO);
@@ -86,6 +81,8 @@ public class FindMemberController {
 			mv.addObject("errorMessage", "비밀번호 찾기 처리중 오류가 발생했습니다.");
 			e.printStackTrace();
 		}
+		
+		mv.setViewName("member/find/findPW");
 		return mv;
 	}
 	
@@ -113,7 +110,7 @@ public class FindMemberController {
     private MailSendService mailSendService;
 
     private void sendEmailWithTempPassword(String email, String tempPassword) {
-        
+    	String combinedEmail = email;
         String setFrom = mailSendService.getSenderEmail();
         String subject = "임시 비밀번호 발급 안내";
         String content = 
@@ -123,7 +120,7 @@ public class FindMemberController {
 		    "<br>" + 
 		    "임시 비밀번호로 로그인 한 후, 비밀번호를 변경해 주시기 바랍니다.";
         
-        mailSendService.mailSend(setFrom, email, subject, content);
+        mailSendService.mailSend(setFrom, combinedEmail, subject, content);
     }
 	
 }

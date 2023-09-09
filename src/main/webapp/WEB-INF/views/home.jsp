@@ -7,6 +7,22 @@
 	<title>Home</title>
 	<link rel="icon" href="/resources/img/window.png" type="image/x-icon" sizes="16x16">
 	<c:import url="temp/bootStrap.jsp"></c:import>
+
+  <style>
+    .div1 {
+      margin: 100px;
+      display: block;
+      padding: 50px 10px;
+      background: none rgb(249, 247, 235);
+      border: 0px solid transparent;
+      border-radius: 0px;
+    }
+    #carouselExampleInterval img {
+      margin: auto;
+      max-width: 700px;
+      max-height: 700px;
+    }
+  </style>
 	
 	<style type="text/css">
 	 #carouselExampleCaptions{
@@ -145,6 +161,43 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<!-- 추가 -->
+  <div class="div1" style="text-align: center;">
+    <div class="div2" style="text-align: center;">
+      <h2>쾌적한 주방환경만을 제공합니다.</h2>
+    </div>
+    <div class="div3" style="text-align: center;">
+      <p>공유주방에 오신것을 환영합니다.</p>
+    </div>
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="/resources/images/inside1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/resources/images/inside2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/resources/images/inside3.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/resources/images/inside4.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/resources/images/inside5.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 
 
 

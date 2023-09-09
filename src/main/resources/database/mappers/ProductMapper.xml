@@ -99,9 +99,16 @@
 	</insert>
 	
 	<delete id="setDelete" parameterType="Long">
-		DELETE PRODUCT WHERE PRODUCTNUM=#{num}
+		DELETE PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</delete>
 	
+
+	<select id="getInfo" resultType="ProductDTO" parameterType="PartnerDTO">
+        SELECT *
+          FROM PRODUCT
+         WHERE PARTNERNUM=#{partnerNum}
+     </select>
+
 	 <select id="getInfo" resultMap="getListInfo" parameterType="PartnerDTO">
         SELECT P.*, PF.* 
 		  FROM PRODUCT P
@@ -126,5 +133,5 @@
 				<result column="ORIGINALNAME" property="originalName"/>
 			</collection>
 	</resultMap>
-	
+
  </mapper>

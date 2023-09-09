@@ -7,37 +7,7 @@
 <meta charset="UTF-8">
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <title>약관확인서</title>
-<link href="/resources/css/member/memberAgree.css" rel="stylesheet">
-<style type="text/css">
-.terms-container {
-	margin-top: 2rem;
-	padding: 2rem;
-	border: 1px solid #e0e0e0;
-	border-radius: 8px;
-}
-.terms-title {
-	font-size: 1.5rem;
-	font-weight: bold;
-	margin-bottom: 1rem;
-}
-.form-check {
-	margin-bottom: 1rem;
-}
-.agree-btn {
-	display: flex;
-	justify-content: center;
-}
-.terms-content {
-	height: 100px;
-  	overflow: auto;
-  	margin-top: 8px;
-  	padding: 12px;
-  	border: 1px solid #dadada;
-  	background: #fff;
-  	font-size: 12px;
-}
-</style>
- 
+<link href="/resources/css/member/memberAgree.css" rel="stylesheet"> 
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -57,7 +27,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check1">
 				         <label class="form-check-label ml-2" for="check1">
-				            만 14세이상 입니다(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만 14세이상 입니다(필수)
 				         </label>
                 	</div>
                 </div>
@@ -67,7 +37,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check2">
 				         <label class="form-check-label ml-2" for="check2">
-				            이용약관 동의(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용약관 동의(필수)
 				         </label>
                 	</div>
                 	<div class="card-body">
@@ -89,7 +59,7 @@
 							제14조 포인트와 쿠폰<br>
 							제15조 상품의 구매 변경 및 취소<br>
 							제16조의 1 상품 사용료의 반환 - 실시간 결제<br>
-							제16조의 2 상품 사용료의 반환 – 승인 결제<br>
+							제16조의 2 상품 사용료의 반환 - 승인 결제<br>
 							제17조 상품 사용료의 반환 일정<br>
 							제18조 상품 사용 의무<br>
 							제19조 서비스의 중단<br>
@@ -313,7 +283,7 @@
 				    <div class="card-header">
 				        <input class="form-check-input check checks ml-1" type="checkbox" value="" id="check3">
 				        <label class="form-check-label ml-2" for="check3">
-				            개인정보 수집이용 동의(필수)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개인정보 수집이용 동의(필수)
 				        </label>
 				    </div>
 				    <div class="card-body">
@@ -418,7 +388,7 @@
                 	<div class="card-header">
                 		 <input class="form-check-input check ml-1" type="checkbox" value="" id="check4">
 				         <label class="form-check-label ml-2" for="check4">
-				            마케팅 알림수신 동의(선택)
+				            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마케팅 알림수신 동의(선택)
 				         </label>
                 	</div>
                 </div>

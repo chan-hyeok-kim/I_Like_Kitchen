@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.partner.PartnerDTO;
+
+
 import com.ham.main.product.book.BookDTO;
+
 import com.ham.main.util.FileManager;
 import com.ham.main.util.Pager;
 
@@ -21,6 +24,10 @@ public class ProductService {
 	
 	@Autowired
 	private FileManager fileManager;
+	
+	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
+		return productDAO.getInfo(partnerDTO);
+	}
 	
 	public List<ProductDTO> getList(Pager pager)throws Exception{
 		pager.makeRowNum();
