@@ -25,6 +25,7 @@
 			  		FROM REVIEW 
 			  		ORDER BY REVIEWNUM DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
+</select>
 
 <select id="myList">
 	<include refid="myReviewList"></include>

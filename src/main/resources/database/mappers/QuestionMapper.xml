@@ -16,8 +16,8 @@
 	WHERE ID = #{id}
 </select>
   <!-- 게시물 목록 -->
-<select id="list" parameterType="QuestionDTO" resultType="QuestionDTO">
- <include refid="myQuestionList"></include>
+
+
 
   <resultMap type="QuestionDTO" id="getSelectResult">
 		<id column="QUESTIONNUM" property="questionNum"/>

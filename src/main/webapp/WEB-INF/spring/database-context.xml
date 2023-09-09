@@ -22,7 +22,7 @@
 		<property name="username" value="${oracle.user}"></property>
 		<property name="password" value="${oracle.password}"></property>
 		<property name="url" value="${oracle.url}"></property>
-		<property name="driverClassName" value="${oracle.dirver}"></property>
+		<property name="driverClassName" value="${oracle.driver}"></property>
 	</bean>
     
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">

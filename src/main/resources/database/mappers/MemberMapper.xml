@@ -140,10 +140,7 @@
 		WHERE ID = #{id}
 	</delete>
 
-    <insert id="setSnsJoin" parameterType="SnsMemberDTO">
-		INSERT INTO SNSMEMBER (SNSID, PLATFORM, SNSNAME, SNSEMAIL)
-			VALUES (#{snsId}, #{platForm}, #{snsName}, #{snsEmail})
-	</insert>
+    
     
 
 

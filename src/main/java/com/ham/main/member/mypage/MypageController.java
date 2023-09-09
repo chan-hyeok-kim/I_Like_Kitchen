@@ -50,26 +50,26 @@ public class MypageController {
 	
 	// My활동
 	@GetMapping("reviewList")
-	public String getReviewList(Model model, HttpSession session) throws Exception{
+	public void getReviewList(Model model, HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
 		List<ReviewDTO> ar = reviewService.myList();
 		
 		model.addAttribute("list", ar);
 		
-		return "/mypage/reviewList";
+		
 	}
 	
 	@GetMapping("questionList")
-	public String getQuestionList(Model model, HttpSession session) throws Exception{
+	public void getQuestionList(Model model, HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
 		List<QuestionDTO> ar = questionService.myList();
 		
 		model.addAttribute("list", ar);
 
-
+	}
 	
   	@GetMapping("onGoing")
-	public String getOnGoing(HttpSession session,Model model,Pager pager) throws Exception{
+	public void getOnGoing(HttpSession session,Model model,Pager pager) throws Exception{
   		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
  
 		
@@ -86,11 +86,11 @@ public class MypageController {
         	model.addAttribute("list", bl);
         }
        
-		return "/mypage/onGoing";
+		
 	}
 	
   	@GetMapping("complete")
-	public String getComplete(HttpSession session,Model model,Pager pager) throws Exception{
+	public void getComplete(HttpSession session,Model model,Pager pager) throws Exception{
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		
 		List<BookDTO> bl = bookService.getBookInfo(memberDTO,pager);
@@ -113,32 +113,11 @@ public class MypageController {
 		}
 
 		
-		return "/mypage/questionList";
+	
 	}
 	
 	
-	// 예약정보
-  	@GetMapping("onGoing")
-	public String getOnGoing(MemberDTO memberDTO, HttpSession session) throws Exception{
-  		memberDTO = (MemberDTO) session.getAttribute("member");
-  		
-  		if(memberDTO != null) {
-  			return "/mypage/onGoing";
-  		} else {
-  			return "redirect:/member/memberLogin";
-  		}
-	}
 	
-	@GetMapping("complete")
-	public String getComplete(MemberDTO memberDTO, HttpSession session) throws Exception{
-		memberDTO = (MemberDTO) session.getAttribute("member");
-  		
-  		if(memberDTO != null) {
-  			return "/mypage/complete";
-  		} else {
-  			return "redirect:/member/memberLogin";
-  		}
-	}
 	 
 
 

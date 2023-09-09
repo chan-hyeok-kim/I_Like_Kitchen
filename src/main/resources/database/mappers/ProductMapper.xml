@@ -103,12 +103,7 @@
 	</delete>
 	
 
-	<select id="getInfo" resultType="ProductDTO" parameterType="PartnerDTO">
-        SELECT *
-          FROM PRODUCT
-         WHERE PARTNERNUM=#{partnerNum}
-     </select>
-
+	
 	 <select id="getInfo" resultMap="getListInfo" parameterType="PartnerDTO">
         SELECT P.*, PF.* 
 		  FROM PRODUCT P
