@@ -10,6 +10,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -123,6 +125,15 @@ public class PayController {
 		refundDTO.setPayNum(payDTO.getPayNum());
 		
         long payAmount = payDTO.getPayAmount();
+        
+//      현재 날짜 구하기
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        
+        String now = date.format(formatter);
+        
+        System.out.println(now);
+        
 //		당일 환불이거나 일정 시간 지난 후 환불이면
 //      여기서 메서드 추가해서 계산
 //      적립금 없애기도 가능할듯

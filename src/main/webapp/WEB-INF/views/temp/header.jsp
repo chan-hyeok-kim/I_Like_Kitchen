@@ -88,7 +88,7 @@
                                         <c:if test="${not empty member}">
                                             <c:forEach items="${sessionScope.member.roles}" var="r">
                                                     <c:if test="${r.getRoleName() eq 'PARTNER'}">
-                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 관리자님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 파트너님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                                     </c:if>
                                             </c:forEach>
                                             <c:forEach items="${sessionScope.member.roles}" var="r">

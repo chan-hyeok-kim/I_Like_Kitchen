@@ -30,7 +30,7 @@
                     <button type="button" class="btn1" id="btn1">
                         <img src="/resources/icon/writing1.png">
                         <div>
-                            <p class="part2_2">호스트 관리</p>
+                            <p class="part2_2">파트너 관리</p>
                             <p class="part2_2">사업자 정보/수정</p>
                         </div>
                     </button>
@@ -137,4 +137,7 @@
     </script>
     
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>

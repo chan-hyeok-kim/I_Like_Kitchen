@@ -4,6 +4,29 @@ let buyer_name = $('#pay-info').attr('data-name');
 let phone = $('#pay-info').attr('data-phone');
 let bookNum = $('#pay-info').attr('data-book-num');
 
+//시간 계산
+
+let start = $('#bookTime').attr('data-startTime');
+let end = $('#bookTime').attr('data-endTime')
+console.log(typeof start);
+console.log(start);
+console.log(end);
+
+start=start.substring(11,16);
+end=end.substring(11,16);
+console.log(start);
+
+$('#bookTime').append(start)
+$('#bookTime').append('~'+end)
+
+start =start.substring(0,2)
+end=end.substring(0,2)
+
+let useTime = end*1-start*1
+
+amount = amount*useTime
+
+$('#pay-info').text(amount);
 
 $('#btn').click(function(){
 	pay()

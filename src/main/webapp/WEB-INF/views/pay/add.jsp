@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>결제 페이지</title>
 
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
@@ -109,6 +109,10 @@ th:first-child {
    margin-right: 25px;
 }
 
+#pay-add-section{
+   padding-bottom: 120px;
+}
+
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 </style>
 
@@ -123,8 +127,8 @@ th:first-child {
 </div>
 	<!-- <div class="ri-text"> -->
 
-<section>
-
+<section id="pay-add-section">
+<h4 style="text-align: center">결제 동의 내역</h4>
 	<table class="table1" id="tbl1">
 		<thead>
 			<tr>
@@ -225,10 +229,10 @@ th:first-child {
 			<tr>
 
 
-				<td><input class="form-check-input check1" type="checkbox"
+				<td colspan="8"><input class="form-check-input check1" type="checkbox"
 					value="" id="checked1"> <label class="form-check-label"
 					for="checked1"> 위 공간의 예약조건 확인 및 결제진행 동의 </label></td>
-				<td></td>
+				
 			</tr>
 
 			<tr>
@@ -328,22 +332,10 @@ th:first-child {
 
 	
 </section>
-<script type="text/javascript">
 
-start = $('#bookTime').attr('data-startTime');
-end = $('#bookTime').attr('data-endTime')
-console.log(typeof start);
-console.log(start);
-console.log(end);
-
-start=start.substring(11,16);
-end=end.substring(11,16);
-console.log(start);
-
-$('#bookTime').append(start)
-$('#bookTime').append('~'+end)
-
-</script>
 <script src="/resources/js/pay/pay.js"></script>
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>

@@ -21,8 +21,8 @@
         }
 
         #calendar button {
-          background-color: #D0A9F5;
-          border-color: #D0A9F5;
+          background-color: #dfa974;
+          border-color: #dfa974;
         }
 
         #move {

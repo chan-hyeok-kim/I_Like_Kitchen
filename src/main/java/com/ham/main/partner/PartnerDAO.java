@@ -40,6 +40,10 @@ public class PartnerDAO {
 		System.out.println("1");
 		return sqlSession.selectOne(NAMESPACE+"getPartnerInfo", id);
 	}
+	
+	public int setUpdate(PartnerDTO partnerDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"setUpdate", partnerDTO);
+	}
 
 
 }

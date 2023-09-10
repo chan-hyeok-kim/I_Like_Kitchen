@@ -13,7 +13,7 @@
     
    <form action="/partner/update" method="post" enctype="multipart/form-data">
    
-   
+   <input type="hidden" value="${kto.productNum}">
    <section class="container mt-5">
 			<h3 class="my-4">상품 수정 페이지</h2>
 

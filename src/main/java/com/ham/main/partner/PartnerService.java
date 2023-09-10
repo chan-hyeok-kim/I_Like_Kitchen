@@ -36,4 +36,8 @@ public class PartnerService {
 		return partnerDAO.getPartnerInfo(id);
 	}
 	
+	public int setUpdate(PartnerDTO partnerDTO) throws Exception{
+		return partnerDAO.setUpdate(partnerDTO);
+	}
+	
 }

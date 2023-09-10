@@ -12,7 +12,7 @@
 <style type="text/css">
  table{
       width: 400px;
-      background: #F8F9FA;
+      background: ;
       text-align: center;
  }
  #btn{
@@ -79,7 +79,7 @@
       width:600px;
  }
 .btn-pay{
- background-color: #D0A9F5;
+ background-color: #dfa974;
  color: white;
  border-color: white;
  border: none;

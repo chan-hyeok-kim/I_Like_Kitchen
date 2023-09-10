@@ -139,7 +139,8 @@ public class PartnerController {
 	}
 	
 	@GetMapping("update")
-	public void setUpdate(PartnerDTO partnerDTO,Model model) throws Exception{
+	public void setUpdate(HttpSession session,Model model) throws Exception{
+	   PartnerDTO partnerDTO = (PartnerDTO) session.getAttribute("partner");
 	   partnerDTO =	partnerService.getDetail(partnerDTO);
 	   model.addAttribute("kto", partnerDTO);
 	   

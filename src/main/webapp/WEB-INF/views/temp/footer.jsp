@@ -5,6 +5,13 @@
    #footer-section{
         width: 100%;
    }
+   #footer-section ul{
+        list-style: none;
+        padding-left:0px;
+   }
+   #footer-section li{
+        text-decoration: none;
+   }
 </style>
 <html lang="zxx">
 
@@ -46,7 +53,7 @@
                                 <li>통신판매업신고번호:2018-서울강남-00000</li>
                                 <li>영업소재지:서울특별시 강남구 삼성로 00-00</li>
                                 <li>이메일:goodee@naver.com</li>
-                                <li>대표전화:0000-0000(평일오후2시~오후6시)</li>
+                                <li>대표전화:0000-0000</li>
                             </ul>
                         </div>
                     </div>
