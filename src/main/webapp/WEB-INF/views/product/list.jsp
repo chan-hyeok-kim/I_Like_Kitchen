@@ -25,6 +25,37 @@
 	.container_product{
 	cursor : pointer
 	}
+	#product-title{
+	     border-bottom: 1px solid #ece6cc;
+	     margin-left:0px;
+	     margin-right: 0px;
+	     display: flex;
+	     padding-bottom: 10px;
+	}
+	#product-title div{
+	     display: flex;
+	}
+	#product-title-text{
+	     text-align: left;
+	     font-weight: bold;
+	     width: 990px;
+	}
+	#product-ul-list2{
+	     border-top: 1px solid #ece6cc;
+	     padding-top: 20px;
+	}
+	#product-search-div{
+	     margin-left: 500px;
+	}
+	#product-search-div input, button, select{
+	     
+	
+	}
+	#product-select-list{
+	     text-align: right;
+	     width: 150px;
+	     margin-right: 0px;
+	}
 </style>
 
 <body>	
@@ -32,9 +63,17 @@
 	
  		<section class="py-5 text-center container">
 		    <div class="row py-lg-5">
-		      <div class="col-lg-6 col-md-8 mx-auto">
-		        <h1 class="fw-light">Kitchen List</h1>
-		        <p class="lead text-body-secondary">공유 주방 목록입니다. 확인후에 예약해주세요~</p>
+		      <div class="" id="product-title">
+		        <div class="lead text-body-secondary" id="product-title-text">공간 검색 결과</div>
+		       <div id="product-select-list">
+		        <select>
+   <option selected>인기순</option>
+  <option value="1">최신등록순</option>
+  <option value="2">낮은가격순</option>
+  <option value="3">높은가격순</option></select></div> 
+		       
+		     
+		        
 		      </div>
 		    </div>
     <!-- Rooms Section Begin -->
@@ -68,7 +107,7 @@
                         <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
                     </div> -->
 		<nav class="room-pagination" aria-label="Page navigation example" >
-		  <ul class="pagination" >
+		  <ul class="pagination" id="product-ul-list2">
 		  	
 		    <li class="page-item ${pager.pre?'':'disabled'}" >
 		      <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${param.kind}&search=${param.search}" aria-label="Previous fa-long-arrow-left">
@@ -86,28 +125,37 @@
 		      </a>
 		    </li>
 		    </c:if>
+		    
+		    
+	  
 		  </ul>
 		</nav>
-		</section>
 
-<br><br><br>
-<div class="input-group mb-3">
+
+    <div class="input-group mb-3" id="product-search-div">
   <form action="./list" method="get" class="d-flex align-items-center">
     <!-- 선택 옵션과 레이블 -->
-    <div class="input-group">
-      <select name="kind" class="form-select bg-dark text-white" aria-label="Default select example">
+    <div class="input-group" style="width: 150px;">
+      <select style="width: 50px;" name="kind" class="form-select bg-dark text-white" aria-label="Default select example">
         <option class="text-white" value="name">Name</option>
         <option class="text-white" value="contents">Contents</option>
       </select>
     </div>
 
     <!-- 검색 입력 필드 -->
-    <input type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <input style="width: 300px;" type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)">
     
     <!-- 검색 버튼 -->
-    <button type="submit" class="btn btn-primary btn-sm btn-block">검 색</button>
+    <button style="width: 130px;" type="submit" class="btn btn-primary btn-sm btn-block">검 색</button>
   </form>
 </div>
+
+		</section>
+
+
+
+	
+
 
 </body>
 <footer>

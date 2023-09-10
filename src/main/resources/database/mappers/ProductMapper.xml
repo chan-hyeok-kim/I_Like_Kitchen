@@ -128,5 +128,11 @@
 				<result column="ORIGINALNAME" property="originalName"/>
 			</collection>
 	</resultMap>
+	
+	<update id="setUpdate" parameterType="ProductDTO">
+	    UPDATE PRODUCT
+	       SET PRODUCTNAME=#{productName},PHONE=#{phone},PRICE=#{price},CONTENTS=#{contents},ADDRESS=#{address}
+	     WHERE PRODUCTNUM=#{productNum}
+	</update>
 
  </mapper>

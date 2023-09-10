@@ -78,7 +78,14 @@
  .checklist{
       width:600px;
  }
-
+.btn-pay{
+ background-color: #D0A9F5;
+ color: white;
+ border-color: white;
+ border: none;
+ outline: none;
+ border-radius: 10px;
+}
 </style>
 </head>
 <body>
@@ -116,7 +123,7 @@
       전달사항
       </button>
       </p><p style="width: 200px"></p></div>
-  <button id="btn-home" class="btn btn-primary btn-pay" data-bookNum="${i.bookNum}">승인</button>
+  <button id="btn-home" class="btn-pay" data-bookNum="${i.bookNum}">승인</button>
   
 
 

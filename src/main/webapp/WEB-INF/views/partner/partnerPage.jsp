@@ -30,31 +30,31 @@
                     <button type="button" class="btn1" id="btn1">
                         <img src="/resources/icon/writing1.png">
                         <div>
-                            <p class="part2_2">호스트관리</p>
-                            <p class="part2_2">사업자 정보/운영 등</p>
+                            <p class="part2_2">호스트 관리</p>
+                            <p class="part2_2">사업자 정보/수정</p>
                         </div>
                     </button>
                     <button type="button" class="btn1" id="btn2">
-                        <img src="/resources/icon/reservation.png">
+                        <img src="/resources/icon/schedule.png">
                         <div>
-                            <p class="part2_2">예약관리</a></p>
+                            <p class="part2_2">예약 관리</a></p>
                             <p class="part2_2">예약 요청 건 처리</p>
                         </div>
                     </button>
                 </div>
                 <div class="part2_1">
                     <button type="button" class="btn1" id="btn3">
-                        <img src="/resources/icon/schedule.png">
+                        <img src="/resources/icon/reservation.png">
                         <div>
-                            <p class="part2_2">일정관리</p>
-                            <p class="part2_2">월간/주간 일정</p>
+                            <p class="part2_2">상품 관리</p>
+                            <p class="part2_2">공간 정보 수정</p>
                         </div>
                     </button>
                     <button type="button" class="btn1" id="btn4">
                         <img src="/resources/icon/question.png">
                         <div>
                             <p class="part2_2">문의/후기 관리</p>
-                            <p class="part2_2">고객문의답변 및 후기</p>
+                            <p class="part2_2">고객문의 답변</p>
                         </div>
                     </button>
                 </div>
@@ -120,7 +120,7 @@
         const btn4 = document.getElementById("btn4");
 
         btn1.addEventListener("click", function(){
-            location.href="./partnerRegister"
+            location.href="/partner/update"
         })
 
         btn2.addEventListener("click", function(){
@@ -128,7 +128,7 @@
         })
 
         btn3.addEventListener("click", function(){
-            location.href=""
+            location.href="/product/update"
         })
 
         btn4.addEventListener("click", function(){

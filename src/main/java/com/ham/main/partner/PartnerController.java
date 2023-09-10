@@ -122,7 +122,7 @@ public class PartnerController {
 		return "admin/partnerList";
 	}
 	
-	@PostMapping("update")
+	@PostMapping("permitUpdate")
 	public String setPermitUpdate(PartnerDTO partnerDTO,Model model) throws Exception{
 		int result = partnerService.setPermitUpdate(partnerDTO);
 		model.addAttribute("result", result);
@@ -138,6 +138,17 @@ public class PartnerController {
 		return "admin/partnerDetail";
 	}
 	
+	@GetMapping("update")
+	public void setUpdate(PartnerDTO partnerDTO,Model model) throws Exception{
+	   partnerDTO =	partnerService.getDetail(partnerDTO);
+	   model.addAttribute("kto", partnerDTO);
+	   
+	}
+	
+	@PostMapping("update")
+	public void setUpdate(PartnerDTO partnerDTO) throws Exception{
+		int result = partnerService.setUpdate(partnerDTO);
+	}
 	
 	
 

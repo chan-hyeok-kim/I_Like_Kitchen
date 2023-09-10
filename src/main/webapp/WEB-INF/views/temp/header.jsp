@@ -5,7 +5,7 @@
 
 <style>
       .header-section{
-       border-bottom: 1px solid #ece6cc;
+       border-bottom: 1px solid gainsboro;
       }  
 </style>
 </head>
@@ -61,10 +61,10 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li class="active"><a href="/">Home</a></li>
-                                    <li><a href="/product/list">Share Kitchen</a></li>
+                                    <li><a href="/product/list">전체 공간 목록</a></li>
 
-                                    <li><a href="/">Pages</a>
-                                        <ul class="dropdown">
+                                   
+                                        
                                             <c:forEach items="${sessionScope.member.roles}" var="r">
                                                     <c:if test="${r.getRoleName() eq 'MEMBER'}">
                                                         <li><a href="/mypage/onGoing">마이페이지</a></li>

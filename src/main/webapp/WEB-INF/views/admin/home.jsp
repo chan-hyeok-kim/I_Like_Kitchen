@@ -63,6 +63,9 @@
     font-size: 20px;
     font-weight: bold;
   }
+  .div-enroll li:hover{
+    cursor: pointer;
+  }
   
   main img{
     margin-left:20%;
@@ -133,7 +136,7 @@
 </section>
 
 
-<script src="/resources/js/manage.js"></script>
+<script src="/resources/js/admin/manage.js"></script>
 </body>
 
 </html>

@@ -64,6 +64,10 @@ public class ProductService {
 	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
 		return productDAO.getInfo(partnerDTO);
 	}
+	
+	public int setUpdate(ProductDTO productDTO) throws Exception{
+		return productDAO.setUpdate(productDTO);
+	}
 
 	
 }

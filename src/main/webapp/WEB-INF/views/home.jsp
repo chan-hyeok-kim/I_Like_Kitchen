@@ -101,9 +101,26 @@
      #home-title-div{
           margin-top: 20px;
           margin-left: 340px;
+     } 
+     #img-box img{
+          width: 270px;
+          height: 200px;
+     }
+     #img-box{
+          display: flex;
+          width: 270px;
+     }
+     #home-ul-ad{
+          list-style: none;
+     }
+     #home-ul-ad li,#home-ul-ad a{
+          height: 330px;
+          width: 270px;
+          margin-right: 0px;
+          text-decoration: none;
+          color:black;
      }
     
-     
      
 	</style>
 </head>
@@ -117,53 +134,39 @@
 	<p class="home-title">최근 예약이 가장 많은 장소에요!</p>
 	</div>
  
- <div id="carouselExampleCaptions" class="carousel slide">
-  <div class="carousel-indicators" id="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  
-  
-  <div class="carousel-inner">
-
-
-   
-     <div class="carousel-item active">
-  <img src="/resources/upload/product/${list[0].productFileDTOs[0].fileName}" class="d-block w-100" alt="...">
-     <div class="carousel-caption d-none d-md-block">
-        <h5>${list[0].productName}</h5>
-        <p></p>
-
-      </div>
-    </div>
-     
+ 
+    <ul id="home-ul-ad" class="container">
+      
+     <div class="row">
      <c:forEach items="${list}" var="d" varStatus="i">
-     <c:if test="${i.count le 2}">
-    <div class="carousel-item">
-      <img src="/resources/upload/product/${d.productFileDTOs[0].fileName}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-
-        <h5>${d.productName}</h5>
-        <p></p>
-
-      </div>
+            <div class="col-3" style="background-color: ;">
+                <li><a href="/product/detail?productNum=${d.productNum}"> 
+    
+    <div id="img-box"><img alt="" src="/resources/upload/product/${d.productFileDTOs[0].fileName}">
     </div>
-    </c:if>
-    </c:forEach> 
+    
+    <div id="text-box">
+    <div>${d.productName}</div>
+    <div><p>${d.address}</p></div>
+    <div>${d.price}원/시간</div>
+    </div>
+     </a></li>
+            </div>
+             </c:forEach>
+           </div>
+    
+     
+    </ul> 
+				
+					
+ 
+
+ 
+
     
    
     
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" style="color: black;" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+  
 
 <!-- 추가 -->
   <div id="div1-ad" class="div1" style="text-align: center;">
@@ -171,7 +174,7 @@
       <h2>쾌적한 주방환경만을 제공합니다.</h2>
     </div>
     <div class="div3" style="text-align: center;">
-      <p>아이라이크키친에 오신것을 환영합니다.</p>
+      <p>아.라.키에 오신것을 환영합니다.</p>
     </div>
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">

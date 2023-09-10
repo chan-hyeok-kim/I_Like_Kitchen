@@ -1,15 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style>
 	#list{
-	padding: 45px;
+	padding: 5px;
+	border-bottom: 1px solid #ece6cc;
+	
 	}
 	#questionKind{
 	color:rgb(0, 0, 102);
@@ -20,7 +16,7 @@
 	color:grey;
 	}
 	#questionContents{
-	width:1540px;
+	width:700px;
 	height:80px;
 	margin: 20px;
 	padding:0px;
@@ -33,33 +29,22 @@
 	font-weight:bold;
 	}
 	#btn{
-	font-weight:bold;
-	position:absolute;
-	top:220px;
-	left:1490px;
-	width:140px;
-	height:40px;
-	padding:10px;
 	color:white;
 	background-color: skyblue;
 	border-radius:40px;
+	width: 230px;
 	}
-	#btnon a:hover{
-	background-color: black;
-	}
+	
 	#btn1{
-	position:absolute;
-	left:1380px; 
+
 	font-weight:bold;
-	background-color: rgb(251,255,182);
+	
 	border-radius: 20px;
 	}
 	#btn2{
-	margin-left:10px;
-	position:absolute;
-	left:1500px;
+
 	font-weight:bold;
-	background-color: rgb(251,255,182);
+	
 	padding:5px;
 	border-radius: 20px;
 	}
@@ -73,17 +58,28 @@
 	     margin:5px;
 	     width:100;
 		 padding:8px;
-		 color:black;
+		 
 	}
+	#question-list a{
+	     text-decoration: none;
+ 	}
+ 	#admin-btn a:hover{
+ 	     background-color: black;
+ 	  
+ 	}
+ 	#qustion-add-btn{
+ 	     text-align: right;
+ 	}
+ 	
 </style>
 </head>
 <body>
-<c:import url="../temp/header.jsp"></c:import>
-
+<section id="question-list">
 	
 		<div id="btnon">
-	 <a href="/question/add" id="btn">
-	 	
+		
+		<div id="qustion-add-btn">
+	 <a href="/question/add" id="btn">	
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -92,8 +88,8 @@
 	</div>
 	 <tbody>
 		  	<c:forEach items="${list}" var="list">
-		<div class="border" id="list">
-	 	
+		<div id="list">
+	 	  <div style="width: 930px">
 		 <tr class="grid gap-3" href="/question/view?questionNum=${list.questionNum}">
 		  <td type="hidden" ${list.questionNum}></td>
 		  <td type="hidden" ${list.productNum}></td>
@@ -103,11 +99,14 @@
 			</td>
 		  <span>|</span>
 		  <span class="p-2 g-col-6" id="questionDate">${list.questionDate}</span>
+		  </div>
+		  
 		  <div class="p-2 g-col-6 overflow-auto" id="questionContents">${list.questionContents}</div>
-		
+		 
+		 <div id="admin-btn">
 		<a href="/question/update?questionNum=${list.questionNum}" id="btn1">게시물 수정</a> 
 		<a href="/question/delete?questionNum=${list.questionNum}" id="btn2">게시물 삭제</a>
-		
+		</div>
 		</div>	
 		 </tr>
 			
@@ -132,7 +131,7 @@
 	    	</a>
     	</c:if>
     </div>
-		
-			<c:import url="../temp/footer.jsp"></c:import>
+	</section>	
+			
 </body>
 </html>

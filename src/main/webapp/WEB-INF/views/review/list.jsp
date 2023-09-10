@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="../temp/bootStrap.jsp"></c:import>
+
+
 <style>
 
 
@@ -36,7 +32,7 @@
 	#btn{
 	font-weight:bold;
 	margin:20px;
-	position:absolute;
+	
 	top:190px;
 	left:1450px;
 	width:140px;
@@ -48,25 +44,25 @@
 	}
 	#btn1{
 	margin-left:10px;
-	position:absolute;
+	
 	left:1380px;
 	border-radius: 20px;
 	width:100px;
 	height:40px;
 	padding:7px;
-	background-color: rgb(251,255,182);
+	
 	color:black;
 	font-weight:bold;
 	}
 	#btn2{
 	margin-left:10px;
-	position:absolute;
+	
 	left:1500px;
 	border-radius: 20px;
 	width:100px;
 	height:40px;
 	padding:7px;
-	background-color: rgb(251,255,182);
+	
 	color:black;
 	font-weight:bold;
 	}
@@ -74,18 +70,11 @@
 	      background-color: black;
 	      color:white;
 	}
-	#btn a:hover{
-	background-color: black;
-	color:white;
-	}
-	#btnon a:hover{
-	background-color:black;
-	color:white;
-	}
+	
+	
 </style>
 </head>
 <body>
-<c:import url="../temp/header.jsp"></c:import>
 
 	
 	 
@@ -141,6 +130,6 @@
     	</c:if>
     </div>
 	
-	<c:import url="../temp/footer.jsp"></c:import>
+	
 </body>
 </html>

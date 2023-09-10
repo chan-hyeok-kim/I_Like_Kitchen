@@ -57,5 +57,9 @@
     WHERE PARTNERNUM=#{partnerNum}
 </update>
 
+<update id="setUpdate" parameterType="PartnerDTO">
+   UPDATE PARTNER
+      SET 
+</update>
 
 </mapper>

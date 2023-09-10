@@ -8,7 +8,7 @@ for(c of c1){
     c.addEventListener("click", function(){
         let url=this.getAttribute("data-url");
         if(url=='delete'){
-            let result = confirm("삭제 할거냐???");
+            let result = confirm("삭제하시겠습니까?");
             if(!result){
                 return;
             }

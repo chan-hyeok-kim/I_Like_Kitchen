@@ -1,12 +1,16 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  
  <!DOCTYPE html>
-
+<style>
+   #footer-section{
+        width: 100%;
+   }
+</style>
 <html lang="zxx">
 
 <!-- Footer Section Begin -->
     <meta charset="UTF-8">
-    <footer class="footer-section">
+    <footer class="footer-section" id="footer-section">
       
       
         <div class="container">

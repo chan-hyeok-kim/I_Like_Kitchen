@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,7 +81,20 @@ public class ProductController {
 		model.addAttribute("list", pl);
 	}
 	
+	@GetMapping("update")
+	public void setUpdate(HttpSession session,Model model) throws Exception{
+		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+	   
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		
+		model.addAttribute("kto", pl.get(0));	
 	
+	}
+	
+	@PostMapping("update")
+	public int setUpdate(ProductDTO productDTO) throws Exception{
+		return productService.setUpdate(productDTO);
+	}
 
 
 }

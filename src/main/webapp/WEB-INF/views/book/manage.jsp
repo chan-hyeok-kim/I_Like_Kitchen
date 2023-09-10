@@ -17,25 +17,25 @@
         #calendar {
           width: 800px;
           margin-right: 0px;
-          color: #F9A6A8;
-          background-color: white;
+          color: ;
         }
 
         #calendar button {
-          background-color: #F9A6A8;
-          border-color: #F9A6A8;
+          background-color: #D0A9F5;
+          border-color: #D0A9F5;
         }
 
         #move {
           margin-left: 100px;
           margin-top: 20px;
+         
         }
 
-        #calendar-manage {
-          border-top: 1px solid #ece6cc;
+        #calendar-manage-section {
           width: 100%;
           margin-right: 0px;
           padding-top: 30px;
+          margin-bottom: 100px;
         }
 
         #move:nth-child(2) {
@@ -57,7 +57,7 @@
     <body>
       <c:import url="../temp/header.jsp"></c:import>
 
-      <section id="calendar-manage">
+      <section id="calendar-manage-section">
 
 
         <div style="display: flex">
@@ -180,4 +180,9 @@
 
     </script>
 
+<footer>
+
+
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
     </html>

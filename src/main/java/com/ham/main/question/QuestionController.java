@@ -13,19 +13,20 @@ import com.ham.main.util.Pager;
 @Controller
 @RequestMapping("/question/*")
 public class QuestionController {
+	
 	@Autowired
 	private QuestionService questionService;
 	
- @RequestMapping(value = "list", method = RequestMethod.GET)
- public String getList(Model model,Pager pager) throws Exception {
-  
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    public void getList(Model model,Pager pager) throws Exception {
+   
 	  
 	  List<QuestionDTO> list = questionService.list(pager);
 	  model.addAttribute("list", list);
 	  model.addAttribute("Pager",pager);
 	  
-	  return "question/list";
- }
+	  
+    }
  
 
 //게시물 작성 폼
@@ -36,11 +37,11 @@ public void Add() throws Exception {
 //게시물 작성
 	@RequestMapping(value="add",method = RequestMethod.POST)
 	public String Add(QuestionDTO questionDTO)throws Exception{
-		System.out.println(questionDTO.getId());
-		questionDTO.setProductNum(2L);
+		
+		
 		questionService.add(questionDTO);
 
-		return "redirect:/question/list";
+		return "redirect:/product/detail";
 		
 	}
 	// 게시물 조회

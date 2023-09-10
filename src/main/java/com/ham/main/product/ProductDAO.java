@@ -50,4 +50,8 @@ public class ProductDAO {
 	public List<ProductDTO> getInfo(PartnerDTO partnerDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getInfo", partnerDTO);
 	}
+	
+	public int setUpdate(ProductDTO productDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", productDTO);
+	}
 }
