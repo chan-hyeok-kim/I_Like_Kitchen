@@ -1,22 +1,32 @@
 
-let countNum = 0;
-countNum = countNum+1
+
+
+
+
+count = $('.book-table-list').length
+console.log(count)
+
+for(let i=0; i<count; i++){
+   countNum= i+1;
+
+let idNum='';
 
 $('#btn-home'+countNum).click(function(){
   console.log('클릭됨')
+  idNum = $(this).attr('id')
+  console.log(idNum)
+  idNum = idNum.substring(8)
+  console.log(idNum)
 })
 
-let count = $('.book-table-list').length
-console.log(count)
-
 $('#btn-refund'+countNum).click(function(){
-  if($('#reason'+countNum).val()==''){
+  
+  if($('#reason'+idNum).val()==''){
+  console.log($('#reason'+idNum).val())
     swal('환불 사유를 입력해주세요')
   }else{
-    
- 
 
-  let cancelReason = $('#reason'+countNum).val();
+  let cancelReason = $('#reason'+idNum).val();
   console.log(cancelReason)
   if(confirm("환불하시겠습니까?")){
      cancelPay(cancelReason)
@@ -24,7 +34,7 @@ $('#btn-refund'+countNum).click(function(){
   
   }
 })
-
+}
 
 let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
 let amount = $('#data-refund'+countNum).attr("data-refund-amount");
@@ -32,7 +42,7 @@ let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
 
 
 
-$('.btn-Home'+countNum).click(function(){
+$('.btn-Home').click(function(){
   console.log(amount)
   console.log(bookNum) 
   console.log(payNum)
@@ -74,6 +84,7 @@ function cancelPay(cancelReason) {
      if(result.trim()>0){
     
       alert("환불 성공");
+      location.replace('/mypage/complete');
      }else{
       alert("환불 실패");
      }

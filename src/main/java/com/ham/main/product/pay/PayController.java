@@ -134,6 +134,31 @@ public class PayController {
         
         System.out.println(now);
         
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setBookNum(payDTO.getBookNum());
+        bookDTO = bookService.getDetail(bookDTO);
+        
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        
+        String bookDateStr = fmt.format(bookDTO.getBookDate().getTime());
+        java.util.Date today = fmt.parse(now);
+        java.util.Date bookDate =  fmt.parse(bookDateStr);
+        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(bookDate); 
+        cal.add(Calendar.DATE, -4);
+       
+        bookDateStr = fmt.format(cal.getTime());
+        bookDate = fmt.parse(bookDateStr);
+        
+        int compare = bookDate.compareTo(today);
+        if(compare<=0) {
+           refundDTO.setRefundCheck("1");
+        }else {
+           refundDTO.setRefundCheck("0");	
+        }
+        	
+        	
 //		당일 환불이거나 일정 시간 지난 후 환불이면
 //      여기서 메서드 추가해서 계산
 //      적립금 없애기도 가능할듯
@@ -153,13 +178,15 @@ public class PayController {
 		
 //		조회를 하고 uid빼서넣기
 		
-		
+        
 		
 		return "commons/ajaxResult";
+        
 	}
 	
     @GetMapping("list")
     public void getList(MemberDTO memberDTO,Model model,Pager pager) throws Exception{
+    	pager.setPerPage(3L);
     	List<BookDTO> bl = bookService.getBookInfo(memberDTO, pager);  
     	
     	List<ProductDTO> pdl = new ArrayList<ProductDTO>();
@@ -235,6 +262,8 @@ public class PayController {
 		for(PayDTO p:pl) {
 			RefundDTO refundDTO = new RefundDTO();
 			refundDTO.setPayNum(p.getPayNum());
+		
+			pager.makePageNum(payService.getRefundTotal(refundDTO)); 
 			refundDTO= payService.getRefundInfo(refundDTO);
 			if(refundDTO!=null) {
 			rl.add(refundDTO);
@@ -251,7 +280,64 @@ public class PayController {
     	
     }
 		
-		
+    
+    @GetMapping("checklist")
+    public void getChecklist(HttpSession session,Model model) throws Exception{
+    	PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+    	
+    	List<ProductDTO> pl = productService.getInfo(partnerDTO);
+    	
+    	List<PayDTO> payList = new ArrayList<PayDTO>();
+    	List<MemberDTO> ml = new ArrayList<MemberDTO>();
+    	for(ProductDTO p: pl) {
+			List<BookDTO> bl = bookService.getBook(p);
+			System.out.println("-----------------");
+			System.out.println("bl");
+    	    for(BookDTO b: bl) {
+    	    	
+    	    	if(Integer.parseInt(b.getBookCheck())>0) {
+    	    	PayDTO payDTO = new PayDTO();
+    	    	payDTO.setBookNum(b.getBookNum());
+    	        payDTO = payService.getPayInfo(payDTO);
+    	        
+    	        MemberDTO memberDTO = new MemberDTO();
+    	        memberDTO.setId(b.getId());
+    	        
+    	        memberDTO = memberService.getDetail(memberDTO);
+    	        ml.add(memberDTO);
+    	       
+    	            if(payDTO!=null) {
+    	        	    payList.add(payDTO);
+    	        	    model.addAttribute("memberList", ml);
+    	            }
+    	    	}
+    	    }
+    	}
+    
+    	
+    	List<RefundDTO> rl = new ArrayList<RefundDTO>();
+    	
+    	for(PayDTO pay: payList) {
+    		RefundDTO refundDTO = new RefundDTO();
+    		refundDTO.setPayNum(pay.getPayNum());
+    		refundDTO = payService.getRefundInfo(refundDTO);
+    		
+    		if(refundDTO!=null) {
+    		   int refundCheck = Integer.parseInt(refundDTO.getRefundCheck());
+    		
+    		   if(refundCheck==0) {
+    			  rl.add(refundDTO);
+    			  model.addAttribute("refundList", rl);
+    		   }
+    		}   
+    	}
+    	
+    
+    	
+    	
+    	
+    	
+    }
 		
 	
 }

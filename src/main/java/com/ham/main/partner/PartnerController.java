@@ -114,13 +114,6 @@ public class PartnerController {
 
 
 
-	@GetMapping("list")
-	public String getList(PartnerDTO partnerDTO,Model model) throws Exception{
-		List<PartnerDTO> partnerList = partnerService.getList(partnerDTO);
-		model.addAttribute("list", partnerList);
-		
-		return "admin/partnerList";
-	}
 	
 	@PostMapping("permitUpdate")
 	public String setPermitUpdate(PartnerDTO partnerDTO,Model model) throws Exception{

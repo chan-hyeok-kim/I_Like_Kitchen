@@ -106,15 +106,7 @@
 <li><button class="enroll-admin">관리자 권한</button></li>
 </div>
 
-<div class="div-enroll">
-<li><button class="enroll">댓글 알림</button></li>
-</div>
-<div class="div-enroll">
-<li><button class="enroll">설정</button></li>
-</div>
-<div class="div-enroll">
-<li><button class="enroll">이동</button></li>
-</div>
+
 </nav>
 <main>
 

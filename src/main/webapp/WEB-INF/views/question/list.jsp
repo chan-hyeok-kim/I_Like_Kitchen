@@ -4,7 +4,7 @@
 <style>
 	#list{
 	padding: 5px;
-	border-bottom: 1px solid #ece6cc;
+	border-bottom: 1px solid gainsboro;
 	
 	}
 	#questionKind{
@@ -76,9 +76,8 @@
 <body>
 <section id="question-list">
 	
-		<div id="btnon">
-		
-		<div id="qustion-add-btn">
+	
+	<div id="qustion-add-btn">
 	 <a href="/question/add" id="btn">	
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -86,6 +85,9 @@
 </svg>문의&nbsp;작성하기
 </a>
 	</div>
+		<div id="btnon">
+		
+		
 	 <tbody>
 		  	<c:forEach items="${list}" var="list">
 		<div id="list">
@@ -103,10 +105,15 @@
 		  
 		  <div class="p-2 g-col-6 overflow-auto" id="questionContents">${list.questionContents}</div>
 		 
+		 <c:forEach items="${sessionScope.member.roles}" var="r">
+					<c:if test="${r.getRoleName() eq 'ADMIN'}">
 		 <div id="admin-btn">
+		 
 		<a href="/question/update?questionNum=${list.questionNum}" id="btn1">게시물 수정</a> 
 		<a href="/question/delete?questionNum=${list.questionNum}" id="btn2">게시물 삭제</a>
 		</div>
+		</c:if>
+				</c:forEach>
 		</div>	
 		 </tr>
 			

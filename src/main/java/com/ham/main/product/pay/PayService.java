@@ -34,5 +34,9 @@ public class PayService {
 		return payDAO.getRefundInfo(refundDTO);
 	}
 
+	public long getRefundTotal(RefundDTO refundDTO) throws Exception{
+		return payDAO.getRefundTotal(refundDTO);
+	}
+
 
 }

@@ -10,11 +10,7 @@
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style type="text/css">
-table{
-      width: 400px;
-      background: #F8F9FA;
-      text-align: center;
- }
+
  .btn{
       margin-top: 0px;
       margin-left: 10px;
@@ -34,7 +30,7 @@ table{
       width: 1000px;
       margin-top:20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #ece6cc;
+    border-bottom: 1px solid gainsboro;
     height: 10px;
  }
  
@@ -76,7 +72,7 @@ table{
 </head>
 <body>
 
-<section>
+<section id="entire">
 
 
 <c:forEach items="${payList}" var="p" varStatus="fi">
@@ -89,8 +85,8 @@ table{
 </div>
 
 <div class="book-table-div">
-   <div id="detail-link"><p>예약 장소</p><p>${productList[fi.index].productName}</p></div>
    <div><p>예약자</p><p>${member.name}</p></div>
+   <div><p>예약번호</p><p>${list[fi.index].bookNum}</p></div>
    <div><p>연락처</p><p>${productList[fi.index].phone}</p></div>
    <div><p>결제 날짜</p><p>${p.payDate}</p></div>
    <div><p>결제 금액</p><p>${p.payAmount}</p></div>
@@ -99,14 +95,14 @@ table{
    </div>
     
 <!-- Button trigger modal -->
-<c:if test="${empty refundList}">
+<c:if test="${empty refundList[fi.index]}">
 <button id="btn-home${fi.count}" type="button" class="btn btn-outline-primary btn-home" data-bs-toggle="modal" data-bs-target="#exampleModal${fi.count}">
-  환불하기
+환불
 </button>
 </c:if>
-<c:if test="${not empty refundList}">
-<button type="button" class="btn btn-outline-primary">
-환불 완료
+<c:if test="${not empty refundList[fi.index]}">
+<button style="font-size: 16px" type="button" class="btn btn-outline-primary">
+환불완료
 </button>
 </c:if>
   </div>
@@ -116,14 +112,14 @@ table{
    <!-- Modal -->
 <div class="modal fade" id="exampleModal${fi.count}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" data-count="${fi.count}">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">환불 요청</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="data-refund${fi.count}" data-refund-payNum="${p.payNum}" data-refund-amount="${p.payAmount}" data-refund-orderNum="${p.bookNum}">
         환불 사유를 입력해주세요
-      <input class="form-control" name="reason" id="reason${fi.count}" clss="reason">
+      <input class="form-control" name="reason" id="reason${fi.count}" class="reason">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" class="btn">닫기</button>
@@ -158,22 +154,57 @@ table{
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
+            <li style="margin-left:250px;"> <input type="hidden" value="${pager.page}" name="page" id="page">
+			<div class="col-sm-3">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
+			</div>
+			</li><li>
+			<div class="col" style="padding-left: 0px">
+				<button style="margin-left: 0px" class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
+				</li>
 			</ul>
+
 		</nav>
 
+        
 
 </section>
-
-
-
-
-
-
 <script type="text/javascript">
+ id = '${member.id}'
+	//$('#data-id').attr('data-id')
+page = '${pager.page}'
 
+$('.move').click(function(){
+  $('#page').val($(this).attr('data-num'));
+ let listPage = $('#page').val(); 
+ let listSearch = $('#search').val(); 
+ $.ajax({
+	type:'GET',
+	url:'/pay/list?id='+id+'&page='+listPage+'&search='+listSearch
+    ,success:function(result){
+		$('#entire').empty();
+		console.log(result)
+		$('#entire').append(result);
+	}  
+})
+}) 
 
-  
-  </script>
+$('#search-btn').click(function(){
+	  $('#page').val($(this).attr('data-num'));
+	  
+	  let listSearch = $('#search').val(); 
+	  $.ajax({
+	 	type:'GET',
+	 	url:'/pay/list?id='+id+'&page='+page+'&search='+listSearch
+	     ,success:function(result){
+	 		$('#entire').empty();
+	 		console.log(result)
+	 		$('#entire').append(result);
+	 	}  
+	 })
+	 }) 
+</script>
 <script src="/resources/js/pay/refund.js"></script>
 </body>
 </html>

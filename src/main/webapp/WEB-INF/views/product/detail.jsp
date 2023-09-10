@@ -90,7 +90,6 @@
   }
   #question-title{
  	 font-weight: bold;
- 	 
  	 border-bottom: 1px solid gainsboro;
   }
   #review-title{

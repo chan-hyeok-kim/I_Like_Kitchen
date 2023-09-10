@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ham.main.member.MemberDTO;
+import com.ham.main.util.Pager;
 
 @Service
 public class PartnerService {
@@ -24,7 +25,9 @@ public class PartnerService {
 		return partnerDAO.getDetail(partnerDTO);
 	}
 	
-	public List<PartnerDTO> getList(PartnerDTO partnerDTO) throws Exception{
+	public List<PartnerDTO> getList(PartnerDTO partnerDTO,Pager pager) throws Exception{
+		pager.makeRowNum();
+		
 		return partnerDAO.getList(partnerDTO);
 	}
 	

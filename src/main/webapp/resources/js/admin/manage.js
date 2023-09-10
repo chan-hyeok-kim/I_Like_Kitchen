@@ -4,7 +4,7 @@
 $('.enroll').click(function(){
    $.ajax({
      type:'GET',
-     url:'/partner/list'
+     url:'/admin/partnerList'
    ,success:function(result) {
     $('main').html(result)
    },error:function(){

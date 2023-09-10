@@ -1,76 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<c:import url="../temp/bootStrap.jsp"></c:import>
-
-<style type="text/css">
-
- #btn{
-      margin-top: 10px;
-      margin-left: 140px;
-      width: 100px;
-      height: 40px;
-      /* background: #F4F3EA;
-      border: 1px solid black;
-       */
- }
- #list-border{
-      width: 1000px;
-      margin-top:20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid gainsboro;
-    height: 10px;
- }
- 
- #book-table-div div{
-     display: flex;
-     
- }
- #book-table-div{
-     margin-left: 30px;
-     
- }
- #book-table-div div p{
-     width: 103px;
- }
- #book-list-unorder{
-    list-style: none;
- }
- #book-img{
-    
- }
- #book-table-list{
-    display: flex;
-    width: 800px;
- }
- #btn-home{
-      width: 100px;
-      height:40px;
-      margin-top:150px;
-      margin-left:20px;
- }
- #detail-link a{
-      text-decoration: none;
- }
- a:hover{
-      color: black;
-      
- }
- a:active{
-      color: black;
- }
- a:visited{
-      color: (52, 111, 238, 0.699);
- }
-</style>
 </head>
 <body>
+
 
 <section id="entire">
 
@@ -85,7 +22,7 @@
    
 </div>
 <div id="book-table-div">
-   <div><p>예약자</p><p>${member.name}</p></div>
+   <div><p>예약자</p><p>${memberList[fi.index].name}</p></div>
    <div><p>예약번호</p><p>${list[fi.index].bookNum}</p></div>
    <div><p>환불 사유</p><p>${r.refundReason}</p></div>
    <div><p>환불 날짜</p><p>${r.refundDate}</p></div>
@@ -138,41 +75,9 @@
 		</nav>
 
 </section>
-<script type="text/javascript">
- id = '${member.id}'
-	//$('#data-id').attr('data-id')
-page = '${pager.page}'
-
-$('.move').click(function(){
-  $('#page').val($(this).attr('data-num'));
- let listPage = $('#page').val(); 
- let listSearch = $('#search').val(); 
- $.ajax({
-	type:'GET',
-	url:'/pay/refundList?id='+id+'&page='+listPage+'&search='+listSearch
-    ,success:function(result){
-		$('#entire').empty();
-		console.log(result)
-		$('#entire').append(result);
-	}  
-})
-}) 
-
-$('#search-btn').click(function(){
-	  $('#page').val($(this).attr('data-num'));
-	  
-	  let listSearch = $('#search').val(); 
-	  $.ajax({
-	 	type:'GET',
-	 	url:'/pay/refundList?id='+id+'&page='+page+'&search='+listSearch
-	     ,success:function(result){
-	 		$('#entire').empty();
-	 		console.log(result)
-	 		$('#entire').append(result);
-	 	}  
-	 })
-	 }) 
-</script>
 
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>

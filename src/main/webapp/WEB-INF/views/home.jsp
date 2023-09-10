@@ -58,7 +58,7 @@
      .product-img-list{
           width: 1400px; 
           margin-top: 20px;
-          margin-left: -170px;
+          margin-left: -0px;
      }
      #detail-icon{
           color: red;
@@ -70,31 +70,7 @@
       #shadow-sm{
           margin-top: 25px;
      }
-     #main-home-section{
-     /*      border-top: 1px solid gainsboro;  */
-     }
      
-    /* .product-img-list img{
-          width: 270px;
-          height: 200px;
-     }
-      #shadow-sm a{
-          width: 270px;
-          height: 200px;
-     }
-     #shadow-sm div{
-          width: 270px;
-          height: 130px;
-     }
-     #shadow-sm{
-          width: 270px;
-          height: 320px;
-          margin-right: 0px;
-     }
-     .product-background{
-          width: 270px;
-          height: 320px;
-     } */
      #home-title{
           margin-left: 300px;
      }

@@ -23,7 +23,7 @@
   
   <insert id="setRefund" parameterType="RefundDTO">
        INSERT INTO REFUND(REFUNDNUM, PAYNUM, REFUNDAMOUNT, REFUNDDATE, REFUNDREASON, REFUNDCHECK)
-       VALUES (REFUND_SEQ.NEXTVAL, #{payNum},#{refundAmount},SYSDATE, #{refundReason}, 0)
+       VALUES (REFUND_SEQ.NEXTVAL, #{payNum},#{refundAmount},SYSDATE, #{refundReason}, #{refundCheck})
   </insert>
   
   <select id="getPayInfo" resultType="PayDTO" parameterType="PayDTO">
@@ -37,5 +37,21 @@
         FROM REFUND
        WHERE PAYNUM=#{payNum}
   </select>
+  
+    <select id="getRefundTotal" resultType="Long" parameterType="refundDTO">
+      SELECT COUNT(REFUNDNUM)
+        FROM REFUND
+       WHERE PAYNUM=#{payNum}
+  </select>
+  
+
+  
+  <select id="getCheckTotal" resultType="Long" parameterType="RefundDTO">
+      SELECT COUNT(REFUNDNUM)
+        FROM REFUND
+       WHERE REFUNDCHECK=0
+  </select>
+  
+  
   
   </mapper>

@@ -2,13 +2,12 @@
     pageEncoding="UTF-8"%>
 <style>
 	#bigDiv{
-	    border-top: 1px solid #ece6cc;
 	    display: grid;
 	    grid-template-columns: 370px 1fr;
 	}
 	#menuDiv{
 	    padding-left: 200px;
-	    border-right: 1px solid #ece6cc;
+	    border-right: 1px solid gainsboro;
 	}
 	#menuDiv a{
 	    text-decoration: none;
@@ -26,7 +25,7 @@
 		margin-bottom: 300px;
 	}
 	#listDiv h3{
-	    border-bottom: 1px solid #ece6cc;
+	    border-bottom: 1px solid gainsboro;
 	    margin: 50px 0 40px 0;
 	    padding-bottom: 10px;
 	}
@@ -36,7 +35,7 @@
 	    grid-template-columns: 280px 2fr;
 	    width: 800px;
 	    margin-top: 35px;
-	    border-bottom: 3px solid #ece6cc;
+	    border-bottom: 3px solid gainsboro;
 	    padding-bottom: 35px;
 	}
 	#imgDiv img{

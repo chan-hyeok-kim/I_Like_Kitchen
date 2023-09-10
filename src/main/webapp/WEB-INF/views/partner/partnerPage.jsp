@@ -46,20 +46,28 @@
                     <button type="button" class="btn1" id="btn3">
                         <img src="/resources/icon/reservation.png">
                         <div>
-                            <p class="part2_2">상품 관리</p>
                             <p class="part2_2">공간 정보 수정</p>
+                            <p class="part2_2"></p>
                         </div>
                     </button>
                     <button type="button" class="btn1" id="btn4">
                         <img src="/resources/icon/question.png">
                         <div>
                             <p class="part2_2">문의/후기 관리</p>
-                            <p class="part2_2">고객문의 답변</p>
+                            <p class="part2_2"></p>
+                        </div>
+                    </button>
+                    <button type="button" class="btn1" id="btn5">
+                        <img src="/resources/icon/free-icon-calculating-3.png">
+                        <div>
+                            <p class="part2_2">환불 승인</p>
+                            <p class="part2_2"></p>
                         </div>
                     </button>
                 </div>
             </div>
-
+                   
+             
             <div class="part3">
                 <div class="swiper swiper-pointer-events swiper-backface-hidden">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
@@ -133,6 +141,10 @@
 
         btn4.addEventListener("click", function(){
             location.href="./manage"
+        })
+        
+        $('#btn5').click(function(){
+        	location.href="/pay/checklist"	
         })
     </script>
     

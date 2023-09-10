@@ -10,11 +10,7 @@
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
 <style type="text/css">
- table{
-      width: 400px;
-      background: #F8F9FA;
-      text-align: center;
- }
+ 
  #btn{
       margin-top: 10px;
       margin-left: 140px;
@@ -28,7 +24,7 @@
       width: 1000px;
       margin-top:20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #ece6cc;
+    border-bottom: 1px solid gainsboro;
     height: 10px;
  }
  
@@ -76,7 +72,7 @@
 </head>
 <body>
 
-<section>
+<section id="entire">
 
 <c:forEach items="${list}" var="i" varStatus="fi">
 
@@ -98,17 +94,19 @@
    
   
    </div>
-    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제하기</button>
+    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제</button>
   
   </div>
- 
-</div>
+   </div>   
+
 
 
 
 <div id="list-border"></div>
-         
+      
 </c:forEach>
+
+
 
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -130,23 +128,31 @@
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
-			</ul>
-		</nav>
-		 <form action="../book/list" method="get" id="frm">
-		 <input type="hidden" value="${pager.page}" name="page" id="page">
+		  <li style="margin-left:250px;"><input type="hidden" value="${pager.page}" name="page" id="page">
+			
 			<div class="col-sm-3">
 				<input class="form-control me-2" type="search" name="search"
-					placeholder="Search" aria-label="Search">
+					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
 			</div>
-			<div class="col-auto">
+			
+			<div class="col" style="display: flex">
 				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
-				</form>
+				</div></li>
+			</ul>
+		
+		</nav>
+		 
+		 
+
+
+
              
 
 </section>
 <script type="text/javascript">
-id = '${member.id}'
+ id = '${member.id}'
 	//$('#data-id').attr('data-id')
+page = '${pager.page}'
 
 $('.move').click(function(){
   $('#page').val($(this).attr('data-num'));
@@ -156,12 +162,27 @@ $('.move').click(function(){
 	type:'GET',
 	url:'/book/list?id='+id+'&page='+listPage+'&search='+listSearch
     ,success:function(result){
-		$('#gridDiv').remove();
+		$('#entire').empty();
 		console.log(result)
-		$('#gridDiv').append(result);
+		$('#entire').append(result);
 	}  
 })
-})
+}) 
+
+$('#search-btn').click(function(){
+	  $('#page').val($(this).attr('data-num'));
+	  
+	  let listSearch = $('#search').val(); 
+	  $.ajax({
+	 	type:'GET',
+	 	url:'/book/list?id='+id+'&page='+page+'&search='+listSearch
+	     ,success:function(result){
+	 		$('#entire').empty();
+	 		console.log(result)
+	 		$('#entire').append(result);
+	 	}  
+	 })
+	 }) 
 </script>
 <script src="/resources/js/book/list.js"/>
 
