@@ -46,7 +46,7 @@
 		FROM (SELECT * FROM PAYMENT
 		WHERE PAYNUM>0
 		AND BOOKNUM LIKE '%' || #{search} || '%'
-		ORDER BY PAYNUM DESC)P)
+		ORDER BY BOOKNUM DESC)P)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select> 
 	

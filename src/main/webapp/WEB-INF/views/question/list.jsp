@@ -76,7 +76,7 @@
 <body>
 <section id="question-list">
 	
-	
+<c:if test="${not empty member}">
 	<div id="qustion-add-btn">
 	 <a href="/question/add" id="btn">	
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -85,6 +85,8 @@
 </svg>문의&nbsp;작성하기
 </a>
 	</div>
+</c:if>
+	
 		<div id="btnon">
 		
 		

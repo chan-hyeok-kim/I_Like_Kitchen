@@ -86,7 +86,7 @@
 
 <div class="book-table-div">
    <div><p>예약자</p><p>${member.name}</p></div>
-   <div><p>예약번호</p><p>${list[fi.index].bookNum}</p></div>
+   <div><p>예약번호</p><p>${p.bookNum}</p></div>
    <div><p>연락처</p><p>${productList[fi.index].phone}</p></div>
    <div><p>결제 날짜</p><p>${p.payDate}</p></div>
    <div><p>결제 금액</p><p>${p.payAmount}</p></div>

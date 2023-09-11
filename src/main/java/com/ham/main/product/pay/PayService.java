@@ -49,6 +49,10 @@ public class PayService {
 		pager.makePageNum(payDAO.getPayTotal(payDTO));
 	    return payDAO.getList(pager);
 	}
+	
+	public long getPayTotal(PayDTO payDTO) throws Exception{
+		return payDAO.getPayTotal(payDTO);
+	}
 
 
 }

@@ -86,7 +86,7 @@
 </div>
 <div id="book-table-div">
    <div><p>예약자</p><p>${member.name}</p></div>
-   <div><p>예약번호</p><p>${list[fi.index].bookNum}</p></div>
+   <div><p>예약번호</p><p>${productList[fi.index].bookNum}</p></div>
    <div><p>환불 사유</p><p>${r.refundReason}</p></div>
    <div><p>환불 날짜</p><p>${r.refundDate}</p></div>
    <div><p>환불 금액</p><p>${r.refundAmount}</p></div>
