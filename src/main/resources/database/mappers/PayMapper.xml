@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.ham.main.product.pay.PayDAO">
-
+  
 
   <insert id="setPay" parameterType="payDTO">
   <selectKey order="BEFORE" resultType="Long" keyProperty="payNum">
@@ -38,20 +38,54 @@
        WHERE PAYNUM=#{payNum}
   </select>
   
-    <select id="getRefundTotal" resultType="Long" parameterType="refundDTO">
+   
+  
+    <select id="getList" resultType="PayDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R, P.*
+		FROM (SELECT * FROM PAYMENT
+		WHERE PAYNUM>0
+		AND BOOKNUM LIKE '%' || #{search} || '%'
+		ORDER BY PAYNUM DESC)P)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select> 
+	
+	<select id="getPermitList" resultType="RefundDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R, P.*
+		FROM (SELECT * FROM REFUND
+		WHERE REFUNDNUM>0
+		AND REFUNDNUM LIKE '%' || #{search} || '%'
+		AND REFUNDCHECK=1
+		ORDER BY PARTNERNUM DESC)P)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+   <select id="getPayTotal" resultType="Long" parameterType="PayDTO">
+      SELECT COUNT(PAYNUM)
+        FROM PAYMENT
+       WHERE BOOKNUM=#{bookNum}
+   </select>
+	
+   <select id="getRefundTotal" resultType="Long" parameterType="refundDTO">
       SELECT COUNT(REFUNDNUM)
         FROM REFUND
        WHERE PAYNUM=#{payNum}
-  </select>
+    </select>
   
-
-  
-  <select id="getCheckTotal" resultType="Long" parameterType="RefundDTO">
+   <select id="getCheckTotal" resultType="Long">
       SELECT COUNT(REFUNDNUM)
         FROM REFUND
-       WHERE REFUNDCHECK=0
-  </select>
+       WHERE REFUNDCHECK=1
+   </select>
+   
+   
   
+  <update id="setRefundCheck" parameterType="RefundDTO">
+      UPDATE REFUND
+         SET REFUNDCHECK=1
+       WHERE REFUNDNUM=#{refundNum}  
+  </update>  
   
   
   </mapper>

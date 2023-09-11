@@ -1,8 +1,9 @@
 package com.ham.main.partner;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,11 @@ public class PartnerService {
 		return partnerDAO.getDetail(partnerDTO);
 	}
 	
-	public List<PartnerDTO> getList(PartnerDTO partnerDTO,Pager pager) throws Exception{
+	public List<PartnerDTO> getList(Pager pager) throws Exception{
 		pager.makeRowNum();
+		pager.makePageNum(partnerDAO.getTotal());
 		
-		return partnerDAO.getList(partnerDTO);
+		return partnerDAO.getList(pager);
 	}
 	
 	public int setPermitUpdate(PartnerDTO partnerDTO) throws Exception{
@@ -42,5 +44,14 @@ public class PartnerService {
 	public int setUpdate(PartnerDTO partnerDTO) throws Exception{
 		return partnerDAO.setUpdate(partnerDTO);
 	}
+	
+	public List<PartnerDTO> getPermitList(Pager pager) throws Exception{
+		pager.makeRowNum();
+		pager.makePageNum(partnerDAO.getPermitTotal());
+		
+		return partnerDAO.getPermitList(pager);
+	}
+	
+    
 	
 }

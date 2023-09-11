@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ham.main.util.Pager;
+
 @Repository
 public class PayDAO {
 	
@@ -37,4 +39,17 @@ public class PayDAO {
 	public long getRefundTotal(RefundDTO refundDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRefundTotal", refundDTO);
 	}
+	
+	public int setRefundCheck(RefundDTO refundDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setRefundCheck", refundDTO);
+	}
+	
+	public long getPayTotal(PayDTO payDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPayTotal", payDTO);
+	}
+	
+	public List<PayDTO> getList(Pager pager) throws Exception{
+	    return sqlSession.selectList(NAMESPACE+"getList", pager);
+	}
+	
 }

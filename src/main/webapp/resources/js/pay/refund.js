@@ -11,7 +11,7 @@ for(let i=0; i<count; i++){
 
 let idNum='';
 
-$('#btn-home'+countNum).click(function(){
+$('.btn-home'+countNum).eq(i).click(function(){
   console.log('클릭됨')
   idNum = $(this).attr('id')
   console.log(idNum)
@@ -21,6 +21,13 @@ $('#btn-home'+countNum).click(function(){
 
 $('#btn-refund'+countNum).click(function(){
   
+
+  let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
+  let amount = $('#data-refund'+countNum).attr("data-refund-amount");
+  let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
+  
+  
+
   if($('#reason'+idNum).val()==''){
   console.log($('#reason'+idNum).val())
     swal('환불 사유를 입력해주세요')
@@ -35,10 +42,6 @@ $('#btn-refund'+countNum).click(function(){
   }
 })
 }
-
-let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
-let amount = $('#data-refund'+countNum).attr("data-refund-amount");
-let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
 
 
 

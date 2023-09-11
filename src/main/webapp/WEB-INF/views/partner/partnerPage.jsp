@@ -46,22 +46,15 @@
                     <button type="button" class="btn1" id="btn3">
                         <img src="/resources/icon/reservation.png">
                         <div>
+                            <p class="part2_2">상품 관리</p>
                             <p class="part2_2">공간 정보 수정</p>
-                            <p class="part2_2"></p>
                         </div>
                     </button>
                     <button type="button" class="btn1" id="btn4">
-                        <img src="/resources/icon/question.png">
-                        <div>
-                            <p class="part2_2">문의/후기 관리</p>
-                            <p class="part2_2"></p>
-                        </div>
-                    </button>
-                    <button type="button" class="btn1" id="btn5">
                         <img src="/resources/icon/free-icon-calculating-3.png">
                         <div>
+                            <p class="part2_2">정산 관리</p>
                             <p class="part2_2">환불 승인</p>
-                            <p class="part2_2"></p>
                         </div>
                     </button>
                 </div>
@@ -125,8 +118,7 @@
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
         const btn3 = document.getElementById("btn3");
-        const btn4 = document.getElementById("btn4");
-
+       
         btn1.addEventListener("click", function(){
             location.href="/partner/update"
         })
@@ -138,12 +130,8 @@
         btn3.addEventListener("click", function(){
             location.href="/product/update"
         })
-
-        btn4.addEventListener("click", function(){
-            location.href="./manage"
-        })
         
-        $('#btn5').click(function(){
+        $('#btn4').click(function(){
         	location.href="/pay/checklist"	
         })
     </script>

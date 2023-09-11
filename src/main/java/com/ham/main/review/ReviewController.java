@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.notice.NoticeFileDTO;
-import com.ham.main.reply.ReplyDTO;
-import com.ham.main.reply.ReplyService;
 import com.ham.main.util.Pager;
 
 @Controller
@@ -24,8 +22,6 @@ import com.ham.main.util.Pager;
 public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
-	@Autowired
-	private ReplyService replyService;
 	
  @RequestMapping(value = "list", method = RequestMethod.GET)
  public String getList(Model model,Pager pager) throws Exception {

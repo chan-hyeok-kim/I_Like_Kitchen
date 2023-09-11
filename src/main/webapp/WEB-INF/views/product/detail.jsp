@@ -33,8 +33,7 @@
       margion-top: 20px;
   }
   #product-question{
-      height: 1000px;
-     
+      
   }
   #product-contents-ul li{
       width: 130px;

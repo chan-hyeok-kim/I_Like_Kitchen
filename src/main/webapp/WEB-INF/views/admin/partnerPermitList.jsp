@@ -12,7 +12,7 @@
    
 </style>
 
-<section>
+<section id="entire">
 <table class="table" id="admin-partner-table">
   <thead class="table-dark">
     <tr>
@@ -79,6 +79,7 @@
 
 
    </div>
+   
 <script type="text/javascript">
 
 page = '${pager.page}'
@@ -104,7 +105,7 @@ $('#search-btn').click(function(){
 	  let listSearch = $('#search').val(); 
 	  $.ajax({
 	 	type:'GET',
-	 	url:'/admin/partnerList?page='+page+'&search='+listSearch
+	 	url:'/admin/partnerPermitList?page='+page+'&search='+listSearch
 	     ,success:function(result){
 	 		$('#entire').empty();
 	 		
@@ -113,5 +114,7 @@ $('#search-btn').click(function(){
 	 })
 	 }) 
 </script>
-   <script src="/resources/js/admin/partnerList.js"></script>
+   <script src="/resources/js/admin/partnerList.js">
+  
+   </script>
 

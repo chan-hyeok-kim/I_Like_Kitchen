@@ -196,9 +196,11 @@ public class MemberController {
 				if(memberDTO.getRoles().get(1).getRoleName().equals("PARTNER")) {
 					System.out.println(memberDTO.getRoles().get(1));
 				    session.setAttribute("partner", partnerDTO);
-				}else if(memberDTO.getRoles().get(2).getRoleName().equals("ADMIN")) {
+				}else if(memberDTO.getRoles().get(2)!=null) {
+					if(memberDTO.getRoles().get(2).getRoleName().equals("ADMIN")) {
 					session.setAttribute("partner", partnerDTO);
-				}
+					}	
+			    }
 			}
 			mv.setViewName("redirect:../");
 		}else{

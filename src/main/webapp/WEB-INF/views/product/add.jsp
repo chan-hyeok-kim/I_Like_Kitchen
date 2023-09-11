@@ -88,7 +88,7 @@
 	          if (fileFieldCount < maxFileFields) {
 	            const fileField = document.createElement("input");
 	            fileField.type = "file";
-	            fileField.name = "pic[]"; // 필요한 이름을 지정하세요.
+	            fileField.name = "files"; // 필요한 이름을 지정하세요.
 	            fileField.className = "form-control mb-2";
 
 	            const deleteButton = document.createElement("button");

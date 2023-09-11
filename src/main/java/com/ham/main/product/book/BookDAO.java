@@ -44,5 +44,9 @@ public class BookDAO {
 	public List<BookDTO> getBookTime(BookDTO bookDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getBookTime", bookDTO);
 	}
+	
+	public long getCheckTotal() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCheckTotal");
+	}
 
 }

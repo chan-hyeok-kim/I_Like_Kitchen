@@ -49,7 +49,7 @@
     display: flex;
     width: 800px;
  }
- #btn-home{
+ .btn-pay{
       width: 100px;
       height:40px;
       margin-top:150px;
@@ -88,13 +88,13 @@
    <div><p>예약자</p><p>${member.name}</p></div>
    <div><p>예약번호</p><p>${i.bookNum}</p></div>
    <div><p>예약 날짜</p><p>${i.bookDate}</p></div>
-   <div><p>사용시간</p><p class="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
+   <div><p>사용시간</p><p id="bookTime${fi.index}" class="bookTime" data-startTime="${i.startTime}" data-endTime="${i.endTime}"></p></div>
    <div><p>인원</p><p>${i.headCount}</p></div>
-   <div><p>승인 상태</p><p class="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
+   <div><p>승인 상태</p><p id="check${fi.index}" class="check" data-check="${i.bookCheck}">${i.bookCheck}</p></div>
    
   
    </div>
-    <button id="btn-home" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제</button>
+    <button id="btn-home${fi.index}" class="btn btn-outline-primary btn-pay" data-bookNum="${i.bookNum}">결제</button>
   
   </div>
    </div>   
@@ -163,7 +163,7 @@ $('.move').click(function(){
 	url:'/book/list?id='+id+'&page='+listPage+'&search='+listSearch
     ,success:function(result){
 		$('#entire').empty();
-		console.log(result)
+		
 		$('#entire').append(result);
 	}  
 })
@@ -178,13 +178,13 @@ $('#search-btn').click(function(){
 	 	url:'/book/list?id='+id+'&page='+page+'&search='+listSearch
 	     ,success:function(result){
 	 		$('#entire').empty();
-	 		console.log(result)
+	 		
 	 		$('#entire').append(result);
 	 	}  
 	 })
 	 }) 
 </script>
-<script src="/resources/js/book/list.js"/>
+<script src="/resources/js/book/list.js"></script>
 
 </body>
 </html>

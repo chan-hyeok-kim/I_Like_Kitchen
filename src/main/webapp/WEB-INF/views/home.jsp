@@ -104,6 +104,8 @@
 
 <body>
 	<c:import url="temp/header.jsp"></c:import>
+	
+	
 	<section id="main-home-section">
 	<div id="home-title-div">
 	<p><h4 class="home-title">인기장소 피드&nbsp;&nbsp;<img alt="" src="/resources/img/home/thumbs-up_295489.png"></h4></p>
@@ -234,17 +236,7 @@
 <c:import url="./temp/footer.jsp"></c:import>
 </footer>
 
-<script type="text/javascript">
- /*  $.ajax({
-	  type:'GET',
-	   url:'/product/homeList',
-	   success:function(result){
-		   $('#home-contents').html(result)
-	   }
-	  
-  }) */
 
-</script>
 
 
 </html>

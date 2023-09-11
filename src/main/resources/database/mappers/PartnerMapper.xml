@@ -2,67 +2,99 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
-<mapper namespace="com.ham.main.partner.PartnerDAO"> 
+
+<mapper namespace="com.ham.main.partner.PartnerDAO">
 
 	<!-- 협력업체 사업자 등록 -->
-    <insert id="setPartnerJoin" parameterType="PartnerDTO">
-    	INSERT INTO 
-    		PARTNER(PARTNERNUM, ID, PARTNEREMAIL, PARTNERACCOUNT, PARTNERDATE, PARTNERNAME, PARTNERPHONE, COMPANYNAME)
-    			VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerAccount}, #{partnerDate}, #{partnerName}, #{partnerPhone}, #{companyName})
-    </insert>
+	<insert id="setPartnerJoin" parameterType="PartnerDTO">
+		INSERT INTO
+		PARTNER(PARTNERNUM, ID, PARTNEREMAIL, PARTNERACCOUNT, PARTNERDATE, PARTNERNAME,
+		PARTNERPHONE, COMPANYNAME)
+		VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerAccount}, #{partnerDate},
+		#{partnerName}, #{partnerPhone}, #{companyName})
+	</insert>
 
-<select id="getDetail" resultMap="getDetailResult" parameterType="PartnerDTO">
-   SELECT *
-     FROM PARTNER PT LEFT OUTER JOIN PRODUCT PD
-       ON PT.PARTNERNUM = PD.PARTNERNUM
-    WHERE PT.PARTNERNUM = #{partnerNum}
-</select>
+	<select id="getDetail" resultMap="getDetailResult"
+		parameterType="PartnerDTO">
+		SELECT *
+		FROM PARTNER PT LEFT OUTER JOIN PRODUCT PD
+		ON PT.PARTNERNUM = PD.PARTNERNUM
+		WHERE PT.PARTNERNUM = #{partnerNum}
+	</select>
 
-<resultMap type="PartnerDTO" id="getDetailResult">
-   <id column="PARTNERNUM" property="partnerNum"/>
-   <result column="PARTNEREMAIL" property="partnerEmail"/>
-   <result column="PARTNERPHONE" property="partnerPhone"/>
-   <result column="PARTNERACCOUNT" property="partnerAccount"/>
-   <result column="PARTNERDATE" property="partnerDate"/>
-   <result column="PARTNERNAME" property="partnerName"/>
-   <result column="COMPANYNAME" property="companyName"/>
-   <result column="PARTNERCHECK" property="partnerCheck"/>
-   <result column="ID" property="id"/>
-   
-   <association javaType="ProductDTO" property="productDTO">
-      <id column="PRODUCTNUM" property="productNum"/>
-      <result column="REGDATE" property="regDate"/>
-      <result column="ADDRESS" property="address"/>
-      <result column="PHONE" property="phone"/>
-      <result column="PRICE" property="price"/>
-      <result column="CONTENTS" property="contents"/>
-      <result column="PRODUCTNAME" property="productName"/>
-   </association>
-</resultMap>
+	<resultMap type="PartnerDTO" id="getDetailResult">
+		<id column="PARTNERNUM" property="partnerNum" />
+		<result column="PARTNEREMAIL" property="partnerEmail" />
+		<result column="PARTNERPHONE" property="partnerPhone" />
+		<result column="PARTNERACCOUNT" property="partnerAccount" />
+		<result column="PARTNERDATE" property="partnerDate" />
+		<result column="PARTNERNAME" property="partnerName" />
+		<result column="COMPANYNAME" property="companyName" />
+		<result column="PARTNERCHECK" property="partnerCheck" />
+		<result column="ID" property="id" />
 
-<select id="getPartnerInfo" resultType="PartnerDTO" parameterType="String">
-   SELECT * 
-     FROM PARTNER
-    WHERE ID = #{id}
-</select>
+		<association javaType="ProductDTO" property="productDTO">
+			<id column="PRODUCTNUM" property="productNum" />
+			<result column="REGDATE" property="regDate" />
+			<result column="ADDRESS" property="address" />
+			<result column="PHONE" property="phone" />
+			<result column="PRICE" property="price" />
+			<result column="CONTENTS" property="contents" />
+			<result column="PRODUCTNAME" property="productName" />
+		</association>
+	</resultMap>
 
-<select id="getList" resultType="PartnerDTO">
-   SELECT * FROM PARTNER
-</select>
+	<select id="getPartnerInfo" resultType="PartnerDTO"
+		parameterType="String">
+		SELECT *
+		FROM PARTNER
+		WHERE ID = #{id}
+	</select>
 
-<update id="setPermitUpdate" parameterType="PartnerDTO">
-   UPDATE PARTNER
-      SET PARTNERCHECK='1'
-    WHERE PARTNERNUM=#{partnerNum}
-</update>
+	<select id="getList" resultType="PartnerDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R, P.*
+		FROM (SELECT * FROM PARTNER
+		WHERE PARTNERNUM>0
+		AND PARTNERNUM LIKE '%' || #{search} || '%'
+		AND PARTNERCHECK=0
+		ORDER BY PARTNERNUM DESC)P)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getPermitList" resultType="PartnerDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R, P.*
+		FROM (SELECT * FROM PARTNER
+		WHERE PARTNERNUM>0
+		AND PARTNERNUM LIKE '%' || #{search} || '%'
+		AND PARTNERCHECK=1
+		ORDER BY PARTNERNUM DESC)P)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getTotal" resultType="Long">
+	    SELECT COUNT(PARTNERNUM) FROM PARTNER
+        WHERE PARTNERCHECK=0
+	</select>
+	
+	<select id="getPermitTotal" resultType="Long">
+	    SELECT COUNT(PARTNERNUM) FROM PARTNER 
+        WHERE PARTNERCHECK=1
+	</select>
 
-<update id="setUpdate" parameterType="PartnerDTO">
-   UPDATE PARTNER COMPANYNAME,PARTNERPHONE)
-      SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount}
-          PARTNERNAME=#{partnerName}, COMPANYNAME=#{companyName}, 
-          PARTNERPHONE=#{partnerPhone}
-    WHERE PARTNERNUM=#{partnerNum}      
-</update>
+	<update id="setPermitUpdate" parameterType="PartnerDTO">
+		UPDATE PARTNER
+		SET PARTNERCHECK=1
+		WHERE PARTNERNUM=#{partnerNum}
+	</update>
+
+	<update id="setUpdate" parameterType="PartnerDTO">
+		UPDATE PARTNER COMPANYNAME,PARTNERPHONE)
+		SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount}
+		PARTNERNAME=#{partnerName}, COMPANYNAME=#{companyName},
+		PARTNERPHONE=#{partnerPhone}
+		WHERE PARTNERNUM=#{partnerNum}
+	</update>
 
 </mapper>

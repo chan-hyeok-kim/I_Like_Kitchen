@@ -1,7 +1,7 @@
 
 
 
-$('.enroll').click(function(){
+$('.div-enroll-partner').click(function(){
    $.ajax({
      type:'GET',
      url:'/admin/partnerList'
@@ -13,7 +13,7 @@ $('.enroll').click(function(){
 })
 })
 
-$('.enroll-admin').click(function(){
+$('.div-enroll-admin').click(function(){
    $.ajax({
      type:'GET',
      url:'adminAuth'
@@ -25,29 +25,19 @@ $('.enroll-admin').click(function(){
 })
 })
 
+$('.div-delete-partner').click(function(){
+   $.ajax({
+     type:'GET',
+     url:'/admin/partnerPermitList'
+   ,success:function(result) {
+    $('main').html(result)
+   },error:function(){
+    console.log("불러오지 못했습니다")
+   }
+})
+})
 
+$('.div-notice-admin').click(function(){
+    location.href='/notice/list'
 
-// let partnerNum = $('#permit').attr('data-permit')
-
-// $('#permit').click(function(){
-//    $.ajax({
-//        type:'POST',
-//        url:'/partner/permit',
-//        data:{
-//           partnerNum:partnerNum,
-//           partnerCheck:1
-//        }
-//    })
-   
-// })
-
-// // let companyName = $('#company-name').attr('data-company')
-
-// $('#company-name').click(function(){
-//    $.ajax({
-//        type:'GET',
-//        url:'/partner/detail?partnerNum='+partnerNum
-//    })
-// })
-
-
+})

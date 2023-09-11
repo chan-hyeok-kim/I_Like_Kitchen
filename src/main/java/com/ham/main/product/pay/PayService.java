@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ham.main.util.Pager;
+
 @Service
 public class PayService {
 	
@@ -36,6 +38,16 @@ public class PayService {
 
 	public long getRefundTotal(RefundDTO refundDTO) throws Exception{
 		return payDAO.getRefundTotal(refundDTO);
+	}
+	
+	public int setRefundCheck(RefundDTO refundDTO) throws Exception{
+		return payDAO.setRefundCheck(refundDTO);
+	}
+	
+	public List<PayDTO> getList(PayDTO payDTO,Pager pager) throws Exception{
+		pager.makeRowNum();
+		pager.makePageNum(payDAO.getPayTotal(payDTO));
+	    return payDAO.getList(pager);
 	}
 
 

@@ -49,11 +49,19 @@ public class AdminController {
 	}
 	
 	@GetMapping("partnerList")
-	public String getList(PartnerDTO partnerDTO,Model model,Pager pager) throws Exception{
-		List<PartnerDTO> partnerList = partnerService.getList(partnerDTO, pager);
+	public String getList(Model model,Pager pager) throws Exception{
+		List<PartnerDTO> partnerList = partnerService.getList(pager);
 		model.addAttribute("list", partnerList);
 		
 		return "admin/partnerList";
+	}
+	
+	@GetMapping("partnerPermitList")
+	public String getPermitList(Model model,Pager pager) throws Exception{
+		List<PartnerDTO> partnerList = partnerService.getPermitList(pager);
+		model.addAttribute("list", partnerList);
+		
+		return "admin/partnerPermitList";
 	}
 	
 	

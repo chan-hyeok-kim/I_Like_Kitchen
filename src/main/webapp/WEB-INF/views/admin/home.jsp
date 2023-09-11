@@ -11,7 +11,7 @@
   #admin-list{
       list-style: none;
   }
-  .content nav{
+  #admin-home{
       width: 20%;
       background: #030008c7;
   }
@@ -20,11 +20,11 @@
       border-left:solid gainsboro 1px;
       overflow: auto;
   }
+  
  
-  .content nav,main{
+  .content nav:first-child,main{
       float: left;
-      border-top: solid gainsboro 1px;
-      border-bottom: solid gainsboro 1px;
+     
       height: 700px;
       
   }
@@ -37,7 +37,7 @@
       color: white;
   }
   
-  section{
+  #admin-home-section{
       padding-top: 30px;
       border-top: solid #030008c7 4px;
       padding-bottom: 120px;
@@ -56,7 +56,7 @@
     background: #030008c7;
 }
 
-  nav div:hover{
+  #admin-home div:hover{
     background: rgb(52, 111, 238);
   }
   .div-enroll{
@@ -91,21 +91,24 @@
 <c:import url="../temp/header.jsp"></c:import>
 
 
-<section class="content">
+<section class="content" id="admin-home-section">
 
 <nav id="admin-home">
 <ol id="admin-list">
-<div class="div-enroll">
+<div class="div-enroll-partner div-enroll">
 <li><button class="enroll">파트너 미승인 목록</button></li>
 </div>
-<div class="div-enroll">
+<div class="div-delete-partner div-enroll">
 <li><button class="enroll">파트너 승인 목록</button></li>
 </div>
 
-<div class="div-enroll">
+<div class="div-enroll-admin div-enroll">
 <li><button class="enroll-admin">관리자 권한</button></li>
 </div>
 
+<div class="div-notice-admin div-enroll">
+<li><button class="enroll-admin">공지사항</button></li>
+</div>
 
 </nav>
 <main>
@@ -123,7 +126,7 @@
 </ol>
 
 
-<a href="/admin/management" style="margin-left:50%; margin-top:20px;">홈으로</a>
+<a href="/admin/home" style="margin-left:50%; margin-top:20px;">홈으로</a>
 
 </section>
 
