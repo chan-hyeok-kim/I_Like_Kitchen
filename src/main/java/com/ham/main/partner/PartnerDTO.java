@@ -24,7 +24,7 @@ public class PartnerDTO {
 	private String companyName;
 	private String partnerPhone;
     private String partnerCheck;
-	private ProductDTO productDTO;
+	//private ProductDTO productDTO;
 
 
 	

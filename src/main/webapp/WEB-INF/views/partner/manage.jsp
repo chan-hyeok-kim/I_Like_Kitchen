@@ -13,4 +13,7 @@
     <c:import url="../temp/header.jsp"></c:import>
     
 </body>
+<footer>
+    <c:import url="../temp/footer.jsp"></c:import>
+    </footer>
 </html>

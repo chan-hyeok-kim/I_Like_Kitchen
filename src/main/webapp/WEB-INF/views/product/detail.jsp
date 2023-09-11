@@ -30,7 +30,7 @@
       list-style: none;
       border: 1px solid gainsboro;
       padding-left:0px;
-      margion-top: 20px;
+      margin-top: 20px;
   }
   #product-question{
       height: 1000px;
@@ -50,9 +50,9 @@
       text-decoration: none;
   }
   
-  :visited{
+  /* :visited{
   
-  }
+  } */
   .text-warn{
      text-align: center;
   }
@@ -112,7 +112,7 @@
                         <c:forEach items="${kto.productFileDTOs}" var="f" varStatus="loop">
                             <div class="carousel-item ${loop.first ? 'active' : ''}">
                                 <img src="/resources/upload/product/${f.fileName}" class="d-block" alt="..."
-                                    width="500px" height="500px">
+                                    width="600px" height="500px">
                             </div>
                         </c:forEach>
                     </div>

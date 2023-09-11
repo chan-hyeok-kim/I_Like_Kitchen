@@ -134,5 +134,13 @@
 	       SET PRODUCTNAME=#{productName},PHONE=#{phone},PRICE=#{price},CONTENTS=#{contents},ADDRESS=#{address}
 	     WHERE PRODUCTNUM=#{productNum}
 	</update>
+	
+	<delete id="setFileDelete" parameterType="ProductFileDTO">
+		DELETE PRODUCTFILE WHERE FILENUM = #{fileNum}
+	</delete>
+	
+	<select id="getFileDetail" parameterType="ProductFileDTO" resultType="ProductFileDTO">
+		SELECT FILENUM, FILENAME FROM PRODUCTFILE WHERE FILENUM = #{fileNum} 
+	</select>
 
  </mapper>

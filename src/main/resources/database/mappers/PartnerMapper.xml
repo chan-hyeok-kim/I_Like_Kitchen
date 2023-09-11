@@ -12,14 +12,16 @@
     			VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerAccount}, #{partnerDate}, #{partnerName}, #{partnerPhone}, #{companyName})
     </insert>
 
-<select id="getDetail" resultMap="getDetailResult" parameterType="PartnerDTO">
-   SELECT *
+<select id="getDetail" resultType="partnerDTO" parameterType="PartnerDTO">
+   <!-- SELECT *
      FROM PARTNER PT LEFT OUTER JOIN PRODUCT PD
        ON PT.PARTNERNUM = PD.PARTNERNUM
-    WHERE PT.PARTNERNUM = #{partnerNum}
+    WHERE PT.PARTNERNUM = #{partnerNum} -->
+    
+    SELECT * FROM PARTNER WHERE PARTNERNUM = #{partnerNum}
 </select>
 
-<resultMap type="PartnerDTO" id="getDetailResult">
+<!-- <resultMap type="PartnerDTO" id="getDetailResult">
    <id column="PARTNERNUM" property="partnerNum"/>
    <result column="PARTNEREMAIL" property="partnerEmail"/>
    <result column="PARTNERPHONE" property="partnerPhone"/>
@@ -39,7 +41,7 @@
       <result column="CONTENTS" property="contents"/>
       <result column="PRODUCTNAME" property="productName"/>
    </association>
-</resultMap>
+</resultMap> -->
 
 <select id="getPartnerInfo" resultType="PartnerDTO" parameterType="String">
    SELECT * 
@@ -58,8 +60,8 @@
 </update>
 
 <update id="setUpdate" parameterType="PartnerDTO">
-   UPDATE PARTNER COMPANYNAME,PARTNERPHONE)
-      SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount}
+   UPDATE PARTNER
+      SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount},
           PARTNERNAME=#{partnerName}, COMPANYNAME=#{companyName}, 
           PARTNERPHONE=#{partnerPhone}
     WHERE PARTNERNUM=#{partnerNum}      

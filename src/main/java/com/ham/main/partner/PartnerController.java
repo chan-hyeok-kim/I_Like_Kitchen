@@ -140,8 +140,11 @@ public class PartnerController {
 	}
 	
 	@PostMapping("update")
-	public void setUpdate(PartnerDTO partnerDTO) throws Exception{
+	public String setUpdate(PartnerDTO partnerDTO) throws Exception{
+		System.out.println(partnerDTO);
 		int result = partnerService.setUpdate(partnerDTO);
+		
+		return "redirect:./update?partnerNum=" + partnerDTO.getPartnerNum();
 	}
 	
 	

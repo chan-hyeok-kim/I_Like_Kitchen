@@ -17,7 +17,7 @@
         #calendar {
           width: 800px;
           margin-right: 0px;
-          color: ;
+          /* color: ; */
         }
 
         #calendar button {

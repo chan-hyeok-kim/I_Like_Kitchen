@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/bootStrap.jsp"></c:import>
-<title>사업자등록</title>
+<title>수정</title>
 <link href="/resources/css/partner/partnerRegister.css" rel="stylesheet">
 </head>
 <body>
@@ -14,12 +14,12 @@
 	
 	<div class="container-fluid page-content">
 		<div class="row justify-content-center">
-			<h2 class="col-md-7 my-5 text-center fw-bold">협력업체 사업자 등록</h2>
+			<h2 class="col-md-7 my-5 text-center fw-bold">협력업체 사업자 등록 수정</h2>
 		</div>
 		<div class = "row justify-content-center">
-			<form class="col-md-6" id="partnerForm" action="update" method="post">
+			<form class="col-md-6" id="partnerForm" action="./update" method="post">
 		
-		    <input type="hidden" value="${kto.partnerNum}"> 
+		    <input type="hidden" name="partnerNum" class="form-control" id="partnerNum" value="${kto.partnerNum}"> 
 			
 			<div class="mb-3">
 			  <label for="partnerName" class="form-label fw-bold">대표자</label>
@@ -60,7 +60,7 @@
 		</div>
 	</div>
 
-	<script src="/resources/js/partner/partnerRegister.js"></script>
+	<script src="/resources/js/partner/update.js"></script>
 	
 	<!-- swal -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
