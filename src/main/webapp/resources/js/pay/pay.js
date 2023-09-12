@@ -39,8 +39,8 @@ IMP.init('imp27436400')
     
     IMP.request_pay({
     // pg : 'bluewalnut'
-	pg: 'tosspay',
-    pay_method : 'tosspay',
+	pg: 'html5_inicis',
+    pay_method : 'html5_inicis',
     merchant_uid: bookNum, // 상점에서 관리하는 주문 번호
     name : '주문명:결제테스트',
     amount : amount,

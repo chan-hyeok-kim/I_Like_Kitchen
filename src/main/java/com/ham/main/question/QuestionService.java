@@ -19,7 +19,7 @@ public class QuestionService {
 		pager.makePageNum(questionDAO.getTotal(pager));
   	
 		return questionDAO.list(pager);
- }
+    }
  	public List<QuestionDTO> myList() throws Exception { 
 		  
 	 return questionDAO.myList();

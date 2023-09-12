@@ -86,9 +86,9 @@
 				<div class="lead text-body-secondary" id="product-title-text">공간
 					검색 결과</div>
 				<div id="product-select-list">
-					<select>
-						<option selected>인기순</option>
-						<option value="1">최신등록순</option>
+					<select name="order">
+						<option value="0" selected>최신등록순</option>
+						<option value="1">인기순</option>
 						<option value="2">낮은가격순</option>
 						<option value="3">높은가격순</option>
 					</select>
@@ -100,7 +100,7 @@
 		</div>
 		<!-- Rooms Section Begin -->
 		<section class="rooms-section spad">
-			<div class="row">
+			<div class="row" id="product-list-div">
 				<c:forEach items="${list}" var="d" varStatus="i">
 					<div class="col-lg-4 col-md-6">
 						<div class="container_product"
@@ -119,16 +119,9 @@
 						</div>
 					</div>
 				</c:forEach>
-				<!-- 한 행에 3개의 제품을 배치하려면 여기까지 3번 반복 -->
-				<!-- 예를 들어, i.index % 3 === 2 조건을 사용하여 한 행을 마감할 수 있습니다. -->
-				<c:if test="${i.index % 3 == 2}">
+			
 			</div>
-			</div>
-			</div>
-			<div class="row">
-				</c:if>
-			</div>
-		</section>
+		
 		<br>
 
 		<!-- 					  <div class="room-pagination">
@@ -185,7 +178,7 @@
 					class="btn btn-primary btn-sm btn-block">검 색</button>
 			</form>
 		</div>
-
+</section>
 	</section>
 
 
@@ -195,7 +188,48 @@
 
 </body>
 <footer>
-	<script type="text/javascript"></script>
+  
+	<script type="text/javascript">
+	$('select[name=order]').change(function(){
+	   console.log($(this).val());
+	   if($(this).val()==3){
+		  $.ajax({
+			  type:'GET',
+			   url:'highList'
+			   ,success:function(result){
+				   console.log(result)
+				    $('.rooms-section').html(result);
+			   }
+			  
+		  })
+	   }
+	})
+
+	$('select[name=order]').change(function(){
+		
+	   console.log($(this).val());
+	   if($(this).val()==2){
+		
+		  $.ajax({
+			  type:'GET',
+			   url:'low'
+			   ,success:function(result){
+				   console.log(result)
+				    $('.rooms-section').html(result);
+			   }
+			  
+		  })
+	   }
+	})
+	
+	
+	$('select[name=order]').change(function(){
+	   console.log($(this).val());
+	   if($(this).val()==0){
+		   location.href='list';
+	   }
+	})
+	</script>
 	<script src="/resources/js/bootstrap.bundle.min.js"></script>
 	<c:import url="../temp/footer.jsp"></c:import>
 </footer>

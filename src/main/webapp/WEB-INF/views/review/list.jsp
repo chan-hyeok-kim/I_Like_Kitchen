@@ -79,20 +79,7 @@
 
 <section>
 
-<c:if test="${not empty member}">
-<div id="review-add-btn">
-		<a href="/review/add" id="btn">
-		
-		<svg
-				xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-				fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-  <path
-					d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-  <path fill-rule="evenodd"
-					d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-</svg>리뷰&nbsp;작성하기</a>
-</div>
-</c:if>
+
 
 	<div id="btnon">
 	
@@ -115,15 +102,20 @@
 					<span class="p-2 g-col-6" id="reviewContents">${list.reviewContents}</span>
 				</tr>
 				<br>
-				<c:forEach items="${sessionScope.member.roles}" var="r">
-					<c:if test="${r.getRoleName() eq 'ADMIN'}">
+				
+					<c:if test="${member.id eq list.id}">
 						<a href="/review/update?reviewNum=${list.reviewNum}" id="btn1">게시물
 							수정</a>
 						<a href="/review/delete?reviewNum=${list.reviewNum}" id="btn2">게시물
 							삭제</a>
 					</c:if>
-				</c:forEach>
-
+					<c:if test="${size eq 3}">
+					    <a href="/review/update?reviewNum=${list.reviewNum}" id="btn1">게시물
+							수정</a>
+						<a href="/review/delete?reviewNum=${list.reviewNum}" id="btn2">게시물
+							삭제</a>
+					</c:if>
+				
 			</div>
 			<div>
 				<c:forEach items="${kto.ktos}" var="f">

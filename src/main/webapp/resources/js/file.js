@@ -17,7 +17,7 @@ for(del of delets){
                 .then((result)=>{return result.text()})
                 .then((r)=>{ 
                     if(r.trim()=='1'){
-                        console.log(this.previousSibling.previousSibling.remove());
+                        
                         this.remove();
                         count--;
                     }
@@ -37,13 +37,13 @@ let count=0;
 
 if(delets != null){
     count=delets.length;
-    alert(count);
+    
 }
 
 let idx=0;
 /*
 fileList.addEventListener("click", function(event){
-    console.log(event.target);
+  
     let cl = event.target.classList;
     if(event.target.classList.contains("df")){
         let deleteId = event.target.getAttribute("data-id");

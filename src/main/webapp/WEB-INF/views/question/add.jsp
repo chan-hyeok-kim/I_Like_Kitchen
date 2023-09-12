@@ -37,6 +37,8 @@
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 <form method="post" action="/question/add" class="border-top">
+<input type="hidden" name="productNum" value="${kto.productNum}">
+
 <div class="mx-auto p-2" style="width: 600px;">
 <h3>문의하기</h3>
 
@@ -49,7 +51,6 @@
   <option disabled>문의유형을 선택하세요</option>
   <option value="가격문의">가격문의</option>
   <option value="공간문의">공간정보문의</option>
-  <option value="물품문의">물품이용문의</option>
   <option value="기타">기타</option>
 </select>
  </div>
@@ -59,16 +60,7 @@
  <textarea id="questionContents" name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" placeholder="문의사항을입력하세요"></textarea>
 	<input type="hidden" value="productNum"></input>
 
-<div>ID
-	<br>
-		<input name="id" type="text" value="dnjy1945" name="id">${member.id}
-	</div>
-<br>
-<div>
-전화번호
-	<br>
-		<input name="phone" type="text">${member.phone}
-	</div>
+
 
 <br>
 <div id="btn">

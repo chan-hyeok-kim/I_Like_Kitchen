@@ -60,6 +60,71 @@
 			</collection>
 	</resultMap>
 	
+	
+	<select id="getLowList" parameterType="Pager" resultMap="getLowPrice" >
+		SELECT * FROM 	
+			(SELECT ROWNUM R, B.* FROM
+				(
+					SELECT * FROM PRODUCT P LEFT OUTER JOIN PRODUCTFILE PF
+					ON P.PRODUCTNUM = PF.PRODUCTNUM
+					<include refid="searchSql"></include>
+					ORDER BY P.PRICE ASC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<resultMap type="ProductDTO" id="getLowPrice">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="PHONE" property="phone"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
+	
+	
+	<select id="getHighList" parameterType="Pager" resultMap="getHighPrice" >
+		SELECT * FROM 	
+			(SELECT ROWNUM R, B.* FROM
+				(
+					SELECT * FROM PRODUCT P LEFT OUTER JOIN PRODUCTFILE PF
+					ON P.PRODUCTNUM = PF.PRODUCTNUM
+					<include refid="searchSql"></include>
+					ORDER BY P.PRICE DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<resultMap type="ProductDTO" id="getHighPrice">
+		<id column="PRODUCTNUM" property="productNum"/>
+		<result column="PARTNERNUM" property="partnerNum"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="PHONE" property="phone"/>
+		<result column="PRICE" property="price"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="PRODUCTNAME" property="productName"/>
+			<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+			</collection>
+	</resultMap>
+	
+	
+	
+	
+	
+	
  	<select id="getDetail"  resultMap="getDetailResult"  parameterType="ProductDTO">
 		SELECT P.*, PF.* 
 		FROM PRODUCT P

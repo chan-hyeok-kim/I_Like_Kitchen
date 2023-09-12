@@ -31,6 +31,7 @@ public class ProductService {
 		pager.makeRowNum();
 		Long total = productDAO.getTotal(pager);
 		pager.makePageNum(total);
+		
 		return productDAO.getList(pager);
 	}
 	
@@ -69,5 +70,20 @@ public class ProductService {
 		return productDAO.setUpdate(productDTO);
 	}
 
+	public List<ProductDTO> getLowList(Pager pager) throws Exception{
+		pager.makeRowNum();
+		Long total = productDAO.getTotal(pager);
+		pager.makePageNum(total);
+		
+		return productDAO.getLowList(pager);			
+	}
+	
+	public List<ProductDTO> getHighList(Pager pager) throws Exception{
+		pager.makeRowNum();
+		Long total = productDAO.getTotal(pager);
+		pager.makePageNum(total);
+		
+		return productDAO.getHighList(pager);			
+	}
 	
 }

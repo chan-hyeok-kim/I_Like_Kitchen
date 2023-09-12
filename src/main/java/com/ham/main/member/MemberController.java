@@ -188,10 +188,11 @@ public class MemberController {
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		System.out.println(memberDTO);
 		
-		PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
 		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
+			PartnerDTO partnerDTO = partnerService.getPartnerInfo(memberDTO.getId());
+			
 			if(partnerDTO != null) {
 				if(memberDTO.getRoles().get(1).getRoleName().equals("PARTNER")) {
 					System.out.println(memberDTO.getRoles().get(1));
@@ -203,10 +204,12 @@ public class MemberController {
 			    }
 			}
 			mv.setViewName("redirect:../");
+			session.setAttribute("size",memberDTO.getRoles().size());
 		}else{
 			mv.addObject("errorMessage", "로그인에 실패했습니다.");
 			mv.setViewName("/member/memberLogin");
 		}
+		
 		
 		return mv;
 	}

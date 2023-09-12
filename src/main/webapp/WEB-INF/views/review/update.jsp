@@ -41,22 +41,14 @@
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 
 
-	<input type="hidden" value="${view.reviewNum}">
+	<input type="hidden" name="reviewNum" value="${view.reviewNum}">
 
  </div>
   <br>
   <p class="text-start fs-4">후기작성</p>
  <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">${view.reviewContents}</textarea>
 
-<input type="hidden" value="productNum">
-<div>ID
-<br><input id="id" type="text" name="id" value="${view.id}">
-</div>
-<br>
-<div>
-전화번호
-<br><input type="text" value="">
-</div>
+
 평점
 <div class="form-check">
   <input class="form-check-input" type="radio" name="reviewRate" id="exampleRadios1" value="1" checked>

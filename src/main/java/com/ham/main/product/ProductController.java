@@ -38,6 +38,8 @@ public class ProductController {
 		return "product/list";
 	}
 	
+	
+	
 	@RequestMapping(value = "detail")
 	public ModelAndView getDetail(ProductDTO productDTO, ModelAndView mv)throws Exception{
 		productDTO = productService.getDetail(productDTO);
@@ -65,7 +67,7 @@ public class ProductController {
 		return "redirect:./list";
 	}
 	
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public String setDelete(@RequestParam(name = "productNum") Long num)throws Exception{
 		int result = productService.setDelete(num);
 		return "redirect:./list";
@@ -96,5 +98,22 @@ public class ProductController {
 		return productService.setUpdate(productDTO);
 	}
 
-
+	@GetMapping("low")
+	public void getLowList(Pager pager,Model model) throws Exception{
+		List<ProductDTO> pl = productService.getLowList(pager);
+		System.out.println(pl.size());
+		model.addAttribute("list", pl);
+		model.addAttribute("pager", pager);
+	}
+	
+	@GetMapping("highList")
+	public void getHighList(Pager pager,Model model) throws Exception{
+		List<ProductDTO> pl = productService.getHighList(pager);
+		System.out.println(pl.size());
+		model.addAttribute("list", pl);
+		model.addAttribute("pager", pager);
+	}
+	
+	
+	
 }

@@ -54,4 +54,13 @@ public class ProductDAO {
 	public int setUpdate(ProductDTO productDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdate", productDTO);
 	}
+	
+	
+	public List<ProductDTO> getLowList(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getLowList", pager);			
+	}
+	
+	public List<ProductDTO> getHighList(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getHighList", pager);			
+	}
 }

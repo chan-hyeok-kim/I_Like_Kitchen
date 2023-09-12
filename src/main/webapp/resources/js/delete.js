@@ -1,40 +1,31 @@
-let del = document.getElementById("del");
-const c1 = document.getElementsByClassName("c1");
-const frm = document.getElementById("frm");
-
-let temp="hello";
-
-for(c of c1){
-    c.addEventListener("click", function(){
-        let url=this.getAttribute("data-url");
-        if(url=='delete'){
-            let result = confirm("삭제하시겠습니까?");
-            if(!result){
-                return;
-            }
-            frm.method='post';
-        }
-        frm.action=url;
-        frm.submit();
-    });
-}
 
 
-//let bookNum;
+$('#update-btn').click(function(){
+         productNum=$('#del').attr("data-delete-num")
+         console.log(productNum)
+         location.href='update?productNum='+productNum
+})
 
-//1. 함수 사용
-//function setBookNum(num){
-//    bookNum=num;
-//}
-
-// del.addEventListener("click", function(){
-//     let result = confirm("삭제 할거냐???");
-//     if(result){
-//         console.log(del.id)
-//         console.log(del.getAttribute("data-delete-num"));
-//         bookNum=del.getAttribute("data-delete-num")
-//         let parameterName=del.getAttribute("data-delete-name");
-
-//         location.href="./delete?"+parameterName+"="+bookNum;
-//     }
-// });
+ $('#del').click(function(){
+         productNum=$('#del').attr("data-delete-num")
+         console.log(productNum)
+     swal({
+        text:'삭제하시겠습니까?',
+        buttons:['취소','삭제']
+     }).then(function(){
+          $.ajax({
+              type:'POST',
+               url:'/product/delete',
+              data:{
+                  productNum:productNum       
+              },success:function(result){
+                  if(result>0){
+                  swal('게시한 공간이 삭제되었습니다')
+                  } 
+              },error:function(){
+                  swal('삭제하는 도중 에러가 발생했습니다')   
+               }
+          })
+     })
+     
+ });

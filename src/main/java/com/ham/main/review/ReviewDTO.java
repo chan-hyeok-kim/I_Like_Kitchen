@@ -19,6 +19,7 @@ public class ReviewDTO{
 	private Date reviewDate;
 	private Long reviewRate;
 	private List<ReviewDTO> ktos;
+	
 	public Long getReviewNum() {
 		return reviewNum;
 	}
