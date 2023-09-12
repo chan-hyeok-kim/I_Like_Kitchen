@@ -55,6 +55,14 @@ public class ProductDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", productDTO);
 	}
 	
+	public int setFileDelete(ProductFileDTO productFileDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE + "setFileDelete", productFileDTO);
+	}
+	
+	public ProductFileDTO getFileDetail(ProductFileDTO productFileDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getFileDetail", productFileDTO);
+	}
+	
 	
 	public List<ProductDTO> getLowList(Pager pager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getLowList", pager);			

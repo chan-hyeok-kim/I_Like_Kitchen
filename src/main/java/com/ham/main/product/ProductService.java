@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ham.main.file.FileDTO;
 import com.ham.main.partner.PartnerDTO;
 
 
@@ -66,10 +67,56 @@ public class ProductService {
 		return productDAO.getInfo(partnerDTO);
 	}
 	
-	public int setUpdate(ProductDTO productDTO) throws Exception{
-		return productDAO.setUpdate(productDTO);
+	public int setUpdate(ProductDTO productDTO, MultipartFile[] files, HttpSession session) throws Exception{
+		int result = productDAO.setUpdate(productDTO);
+		String path = "/resources/upload/product/";
+		for (MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.fileSave(path, session, multipartFile);
+			ProductFileDTO productFileDTO = new ProductFileDTO();
+			productFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			productFileDTO.setFileName(fileName);
+			productFileDTO.setProductNum(productDTO.getProductNum());
+			result = productDAO.setFileAdd(productFileDTO);
+		}
+		return result;
+	}
+	
+	public int setFileDelete(ProductFileDTO productFileDTO, HttpSession session) throws Exception {
+		//폴더파일 삭제
+		productFileDTO = productDAO.getFileDetail(productFileDTO);
+		boolean flag = fileManager.fileDelete(productFileDTO, "/resources/upload/product/", session);
+		
+		if(flag) {
+			//DB삭제
+			return productDAO.setFileDelete(productFileDTO);
+		}
+		return 0;
+	}
+	
+	public String setContentsImg(MultipartFile file, HttpSession session)throws Exception {
+		String path = "/resources/upload/product/";
+		String fileName = fileManager.fileSave(path, session, file);
+		
+		return path+fileName;
 	}
 
+	public boolean setContentsImgDelete(String path, HttpSession session) throws Exception {
+		String fileName = path.substring(path.lastIndexOf("/")+1);
+		path = path.substring(0,path.lastIndexOf("/")+1);
+		
+		FileDTO fileDTO = new FileDTO();
+		fileDTO.setFileName(fileName);
+		
+    	return fileManager.fileDelete(fileDTO, path, session);
+	}
+	
+	
+	
+	
+	
 	public List<ProductDTO> getLowList(Pager pager) throws Exception{
 		pager.makeRowNum();
 		Long total = productDAO.getTotal(pager);

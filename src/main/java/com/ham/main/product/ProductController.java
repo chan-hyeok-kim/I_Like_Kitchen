@@ -92,12 +92,37 @@ public class ProductController {
 		model.addAttribute("kto", pl.get(0));	
 	
 	}
+
 	
 	@PostMapping("update")
-	public int setUpdate(ProductDTO productDTO) throws Exception{
-		return productService.setUpdate(productDTO);
+	public String setUpdate(ProductDTO productDTO, MultipartFile[] files, HttpSession session) throws Exception{
+		int result = productService.setUpdate(productDTO, files, session);
+		return "redirect:./update?productNum=" + productDTO.getProductNum();
 	}
 
+	@GetMapping("fileDelete")
+	public String setFileDelete(ProductFileDTO productFileDTO, HttpSession session, Model model) throws Exception {
+		int result = productService.setFileDelete(productFileDTO, session);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
+	}
+	
+	@PostMapping("setContentsImg")
+	public String setContentsImage(MultipartFile files, HttpSession session,Model model) throws Exception{
+		System.out.println("setContentsImg");
+		System.out.println(files.getOriginalFilename());
+		String path = productService.setContentsImg(files, session);
+		model.addAttribute("result", path);
+		return "commons/ajaxResult";
+	}
+	
+	@PostMapping("setContentsImgDelete")
+	public String setContentsImgDelete(String path, Model model, HttpSession session)throws Exception{
+		boolean check = productService.setContentsImgDelete(path, session);
+		model.addAttribute("result", check);
+		return "commons/ajaxResult";
+	}
+	
 	@GetMapping("low")
 	public void getLowList(Pager pager,Model model) throws Exception{
 		List<ProductDTO> pl = productService.getLowList(pager);
@@ -113,7 +138,5 @@ public class ProductController {
 		model.addAttribute("list", pl);
 		model.addAttribute("pager", pager);
 	}
-	
-	
 	
 }
