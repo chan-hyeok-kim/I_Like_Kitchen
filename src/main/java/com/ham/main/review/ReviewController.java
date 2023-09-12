@@ -42,10 +42,10 @@ public class ReviewController {
 
 //게시물 작성
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session) throws Exception {
+	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		reviewDTO.setId(memberDTO.getId());	
-		reviewService.add(reviewDTO, photos, session);
+		reviewService.setAdd(reviewDTO, files, session);
 
 		return "redirect:/product/detail"+reviewDTO.getProductNum();
 

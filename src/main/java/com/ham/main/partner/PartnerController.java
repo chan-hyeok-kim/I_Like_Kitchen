@@ -131,8 +131,10 @@ public class PartnerController {
 	}
 	
 	@PostMapping("update")
-	public void setUpdate(PartnerDTO partnerDTO) throws Exception{
-		int result = partnerService.setUpdate(partnerDTO);
+	public String setUpdate(HttpSession session, PartnerDTO partnerDTO) throws Exception{
+        int result = partnerService.setUpdate(partnerDTO);
+
+		return "redirect:./update";
 	}
 	
 	

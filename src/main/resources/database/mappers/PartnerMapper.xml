@@ -96,8 +96,8 @@
 	</update>
 
 	<update id="setUpdate" parameterType="PartnerDTO">
-		UPDATE PARTNER COMPANYNAME,PARTNERPHONE)
-		SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount}
+		UPDATE PARTNER 
+		SET PARTNEREMAIL=#{partnerEmail}, PARTNERACCOUNT=#{partnerAccount},
 		PARTNERNAME=#{partnerName}, COMPANYNAME=#{companyName},
 		PARTNERPHONE=#{partnerPhone}
 		WHERE PARTNERNUM=#{partnerNum}

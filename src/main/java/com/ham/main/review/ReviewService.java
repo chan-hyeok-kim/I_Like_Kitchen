@@ -25,7 +25,24 @@ public class ReviewService {
  
 
 
-	
+	public int setAdd(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		int result = reviewDAO.add(reviewDTO);
+		String path = "/resources/upload/review/";
+
+		for(MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.fileSave(path, session, multipartFile);
+			ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
+			reviewFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			reviewFileDTO.setFileName(fileName);
+			reviewFileDTO.setReviewNum(reviewDTO.getReviewNum());
+			result = reviewDAO.setFileAdd(reviewFileDTO);
+		}
+
+		return result;
+	}
 		
 	
 	public List<ReviewDTO> list(Pager pager) throws Exception {
@@ -38,13 +55,7 @@ public class ReviewService {
 		  
 	 return reviewDAO.myList();
  	}
- //게시물 작성
-	public int add(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
-		int result = reviewDAO.add(reviewDTO);
-		
 
-		return result;
-	}
 //게시물 조회
 
  	public ReviewDTO view(Long reviewNum) throws Exception {

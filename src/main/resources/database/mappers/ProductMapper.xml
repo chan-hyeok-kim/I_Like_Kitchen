@@ -97,7 +97,7 @@
 				(
 					SELECT * FROM PRODUCT P LEFT OUTER JOIN PRODUCTFILE PF
 					ON P.PRODUCTNUM = PF.PRODUCTNUM
-					<!-- <include refid="searchSql"></include> -->
+					 <include refid="searchSql"></include> 
 					ORDER BY P.PRICE DESC
 				) B
 			)
@@ -199,5 +199,13 @@
 	       SET PRODUCTNAME=#{productName},PHONE=#{phone},PRICE=#{price},CONTENTS=#{contents},ADDRESS=#{address}
 	     WHERE PRODUCTNUM=#{productNum}
 	</update>
+	
+	<delete id="setFileDelete" parameterType="ProductFileDTO">
+		DELETE PRODUCTFILE WHERE FILENUM = #{fileNum}
+	</delete>
+
+	<select id="getFileDetail" parameterType="ProductFileDTO" resultType="ProductFileDTO">
+		SELECT FILENUM, FILENAME FROM PRODUCTFILE WHERE FILENUM = #{fileNum} 
+	</select>
 
  </mapper>

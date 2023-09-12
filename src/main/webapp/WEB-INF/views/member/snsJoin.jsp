@@ -54,4 +54,7 @@
     <script src="/resources/js/member/snsJoin.js"></script>
 
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>

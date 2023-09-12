@@ -126,7 +126,7 @@ public class ProductController {
 	@GetMapping("low")
 	public void getLowList(Pager pager,Model model) throws Exception{
 		List<ProductDTO> pl = productService.getLowList(pager);
-		System.out.println(pl.size());
+		
 		model.addAttribute("list", pl);
 		model.addAttribute("pager", pager);
 	}
@@ -134,7 +134,7 @@ public class ProductController {
 	@GetMapping("highList")
 	public void getHighList(Pager pager,Model model) throws Exception{
 		List<ProductDTO> pl = productService.getHighList(pager);
-		System.out.println(pl.size());
+		
 		model.addAttribute("list", pl);
 		model.addAttribute("pager", pager);
 	}

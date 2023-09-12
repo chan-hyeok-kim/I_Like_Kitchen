@@ -18,14 +18,33 @@
 		FROM REVIEW
 	</select>
   <!-- 게시물 목록 -->
-<select id="list" resultType="ReviewDTO">
+<select id="list" resultMap="getListResult">
   SELECT *
 		FROM (SELECT ROWNUM R, N.*
 			  FROM (SELECT * 
-			  		FROM REVIEW 
-			  		ORDER BY REVIEWNUM DESC) N)
+			  		  FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF 
+			  		    ON RV.REVIEWNUM=RF.REVIEWNUM
+			  		 ORDER BY RV.REVIEWNUM DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 </select>
+
+<resultMap type="ReviewDTO" id="getListResult">
+<id column="REVIEWNUM" property="reviewNum"/>
+<result column="PRODUCTNUM" property="productNum"/>
+<result column="ID" property="id"/>
+<result column="REVIEWRATE" property="reviewRate"/> 
+<result column="REVIEWCONTENTS" property="reviewContents"/> 
+<result column="REVIEWDATE" property="reviewDate"/> 
+ 
+<collection property="ktos" javaType="List" ofType="ProductFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORIGINALNAME" property="originalName"/>
+</collection>
+
+
+</resultMap>
+
 
 <select id="myList">
 	<include refid="myReviewList"></include>
@@ -35,7 +54,7 @@
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="ReviewDTO">
  INSERT INTO REVIEW
-  VALUES(review_seq.nextval,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
+  VALUES(REVIEW_SEQ.NEXTVAL,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="ReviewDTO">

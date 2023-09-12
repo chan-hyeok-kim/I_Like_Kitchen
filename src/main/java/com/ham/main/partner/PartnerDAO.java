@@ -41,13 +41,11 @@ public class PartnerDAO {
 	}
 	
 	public PartnerDTO getPartnerInfo(String id) throws Exception{
-		System.out.println(id);
-		System.out.println("1");
 		return sqlSession.selectOne(NAMESPACE+"getPartnerInfo", id);
 	}
 	
 	public int setUpdate(PartnerDTO partnerDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"setUpdate", partnerDTO);
+		return sqlSession.update(NAMESPACE+"setUpdate", partnerDTO);
 	}
 	
 	public List<PartnerDTO> getPermitList(Pager pager) throws Exception{
