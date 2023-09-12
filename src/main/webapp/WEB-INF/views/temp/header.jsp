@@ -61,76 +61,83 @@
 			</div>
 		</div>
 
-		<div class="menu-item">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2">
-						<div class="logo">
-							<a href="/"> <img src="/resources/img/2.png" alt="">
-							</a>
-						</div>
-					</div>
+		  <div class="menu-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/resources/img/2.png" alt="">
+                            </a>
+                        </div>
+                    </div>
 
-					<div class="col-lg-10">
-						<div class="nav-menu">
-							<nav class="mainmenu">
-								<ul>
-									<li class="active"><a href="/">Home</a></li>
-									<li><a href="/product/list">전체 공간 목록</a></li>
+                    <div class="col-lg-10">
+                        <div class="nav-menu">
+                            <nav class="mainmenu">
+                                <ul>
+                                    <li class="active"><a href="/">Home</a></li>
+                                    <li><a href="/product/list">전체 공간 목록</a></li>
 
+                                            <c:if test="${size eq 1}">
+                                                <li><a href="/partner/partnerRegister">사업자등록</a></li>
+                                            </c:if>
+                                        
+                                        <c:forEach items="${sessionScope.member.roles}" var="r">
+                                            <c:if test="${r.getRoleName() eq 'MEMBER'}">
+                                                <li><a href="/mypage/onGoing">마이페이지</a></li>
+                                                
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach items="${sessionScope.member.roles}" var="r">
+                                            <c:if test="${r.getRoleName() eq 'PARTNER'}">
+                                                <li><a href="/product/add">공간등록</a></li>
+                                                <li><a href="/partner/partnerPage">파트너페이지</a></li>
+                                            </c:if> 
+                                        </c:forEach>
+                                        <c:forEach items="${sessionScope.member.roles}" var="r">
+                                            <c:if test="${r.getRoleName() eq 'ADMIN'}">
+                                                <li><a href="/admin/home">관리자 페이지</a></li>
+                                            </c:if> 
+                                        </c:forEach>
 
-
-									<c:forEach items="${sessionScope.member.roles}" var="r">
-										<c:if test="${r.getRoleName() eq 'MEMBER'}">
-											<li><a href="/mypage/onGoing">마이페이지</a></li>
-											<li><a href="/partner/partnerRegister">사업자등록</a></li>
-										</c:if>
-									</c:forEach>
-									<c:forEach items="${sessionScope.member.roles}" var="r">
-										<c:if test="${r.getRoleName() eq 'PARTNER'}">
-											<li><a href="/product/add">공간등록</a></li>
-											<li><a href="/partner/partnerPage">파트너페이지</a></li>
-										</c:if>
-									</c:forEach>
-									<c:forEach items="${sessionScope.member.roles}" var="r">
-										<c:if test="${r.getRoleName() eq 'ADMIN'}">
-											<li><a href="/admin/home">관리자 페이지</a></li>
-										</c:if>
-									</c:forEach>
-
-								</ul>
-								</li>
-								<li><c:if test="${empty member}">
-										<li><a href="/member/memberLogin">로그인/회원가입</a></li>
-									</c:if> <c:if test="${not empty member}">
-										<c:forEach items="${sessionScope.member.roles}" var="r">
-											<c:if test="${r.getRoleName() eq 'PARTNER'}">
-												<li id="login_log" style="border-bottom: 1px solid white;">${member.id}
-													파트너님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                    
+                                    </li>
+                                    <li>
+                                        <c:if test="${empty member}">
+                                            <li><a href="/member/memberLogin">로그인/회원가입</a></li>
+                                        </c:if>
+                                        <c:if test="${not empty member}">
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'PARTNER'}">
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 파트너님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                                     </c:if>
-										</c:forEach>
-										<c:forEach items="${sessionScope.member.roles}" var="r">
-											<c:if test="${r.getRoleName() eq 'MEMBER'}">
-												<li id="login_log" style="border-bottom: 1px solid white;">${member.id}
-													회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                            </c:forEach>
+                                            <!-- <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'MEMBER'}">
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                                     </c:if>
-										</c:forEach>
-										<c:forEach items="${sessionScope.member.roles}" var="r">
-											<c:if test="${r.getRoleName() eq 'ADMIN'}">
-												<li id="login_log" style="border-bottom: 1px solid white;">관리자님,
-													환영합니다.</li>&nbsp;&nbsp;&nbsp;
-                                                    </c:if>
-										</c:forEach>
-										<li class="nav-item text-white me-3"><a
-											href="/member/memberLogout">로그아웃</a></li>
-									</c:if></li>
-								</ul>
+                                            </c:forEach> -->
+
+                                            <c:if test="${size eq 1}">
+                                                <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                            </c:if>
+
+                                            <c:forEach items="${sessionScope.member.roles}" var="r">
+                                                    <c:if test="${r.getRoleName() eq 'ADMIN'}">
+                                                        <li id="login_log" style="border-bottom: 1px solid white;">관리자님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
+                                                    </c:if> 
+                                            </c:forEach>
+                                            <li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
+                                        </c:if>
+                                    </li>
+                                </ul>
 
 
+                                
 
 
-
-							</nav>
+                            </nav>
 							<!-- <div class="nav-right search-switch">
                                 <i class="icon_search"></i>
                             </div> -->

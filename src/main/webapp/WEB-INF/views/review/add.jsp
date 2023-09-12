@@ -37,16 +37,14 @@
 
 	<div class="mx-auto p-2" style="width: 600px;">
 		<h3>후기작성</h3>
-		<form method="post" action="/review/add">
+		
+		<form method="post" action="/review/add" enctype="multipart/form-data">
+<div class="input-group mb-3">
+  <input type="file" class="form-control" id="inputGroupFile02" name="files">
+  <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
+</div>
+		
 			<input type="hidden" name="productNum" value="${kto.productNum}">
-
-			<div class="input-group mb-3">
-				<input type="file" name="photos" class="form-control"
-					id="inputGroupFile02"> <label class="input-group-text"
-					for="inputGroupFile02">사진업로드</label>
-			</div>
-
-			<input type="hidden" id="productNum" /> <br>
 			<p class="text-start fs-4">후기작성</p>
 			<textarea
 				class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6"
