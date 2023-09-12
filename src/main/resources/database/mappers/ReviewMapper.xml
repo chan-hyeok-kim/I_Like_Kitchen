@@ -33,9 +33,16 @@
 </select>
 
 <!-- 게시물 작성 -->
-<insert id="add" parameterType="ReviewDTO">
+<!-- <insert id="add" parameterType="ReviewDTO">
  INSERT INTO REVIEW
   VALUES(review_seq.nextval,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
+</insert> -->
+<insert id="add" parameterType="ReviewDTO">
+	<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
+		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+	INSERT INTO REVIEW(REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE)
+		VALUES(#{reviewNum},#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="ReviewDTO">

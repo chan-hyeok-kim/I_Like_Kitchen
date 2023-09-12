@@ -56,13 +56,13 @@
                                 <label for="email" class="form-label fw-bold">이메일</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="email" id="email" value="${kto.email}">
-                                    <select class="form-control" name="emailDomain" id="emailDomain">
+                                    <!-- <select class="form-control" name="emailDomain" id="emailDomain">
                                     	<option value="" selected="selected">선택</option>
                                         <option value="@naver.com" ${kto.emailDomain == '@naver.com' ? 'selected' : ''}>@naver.com</option>
                                         <option value="@daum.net" ${kto.emailDomain == '@daum.net' ? 'selected' : ''}>@daum.net</option>
                                         <option value="@gmail.com" ${kto.emailDomain == '@gmail.com' ? 'selected' : ''}>@gmail.com</option>
                                         <option value="@nate.com" ${kto.emailDomain == '@nate.com' ? 'selected' : ''}>@nate.com</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                             </div>
                             

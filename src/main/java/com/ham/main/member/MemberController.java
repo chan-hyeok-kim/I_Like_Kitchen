@@ -208,6 +208,9 @@ public class MemberController {
 			mv.setViewName("/member/memberLogin");
 		}
 		
+		int roleSize = memberDTO.getRoles().size();
+		session.setAttribute("size", roleSize);
+		
 		return mv;
 	}
 	

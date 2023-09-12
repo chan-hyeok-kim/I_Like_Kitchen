@@ -48,7 +48,8 @@
                         <div class="info-divider"></div>
                         <div class="row mb-3">
                             <div class="col-md-3 info-label">이메일</div>
-                            <div class="col-md-9 info-text">${kto.email}${kto.emailDomain}</div>
+                            <div class="col-md-9 info-text">${kto.email}</div>
+                            <!-- <div class="col-md-9 info-text">${kto.email}${kto.emailDomain}</div> -->
                         </div>
                         <div class="d-flex single-btn mb-3">
                         	<a href="./memberUpdate" class="btn btn-outline-secondary">회원정보 수정</a>

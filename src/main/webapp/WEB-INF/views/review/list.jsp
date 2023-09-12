@@ -98,6 +98,8 @@
 			<div id="review-list">
 				<tr class="grid gap-3">
 					<td type="hidden" ${list.reviewNum}></td>
+					
+					<td><img src="/resources/upload/review/${list.ktos[0].fileName}"></td>
 
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -123,7 +125,7 @@
 			</div>
 			<div>
 				<c:forEach items="${kto.ktos}" var="f">
-					<img src="/resources/upload/notice/${f.fileName}">
+					<img src="/resources/upload/review/${f.fileName}">
 				</c:forEach>
 			</div>
 		</c:forEach>

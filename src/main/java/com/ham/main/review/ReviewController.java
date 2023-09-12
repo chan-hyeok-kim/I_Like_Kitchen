@@ -1,5 +1,6 @@
 package com.ham.main.review;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.product.ProductDTO;
+import com.ham.main.product.ProductService;
 import com.ham.main.reply.ReplyDTO;
 import com.ham.main.reply.ReplyService;
 import com.ham.main.util.Pager;
@@ -27,6 +30,9 @@ public class ReviewController {
 	@Autowired
 	private ReplyService replyService;
 	
+	@Autowired
+	private ProductService productService;
+	
  @RequestMapping(value = "list", method = RequestMethod.GET)
  public String getList(Model model,Pager pager) throws Exception {
   
@@ -34,6 +40,7 @@ public class ReviewController {
 	  List<ReviewDTO> list = reviewService.list(pager);
 	  model.addAttribute("list", list);
 	  model.addAttribute("Pager",pager);
+	  
 	  
 	  
 	  return "review/list";
@@ -48,9 +55,10 @@ public void getAdd(HttpSession session) throws Exception {
 }
 //게시물 작성
 	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session)throws Exception{
-		reviewDTO.setProductNum(2L);
-		reviewService.add(reviewDTO,photos,session);
+	public String postAdd(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session)throws Exception{
+		reviewDTO.setProductNum(23L);
+		System.out.println(files);
+		int result = reviewService.add(reviewDTO, files, session);
 		
 		return "redirect:/review/list";
 		

@@ -35,9 +35,9 @@
 
 <div class="mx-auto p-2" style="width: 600px;">
 <h3>후기작성</h3>
-<form method="post" action="/review/add" >
+<form method="post" action="/review/add" enctype="multipart/form-data">
 <div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02">
+  <input type="file" class="form-control" id="inputGroupFile02" name="files">
   <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 </div>
 
