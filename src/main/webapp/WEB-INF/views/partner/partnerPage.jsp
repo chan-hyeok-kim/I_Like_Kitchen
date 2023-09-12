@@ -118,7 +118,8 @@
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
         const btn3 = document.getElementById("btn3");
-       
+        let productNum = '${kto[0].productNum}'
+        
         btn1.addEventListener("click", function(){
             location.href="/partner/update"
         })
@@ -128,7 +129,7 @@
         })
 
         btn3.addEventListener("click", function(){
-            location.href="/product/update"
+            location.href="/product/detail?productNum="+productNum
         })
         
         $('#btn4').click(function(){

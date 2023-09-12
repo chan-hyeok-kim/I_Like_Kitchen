@@ -7,8 +7,8 @@
   
     <!-- 회원가입 -->
   	<insert id="setMemberJoin" parameterType="MemberDTO">
-  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
-  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
+  		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE)
+  			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
   	</insert>
   	
   	<!-- SNS정보 DB저장 -->
@@ -35,7 +35,6 @@
   		<result column="NAME" property="name"/>
   		<result column="EMAIL" property="email"/>
   		<result column="PHONE" property="phone"/> 
-  		<result column="POINT" property="point"/>
   		
   		<collection property="roles" javaType="List" ofType="RoleDTO">
 			<id column="ROLENUM" property="roleNum"/>
@@ -48,12 +47,7 @@
   			VALUES (#{id}, 1)
   	</insert>
 	
-	<!-- 회원가입 -->
-	<!-- <insert id="setJoin" parameterType="MemberDTO">
-		INSERT INTO MEMBER (ID, PASSWORD, NAME, EMAIL, PHONE, POINT)
-			VALUES (#{id}, #{password}, #{name}, #{email}, #{phone}, 0)
-	</insert> -->
-	
+
 	<!-- ID 중복체크 -->
   	<select id="getMemberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
   		SELECT ID FROM MEMBER WHERE ID = #{id} 
@@ -80,45 +74,23 @@
     </select>
     
     <!-- 관리자용 -->
-    <update id="adminAdd" parameterType="MemberDTO">
- UPDATE MEMBERROLE 
-    SET ROLENUM=3
-  WHERE ROLENUM IN (SELECT MR.ROLENUM
-		             FROM MEMBER M 
-			         INNER JOIN MEMBERROLE MR
-			         ON M.ID = MR.ID
-			         WHERE M.ID = #{id})
-    </update>
+    <insert id="adminAdd" parameterType="MemberDTO">
+     INSERT INTO MEMBERROLE VALUES (#{id},3)
+    </insert>
     
-    <update id="adminRemove" parameterType="MemberDTO">
-    UPDATE MEMBERROLE 
-       SET ROLENUM=2
-     WHERE ROLENUM IN (SELECT MR.ROLENUM
-	     	             FROM MEMBER M 
-	     		         INNER JOIN MEMBERROLE MR
-	      		         ON M.ID = MR.ID
-	    		         WHERE M.ID = #{id})
-    </update>
+    <delete id="adminRemove" parameterType="MemberDTO">
+    DELETE FROM MEMBERROLE 
+     WHERE ID=#{id} AND ROLENUM=3
+    </delete>
   	
-  <update id="partnerAdd" parameterType="MemberDTO">
-  UPDATE MEMBERROLE 
-    SET ROLENUM=2
-  WHERE ROLENUM IN (SELECT MR.ROLENUM
-		             FROM MEMBER M 
-			         INNER JOIN MEMBERROLE MR
-			         ON M.ID = MR.ID
-			         WHERE M.ID = #{id})
-  </update>	
+  <insert id="partnerAdd" parameterType="MemberDTO">
+  INSERT INTO MEMBERROLE VALUES (#{id},2)
+  </insert>	
   
-   <update id="partnerRemove" parameterType="MemberDTO">
-    UPDATE MEMBERROLE 
-    SET ROLENUM=1
-  WHERE ROLENUM IN (SELECT MR.ROLENUM
-		             FROM MEMBER M 
-			         INNER JOIN MEMBERROLE MR
-			         ON M.ID = MR.ID
-			         WHERE M.ID = #{id})
-    </update>
+   <delete id="partnerRemove" parameterType="MemberDTO">
+     DELETE FROM MEMBERROLE 
+     WHERE ID=#{id} AND ROLENUM=2
+    </delete>
   	
 <!--민준 업데이트-->
 	

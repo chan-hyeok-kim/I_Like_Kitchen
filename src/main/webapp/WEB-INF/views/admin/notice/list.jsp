@@ -82,7 +82,9 @@
         #nav03 a{
         	margin-right: 5px;
         }
-        
+        #nav01 a:hover{
+            color:#0D6EFD;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +92,7 @@
 	
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
-        <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
+        
     </div>
     <div id="nav02">
         <div id="title">

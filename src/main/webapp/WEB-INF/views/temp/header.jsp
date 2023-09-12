@@ -103,34 +103,32 @@
 
                                     
                                     </li>
+                                    <div id="">
                                     <li>
+                                    
                                         <c:if test="${empty member}">
                                             <li><a href="/member/memberLogin">로그인/회원가입</a></li>
                                         </c:if>
                                         <c:if test="${not empty member}">
-                                            <c:forEach items="${sessionScope.member.roles}" var="r">
-                                                    <c:if test="${r.getRoleName() eq 'PARTNER'}">
+                                            <c:if test="${size eq 2}">
                                                         <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 파트너님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                                     </c:if>
-                                            </c:forEach>
-                                            <!-- <c:forEach items="${sessionScope.member.roles}" var="r">
-                                                    <c:if test="${r.getRoleName() eq 'MEMBER'}">
-                                                        <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
-                                                    </c:if>
-                                            </c:forEach> -->
-
+                            
+                                   
+                                            
                                             <c:if test="${size eq 1}">
                                                 <li id="login_log" style="border-bottom: 1px solid white;">${member.id} 회원님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                             </c:if>
 
-                                            <c:forEach items="${sessionScope.member.roles}" var="r">
-                                                    <c:if test="${r.getRoleName() eq 'ADMIN'}">
+                                            <c:if test="${size eq 3}">
                                                         <li id="login_log" style="border-bottom: 1px solid white;">관리자님, 환영합니다.</li>&nbsp;&nbsp;&nbsp;
                                                     </c:if> 
-                                            </c:forEach>
+                                           
                                             <li class="nav-item text-white me-3"><a href="/member/memberLogout">로그아웃</a></li>
                                         </c:if>
+                                        
                                     </li>
+                                    </div>
                                 </ul>
 
 

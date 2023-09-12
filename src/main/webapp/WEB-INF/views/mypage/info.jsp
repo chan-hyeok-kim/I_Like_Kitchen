@@ -71,10 +71,7 @@
             	<p>전화번호</p>
             	<span>${member.phone}</span>
             </div>
-            <div class="contents">
-            	<p>적립금</p>
-            	<span>${member.point}</span> 포인트
-            </div>
+           
             
             <form id="frm">
 	            <input type="hidden" name="id" value="${member.id}">

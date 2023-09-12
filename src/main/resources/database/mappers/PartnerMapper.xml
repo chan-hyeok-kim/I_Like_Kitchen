@@ -88,6 +88,12 @@
 		SET PARTNERCHECK=1
 		WHERE PARTNERNUM=#{partnerNum}
 	</update>
+	
+	<update id="setDeleteUpdate" parameterType="PartnerDTO">
+		UPDATE PARTNER
+		SET PARTNERCHECK=0
+		WHERE PARTNERNUM=#{partnerNum}
+	</update>
 
 	<update id="setUpdate" parameterType="PartnerDTO">
 		UPDATE PARTNER COMPANYNAME,PARTNERPHONE)

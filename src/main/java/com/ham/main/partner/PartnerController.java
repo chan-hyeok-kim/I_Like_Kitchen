@@ -46,9 +46,10 @@ public class PartnerController {
 	
 	
 	@GetMapping("partnerPage")
-	public void getPartnerPage() throws Exception {
-		
-	
+	public void getPartnerPage(HttpSession session,Model model) throws Exception {
+		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
+		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+		model.addAttribute("kto", pl);
 	}
 	
 
@@ -82,15 +83,36 @@ public class PartnerController {
 	}
 
 
-
-	
 	@PostMapping("permitUpdate")
 	public String setPermitUpdate(PartnerDTO partnerDTO,Model model) throws Exception{
 		int result = partnerService.setPermitUpdate(partnerDTO);
-		model.addAttribute("result", result);
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId(partnerDTO.getId());
+		if(result>0) {
+		    result = memberService.partnerAdd(memberDTO);
+		    if(result>0) {
+				model.addAttribute("result", result);
+				} 
+		}
 		
 		return "commons/ajaxResult";
 	}
+	
+	@PostMapping("deleteUpdate")
+	public String setDeleteUpdate(PartnerDTO partnerDTO,Model model) throws Exception{
+		int result = partnerService.setDeleteUpdate(partnerDTO);
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId(partnerDTO.getId());
+		if(result>0) {
+		    result = memberService.partnerRemove(memberDTO);
+		    if(result>0) {
+				model.addAttribute("result", result);
+				} 
+		}
+		
+		return "commons/ajaxResult";
+	}
+	
 	
 	@GetMapping("detail")
 	public String getDetail(PartnerDTO partnerDTO,Model model) throws Exception{

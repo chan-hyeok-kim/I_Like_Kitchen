@@ -36,6 +36,10 @@ public class PartnerDAO {
 		return sqlSession.update(NAMESPACE+"setPermitUpdate", partnerDTO);
 	}
 	
+	public int setDeleteUpdate(PartnerDTO partnerDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setDeleteUpdate",partnerDTO);
+	}
+	
 	public PartnerDTO getPartnerInfo(String id) throws Exception{
 		System.out.println(id);
 		System.out.println("1");

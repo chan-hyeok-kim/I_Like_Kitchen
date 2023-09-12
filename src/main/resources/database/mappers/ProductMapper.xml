@@ -97,7 +97,7 @@
 				(
 					SELECT * FROM PRODUCT P LEFT OUTER JOIN PRODUCTFILE PF
 					ON P.PRODUCTNUM = PF.PRODUCTNUM
-					<include refid="searchSql"></include>
+					<!-- <include refid="searchSql"></include> -->
 					ORDER BY P.PRICE DESC
 				) B
 			)

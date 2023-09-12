@@ -31,7 +31,7 @@
       <td class="align-middle">${i.partnerName}</td>
       <td class="align-middle">${i.companyName}</td>
       <td class="align-middle">${i.partnerEmail}</td>
-      <td><button class="btn btn-dark partner-permit" data-permit="${i.partnerNum}">승인</button></td>
+      <td><button class="btn btn-dark partner-permit" data-permit="${i.id}" data-permit-num="${i.partnerNum}">승인</button></td>
     </tr>
     </c:forEach>
     
@@ -59,16 +59,16 @@
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
+<div style="display: flex; width: 700px;">
 		  <li style="margin-left:250px;"><input type="hidden" value="${pager.page}" name="page" id="page">
 			
 			<div class="col-sm-3">
 				<input class="form-control me-2" type="search" name="search"
 					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
-			</div>
 			
-			<div class="col" style="display: flex">
 				<button class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
 				</div></li>
+				</div>
 			</ul>
 		
 		</nav>

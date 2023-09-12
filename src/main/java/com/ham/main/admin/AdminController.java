@@ -38,14 +38,23 @@ public class AdminController {
 	@PostMapping("adminAdd")
 	public String adminAdd(MemberDTO memberDTO) throws Exception{
 		int result = memberService.adminAdd(memberDTO);
-		
+		result = memberService.partnerAdd(memberDTO);
 		return "admin/home";
 	}
 	
 	@PostMapping("adminRemove")
-	public String adminRemove(MemberDTO memberDTO) throws Exception{
+	public String adminRemove(MemberDTO memberDTO,Model model) throws Exception{
 	    int result = memberService.adminRemove(memberDTO);
-		return "admin/adminAuth";
+	    result = memberService.partnerRemove(memberDTO);
+		return "admin/home";
+	}
+	
+	
+	@PostMapping("partnerRemove")
+	public String partnerRemove(MemberDTO memberDTO,Model model) throws Exception{
+	    int result = memberService.partnerRemove(memberDTO);
+	    model.addAttribute("result", result);
+		return "commons/ajaxResult";
 	}
 	
 	@GetMapping("partnerList")

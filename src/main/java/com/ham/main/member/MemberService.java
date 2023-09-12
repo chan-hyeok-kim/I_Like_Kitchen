@@ -100,11 +100,11 @@ public class MemberService {
 	    }
 	//  partner 권한 부여, 삭제
 	    public int partnerAdd(MemberDTO memberDTO) throws Exception{
-	    	return memberDAO.adminAdd(memberDTO);
+	    	return memberDAO.partnerAdd(memberDTO);
 	    }
 	    
 	    public int partnerRemove(MemberDTO memberDTO) throws Exception{
-	    	return memberDAO.adminRemove(memberDTO);
+	    	return memberDAO.partnerRemove(memberDTO);
 	    }
 
 //    민준 업데이트

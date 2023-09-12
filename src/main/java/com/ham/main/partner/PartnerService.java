@@ -37,6 +37,10 @@ public class PartnerService {
 		return partnerDAO.setPermitUpdate(partnerDTO);
 	}
 	
+	public int setDeleteUpdate(PartnerDTO partnerDTO) throws Exception{
+		return partnerDAO.setDeleteUpdate(partnerDTO);
+	}
+	
 	public PartnerDTO getPartnerInfo(String id) throws Exception{
 		return partnerDAO.getPartnerInfo(id);
 	}

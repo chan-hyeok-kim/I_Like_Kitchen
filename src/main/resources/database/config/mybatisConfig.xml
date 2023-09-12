@@ -33,7 +33,7 @@
         <typeAlias type="com.ham.main.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.ham.main.notice.NoticeFileDTO" alias="NoticeFileDTO"/> 
    
-   		<typeAlias type="com.ham.main.reply.ReplyDTO" alias="ReplyDTO"/>
+   		
    </typeAliases>
 
    

@@ -21,7 +21,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.ham.main" />
 	
 	<!-- oauth2 login -->
 	<beans:bean id="naverClientID" class="java.lang.String">
@@ -48,7 +47,58 @@
 	     <beans:constructor-arg ref="naverState"/>
 	</beans:bean>
 	
+    <interceptors>
+        <interceptor>
+	        <mapping path="/admin/notice/add"/>
+	        <mapping path="/admin/notice/detail"/>
+	        <mapping path="/admin/notice/update"/>
+	        <mapping path="/admin/notice/delete"/>
+	        <mapping path="/admin/adminAuth"/>
+	        <mapping path="/admin/home"/>
+	        <mapping path="/admin/partnerList"/>
+	        <mapping path="/admin/partnerPermitList"/>
+	        <beans:ref bean="adminInterceptor"/>
+	    </interceptor>
+	    
+	    <interceptor>
+	        <mapping path="/partner/partnerPage"/>
+	        <mapping path="/partner/update"/>
+	        <mapping path="/product/add"/>
+	        <mapping path="/product/update"/>
+	        <mapping path="/book/manage"/>
+	        <mapping path="/book/checklist"/>
+	        <mapping path="/pay/checklist"/>
+	        <beans:ref bean="partnerInterceptor"/>
+	    </interceptor>
+	    
+	      <interceptor>
+	        <mapping path="/question/update"/>
+	        
+	        <beans:ref bean="ownerInterceptor"/>
+	    </interceptor>
+	    
+	    <interceptor>
+	        <mapping path="/review/update"/>
+	        
+	        <beans:ref bean="ownerInterceptor2"/>
+	    </interceptor>
+        
+        <interceptor>
+            <mapping path="/book/add"/>
+            <mapping path="/book/list"/>
+            <mapping path="/mypage/*"/>
+            <mapping path="/pay/add"/>
+            <mapping path="/pay/list"/>
+            <mapping path="/pay/refundList"/>
+            <mapping path="/question/add"/>
+            <mapping path="/review/add"/>
+            <mapping path="/temp/mypageMenu"/>
+            <beans:ref bean="memberInterceptor"/>
+        </interceptor>
+        
+    
+    </interceptors>
 
-
-
+    <context:component-scan base-package="com.ham.main" />
+	
 </beans:beans>
