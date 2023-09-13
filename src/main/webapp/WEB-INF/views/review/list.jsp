@@ -77,7 +77,7 @@
 </head>
 <body>
 
-<section>
+<section id="entire">
 
 
 
@@ -89,7 +89,7 @@
 			<div id="review-list">
 				<tr class="grid gap-3">
 					<td type="hidden" ${list.reviewNum}></td>
-                    <td><img src="/resources/upload/review/${list.ktos[0].fileName}"></td>  
+                    <td><img src="/resources/upload/review/${list.ktos[0].fileName}" width="200px" height="200px"></td><br>  
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
   <path
@@ -123,10 +123,36 @@
 				</c:forEach>
 			</div>
 		</c:forEach>
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${pager.startNum eq 1}">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${pager.startNum}">Previous</a></li>
+				</c:if>
+				<c:if test="${pager.startNum ne 1}">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${pager.startNum-1}">Previous</a></li>
+				</c:if>
+
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item"><a class="page-link move"
+						href="#" data-num="${i}">${i}</a></li>
+				</c:forEach>
+
+
+				<li class="page-item ${pager.next?'':'disabled'}"><a
+					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
+
+            <li style="margin-left:250px;"> <input type="hidden" value="${pager.page}" name="page" id="page">
+				</li>
+			</ul>
+
+		</nav>
 
 
 	</tbody>
-	<div id="nav03" class="container text-center fs-3">
+	<%-- <div id="nav03" class="container text-center fs-3">
 		<c:if test="${pager.page > 1}">
 			<a href="list?page=${pager.page - 1}"> <span>◁</span>
 			</a>
@@ -140,8 +166,28 @@
 			<a href="list?page=${pager.page + 1}"> <span>▷</span>
 			</a>
 		</c:if>
-	</div>
+	</div> --%>
 
 </section>
+
+<script type="text/javascript">
+page = '${pager.page}'
+
+$('.move').click(function(){
+  $('#page').val($(this).attr('data-num'));
+ let listPage = $('#page').val(); 
+ //let listSearch = $('#search').val(); 
+ $.ajax({
+	type:'GET',
+	url:'/review/list?page='+page
+    ,success:function(result){
+		$('#entire').empty();
+		$('#entire').append(result);
+		window.scrollBy(0,-500);
+	}  
+})
+}) 
+</script>
+
 </body>
 </html>

@@ -136,7 +136,7 @@
 						<c:forEach items="${kto.productFileDTOs}" var="f" varStatus="loop">
 							<div class="carousel-item ${loop.first ? 'active' : ''}">
 								<img src="/resources/upload/product/${f.fileName}"
-									class="d-block" alt="..." width="500px" height="500px">
+									class="d-block" alt="..." width="600px" height="500px">
 							</div>
 						</c:forEach>
 					</div>

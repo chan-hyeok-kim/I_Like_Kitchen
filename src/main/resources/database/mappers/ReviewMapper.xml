@@ -18,7 +18,7 @@
 		FROM REVIEW
 	</select>
   <!-- 게시물 목록 -->
-<select id="list" resultMap="getListResult">
+<select id="list" resultMap="getListResult" parameterType="Pager">
   SELECT *
 		FROM (SELECT ROWNUM R, N.*
 			  FROM (SELECT * 
@@ -52,9 +52,16 @@
 </select>
 
 <!-- 게시물 작성 -->
-<insert id="add" parameterType="ReviewDTO">
+<!-- <insert id="add" parameterType="ReviewDTO">
  INSERT INTO REVIEW
   VALUES(REVIEW_SEQ.NEXTVAL,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
+</insert> -->
+<insert id="add" parameterType="ReviewDTO">
+	<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
+		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+	INSERT INTO REVIEW(REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE)
+		VALUES(#{reviewNum},#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
 <select id="view" parameterType="Long" resultType="ReviewDTO">
@@ -63,8 +70,17 @@
   WHERE REVIEWNUM=#{reviewNum}
 </select>
 <!-- 게시물 수정 -->
-<update id="update" parameterType="ReviewDTO" >
+<!-- <update id="update" parameterType="ReviewDTO" >
  UPDATE REVIEW
+    SET ID = #{id}, REVIEWRATE=#{reviewRate}, REVIEWCONTENTS=#{reviewContents},
+    REVIEWDATE=SYSDATE
+  WHERE REVIEWNUM = #{reviewNum}
+</update> -->
+<update id="update" parameterType="ReviewDTO">
+	<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
+		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+	UPDATE REVIEW
     SET ID = #{id}, REVIEWRATE=#{reviewRate}, REVIEWCONTENTS=#{reviewContents},
     REVIEWDATE=SYSDATE
   WHERE REVIEWNUM = #{reviewNum}
