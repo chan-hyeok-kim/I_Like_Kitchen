@@ -42,48 +42,48 @@ public class QuestionController {
 	public String Add(QuestionDTO questionDTO, HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		questionDTO.setId(memberDTO.getId());
-
+        System.out.println(questionDTO);
 		questionService.add(questionDTO);
 
-		return "redirect:/product/detail?"+questionDTO.getProductNum();
+		return "redirect:/product/detail?productNum="+questionDTO.getProductNum();
 
 	}
 
 	// 게시물 조회
 	@RequestMapping(value = "view", method = RequestMethod.GET)
-	public void getView(@RequestParam("questionNum") Long questionNum, Model model) throws Exception {
+	public void getDetail(QuestionDTO questionDTO, Model model) throws Exception {
 
-		QuestionDTO questionDTO = questionService.view(questionNum);
-
-		model.addAttribute("view", questionDTO);
+		questionDTO = questionService.getDetail(questionDTO);
+		model.addAttribute("kto", questionDTO);
 	}
 
 	// 게시물 수정 폼
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void getUpdate(@RequestParam("questionNum") long questionNum, Model model) throws Exception {
+	public void getUpdate(QuestionDTO questionDTO, Model model) throws Exception {
 
-		QuestionDTO questionDTO = questionService.view(questionNum);
-
-		model.addAttribute("view", questionDTO);
+		questionDTO = questionService.getDetail(questionDTO);
+		model.addAttribute("kto", questionDTO);
 	}
 
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String postUpdate(QuestionDTO questionDTO) throws Exception {
-
 		questionService.update(questionDTO);
-
-		return "redirect:/question/list";
-		// view?questionNum=" + questionDTO.getQuestionNum();
+		System.out.println(questionDTO);
+		questionDTO = questionService.getDetail(questionDTO);
+		System.out.println(questionDTO);
+		return "redirect:/product/detail?productNum="+questionDTO.getProductNum();
+		
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("questionNum") long questionNum) throws Exception {
-
-		questionService.delete(questionNum);
-        QuestionDTO questionDTO = questionService.view(questionNum);
-		 
-		return "redirect:/product/detail"+questionDTO.getProductNum();
+	public String getDelete(QuestionDTO questionDTO) throws Exception {
+		questionDTO = questionService.getDetail(questionDTO);
+		long productNum = questionDTO.getProductNum();
+		questionService.delete(questionDTO);
+		
+		return "redirect:/product/detail?productNum="+productNum;
+		
 	}
 
 }

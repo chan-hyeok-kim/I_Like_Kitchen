@@ -151,6 +151,7 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
+				
 			</div>
 
 			<!-- 오른쪽 영역 (상품 정보) -->
@@ -216,6 +217,10 @@
 		</div>
 
 
+
+
+
+
 		<div id="product-question">
 			<div id="question-title">
 				문의
@@ -234,6 +239,10 @@
 
 			</div>
 		</div>
+
+
+
+
 
 
 
@@ -310,6 +319,11 @@
 		console.log(typeof productNum)
 		location.href = '/question/add?productNum=' + productNum
 	})
+	
+	
+	
+	
+	
 </script>
 
 <footer>

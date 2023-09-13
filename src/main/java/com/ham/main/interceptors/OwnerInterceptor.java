@@ -31,6 +31,7 @@ public class OwnerInterceptor extends HandlerInterceptorAdapter{
 		Map<String, Object> map = modelAndView.getModel(); 
        
 		QuestionDTO questionDTO = (QuestionDTO)map.get("kto");
+		System.out.println(questionDTO);
 		if(!questionDTO.getId().equals(memberDTO.getId())) {
 			modelAndView.addObject("message", "작성자만 가능합니다");
 			modelAndView.addObject("url", "./list");

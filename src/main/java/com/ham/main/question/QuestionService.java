@@ -31,10 +31,9 @@ public class QuestionService {
  }
 //게시물 조회
 
- 	public QuestionDTO view(long questionNum) throws Exception {
-
- 	return questionDAO.view(questionNum);
-}
+ 	public QuestionDTO getDetail(QuestionDTO questionDTO) throws Exception {
+ 	       return questionDAO.getDetail(questionDTO);
+    }
  // 게시물 수정
  	
  	public int update(QuestionDTO questionDTO) throws Exception {
@@ -43,8 +42,8 @@ public class QuestionService {
  	}
  	
  // 게시물 삭제
- 	public int delete(long questionNum) throws Exception {
- 	 return questionDAO.delete(questionNum);
+ 	public int delete(QuestionDTO questionDTO) throws Exception {
+ 	   return questionDAO.delete(questionDTO);
  	}
 
 	

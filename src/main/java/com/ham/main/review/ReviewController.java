@@ -47,7 +47,7 @@ public class ReviewController {
 		reviewDTO.setId(memberDTO.getId());	
 		reviewService.setAdd(reviewDTO, files, session);
 
-		return "redirect:/product/detail"+reviewDTO.getProductNum();
+		return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
 
 	}
 
@@ -94,7 +94,7 @@ public class ReviewController {
 		reviewService.delete(reviewNum);
         ReviewDTO reviewDTO = reviewService.view(reviewNum);
         
-        return "redirect:/product/list"+reviewDTO.getProductNum();
+        return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
 	}
 
 	@GetMapping("fileDelete")

@@ -20,6 +20,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		System.out.println(memberDTO);
 		List<RoleDTO> roles = memberDTO.getRoles();
 		for(RoleDTO role: roles) {
 			if(role.getRoleName().equals("MEMBER")){

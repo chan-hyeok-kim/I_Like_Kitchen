@@ -6,18 +6,37 @@
 count = $('.book-table-list').length
 console.log(count)
 
+bookNum='';
+amount='';
+payNum='';
+
 for(let i=0; i<count; i++){
 
 $('.btn-home').eq(i).click(function(){
   let countNum= i+1;
-  let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
-  let amount = $('#data-refund'+countNum).attr("data-refund-amount");
-  let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
+  bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
+  amount = $('#data-refund'+countNum).attr("data-refund-amount");
+  payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
      console.log(bookNum)
      console.log(amount)
      console.log(payNum)
      $('#btn-refund'+countNum).eq(i).click(function(){
        console.log('모달 환불 클릭됨')
+       if($('.reason').eq(i).val()==''){
+        console.log($('.reason').eq(i).val())
+        swal('환불 사유를 입력해주세요')
+        }else{
+
+         let cancelReason = $('.reason').eq(i).val();
+         console.log(cancelReason)
+         swal({
+           text:'환불하시겠습니까?',
+           buttons:['취소','확인']
+         }).then(function(){
+         cancelPay(cancelReason)
+         })
+  
+         }
      })
    
   
@@ -26,22 +45,7 @@ $('.btn-home').eq(i).click(function(){
 }
 
 
-for(let i=0; i<count; i++){
-   
 
-$('.btn-refund').eq(i).click(function(){
-  countNum= i+1;
- console.log(countNum)
-  let bookNum = $('#data-refund'+countNum).attr("data-refund-orderNum");
-  let amount = $('#data-refund'+countNum).attr("data-refund-amount");
-  let payNum = $('#data-refund'+countNum).attr("data-refund-payNum");
-     console.log(bookNum)
-     console.log(amount)
-     console.log(payNum)
-     
-     
-    })
-}
 
 
 
@@ -79,18 +83,18 @@ function cancelPay(cancelReason) {
     ,success:function(result){
      if(result.trim()>0){
     
-      alert("환불 성공");
+      swal("환불 성공");
       location.replace('/mypage/complete');
      }else{
-      alert("환불 실패");
+      swal("환불 실패");
      }
     },error:function(){
-      alert("에러 발생")
+      swal("에러 발생")
     }
   })
 
   //   },error:function(error) { // 환불 실패시 로직
-  //     alert("환불 정보 입력 실패");
+  //     swal("환불 정보 입력 실패");
   //   }
   // })
     
