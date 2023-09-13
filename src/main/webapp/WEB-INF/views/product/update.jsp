@@ -10,6 +10,10 @@
    <c:import url="../temp/bootStrap.jsp"></c:import>
 <body>
    <c:import url="../temp/header.jsp"></c:import>
+   
+   <section class="container mt-5">
+   
+   <h3 class="my-4 text-center">상품 수정 페이지</h3>
     
   <form action="./update" method="post" id="productForm" enctype="multipart/form-data">
 

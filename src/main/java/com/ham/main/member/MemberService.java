@@ -21,7 +21,9 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	
+	public SnsMemberDTO getBySns(SnsMemberDTO snsMemberDTO) throws Exception {
+		return memberDAO.getBySns(snsMemberDTO);
+	}
 
 	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getMemberIdCheck(memberDTO);
@@ -82,7 +84,7 @@ public class MemberService {
 	    	return memberDAO.memberTelCount(memberDTO);
 	 }
 	 
-	 public SnsMemberDTO getBySns(SnsMemberDTO snsMemberDTO) throws Exception{
+	 public SnsMemberDTO getBySnsNaver(SnsMemberDTO snsMemberDTO) throws Exception{
 	    	return memberDAO.getBySnsNaver(snsMemberDTO);
 	 }
 	 

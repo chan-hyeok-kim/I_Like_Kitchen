@@ -46,6 +46,7 @@ public class ReviewService {
 		
 	
 	public List<ReviewDTO> list(Pager pager) throws Exception {
+		pager.setPerPage(6L);
 		pager.makeRowNum();
 		pager.makePageNum(reviewDAO.getTotal(pager));
 		

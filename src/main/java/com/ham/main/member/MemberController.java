@@ -264,9 +264,12 @@ public class MemberController {
 //          }else {
 //        	  model.addAttribute("result",snsMemberDTO.getSnsName() + "님 반갑습니다.");
         	  //4. 존재 시 강제 로그인, 미존재시 가입페이지로
-	      if(!(snsMemberDTO == null)) {
-	    	  memberService.setSnsJoin(snsMemberDTO);
-	    	  session.setAttribute("member", snsMemberDTO);
+	      if(snsMemberDTO != null) {
+	    	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
+	    	  if(snsMemberDTO != null) {
+	    		  memberService.setSnsJoin(snsMemberDTO);
+	    		  session.setAttribute("member", snsMemberDTO);
+	    	  }
           }
           
 
@@ -304,7 +307,14 @@ public class MemberController {
     snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
     System.out.println(snsMemberDTO);
     
-    session.setAttribute("member", snsMemberDTO);
+    if(snsMemberDTO != null) {
+  	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
+  	  if(snsMemberDTO != null) {
+  		  memberService.setSnsJoin(snsMemberDTO);
+  		  session.setAttribute("member", snsMemberDTO);
+  	  }
+    }
+    //session.setAttribute("member", snsMemberDTO);
     mav.setViewName("/home");
     return mav;
 }

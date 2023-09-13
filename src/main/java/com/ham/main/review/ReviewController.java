@@ -47,7 +47,7 @@ public class ReviewController {
 		reviewDTO.setId(memberDTO.getId());	
 		reviewService.setAdd(reviewDTO, files, session);
 
-		return "redirect:/product/detail"+reviewDTO.getProductNum();
+		return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
 
 	}
 
@@ -57,12 +57,12 @@ public class ReviewController {
 
 		ReviewDTO reviewDTO = reviewService.view(reviewNum);
 
-		model.addAttribute("view", reviewDTO);
+		model.addAttribute("kto", reviewDTO);
 
 		// 댓글 조회
 
-		List<ReviewDTO> replyDTO = reviewService.list(reviewNum);
-		model.addAttribute("reply", replyDTO);
+//		List<ReviewDTO> replyDTO = reviewService.list(reviewNum);
+//		model.addAttribute("reply", replyDTO);
 
 	}
 
@@ -72,7 +72,7 @@ public class ReviewController {
 
 		ReviewDTO reviewDTO = reviewService.view(reviewNum);
 
-		model.addAttribute("view", reviewDTO);
+		model.addAttribute("kto", reviewDTO);
 
 		return "/review/update";
 	}
@@ -84,7 +84,8 @@ public class ReviewController {
 		reviewDTO.setId(memberDTO.getId());
 		reviewService.update(reviewDTO, files, session);
 
-		return "redirect:/review/view?reviewNum=" + reviewDTO.getReviewNum();
+		//return "redirect:/review/view?reviewNum=" + reviewDTO.getReviewNum();
+		return "redirect:/product/list";
 	}
 
 	// 게시물 삭제
@@ -94,7 +95,8 @@ public class ReviewController {
 		reviewService.delete(reviewNum);
         ReviewDTO reviewDTO = reviewService.view(reviewNum);
         
-        return "redirect:/product/list"+reviewDTO.getProductNum();
+//        return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
+        return "redirect:/product/list";
 	}
 
 	@GetMapping("fileDelete")

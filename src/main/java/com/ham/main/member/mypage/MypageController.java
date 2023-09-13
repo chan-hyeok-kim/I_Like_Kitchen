@@ -170,7 +170,7 @@ public class MypageController {
 		memberDTO = (MemberDTO) session.getAttribute("member");
 		
 		if(memberDTO != null) {
-			memberDTO = memberService.getCheckInfo(memberDTO);
+			memberDTO = memberService.getMemberLogin(memberDTO);
 			
 			session.setAttribute("member", memberDTO);
 			
@@ -184,7 +184,7 @@ public class MypageController {
 	public String checkInfo(MemberDTO memberDTO, HttpSession session, Model model) throws Exception {
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		
-		memberDTO = memberService.getCheckInfo(memberDTO);
+		memberDTO = memberService.getMemberLogin(memberDTO);
 		
 		model.addAttribute("member	", memberDTO);
 		
