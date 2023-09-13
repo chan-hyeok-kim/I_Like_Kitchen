@@ -93,10 +93,10 @@ public class ReviewController {
 	public String getDelete(@RequestParam("reviewNum") long reviewNum) throws Exception {
 
 		reviewService.delete(reviewNum);
-        ReviewDTO reviewDTO = reviewService.view(reviewNum);
-        
-//        return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
-        return "redirect:/product/list";
+       ReviewDTO reviewDTO = reviewService.view(reviewNum);
+       
+        return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
+
 	}
 
 	@GetMapping("fileDelete")

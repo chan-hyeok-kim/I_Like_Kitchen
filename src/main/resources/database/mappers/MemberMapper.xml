@@ -102,7 +102,7 @@
 		SELECT * 
 		FROM MEMBER
 		WHERE ID = #{id}
-			AND PASSWORD = #{password}
+		AND PASSWORD = #{password}
 	</select>
 
 	<update id="setUpdate" parameterType="MemberDTO">

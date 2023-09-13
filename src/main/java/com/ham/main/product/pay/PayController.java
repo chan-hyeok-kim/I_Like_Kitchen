@@ -261,12 +261,24 @@ public class PayController {
 				rl.add(refundDTO);
 			}
 		}
+		
+		List<PayDTO> plTwo = new ArrayList<PayDTO>();
+		for(RefundDTO r: rl) {
+			PayDTO payDTO = new PayDTO();
+		    payDTO.setPayNum(r.getPayNum());
+		    payDTO = payService.getDetail(payDTO);
+		    if(payDTO!=null) {
+		    	plTwo.add(payDTO);
+		    }
+		}
+		
 
 		if (rl.size() != 0) {
 			model.addAttribute("payList", pl);
 			model.addAttribute("list", bl);
 			model.addAttribute("productList", pdl);
 			model.addAttribute("refundList", rl);
+			model.addAttribute("payDetailList", plTwo);
 		}
 
 	}

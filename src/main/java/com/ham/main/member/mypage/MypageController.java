@@ -186,7 +186,7 @@ public class MypageController {
 		
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		
-		model.addAttribute("member	", memberDTO);
+		model.addAttribute("member", memberDTO);
 		
 		return "/mypage/checkInfo";
 	}

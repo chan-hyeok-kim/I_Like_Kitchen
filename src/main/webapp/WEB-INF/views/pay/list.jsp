@@ -134,6 +134,7 @@
 
         
 </c:forEach>
+
 <nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">

@@ -88,11 +88,14 @@
 		</form>
 	</div>
 
-	<c:import url="../temp/footer.jsp"></c:import>
+	
 	<script src="../resources/js/file.js" type="text/javascript">
 		
 	</script>
 
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>
 

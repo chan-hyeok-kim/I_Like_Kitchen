@@ -4,6 +4,7 @@ let buyer_name = $('#pay-info').attr('data-name');
 let phone = $('#pay-info').attr('data-phone');
 let bookNum = $('#pay-info').attr('data-book-num');
 
+
 //시간 계산
 
 let start = $('#bookTime').attr('data-startTime');

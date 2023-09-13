@@ -53,7 +53,7 @@ td, th {
 }
 
 .table2 {
-	width: 400px;
+	width: 100%;
 	font-size: 20px
 }
 

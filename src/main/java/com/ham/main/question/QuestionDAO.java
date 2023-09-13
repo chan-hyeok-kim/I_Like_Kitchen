@@ -35,9 +35,9 @@ public class QuestionDAO {
 	}
 
 //게시물 조회
-	public QuestionDTO view(long questionNum) throws Exception {
+	public QuestionDTO getDetail(QuestionDTO questionDTO) throws Exception {
 
-	return sql.selectOne(NAMESPACE + "view", questionNum);
+	return sql.selectOne(NAMESPACE + "getDetail", questionDTO);
 
  }
 	
@@ -47,17 +47,12 @@ public class QuestionDAO {
 	 return sql.update(NAMESPACE + "update", questionDTO);
 	}
 	// 게시물 삭제
-	public int delete(long questionNum) throws Exception {
-	 return sql.delete(NAMESPACE + "delete", questionNum);
-	}
-	public int setReplyAdd(QuestionDTO questionDTO)throws Exception{
-		System.out.println("setReplyAdd");
-		return sql.insert(NAMESPACE+"setReplyAdd", questionDTO);
+	public int delete(QuestionDTO questionDTO) throws Exception {
+	 return sql.delete(NAMESPACE + "delete", questionDTO);
 	}
 	
-	public int setStepUpdate(QuestionDTO questionDTO)throws Exception{
-		return sql.update(NAMESPACE +"setStepUpdate", questionDTO);
-	}
+	
+	
 
 		public Long getTotal(Pager pager) {
 		

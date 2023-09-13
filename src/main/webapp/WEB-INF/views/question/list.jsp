@@ -104,8 +104,8 @@
 							<div id="admin-btn">
                               
 								<a href="/question/update?questionNum=${list.questionNum}"
-									id="btn1">게시물 수정</a> <a
-									href="/question/delete?questionNum=${list.questionNum}"
+									id="btn1">게시물 수정</a> 
+								<a href="/question/delete?questionNum=${list.questionNum}"
 									id="btn2">게시물 삭제</a>
 							</div>
 						</c:if>
@@ -132,11 +132,11 @@
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
 					<li class="page-item"><a class="page-link move" href="#"
-						data-num="${pager.startNum}">Previous</a></li>
+						data-num="${pager.startNum}">&#60</a></li>
 				</c:if>
 				<c:if test="${pager.startNum ne 1}">
 					<li class="page-item"><a class="page-link move" href="#"
-						data-num="${pager.startNum-1}">Previous</a></li>
+						data-num="${pager.startNum-1}">&#60</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -146,22 +146,29 @@
 
 
 				<li class="page-item ${pager.next?'':'disabled'}"><a
-					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
+					class="page-link move" href="#" data-num="${pager.lastNum+1}">&#62</a></li>
 			</ul>
+			<input type="hidden" value="${pager.page}" name="page" id="page">
 		</nav>
+		<a id="move-question" href="#question-title"></a>
 	</section>
 
 	<script type="text/javascript">
 		page = '${pager.page}'
-
+        
+		console.log(page)
 		$('.move').click(function() {
+			console.log(page)
 			$('#page').val($(this).attr('data-num'));
-			let listPage = $('#page').val();
+			page = $('#page').val();
+			console.log(page)
 			$.ajax({
 				type : 'GET',
-				url : '/notice/list?page=' + page,
+				url : '/question/list?page=' + page,
 				success : function(result) {
-					$('#question-list').html(result);
+					$('#question-list').empty();
+					$('#question-list').append(result);
+					$('#move-question').get(0).click();
 				}
 			})
 		})

@@ -40,10 +40,10 @@
 <h3>문의수정하기</h3>
 <form method="post" action="update">
 
-<input type="hidden" name="questionNum" value="${view.questionNum}"></input>
+<input type="hidden" name="questionNum" value="${kto.questionNum}"></input>
 
 <div>문의유형
-<select class="form-select w-75" aria-label="Default select example" name="questionKind" value="${view.questionKind}">
+<select class="form-select w-75" aria-label="Default select example" name="questionKind" value="${kto.questionKind}">
   <option value="가격문의">가격문의</option>
   <option value="공간정보문의">공간정보문의</option>
   <option value="물품이용문의">물품이용문의</option>
@@ -52,17 +52,10 @@
  </div>
   <br>
   <p class="text-start fs-4">문의사항</p>
- <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6">${view.questionContents}</textarea>
+ <textarea name="questionContents" class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6">${kto.questionContents}</textarea>
 
 
-<div>ID
-<br><input id="id" type="text" value="${view.id}" name="id"></input>
-</div>
-<br>
-<div>
-전화번호
-<br><input type="text" value=""></input>
-</div>
+
 <br>
 <br>
 <div id="btn">

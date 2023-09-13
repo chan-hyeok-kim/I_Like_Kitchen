@@ -17,16 +17,6 @@
 </select>
   <!-- 게시물 목록 -->
 
-
-
-  <resultMap type="QuestionDTO" id="getSelectResult">
-		<id column="QUESTIONNUM" property="questionNum"/>
-		<result column="ID" property="id"/>
-		<result column="QUESTIONKIND" property="questionKind"/>
-		<result column="QUESTIONCONTENTS" property="questionContents"/>
-		<result column="QUESTIONDATE" property="questionDate"/>
-		
-	</resultMap>
 	
 	<select id="getTotal" resultType="Long">
 		SELECT COUNT(QUESTIONNUM) 
@@ -47,10 +37,11 @@
    VALUES(question_seq.nextval, #{productNum},#{id},#{questionKind},#{questionContents},SYSDATE)
 </insert>
   <!-- 게시물 조회 -->
-<select id="view" parameterType="Long" resultType="com.ham.main.question.QuestionDTO">
-SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
-   FROM QUESTION
-  WHERE QUESTIONNUM = #{questionNum}   
+<select id="getDetail" parameterType="QuestionDTO" resultType="QuestionDTO">
+SELECT *
+  FROM QUESTION
+ WHERE QUESTIONNUM = #{questionNum}
+ 
 </select>
 <!-- 게시물 수정 -->
 <update id="update" parameterType="QuestionDTO" >
@@ -62,7 +53,7 @@ SELECT QUESTIONNUM, PRODUCTNUM, ID, QUESTIONKIND, QUESTIONCONTENTS, QUESTIONDATE
   WHERE QUESTIONNUM = #{questionNum}
 </update>
 <!-- 게시물 삭제 -->
-<delete id="delete" parameterType="Long">
+<delete id="delete" parameterType="QuestionDTO">
  DELETE 
    FROM QUESTION
   WHERE QUESTIONNUM = #{questionNum}
