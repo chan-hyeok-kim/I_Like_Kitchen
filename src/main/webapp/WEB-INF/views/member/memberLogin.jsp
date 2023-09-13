@@ -8,10 +8,19 @@
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <title>로그인</title>
 <link href="/resources/css/member/memberLogin.css" rel="stylesheet">
+
+<style type="text/css">
+     #login-section{
+             padding-bottom:85px;  
+     }
+</style>
+
+
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
 
+<section id="login-section">
 	<div class="row">
         <div class="col-md-8 mx-auto checkboxGroup">
             <div class="terms-container">
@@ -54,10 +63,11 @@
 					</div>
 				</div>
 			</div>
-
-			
-		</form>
+</div>
+		</div>	
 		
+		</form>
+</section>		
   	
 
 </body>

@@ -34,28 +34,24 @@
 		
 		<br>
 
-		<!-- 					  <div class="room-pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
-                    </div> -->
+		
 		<nav class="room-pagination" aria-label="Page navigation example">
 			<ul class="pagination" id="product-ul-list2">
 
 				<li class="page-item ${pager.pre?'':'disabled'}"><a
 					class="page-link"
-					href="./list?page=${pager.startNum-1}&kind=${param.kind}&search=${param.search}"
+					href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}"
 					aria-label="Previous fa-long-arrow-left"> <span
 						aria-hidden="true">&laquo;</span>
 				</a></li>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 					<li class="page-item"><a class="page-link"
-						href="./list?page=${i}&kind=${param.kind}&search=${param.search}">${i}</a></li>
+						href="./list?page=${i}&kind=${param.kind}&search=${pager.search}">${i}</a></li>
 				</c:forEach>
 				<c:if test="${pager.next}">
 					<li class="page-item"><a class="page-link"
-						href="./list?page=${pager.lastNum+1}&kind=${param.kind}&search=${param.search}"
+						href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"
 						aria-label="Next fa-long-arrow-right"> <span
 							aria-hidden="true">&raquo;</span>
 					</a></li>

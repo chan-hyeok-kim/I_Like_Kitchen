@@ -117,9 +117,9 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">환불 요청</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="data-refund${fi.count}" data-refund-payNum="${p.payNum}" data-refund-amount="${p.payAmount}" data-refund-orderNum="${p.bookNum}">
+      <div class="modal-body data-refund" id="data-refund${fi.count}" data-refund-payNum="${p.payNum}" data-refund-amount="${p.payAmount}" data-refund-orderNum="${p.bookNum}">
         환불 사유를 입력해주세요
-      <input class="form-control" name="reason" id="reason${fi.count}" class="reason">
+      <input class="form-control reason" name="reason" id="reason${fi.count}" class="reason">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" class="btn">닫기</button>
@@ -138,11 +138,11 @@
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
 					<li class="page-item"><a class="page-link move"
-						href="#" data-num="${pager.startNum}">Previous</a></li>
+						href="#" data-num="${pager.startNum}">&laquo;</a></li>
 				</c:if>
 				<c:if test="${pager.startNum ne 1}">
 					<li class="page-item"><a class="page-link move"
-						href="#" data-num="${pager.startNum-1}">Previous</a></li>
+						href="#" data-num="${pager.startNum-1}">&laquo;</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -152,7 +152,7 @@
 
 
 				<li class="page-item ${pager.next?'':'disabled'}"><a
-					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
+					class="page-link move" href="#" data-num="${pager.lastNum+1}">&raquo;</a></li>
 
             <li style="margin-left:250px;"> <input type="hidden" value="${pager.page}" name="page" id="page">
 			<div class="col-sm-3">
@@ -161,7 +161,7 @@
 			</div>
 			</li><li>
 			<div class="col" style="padding-left: 0px">
-				<button style="margin-left: 0px" class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
+				<button style="margin-left: 0px; width:80px;" class="btn btn-dark" type="submit" id="search-btn" data-member-id="${member.id}">검색</button>
 				</li>
 			</ul>
 
