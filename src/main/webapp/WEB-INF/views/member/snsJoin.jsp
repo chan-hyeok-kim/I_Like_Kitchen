@@ -22,7 +22,12 @@
 
                 <div class="card mb-4">
                 	<div class="card-header">
+                	<c:if test="${snsMember.platForm eq 'kakao'}">
+						<form action="auth/naver/snsJoin" id="frm" method="post">
+						</c:if>
+						<c:if test="${snsMember.platForm ne kakao}">
 						<form action="./snsJoin" id="frm" method="post">
+						</c:if>
 							<div class="mb-3">
                                 <label for="password" class="form-label fw-bold">비밀번호</label>
                                 <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호 입력" minlength="6" maxlength="12" required>
@@ -52,7 +57,9 @@
 	</div>
 
     <script src="/resources/js/member/snsJoin.js"></script>
-
+<script type="text/javascript">
+console.log('${snsMember.platForm}')
+</script>
 </body>
 <footer>
 <c:import url="../temp/footer.jsp"></c:import>

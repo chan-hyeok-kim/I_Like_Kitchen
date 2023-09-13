@@ -78,7 +78,7 @@
 </style>
 </head>
 <body>
-	<section id="question-list">
+	<section id="question-list-section">
 
 
 		<div id="btnon">
@@ -166,8 +166,8 @@
 				type : 'GET',
 				url : '/question/list?page=' + page,
 				success : function(result) {
-					$('#question-list').empty();
-					$('#question-list').append(result);
+					$('#question-list-section').empty();
+					$('#question-list-section').append(result);
 					$('#move-question').get(0).click();
 				}
 			})

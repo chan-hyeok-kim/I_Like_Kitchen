@@ -5,10 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
-로그인 성공 실패 결과창
-${result}
 
 </body>
+<script type="text/javascript">
+swal('${result}').then(function(){
+location.href="/"
+})
+</script>
 </html>

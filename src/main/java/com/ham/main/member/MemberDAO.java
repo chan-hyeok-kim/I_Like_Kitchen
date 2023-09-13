@@ -13,7 +13,7 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.ham.main.member.MemberDAO.";
 	
 	public SnsMemberDTO getBySns(SnsMemberDTO snsMemberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "SnsMemberDTO", snsMemberDTO);
+		return sqlSession.selectOne(NAMESPACE + "getBySns", snsMemberDTO);
 	}
 	
 	public MemberDTO getMemberEmailCheck(MemberDTO memberDTO) throws Exception {

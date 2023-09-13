@@ -37,8 +37,8 @@ public class MemberService {
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
 		int result = memberDAO.setMemberJoin(memberDTO);
 		
+	
 		result = memberDAO.setMemberRole(memberDTO);
-
 		
 		return result;
 	}

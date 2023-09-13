@@ -68,7 +68,7 @@
     </select>
     
     <select id="getBySns" resultType="SnsMemberDTO" parameterType="SnsMemberDTO">
-        SELECT * FROM SNSMEMBER WHERE SNSEMAIL = #{snsEmail}
+        SELECT * FROM SNSMEMBER WHERE SNSEMAIL=#{snsEmail}
     </select>
     
     <select id="getDetail" resultType="MemberDTO" parameterType="MemberDTO">

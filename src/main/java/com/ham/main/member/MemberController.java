@@ -146,26 +146,28 @@ public class MemberController {
 	}
 	
 	@GetMapping("snsJoin")
-	public ModelAndView setSnsAdd() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/member/snsJoin");
-		
-		return mv;
+	public void setSnsAdd() throws Exception {
+	
 	}
 	
-	@PostMapping("snsJoin")
+	@PostMapping("auth/naver/snsJoin")
 	public ModelAndView setSnsAdd(HttpSession session, MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("member");
-		
+		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("snsMember");
+		System.out.println(memberDTO);
+		System.out.println(snsMemberDTO);
+		int result = memberService.setSnsJoin(snsMemberDTO);
 		memberDTO.setId(snsMemberDTO.getSnsEmail());
 		memberDTO.setName(snsMemberDTO.getSnsName());
 		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
+		             
+		result = memberService.setMemberJoin(memberDTO);
+		System.out.println(result);
 		
-		int result = memberService.setMemberJoin(memberDTO);
+		session.setAttribute("member", memberDTO);
 		
-		mv.setViewName("redirect:../");
+		mv.setViewName("redirect:../../../");
 		return mv;
 	}
 	
@@ -236,7 +238,13 @@ public class MemberController {
 		return mv;
 	}
 	
+//	이메일이 같고, 플랫폼이 같은경우
+//	이런경우는 걍-> 로그인시키면됨
+//	이메일이 같고, 플랫폼이 다른경우
+//	이런 경우는 이미 사용하는 이메일입니다 메세지 띄워주고 홈
 
+	
+	
 	
 	//sns로그인
 	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})
@@ -256,36 +264,38 @@ public class MemberController {
 	      SnsMemberDTO snsMemberDTO = snsLogin.getUserProfile(code); //1,2번 동시
 	      System.out.println("Profile>>" + snsMemberDTO);
 		      
-//	      3.DB에 해당 유저가 존재하는지 체크 ->호스트 가입시에 넣어야할듯
-//	      반드시 memberDTO로 실행해야함
-//	     MemberDTO = memberService.getBySns(MemberDTO);  
-//          if(MemberDTO == null) {
-//        	  model.addAttribute("result","존재하지 않는 사용자입니다 가입해주세요");
-//          }else {
-//        	  model.addAttribute("result",snsMemberDTO.getSnsName() + "님 반갑습니다.");
-        	  //4. 존재 시 강제 로그인, 미존재시 가입페이지로
+
 	      if(snsMemberDTO != null) {
+	    	  session.setAttribute("snsMember", snsMemberDTO);
 	    	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
-	    	  if(snsMemberDTO != null) {
-	    		  memberService.setSnsJoin(snsMemberDTO);
-	    		  session.setAttribute("member", snsMemberDTO);
+	    	  if(snsMemberDTO == null) {
+	    	     return "/member/snsJoin";
+	    	  }else if(snsMemberDTO.getPlatForm().equals("naver")) {
+	    		  MemberDTO memberDTO = new MemberDTO();
+	      		  memberDTO.setId(snsMemberDTO.getSnsEmail());
+	      		  memberDTO = memberService.getDetail(memberDTO);
+	      		  memberService.getMemberLogin(memberDTO);
+	      		  session.setAttribute("member", memberDTO);
+	      		  model.addAttribute("result", "로그인 성공");
+	    	  }else {
+	    		  model.addAttribute("result", "이미 가입한 이메일입니다.");
 	    	  }
           }
           
-
-          memberService.setSnsJoin(snsMemberDTO);
-         
-	      return "/home";
+	     
+  		
+	     
+	      return "/commons/loginResult";
 	}
 	
 	
-	@RequestMapping("kakaoLogin")
+	@RequestMapping(value="kakaoLogin")
 	public String kakaoLogin() throws Exception {
 		
 		return kakaoSns.getKakaoAuth();
 	}
 	
-	@RequestMapping("/callbackKakao")
+	@RequestMapping(value="/callbackKakao")
 	public ModelAndView kakao_redirect(@RequestParam("code") String code, HttpSession session) throws Exception  {
 	
 	ModelAndView mav = new ModelAndView();
@@ -307,18 +317,41 @@ public class MemberController {
     snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
     System.out.println(snsMemberDTO);
     
+  
     if(snsMemberDTO != null) {
+  	  session.setAttribute("snsMember", snsMemberDTO);
   	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
-  	  if(snsMemberDTO != null) {
-  		  memberService.setSnsJoin(snsMemberDTO);
-  		  session.setAttribute("member", snsMemberDTO);
+  	  if(snsMemberDTO == null) {
+  		mav.setViewName("/member/snsJoin");
+  	  }else if(snsMemberDTO.getPlatForm().equals("kakao")) {
+  		  MemberDTO memberDTO = new MemberDTO();
+    		  memberDTO.setId(snsMemberDTO.getSnsEmail());
+    		  memberDTO = memberService.getDetail(memberDTO);
+    		  memberService.getMemberLogin(memberDTO);
+    		  session.setAttribute("member", memberDTO);
+    		  mav.addObject("result", "로그인 성공");
+    		  mav.setViewName("/commons/loginResult");
+  	  }else {
+  		  mav.addObject("result", "이미 가입한 이메일입니다.");
+  		mav.setViewName("/commons/loginResult");
   	  }
     }
-    //session.setAttribute("member", snsMemberDTO);
-    mav.setViewName("/home");
+   
+    
     return mav;
 }
 
+/*
+ * if(snsMemberDTO != null) { session.setAttribute("snsMember", snsMemberDTO);
+ * snsMemberDTO = memberService.getBySns(snsMemberDTO);
+ * 
+ * if(snsMemberDTO != null) { MemberDTO memberDTO = new MemberDTO();
+ * memberDTO.setId(snsMemberDTO.getSnsEmail()); memberDTO =
+ * memberService.getDetail(memberDTO); memberService.getMemberLogin(memberDTO);
+ * session.setAttribute("member", memberDTO); mav.addObject("result", "로그인 성공");
+ * mav.setViewName("/commons/loginResult"); }else {
+ * mav.setViewName("/member/snsJoin"); } }
+ */
 
 	
 	  @PostMapping("phoneAuth")

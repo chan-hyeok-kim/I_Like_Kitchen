@@ -29,7 +29,7 @@ public class ReviewController {
 
 		List<ReviewDTO> list = reviewService.list(pager);
 		model.addAttribute("list", list);
-		model.addAttribute("Pager", pager);
+		model.addAttribute("rPager", pager);
 
 		return "review/list";
 	}
@@ -59,11 +59,7 @@ public class ReviewController {
 
 		model.addAttribute("kto", reviewDTO);
 
-		// 댓글 조회
-
-//		List<ReviewDTO> replyDTO = reviewService.list(reviewNum);
-//		model.addAttribute("reply", replyDTO);
-
+	
 	}
 
 	// 게시물 수정 폼
@@ -83,19 +79,20 @@ public class ReviewController {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		reviewDTO.setId(memberDTO.getId());
 		reviewService.update(reviewDTO, files, session);
-
-		//return "redirect:/review/view?reviewNum=" + reviewDTO.getReviewNum();
-		return "redirect:/product/list";
+        reviewDTO = reviewService.view(reviewDTO.getReviewNum());
+		return "redirect:/product/detail?productNum=" + reviewDTO.getProductNum();	
 	}
 
 	// 게시물 삭제
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String getDelete(@RequestParam("reviewNum") long reviewNum) throws Exception {
-
-		reviewService.delete(reviewNum);
-       ReviewDTO reviewDTO = reviewService.view(reviewNum);
+       ReviewDTO reviewDTO = new ReviewDTO();
+       reviewDTO.setReviewNum(reviewNum);
+       reviewDTO = reviewService.view(reviewNum);
        
-        return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
+       reviewService.delete(reviewNum);
+       
+       return "redirect:/product/detail?productNum="+reviewDTO.getProductNum();
 
 	}
 
