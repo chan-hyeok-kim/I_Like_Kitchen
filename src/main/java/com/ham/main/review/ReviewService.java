@@ -1,6 +1,8 @@
 package com.ham.main.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ham.main.file.FileDTO;
 import com.ham.main.notice.NoticeDTO;
 import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.question.QuestionDTO;
 import com.ham.main.util.FileManager;
 import com.ham.main.util.Pager;
 
@@ -45,13 +48,18 @@ public class ReviewService {
 	}
 		
 	
-	public List<ReviewDTO> list(Pager pager) throws Exception {
-		pager.setPerPage(6L);
-		pager.makeRowNum();
-		pager.makePageNum(reviewDAO.getTotal(pager));
+	public List<ReviewDTO> list(Pager pager, ReviewDTO reviewDTO) throws Exception {
 		
-		return reviewDAO.list(pager);
+		pager.makeRowNum();
+		pager.makePageNum(reviewDAO.getTotal(reviewDTO));
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pager", pager);
+		map.put("kto", reviewDTO);
+		return reviewDAO.list(map);
 	}
+	
+	
 	public List<ReviewDTO> myList() throws Exception { 
 		  
 	 return reviewDAO.myList();

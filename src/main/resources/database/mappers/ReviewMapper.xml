@@ -13,19 +13,21 @@
   </sql>
 
 
-  	<select id="getTotal" resultType="Long">
+  	<select id="getTotal" resultType="Long" parameterType="ReviewDTO">
 		SELECT COUNT(REVIEWNUM) 
-		FROM REVIEW
+		  FROM REVIEW
+		 WHERE PRODUCTNUM=#{productNum}
 	</select>
   <!-- 게시물 목록 -->
-<select id="list" resultMap="getListResult" parameterType="Pager">
+<select id="list" resultMap="getListResult" parameterType="Map">
   SELECT *
 		FROM (SELECT ROWNUM R, N.*
 			  FROM (SELECT * 
 			  		  FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF 
 			  		    ON RV.REVIEWNUM=RF.REVIEWNUM
+			  		 WHERE RV.PRODUCTNUM=#{kto.productNum}   
 			  		 ORDER BY RV.REVIEWNUM DESC) N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
 </select>
 
 <resultMap type="ReviewDTO" id="getListResult">

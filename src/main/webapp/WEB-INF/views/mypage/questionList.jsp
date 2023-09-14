@@ -104,6 +104,19 @@
 </body>
 
 <script type="text/javascript">
-   
+$('.move').click(function() {
+	$('#page').val($(this).attr('data-num'));
+	page = $('#page').val();
+	console.log(page)
+	$.ajax({
+		type : 'GET',
+		url : '/mypage/questionList?page=' + page,
+		success : function(result) {
+			$('#myQuestion-list-section').empty();
+			$('#myQuestion-list-section').append(result);
+			
+		}
+	})
+})
 </script>
 </html>

@@ -3,13 +3,8 @@ package com.ham.main.review;
 import java.sql.Date;
 import java.util.List;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@Data
+
 public class ReviewDTO{
 
 	private Long reviewNum;
@@ -63,33 +58,7 @@ public class ReviewDTO{
 		this.ktos = ktos;
 	}
 	
-	private Long replyNum;
-	private String replyContents;
-	private Date replyDate;
 	
-	
-	public Long getReplyNum() {
-		return replyNum;
-	}
-	public void setReplyNum(Long replyNum) {
-		this.replyNum = replyNum;
-	}
-	public String getReplyContents() {
-		return replyContents;
-	}
-	public void setReplyContents(String replyContents) {
-		this.replyContents = replyContents;
-	}
-	public Date getReplyDate() {
-		return replyDate;
-	}
-	public void setReplyDate(Date replyDate) {
-		this.replyDate = replyDate;
-	}
-
-//	private Long ref;
-//	private Long step;
-//	private Long depth;
 	
 
 	

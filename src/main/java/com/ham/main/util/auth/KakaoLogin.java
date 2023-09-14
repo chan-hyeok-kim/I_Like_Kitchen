@@ -31,9 +31,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ham.main.member.SnsMemberDTO;
 
-import lombok.Data;
-
-@Data
 @Component
 public class KakaoLogin {
 
@@ -51,6 +48,66 @@ public class KakaoLogin {
     private String kakaoClientSecret = "jXYjRZugqnjo6BWGDzuCy3bkbu6dGtpB";  
     private String kakaoAuth = "https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code";
 	
+    
+    
+    
+    
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getKakaoClientId() {
+		return kakaoClientId;
+	}
+
+	public void setKakaoClientId(String kakaoClientId) {
+		this.kakaoClientId = kakaoClientId;
+	}
+
+	public String getKakaoRedirectUri() {
+		return kakaoRedirectUri;
+	}
+
+	public void setKakaoRedirectUri(String kakaoRedirectUri) {
+		this.kakaoRedirectUri = kakaoRedirectUri;
+	}
+
+	public String getKakaoLoginUrl() {
+		return kakaoLoginUrl;
+	}
+
+	public void setKakaoLoginUrl(String kakaoLoginUrl) {
+		this.kakaoLoginUrl = kakaoLoginUrl;
+	}
+
+	public String getKakaoToken() {
+		return kakaoToken;
+	}
+
+	public void setKakaoToken(String kakaoToken) {
+		this.kakaoToken = kakaoToken;
+	}
+
+	public String getKakaoClientSecret() {
+		return kakaoClientSecret;
+	}
+
+	public void setKakaoClientSecret(String kakaoClientSecret) {
+		this.kakaoClientSecret = kakaoClientSecret;
+	}
+
+	public String getKakaoAuth() {
+		return kakaoAuth;
+	}
+
+	public void setKakaoAuth(String kakaoAuth) {
+		this.kakaoAuth = kakaoAuth;
+	}
+
 	public String getAccessToken(String code) throws Exception {
 		// 카카오에서 전달해준 code 값 가져오기
 	

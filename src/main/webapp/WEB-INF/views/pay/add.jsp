@@ -189,10 +189,6 @@ th:first-child {
 				<td width="75%">총 금액의 100%환불</td>
 			</tr>
 			<tr>
-				<td>이용 2일 전</td>
-				<td>총 금액의 70%환불</td>
-			</tr>
-			<tr>
 				<td>기타</td>
 				<td></td>
 			</tr>
@@ -297,7 +293,7 @@ th:first-child {
 						</tr>
 						<tr>
 							<td>결제예정금액</td>
-							<td id="pay-info" data-phone="${member.phone}" data-email="${member.email}" data-name="${member.name}" data-book-num="${book.bookNum}"
+							<td id="pay-info" data-productName="${kto.productDTO.productName}" data-phone="${member.phone}" data-email="${member.email}" data-name="${member.name}" data-book-num="${book.bookNum}"
 							>${kto.productDTO.price}</td>
 						</tr>
 					</table>

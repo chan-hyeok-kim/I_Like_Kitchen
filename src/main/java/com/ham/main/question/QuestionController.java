@@ -30,9 +30,9 @@ public class QuestionController {
 	private ProductService productService;
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public void getList(Model model, Pager pager) throws Exception {
+	public void getList(Model model, Pager pager, QuestionDTO questionDTO) throws Exception {
 
-		List<QuestionDTO> list = questionService.list(pager);
+		List<QuestionDTO> list = questionService.list(pager,questionDTO);
 	
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);

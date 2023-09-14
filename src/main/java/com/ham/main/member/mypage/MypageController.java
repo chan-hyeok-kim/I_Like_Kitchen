@@ -83,6 +83,7 @@ public class MypageController {
 		}
 		model.addAttribute("productList", pl);
 		model.addAttribute("list", ql);
+		model.addAttribute("pager", pager);
 	}
 	
   	@GetMapping("onGoing")

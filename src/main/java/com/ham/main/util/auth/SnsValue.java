@@ -1,6 +1,4 @@
 package com.ham.main.util.auth;
-
-
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -17,13 +15,8 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@Data
+
 public class SnsValue implements SnsUrls {
 	private String service;
 	private String clientId;

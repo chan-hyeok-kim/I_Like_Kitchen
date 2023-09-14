@@ -16,16 +16,23 @@ public class QuestionService {
  private QuestionDAO questionDAO;
  
  
- 	public List<QuestionDTO> list(Pager pager) throws Exception {
+ 	public List<QuestionDTO> list(Pager pager,QuestionDTO questionDTO) throws Exception {
  		pager.makeRowNum();
-		pager.makePageNum(questionDAO.getTotal(pager));
-  	
-		return questionDAO.list(pager);
+		pager.makePageNum(questionDAO.getTotal(questionDTO));
+  	     
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pager", pager);
+		map.put("kto", questionDTO);
+		
+		return questionDAO.list(map);
     }
+ 	
  	public List<QuestionDTO> myList(QuestionDTO questionDTO, Pager pager) throws Exception { 
  		pager.makeRowNum();
-		pager.makePageNum(questionDAO.getTotal(pager));
+ 		System.out.println(questionDTO.getId());
+		pager.makePageNum(questionDAO.getMyQuestionTotal(questionDTO));
   	    
+		System.out.println(questionDTO.getId());
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pager", pager);
 		map.put("kto", questionDTO);

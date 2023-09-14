@@ -296,6 +296,14 @@ $('#headCount').blur(function () {
 
 })
 
+$('#headCount-inc').mouseout(function () {
+	if ($('#headCount').val() > 100) {
+		resultCheck[3] = false;
+	} else {
+		resultCheck[3] = true;
+	}
+})
+
 $('#purpose').blur(function () {
 	if ($('#purpose').val() == '') {
 

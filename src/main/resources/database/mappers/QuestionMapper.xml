@@ -18,19 +18,26 @@
 </select>
   <!-- 게시물 목록 -->
 
+<select id="getMyQuestionTotal" parameterType="QuestionDTO" resultType="Long" >
+  SELECT COUNT(QUESTIONNUM)
+    FROM QUESTION
+   WHERE ID=#{id}  
+</select>
 	
-	<select id="getTotal" resultType="Long">
+	<select id="getTotal" resultType="Long" parameterType="QuestionDTO">
 		SELECT COUNT(QUESTIONNUM) 
 		FROM QUESTION
+		WHERE PRODUCTNUM=#{productNum}
 	</select>
   <!-- 게시물 목록 -->
-<select id="list" parameterType="Pager" resultType="QuestionDTO">
+<select id="list" parameterType="Map" resultType="QuestionDTO">
  SELECT *
 		FROM (SELECT ROWNUM R, N.*
 			  FROM (SELECT * 
 			  		FROM QUESTION 
+			  		WHERE PRODUCTNUM=#{kto.productNum}
 			  		ORDER BY QUESTIONNUM DESC) N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
 </select>
 <!-- 게시물 작성 -->
 <insert id="add" parameterType="QuestionDTO">

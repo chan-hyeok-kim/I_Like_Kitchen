@@ -19,9 +19,9 @@ public class QuestionDAO {
 
 	// 게시물 목록
 
-	public List<QuestionDTO> list(Pager pager) throws Exception {
+	public List<QuestionDTO> list(Map<String, Object> map) throws Exception {
 
-		return sql.selectList(NAMESPACE + "list", pager);
+		return sql.selectList(NAMESPACE + "list", map);
 	}
 
 	public List<QuestionDTO> myList(Map<String, Object> map) throws Exception {
@@ -53,9 +53,12 @@ public class QuestionDAO {
 		return sql.delete(NAMESPACE + "delete", questionDTO);
 	}
 
-	public Long getTotal(Pager pager) {
-
-		return sql.selectOne(NAMESPACE + "getTotal");
+	public Long getTotal(QuestionDTO questionDTO) throws Exception {
+		return sql.selectOne(NAMESPACE + "getTotal", questionDTO);
+	}
+	
+	public Long getMyQuestionTotal(QuestionDTO questionDTO) throws Exception{
+		return sql.selectOne(NAMESPACE + "getMyQuestionTotal",questionDTO);
 	}
 
 }
