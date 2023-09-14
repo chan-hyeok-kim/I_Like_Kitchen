@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<section id="product-lowlist-section">
 
 <div class="row" id="product-list-div">
 				<c:forEach items="${list}" var="d" varStatus="i">
@@ -41,7 +42,7 @@
                         <a href="#">2</a>
                         <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
                     </div> -->
-		<nav class="room-pagination" aria-label="Page navigation example">
+		<%-- <nav class="room-pagination" aria-label="Page navigation example">
 			<ul class="pagination" id="product-ul-list2">
 
 				<li class="page-item ${pager.pre?'':'disabled'}"><a
@@ -66,6 +67,29 @@
 
 
 			</ul>
+		</nav> --%>
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${pager.startNum eq 1}">
+					<li class="page-item"><a class="page-link move" href="#"
+						data-num="${pager.startNum}">&#60</a></li>
+				</c:if>
+				<c:if test="${pager.startNum ne 1}">
+					<li class="page-item"><a class="page-link move" href="#"
+						data-num="${pager.startNum-1}">&#60</a></li>
+				</c:if>
+
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item"><a class="page-link move" href="#"
+						data-num="${i}">${i}</a></li>
+				</c:forEach>
+
+
+				<li class="page-item ${pager.next?'':'disabled'}"><a
+					class="page-link move" href="#" data-num="${pager.lastNum+1}">&#62</a></li>
+			</ul>
+			<input type="hidden" value="${pager.page}" name="page" id="page">
 		</nav>
 
 
@@ -90,7 +114,27 @@
 					class="btn btn-primary btn-sm btn-block">검 색</button>
 			</form>
 		</div>
+		</section>
 		
+		<script type="text/javascript">
+		page = '${pager.page}'
+        
+		console.log(page)
+		$('.move').click(function() {
+			console.log(page)
+			$('#page').val($(this).attr('data-num'));
+			page = $('#page').val();
+			console.log(page)
+			$.ajax({
+				type : 'GET',
+				url : '/product/low?page=' + page,
+				success : function(result) {
+					$('#product-lowlist-section').empty();
+					$('#product-lowlist-section').append(result);
+				}
+			})
+		})
+	</script>
 		
 </body>
 </html>

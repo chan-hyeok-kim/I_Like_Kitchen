@@ -58,11 +58,17 @@ public class ReviewService {
 		map.put("kto", reviewDTO);
 		return reviewDAO.list(map);
 	}
-	
-	
-	public List<ReviewDTO> myList() throws Exception { 
+
+	public List<ReviewDTO> myList(ReviewDTO reviewDTO, Pager pager) throws Exception { 
+		  pager.makeRowNum();
+		  pager.makePageNum(reviewDAO.getTotal(pager));
+
 		  
-	 return reviewDAO.myList();
+		  Map<String, Object> map = new HashMap<String, Object>();
+		  map.put("pager", pager);
+		  map.put("kto", reviewDTO);
+		  
+	 return reviewDAO.myList(map);
  	}
 
 //게시물 조회
