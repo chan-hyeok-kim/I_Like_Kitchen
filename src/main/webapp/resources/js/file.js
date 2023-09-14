@@ -1,6 +1,4 @@
-//<div class="input-group mb-3">
-//<input type="file" class="form-control" id="photos" name="photos">
-//</div> 
+
 
 const add = document.getElementById("add");
 const fileList = document.getElementById("fileList");
@@ -65,7 +63,7 @@ $("#fileList").on("click", ".df", function(){
 add.addEventListener("click", function(){
 
     if(count>=max){
-        alert("최대 5개만 가능");
+        swal("최대 5개만 가능합니다");
         return;
     }
     count++;
@@ -118,7 +116,7 @@ add.addEventListener("click", function(){
 //jquery로 변경
 $("#add").click(function(){
     if(count>=max){
-        alert("최대 5개만 가능");
+        swal("최대 5개만 가능합니다");
         return;
     }
     count++;

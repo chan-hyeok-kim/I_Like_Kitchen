@@ -55,10 +55,7 @@ public class MypageController {
 	// My활동
 	@GetMapping("reviewList")
 	public void getReviewList(Model model, HttpSession session, Pager pager) throws Exception{
-//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
-//		List<ReviewDTO> ar = reviewService.myList();
-//		
-//		model.addAttribute("list", ar);
+
 		
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		ReviewDTO reviewDTO = new ReviewDTO();
@@ -69,9 +66,9 @@ public class MypageController {
 		for(ReviewDTO r:rl) {
 			ProductDTO productDTO = new ProductDTO();
 			productDTO.setProductNum(r.getProductNum()); 
-			System.out.println(productDTO);
+			
 			productDTO = productService.getDetail(productDTO);
-			System.out.println(productDTO);
+			
 		    if(productDTO!=null) {
 		    	pl.add(productDTO);
 		    }
@@ -93,9 +90,9 @@ public class MypageController {
 		for(QuestionDTO q:ql) {
 			ProductDTO productDTO = new ProductDTO();
 			productDTO.setProductNum(q.getProductNum()); 
-			System.out.println(productDTO);
+			
 			productDTO = productService.getDetail(productDTO);
-			System.out.println(productDTO);
+			
 		    if(productDTO!=null) {
 		    	pl.add(productDTO);
 		    }

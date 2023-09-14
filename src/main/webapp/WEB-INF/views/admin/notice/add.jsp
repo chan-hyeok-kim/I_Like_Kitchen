@@ -33,9 +33,7 @@
         .contents{
         	border: 1px solid black;
         }
-        #vitalCheck{
-        	margin-left: 15px;
-        }
+        
         #noticeTitle{
             position: relative;
             left: 11px;
@@ -68,7 +66,7 @@
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
-        <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
+
     </div>
     <div id="nav02">
         <div id="title">
@@ -80,7 +78,7 @@
                 <tr>
                     <th class="tableTh">제목</th>
                     <td>
-                        <input type="checkbox" id="vitalCheck" name="vitalCheck" value="0"> 필독
+                      
                         <input type="text" id="noticeTitle" name="noticeTitle">
                     </td>
                 </tr>
@@ -105,15 +103,6 @@
     </div>
 	
 	<c:import url="../../temp/footer.jsp"></c:import>
-	<script>
-		// 필독 체크시
-		$("#vitalCheck").click(function(){    
-            if($("#vitalCheck").is(":checked") == true){
-                $("#vitalCheck").val("1");
-            } else{
-                $("#vitalCheck").val("0");
-            }
-        });
-	</script>
+	
 </body>
 </html>

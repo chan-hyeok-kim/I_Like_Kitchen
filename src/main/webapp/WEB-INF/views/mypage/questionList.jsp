@@ -32,7 +32,7 @@
 				<thead>
 				 
 				 <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
-				  <th class="p-2 g-col-6 border">상품</th>
+				  <th class="p-2 g-col-6 border">대여 공간</th>
 				  <th class="p-2 g-col-6 border">작성자</th>
 				  <th class="p-2 g-col-6 border" style="width:500px">작성내용</th>
 				  <th class="p-2 g-col-6 border">질문날짜</th>
@@ -45,10 +45,10 @@
 				
 				 <tr class="grid gap-3">
 				  <td class="p-2 g-col-6 border"><img style="width: 90px; height: 60px" alt="" src="/resources/upload/product/${productList[quest.index].productFileDTOs[0].fileName}"> 
-				  ${productList[quest.index].productName}
+				  <a href="/product/detail?productNum=${list.productNum}">${productList[quest.index].productName}</a> 
 				  </td>
 				  <td class="p-2 g-col-6 border">
-				  		<a href="/question/view?questionNum=${list.questionNum}">${list.id}</a>
+				  		${list.id}
 					</td>
 				  <td class="p-2 g-col-6 overflow-auto border">${list.questionContents}</td>
 				  <td class="p-2 g-col-6 border">${list.questionDate}</td>

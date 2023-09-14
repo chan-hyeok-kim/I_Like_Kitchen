@@ -3,121 +3,152 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="com.ham.main.review.ReviewDAO">
+<mapper namespace="com.ham.main.review.ReviewDAO">
 
-  <!-- <sql id="myReviewList">
-  SELECT 
-  REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
-  FROM REVIEW ORDER BY REVIEWNUM
-  	
-  </sql> -->
 
-<select id="getMyReviewTotal" parameterType="ReviewDTO" resultType="Long" >
-  SELECT COUNT(REVIEWNUM)
-    FROM REVIEW
-   WHERE ID=#{id}  
-</select>
-
-  	<select id="getTotal" resultType="Long" parameterType="ReviewDTO">
-		SELECT COUNT(REVIEWNUM) 
-		  FROM REVIEW
-		 WHERE PRODUCTNUM=#{productNum}
+	<select id="getMyReviewTotal" parameterType="ReviewDTO"
+		resultType="Long">
+		SELECT COUNT(REVIEWNUM)
+		FROM REVIEW
+		WHERE ID=#{id}
 	</select>
-  <!-- 게시물 목록 -->
-<select id="list" resultMap="getListResult" parameterType="Map">
-  SELECT *
+
+	<select id="getTotal" resultType="Long"
+		parameterType="ReviewDTO">
+		SELECT COUNT(REVIEWNUM)
+		FROM REVIEW
+		WHERE PRODUCTNUM=#{productNum}
+	</select>
+	<!-- 게시물 목록 -->
+	<select id="list" resultMap="getListResult" parameterType="Map">
+		SELECT *
 		FROM (SELECT ROWNUM R, N.*
-			  FROM (SELECT * 
-			  		  FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF 
-			  		    ON RV.REVIEWNUM=RF.REVIEWNUM
-			  		 WHERE RV.PRODUCTNUM=#{kto.productNum}   
-			  		 ORDER BY RV.REVIEWNUM DESC) N)
-		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
-</select>
+		FROM (SELECT *
+		FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
+		ON RV.REVIEWNUM=RF.REVIEWNUM
+		WHERE RV.PRODUCTNUM=#{kto.productNum}
+		ORDER BY RV.REVIEWNUM DESC) N)
+		WHERE R BETWEEN #{pager.startRow} AND
+		#{pager.lastRow}
+	</select>
 
-<resultMap type="ReviewDTO" id="getListResult">
-<id column="REVIEWNUM" property="reviewNum"/>
-<result column="PRODUCTNUM" property="productNum"/>
-<result column="ID" property="id"/>
-<result column="REVIEWRATE" property="reviewRate"/> 
-<result column="REVIEWCONTENTS" property="reviewContents"/> 
-<result column="REVIEWDATE" property="reviewDate"/> 
- 
-<collection property="ktos" javaType="List" ofType="ProductFileDTO">
-				<id column="FILENUM" property="fileNum"/>
-				<result column="FILENAME" property="fileName"/>
-				<result column="ORIGINALNAME" property="originalName"/>
-</collection>
+	<resultMap type="ReviewDTO" id="getListResult">
+		<id column="REVIEWNUM" property="reviewNum" />
+		<result column="PRODUCTNUM" property="productNum" />
+		<result column="ID" property="id" />
+		<result column="REVIEWRATE" property="reviewRate" />
+		<result column="REVIEWCONTENTS" property="reviewContents" />
+		<result column="REVIEWDATE" property="reviewDate" />
+
+		<collection property="ktos" javaType="List"
+			ofType="ReviewFileDTO">
+			<id column="FILENUM" property="fileNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORIGINALNAME" property="originalName" />
+		</collection>
+	</resultMap>
 
 
-</resultMap>
-
-
-<select id="myList" parameterType="Map" resultType="ReviewDTO">
-  SELECT *
+	<select id="myList" parameterType="Map" resultMap="getMyReview">
+		SELECT *
 		FROM (SELECT ROWNUM R, N.*
-			  FROM (SELECT * 
-			  		FROM REVIEW
-			  		WHERE ID = #{kto.id}
-			  		ORDER BY REVIEWNUM DESC) N)
+		FROM (SELECT *
+		FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
+		ON RV.REVIEWNUM=RF.REVIEWNUM
+		WHERE RV.ID = #{kto.id}
+		ORDER BY RV.REVIEWNUM DESC) N)
 		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	</select>
+
+	<resultMap type="ReviewDTO" id="getMyReview">
+		<id column="REVIEWNUM" property="reviewNum" />
+		<result column="PRODUCTNUM" property="productNum" />
+		<result column="ID" property="id" />
+		<result column="REVIEWRATE" property="reviewRate" />
+		<result column="REVIEWCONTENTS" property="reviewContents" />
+		<result column="REVIEWDATE" property="reviewDate" />
+
+		<collection property="ktos" javaType="List"
+			ofType="ReviewFileDTO">
+			<id column="FILENUM" property="fileNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORIGINALNAME" property="originalName" />
+		</collection>
+	</resultMap>
+
+
+	<insert id="add" parameterType="ReviewDTO">
+		<selectKey keyProperty="reviewNum" resultType="Long"
+			order="BEFORE">
+			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REVIEW(REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE,
+		REVIEWCONTENTS, REVIEWDATE)
+		VALUES(#{reviewNum},#{productNum},#{id},
+		#{reviewRate},#{reviewContents},SYSDATE)
+	</insert>
 	
-</select>
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="Long" resultMap="getDetailResult">
+		SELECT *
+		FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
+		ON RV.REVIEWNUM=RF.REVIEWNUM
+		WHERE RV.REVIEWNUM=#{reviewNum}
+	</select>
+	
+	<resultMap type="ReviewDTO" id="getDetailResult">
+		<id column="REVIEWNUM" property="reviewNum" />
+		<result column="PRODUCTNUM" property="productNum" />
+		<result column="ID" property="id" />
+		<result column="REVIEWRATE" property="reviewRate" />
+		<result column="REVIEWCONTENTS" property="reviewContents" />
+		<result column="REVIEWDATE" property="reviewDate" />
 
-<!-- 게시물 작성 -->
-<!-- <insert id="add" parameterType="ReviewDTO">
- INSERT INTO REVIEW
-  VALUES(REVIEW_SEQ.NEXTVAL,#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
-</insert> -->
-<insert id="add" parameterType="ReviewDTO">
-	<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
-		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
-	</selectKey>
-	INSERT INTO REVIEW(REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE)
-		VALUES(#{reviewNum},#{productNum},#{id}, #{reviewRate},#{reviewContents},SYSDATE)
-</insert>
-  <!-- 게시물 조회 -->
-<select id="view" parameterType="Long" resultType="ReviewDTO">
- SELECT REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
-   FROM REVIEW
-  WHERE REVIEWNUM=#{reviewNum}
-</select>
-<!-- 게시물 수정 -->
-<!-- <update id="update" parameterType="ReviewDTO" >
- UPDATE REVIEW
-    SET ID = #{id}, REVIEWRATE=#{reviewRate}, REVIEWCONTENTS=#{reviewContents},
-    REVIEWDATE=SYSDATE
-  WHERE REVIEWNUM = #{reviewNum}
-</update> -->
-<update id="update" parameterType="ReviewDTO">
-	<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
-		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
-	</selectKey>
-	UPDATE REVIEW
-    SET ID = #{id}, REVIEWRATE=#{reviewRate}, REVIEWCONTENTS=#{reviewContents},
-    REVIEWDATE=SYSDATE
-  WHERE REVIEWNUM = #{reviewNum}
-</update>
-<!-- 게시물 삭제 -->
-<delete id="delete" parameterType="long">
- DELETE
-   FROM REVIEW
-  WHERE REVIEWNUM = #{reviewNum}
-</delete>
+		<collection property="ktos" javaType="List"
+			ofType="ReviewFileDTO">
+			<id column="FILENUM" property="fileNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORIGINALNAME" property="originalName" />
+		</collection>
+	</resultMap>
+	
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE REVIEW
+		SET REVIEWRATE=#{reviewRate},
+		REVIEWCONTENTS=#{reviewContents},
+		REVIEWDATE=SYSDATE
+		WHERE REVIEWNUM = #{reviewNum}
+	</update>
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="long">
+		DELETE
+		FROM REVIEW
+		WHERE REVIEWNUM = #{reviewNum}
+	</delete>
 
-<select id="getFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
-		SELECT FILENUM, FILENAME 
+	<select id="getFileDetail" parameterType="ReviewFileDTO"
+		resultType="ReviewFileDTO">
+		SELECT FILENUM, FILENAME
 		FROM REVIEWFILE
-		WHERE FILENUM = #{fileNum} 
+		WHERE FILENUM = #{fileNum}
 	</select>
-	
+
 	<insert id="setFileAdd" parameterType="ReviewFileDTO">
-		INSERT INTO REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
+		INSERT INTO
+		REVIEWFILE(FILENUM, REVIEWNUM, FILENAME, ORIGINALNAME)
 		VALUES(FILE_SEQ.NEXTVAL, #{reviewNum}, #{fileName}, #{originalName})
 	</insert>
 
 	<delete id="setFileDelete" parameterType="ReviewFileDTO">
 		DELETE REVIEWFILE
-		WHERE FILENUM = #{fileNum}
+		WHERE
+		FILENUM = #{fileNum}
 	</delete>
-  </mapper>
+	
+	<select id="getReviewPermit" parameterType="BookDTO" resultType="Long">
+	SELECT COUNT(P.PAYNUM) FROM BOOK B LEFT OUTER JOIN PAYMENT P 
+    ON B.BOOKNUM = P.BOOKNUM 
+    WHERE B.ID=#{id} AND B.PRODUCTNUM=#{productNum}
+ </select>
+	
+</mapper>

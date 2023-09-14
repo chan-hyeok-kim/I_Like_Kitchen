@@ -38,13 +38,7 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + "getMemberIdCheck", memberDTO);
 	}
 	
-//	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return sqlSession.insert(NAMESPACE + "setKakaoJoin", snsMemberDTO);
-//	}
-//	
-//	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return sqlSession.selectOne(NAMESPACE + "getKakaoLogin", snsMemberDTO);
-//	}
+
 
 	
 	
@@ -92,7 +86,6 @@ public class MemberDAO {
 	}
 
 	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-		System.out.println(snsMemberDTO);
 		return sqlSession.insert(NAMESPACE+"setSnsJoin", snsMemberDTO);
 	}
 	

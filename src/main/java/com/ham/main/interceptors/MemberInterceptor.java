@@ -29,7 +29,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		request.setAttribute("message", "로그인해주세요");
-		request.setAttribute("url", "/");
+		request.setAttribute("url", "/member/memberLogin");
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/commons/result.jsp");
 		view.forward(request, response);
 		return false;

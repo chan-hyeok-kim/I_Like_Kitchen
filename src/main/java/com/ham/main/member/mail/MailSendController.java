@@ -17,16 +17,14 @@ public class MailSendController {
 	@GetMapping("/mailCheck")
 	@ResponseBody
 	public String mailCheck(String email) throws Exception {
-		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
+	
 		return mailSendService.joinEmail(email);
 	}
 	
 	@GetMapping("/emailPasswordCheck")
 	@ResponseBody
 	public String mailPasswordCheck(String email) throws Exception {
-		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
+		
 		return mailSendService.passwordCheckEmail(email);
 	}
 }

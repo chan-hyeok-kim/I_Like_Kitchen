@@ -7,9 +7,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@Data
 public class NoticeDTO {
 
 	private String id;
@@ -17,7 +14,7 @@ public class NoticeDTO {
 	private String noticeTitle;
 	private String noticeContents;
 	private Date noticeDate;
-	private Integer vitalCheck;
+	private String vitalCheck;
 	private List<NoticeFileDTO> ktos;
 	public String getId() {
 		return id;
@@ -49,10 +46,11 @@ public class NoticeDTO {
 	public void setNoticeDate(Date noticeDate) {
 		this.noticeDate = noticeDate;
 	}
-	public Integer getVitalCheck() {
+	
+	public String getVitalCheck() {
 		return vitalCheck;
 	}
-	public void setVitalCheck(Integer vitalCheck) {
+	public void setVitalCheck(String vitalCheck) {
 		this.vitalCheck = vitalCheck;
 	}
 	public List<NoticeFileDTO> getKtos() {

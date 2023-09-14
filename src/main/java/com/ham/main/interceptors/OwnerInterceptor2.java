@@ -34,7 +34,7 @@ public class OwnerInterceptor2 extends HandlerInterceptorAdapter{
 		ReviewDTO reviewDTO = (ReviewDTO)map.get("kto");
 		if(!reviewDTO.getId().equals(memberDTO.getId())) {
 			modelAndView.addObject("message", "작성자만 가능합니다");
-			modelAndView.addObject("url", "./list");
+			modelAndView.addObject("url", "/product/list");
 		   	modelAndView.setViewName("commons/result"); 
 		}
 		

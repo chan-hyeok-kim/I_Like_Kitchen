@@ -7,6 +7,11 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url="/WEB-INF/views/temp/bootStrap.jsp"></c:import>
+	<style type="text/css">
+	 #review-detail-link:hover{
+	    color:#0D6EFD;
+	 }
+	</style>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/temp/header.jsp"></c:import>
@@ -20,10 +25,10 @@
                 <h3 style="margin: 50px 0 50px 0">후기 내역</h3>
             </div>
             
-            <table class="border mx-auto p-2 " style="width: 1600px;">
+            <table class="border mx-auto p-2 " style="width: 1300px;">
 				<thead>
 				 <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
-				  <th class="p-2 g-col-6 border">후기번호</th>
+				  <th class="p-2 g-col-6 border">상품명</th>
 				  <th class="p-2 g-col-6 border">작성자</th>
 				  <th class="p-2 g-col-6 border">평점</th>
 				  <th class="p-2 g-col-6 border">후기내용</th>
@@ -32,15 +37,17 @@
 				</thead>
 				
 				<tbody>
-				<c:forEach items="${list}" var="list">
+				<c:forEach items="${list}" var="list" varStatus="review">
 				 <tr class="grid gap-3">
-				  <td class="p-2 g-col-6 border">${list.reviewNum}</td>
+				  <td class="p-2 g-col-6 border"><img style="width: 90px; height: 60px" alt="" src="/resources/upload/review/${list.ktos[0].fileName}"> 
+				  <a href="/product/detail?productNum=${list.productNum}">${productList[review.index].productName}</a>
+				  </td>
 				  <td class="p-2 g-col-6 border">
-				  		<a href="/review/view?reviewNum=${list.reviewNum}">${list.id}</a>
+				  		${list.id}
 					</td>
 				 
 				  <td class="p-2 g-col-6 border">${list.reviewRate}</td>
-				  <td class="p-2 g-col-6 border" style="width:1000px">${list.reviewContents}</td>
+				  <td class="p-2 g-col-6 border" style="width:500px">${list.reviewContents}</td>
 				  <td class="p-2 g-col-6 border">${list.reviewDate}</td>
 				 </tr>
 				</c:forEach>
@@ -88,11 +95,12 @@
 $('.move').click(function() {
 	$('#page').val($(this).attr('data-num'));
 	page = $('#page').val();
-	console.log(page)
+
 	$.ajax({
 		type : 'GET',
-		url : '/mypage/reviewList?page=' + page,
+		url : '/mypage/reviewList?page='+page,
 		success : function(result) {
+			
 			$('#myReview-list-section').empty();
 			$('#myReview-list-section').append(result);
 			
