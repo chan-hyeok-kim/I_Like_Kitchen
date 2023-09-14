@@ -1,6 +1,8 @@
 package com.ham.main.question;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,14 @@ public class QuestionService {
   	
 		return questionDAO.list(pager);
     }
- 	public List<QuestionDTO> myList() throws Exception { 
-		  
-	 return questionDAO.myList();
+ 	public List<QuestionDTO> myList(QuestionDTO questionDTO, Pager pager) throws Exception { 
+ 		pager.makeRowNum();
+		pager.makePageNum(questionDAO.getTotal(pager));
+  	    
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pager", pager);
+		map.put("kto", questionDTO);
+	    return questionDAO.myList(map);
  	}
 //게시물 작성
 	 public int add(QuestionDTO questionDTO)throws Exception{

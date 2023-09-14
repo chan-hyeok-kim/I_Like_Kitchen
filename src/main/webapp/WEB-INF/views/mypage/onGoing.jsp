@@ -42,9 +42,7 @@
 
     </div>
 	        
-    
-    <c:import url="../temp/footer.jsp"></c:import>
-
+ 
        
 
     <script>
@@ -65,4 +63,7 @@
         })
     </script>
 </body>
+   <footer>
+    <c:import url="../temp/footer.jsp"></c:import>
+</footer>
 </html>

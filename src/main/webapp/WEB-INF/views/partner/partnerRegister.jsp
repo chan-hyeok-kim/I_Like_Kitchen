@@ -26,12 +26,6 @@
 			</div>
 			
 			<div class="mb-3">
-			  <label for="id" class="form-label fw-bold">ID</label>
-			  <input type="text" name="id" class="form-control" id="id" placeholder="아이디를 입력해주세요." required>
-			  <div id="idResult"></div>
-			</div>
-			
-			<div class="mb-3">
 			  <label for="partnerName" class="form-label fw-bold">대표자</label>
 			  <input type="text" name="partnerName" class="form-control" id="partnerName" value="이승엽" placeholder="대표자이름을 입력해주세요." required>
 			  <div id="partnerNameResult"></div>

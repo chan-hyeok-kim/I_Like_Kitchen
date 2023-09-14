@@ -5,15 +5,16 @@
 
   <mapper namespace="com.ham.main.question.QuestionDAO">
   
-    <sql id="myQuestionList">
-  SELECT
-  QUESTIONNUM, PRODUCTNUM, ID, QUESTIONCONTENTS, QUESTIONDATE, QUESTIONKIND
- FROM "QUESTION" ORDER BY QUESTIONNUM 
-  </sql>
   
-<select id="myList" parameterType="QuestionDTO" resultType="QuestionDTO">
-	<include refid="myQuestionList"></include>
-	WHERE ID = #{id}
+  
+<select id="myList" parameterType="Map" resultType="QuestionDTO">
+	 SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM QUESTION
+			  		WHERE ID = #{kto.id}
+			  		ORDER BY QUESTIONNUM DESC) N)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
 </select>
   <!-- 게시물 목록 -->
 

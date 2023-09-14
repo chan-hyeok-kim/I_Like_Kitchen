@@ -22,7 +22,7 @@
 	
 	#listDiv{
 		padding-left: 55px;
-		margin-bottom: 300px;
+		padding-bottom: 300px;
 	}
 	#listDiv h3{
 	    border-bottom: 1px solid gainsboro;
