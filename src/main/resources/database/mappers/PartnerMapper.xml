@@ -9,9 +9,9 @@
 	<insert id="setPartnerJoin" parameterType="PartnerDTO">
 		INSERT INTO
 		PARTNER(PARTNERNUM, ID, PARTNEREMAIL, PARTNERACCOUNT, PARTNERDATE, PARTNERNAME,
-		PARTNERPHONE, COMPANYNAME)
+		PARTNERPHONE, COMPANYNAME,PARTNERCHECK)
 		VALUES(#{partnerNum}, #{id}, #{partnerEmail}, #{partnerAccount}, #{partnerDate},
-		#{partnerName}, #{partnerPhone}, #{companyName})
+		#{partnerName}, #{partnerPhone}, #{companyName},0)
 	</insert>
 
 	<select id="getDetail" resultMap="getDetailResult"

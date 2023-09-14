@@ -146,7 +146,7 @@ $('#partnerBtn').click(function(){
     let date = partnerDate.substring(8, 10);
     
     let date1 = year + month + date;
-    //console.log(date1);
+    console.log(date1);
 
     console.log("클릭됨")
   let data = {
