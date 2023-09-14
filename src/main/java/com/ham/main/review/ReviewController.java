@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.product.book.BookDTO;
+import com.ham.main.product.book.BookService;
 import com.ham.main.question.QuestionDTO;
 import com.ham.main.util.Pager;
 
@@ -80,10 +83,9 @@ public class ReviewController {
 	// 게시물 수정
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(ReviewDTO reviewDTO, MultipartFile[] files, HttpSession session) throws Exception {
-		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-		reviewDTO.setId(memberDTO.getId());
+		
 		reviewService.update(reviewDTO, files, session);
-        reviewDTO = reviewService.view(reviewDTO.getReviewNum());
+		
 		return "redirect:/product/detail?productNum=" + reviewDTO.getProductNum();	
 	}
 
@@ -101,8 +103,20 @@ public class ReviewController {
 	}
 
 	@GetMapping("fileDelete")
-	public void setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session) throws Exception {
-		reviewService.setFileDelete(reviewFileDTO, session);
+	public String setFileDelete(ReviewFileDTO reviewFileDTO, HttpSession session,Model model) throws Exception {
+		int result= reviewService.setFileDelete(reviewFileDTO, session);
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
+	  
+	}
+	
+	@ResponseBody
+	@GetMapping("reviewPermit")
+	public Long getReviewPermit(HttpSession session, BookDTO bookDTO) throws Exception{
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		bookDTO.setId(memberDTO.getId());
+		return reviewService.getReviewPermit(bookDTO);
 	}
 
 }

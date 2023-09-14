@@ -162,7 +162,6 @@
 	<script type="text/javascript">
 	
 		$('.move-review').click(function() {
-			console.log('클릭됨')
 			$('#page-review').val($(this).attr('data-num'));
 			page = $('#page-review').val();
             console.log(page)

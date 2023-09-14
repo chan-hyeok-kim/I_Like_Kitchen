@@ -24,29 +24,38 @@
 	color:black;
 	margin-left:10px;
 	}
-	#btn button:hover{
-	background-color: black;
-	color:white;
+	
+	#review-update-section{
+	     padding-left: 600px;
+	     padding-right: 600px;
+	     
+	}
+	#review-update-wrap{
+	     border: 1px solid gainsboro;
+	     border-radius: 8px;
+	     padding-left: 60px;
+	     padding-right: 60px;
 	}
 </style>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-<form method="post" action="update">
-<div class="mx-auto p-2" style="width: 600px;">
+<section id="review-update-section">
+<form method="post" action="update" enctype="multipart/form-data">
+<div class="mx-auto p-2" >
 <h3>후기수정</h3>
-<input type="hidden" name="reviewNum" value="${view.productNum}" >
+<input type="hidden" name="productNum" value="${kto.productNum}" >
+
+<div id="review-update-wrap">
 <div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02">
-  <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
 
 
-	<input type="hidden" name="reviewNum" value="${view.reviewNum}">
+	<input type="hidden" name="reviewNum" value="${kto.reviewNum}">
 
  </div>
   <br>
   <p class="text-start fs-4">후기작성</p>
- <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">${view.reviewContents}</textarea>
+ <textarea class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6" name="reviewContents">${kto.reviewContents}</textarea>
 
 
 평점
@@ -80,14 +89,38 @@
     5
   </label>
 </div>
-<br>
-<br>
+
+
+<div class="mb-3">
+				<button type="button" class="btn btn-primary" id="fileAdd">File추가</button>
+			</div>
+
+			<div id="fileList" class="mb-3">
+                 
+				<c:forEach items="${kto.ktos}" var="b">
+				<div>
+					<div class="alert alert-warning" style="width:100%;">
+						${b.originalName}
+					</div>
+					<button class="delets btn btn-danger" data-delete-num="${b.fileNum}">삭제</button>
+					</div>
+				</c:forEach>
+				
+				
+				
+</div>
+
+
 <div id="btn">
-<button type="submit"  id="submit">문의수정</button>
-<button type="button" onclick="location.href='../review/list'" id="cancel">취소</button>  
+<button type="submit"  id="submit">후기수정</button>
+<button type="button" onclick="location.href='/product/detail?productNum=${kto.productNum}'" id="cancel">취소</button>  
 </div>
 </div>
 </form>
-<c:import url="../temp/footer.jsp"></c:import>
+</section>
+<script src="/resources/js/file2.js"></script>
 </body>
+<footer>
+<c:import url="../temp/footer.jsp"></c:import>
+</footer> 
 </html>

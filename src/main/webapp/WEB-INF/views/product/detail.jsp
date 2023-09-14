@@ -172,7 +172,7 @@
 							</h3>
 							<button type="button" id="book-btn"
 								class="w-100 btn btn-lg btn-primary"
-								data-productNum="${kto.productNum}">예약하기</button>
+								data-productNum="${kto.productNum}" data-member-check="${member.id}">예약하기</button>
 						</div>
 					</div>
 				</div>
@@ -180,9 +180,11 @@
 		</div>
    <div id="align-btn">
         <c:if test="${size eq 3 || size eq 2}">
-	<button id="update-btn" class="btn btn-outline-primary">수정</button>
 	<button id="del" class="btn btn-outline-primary" data-delete-num="${kto.productNum}">삭제</button>
-</c:if>
+	</c:if>
+	<c:if test="${size eq 2}">
+	<button id="update-btn" class="btn btn-outline-primary">수정</button>
+    </c:if>
      </div>  
 
 		<ul id="product-contents-ul">
@@ -312,13 +314,23 @@ productNum2 = '${kto.productNum}'
 	})
 
 	$('#btn-review-add').click(function() {
-		let productNum = '${kto.productNum}'
-		location.href = '/review/add?productNum=' + productNum
+		let productNum ='${kto.productNum}'
+		
+		$.ajax({
+		     type:"GET",
+		      url:"/review/reviewPermit?productNum="+ productNum,
+		      success:function(result){
+		    	  if(result>0){
+		    		  location.href = '/review/add?productNum=' + productNum
+		    	  }else{
+		    		  swal('이용한 내역이 있는 공간에만 리뷰를 작성하실 수 있습니다')
+		    	  }
+		      }
+		})
 	})
 	
 	$('#btn-question-add').click(function() {
 		let productNum = '${kto.productNum}'
-		console.log(typeof productNum)
 		location.href = '/question/add?productNum=' + productNum
 	})
 	

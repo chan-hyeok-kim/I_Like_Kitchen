@@ -42,15 +42,7 @@
 				<input type="text" name="phone" class="form-control" id="phone" value="${kto.phone}" placeholder="'-'를 넣어서 입력해주세요">
 			</div>
 
-			<!-- <div class="mb-3">
-				<label for="pic" class="form-label">사진첨부 (최대 5개)</label>
-				<div id="fileUploadContainer">
-					 동적으로 추가될 파일 업로드 필드와 삭제 버튼이 들어갈 곳입니다.
-				<br>
-				</div>
-				<br>
-				<button class="btn btn-primary" type="button" id="addFileField">파일 추가</button>
-			</div> -->
+		
 
 			<div class="mb-3">
 				<button type="button" class="btn btn-primary" id="fileAdd">File추가</button>
@@ -62,7 +54,7 @@
 
 			<div>
 				<c:forEach items="${kto.productFileDTOs}" var="b">
-					<div class="alert alert-warning" role="alert">
+					<div class="alert alert-warning">
 						${b.originalName}
 					</div>
 					<button class="deletes btn btn-danger" data-delete-num="${b.fileNum}">삭제</button>

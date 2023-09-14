@@ -7,7 +7,14 @@ function popup(){
 }
 
 $('#book-btn').click(function(){
+  let check =  $('#book-btn').attr('data-member-check')
+  console.log(check)
+  if(check==''){
+    swal('로그인 후 이용해주세요').then(function(){
+    location.href="/member/memberLogin"
+  })
+  }else{
   popup()
 
-
+  }
 })

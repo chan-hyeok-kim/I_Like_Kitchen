@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+a{
+  text-decoration: none;
+}
+
 </style>
 </head>
 
@@ -104,7 +108,7 @@
                                     
                                     </li>
                                     <div id="">
-                                    <li><a href="notice/list">공지사항</a></li>
+                                    <li><a href="/notice/list">공지사항</a></li>
                                     <li>
                                         
                                         <c:if test="${empty member}">

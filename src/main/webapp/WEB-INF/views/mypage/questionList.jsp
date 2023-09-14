@@ -45,10 +45,10 @@
 				
 				 <tr class="grid gap-3">
 				  <td class="p-2 g-col-6 border"><img style="width: 90px; height: 60px" alt="" src="/resources/upload/product/${productList[quest.index].productFileDTOs[0].fileName}"> 
-				  ${productList[quest.index].productName}
+				  <a href="/product/detail?productNum=${list.productNum}">${productList[quest.index].productName}</a> 
 				  </td>
 				  <td class="p-2 g-col-6 border">
-				  		<a href="/question/view?questionNum=${list.questionNum}">${list.id}</a>
+				  		${list.id}
 					</td>
 				  <td class="p-2 g-col-6 overflow-auto border">${list.questionContents}</td>
 				  <td class="p-2 g-col-6 border">${list.questionDate}</td>

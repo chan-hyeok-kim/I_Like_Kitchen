@@ -30,22 +30,34 @@
 	background-color: black;
 	color: white;
 }
+#review-add-wrap{
+	     border: 1px solid gainsboro;
+	     border-radius: 8px;
+	     padding-left: 60px;
+	     padding-right: 60px;
+}
+#review-add-section{
+	     padding-left: 600px;
+	     padding-right: 600px;
+	     
+	}
 </style>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
+<section id="review-add-section">
 
 	<div class="mx-auto p-2" style="width: 600px;">
+
 		<h3>후기작성</h3>
 		
+		</div>
+		<div id="review-add-wrap">
 		<form method="post" action="/review/add" enctype="multipart/form-data">
-<div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02" name="files">
-  <label class="input-group-text" for="inputGroupFile02">사진업로드</label>
-</div>
+
 		
 			<input type="hidden" name="productNum" value="${kto.productNum}">
-			<p class="text-start fs-4">후기작성</p>
+			<div class="text-start fs-4">후기작성</div>
 			<textarea
 				class="text-start shadow-sm p-3 w-100 mb-5 bg-body-tertiary rounded fs-6"
 				name="reviewContents" placeholder="후기를 입력하세요"></textarea>
@@ -76,17 +88,20 @@
 					class="form-check-label" for="exampleRadios2"> 5 </label>
 			</div>
 
+<div class="input-group mb-3">
+  <input type="file" class="form-control" id="inputGroupFile02" name="files">
+</div>
 
-
-
+</div>
 			<br> <br>
 			<div id="btn">
 				<button type="submit" id="submit">후기등록</button>
-				<button type="button" onclick="location.href='../review/list'"
+				<button type="button" onclick="location.href='/product/detail?productNum=${kto.productNum}'"
 					id="cancel">취소</button>
 			</div>
 		</form>
 	</div>
+</section>
 
 	
 	<script src="../resources/js/file.js" type="text/javascript">

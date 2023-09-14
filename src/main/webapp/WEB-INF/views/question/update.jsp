@@ -60,7 +60,7 @@
 <br>
 <div id="btn">
 <button type="submit"  id="submit">문의수정</button>
-<button type="button" onclick="location.href='../question/list'" id="cancel">취소</button>  
+<button type="button" onclick="location.href='/product/detail?productNum=${kto.productNum}'" id="cancel">취소</button>  
 </div>
 </form>
 </div>

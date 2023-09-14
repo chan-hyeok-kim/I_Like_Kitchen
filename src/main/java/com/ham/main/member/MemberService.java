@@ -55,14 +55,6 @@ public class MemberService {
 	}
 	
 	
-	
-//	public int setKakaoJoin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return memberDAO.setKakaoJoin(snsMemberDTO);
-//	}
-//	
-//	public long getKakaoLogin(SnsMemberDTO snsMemberDTO) throws Exception {
-//		return memberDAO.getKakaoLogin(snsMemberDTO);
-//	}
 
 	
 	public String sendRandomMessage(String phone) {

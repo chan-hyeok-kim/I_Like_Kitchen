@@ -11,7 +11,6 @@
 		<result column="NOTICETITLE" property="noticeTitle"/>
 		<result column="NOTICECONTENTS" property="noticeContents"/>
 		<result column="NOTICEDATE" property="noticeDate"/>
-		<result column="VITALCHECK" property="vitalCheck"/>
 		<collection property="ktos" javaType="List" ofType="NoticeFileDTO">
 			<id column="FILENUM" property="fileNum"/>
 			<result column="FILENAME" property="fileName"/>
@@ -55,7 +54,7 @@
 			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO NOTICE 
-		VALUES(#{noticeNum}, #{id}, #{noticeTitle}, #{noticeContents}, SYSDATE, #{vitalCheck})
+		VALUES(#{noticeNum}, #{id}, #{noticeTitle}, #{noticeContents}, SYSDATE)
 		<!-- id 는 DAO 에 도착하기 전에만 넣어주면됨(Controller 나 Service 에서) -->
 	</insert>
 	
@@ -67,7 +66,7 @@
 	
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE 
-		SET NOTICETITLE = #{noticeTitle}, NOTICECONTENTS = #{noticeContents}, VITALCHECK = #{vitalCheck} 
+		SET NOTICETITLE = #{noticeTitle}, NOTICECONTENTS = #{noticeContents}
 		WHERE NOTICENUM = #{noticeNum}
 	</update>
 	

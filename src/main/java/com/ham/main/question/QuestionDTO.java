@@ -11,6 +11,7 @@ public class QuestionDTO {
 	private String questionContents;
 	private Date questionDate;
 	private String questionKind;
+	
 	public Long getQuestionNum() {
 		return questionNum;
 	}

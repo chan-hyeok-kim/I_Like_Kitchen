@@ -68,9 +68,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String setDelete(@RequestParam(name = "productNum") Long num)throws Exception{
+	public String setDelete(@RequestParam(name = "productNum") Long num,Model model)throws Exception{
 		int result = productService.setDelete(num);
-		return "redirect:./list";
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
 	}
 	
 

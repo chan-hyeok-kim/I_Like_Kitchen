@@ -68,6 +68,10 @@
 	    height: 30px;
 	    background-color: aliceblue;
 	}
+	#menuDiv a:hover{
+	    color:#0D6EFD;
+	}
+	
 
 </style>
 <nav id="menuDiv">

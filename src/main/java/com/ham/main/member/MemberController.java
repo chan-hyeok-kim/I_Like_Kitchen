@@ -155,15 +155,14 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("snsMember");
-		System.out.println(memberDTO);
-		System.out.println(snsMemberDTO);
+		
 		int result = memberService.setSnsJoin(snsMemberDTO);
 		memberDTO.setId(snsMemberDTO.getSnsEmail());
 		memberDTO.setName(snsMemberDTO.getSnsName());
 		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
 		             
 		result = memberService.setMemberJoin(memberDTO);
-		System.out.println(result);
+		
 		
 		session.setAttribute("member", memberDTO);
 		
@@ -186,9 +185,9 @@ public class MemberController {
 	@PostMapping("memberLogin")
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(memberDTO);
+		
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		System.out.println(memberDTO);
+		
 		
 		
 		if(memberDTO != null) {
@@ -249,8 +248,7 @@ public class MemberController {
 	//sns로그인
 	@RequestMapping(value = "/auth/{service}/callback", method = {RequestMethod.GET,RequestMethod.POST})
 	public String snsLoginCallback(@PathVariable String service, Model model,@RequestParam("code") String code,@RequestParam("state") String state, HttpSession session) throws Exception{
-	    System.out.println(code);
-	    System.out.println(state);
+	    
 		logger.info("snsLoginCallback: service={}", service);
 	      SnsValue sns = null;
 	      if(StringUtils.equals("naver", service)) {
@@ -262,8 +260,7 @@ public class MemberController {
 	      
 	      SNSLogin snsLogin = new SNSLogin(sns);
 	      SnsMemberDTO snsMemberDTO = snsLogin.getUserProfile(code); //1,2번 동시
-	      System.out.println("Profile>>" + snsMemberDTO);
-		      
+	         
 
 	      if(snsMemberDTO != null) {
 	    	  session.setAttribute("snsMember", snsMemberDTO);
@@ -303,7 +300,7 @@ public class MemberController {
     // 2번 인증코드로 토큰 전달
     HashMap<String, Object> userInfo = kakaoSns.getUserInfo(accessToken);
 
-    System.out.println("login info : " + userInfo.toString());
+   
 
     if(userInfo.get("account_email") != null) {
         session.setAttribute("userId", userInfo.get("account_email"));
@@ -315,8 +312,7 @@ public class MemberController {
     snsMemberDTO.setSnsEmail(userInfo.get("account_email").toString());
     snsMemberDTO.setSnsId(userInfo.get("id").toString());
     snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
-    System.out.println(snsMemberDTO);
-    
+ 
   
     if(snsMemberDTO != null) {
   	  session.setAttribute("snsMember", snsMemberDTO);
@@ -341,17 +337,7 @@ public class MemberController {
     return mav;
 }
 
-/*
- * if(snsMemberDTO != null) { session.setAttribute("snsMember", snsMemberDTO);
- * snsMemberDTO = memberService.getBySns(snsMemberDTO);
- * 
- * if(snsMemberDTO != null) { MemberDTO memberDTO = new MemberDTO();
- * memberDTO.setId(snsMemberDTO.getSnsEmail()); memberDTO =
- * memberService.getDetail(memberDTO); memberService.getMemberLogin(memberDTO);
- * session.setAttribute("member", memberDTO); mav.addObject("result", "로그인 성공");
- * mav.setViewName("/commons/loginResult"); }else {
- * mav.setViewName("/member/snsJoin"); } }
- */
+
 
 	
 	  @PostMapping("phoneAuth")
@@ -378,8 +364,7 @@ public class MemberController {
 	        String rand = (String) request.getSession().getAttribute("rand");
 	        String code = (String) request.getParameter("code");
 
-	        System.out.println(rand + " : " + code);
-
+	        
 	        if (rand.equals(code)) {
 	        	request.getSession().removeAttribute("rand");
 	            return false;

@@ -197,7 +197,7 @@ th:first-child {
 				<td></td>
 			</tr>
 			<tr>
-				<td>기타</td>
+				<td>결제 수단 선택</td>
 				<td></td>
 			</tr>
 

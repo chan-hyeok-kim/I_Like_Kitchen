@@ -79,9 +79,8 @@ public class QuestionController {
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String postUpdate(QuestionDTO questionDTO) throws Exception {
 		questionService.update(questionDTO);
-		System.out.println(questionDTO);
 		questionDTO = questionService.getDetail(questionDTO);
-		System.out.println(questionDTO);
+		
 		return "redirect:/product/detail?productNum=" + questionDTO.getProductNum();
 
 	}

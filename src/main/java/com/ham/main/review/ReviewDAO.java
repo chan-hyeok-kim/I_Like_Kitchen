@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.product.book.BookDTO;
 import com.ham.main.util.Pager;
 
 @Repository
@@ -55,10 +56,7 @@ public class ReviewDAO {
 		return sql.delete(NAMESPACE + "delete", reviewNum);
 	}
 
-	public int setReplyAdd(ReviewDTO reviewDTO) throws Exception {
-		System.out.println("setReplyAdd");
-		return sql.insert(NAMESPACE + "setReplyAdd", reviewDTO);
-	}
+
 
 	public Long getTotal(ReviewDTO reviewDTO) {
 		return sql.selectOne(NAMESPACE + "getTotal", reviewDTO);
@@ -71,15 +69,21 @@ public class ReviewDAO {
 	}
 
 	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
-        return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
+
+		return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
 	}
 
 	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
-        return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+
+		return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
 	}
 
 	public Long getMyReviewTotal(ReviewDTO reviewDTO) throws Exception {
 		return sql.selectOne(NAMESPACE + "getMyReviewTotal", reviewDTO);
+	}
+	
+	public Long getReviewPermit(BookDTO bookDTO) throws Exception{
+		return sql.selectOne(NAMESPACE + "getReviewPermit", bookDTO);
 	}
 
 }
