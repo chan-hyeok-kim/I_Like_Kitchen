@@ -22,6 +22,7 @@ import com.ham.main.review.ReviewDTO;
 import com.ham.main.review.ReviewService;
 
 import com.ham.main.product.ProductDTO;
+import com.ham.main.product.ProductService;
 import com.ham.main.product.book.BookDTO;
 import com.ham.main.product.book.BookService;
 import com.ham.main.product.pay.PayDTO;
@@ -48,13 +49,35 @@ public class MypageController {
 	@Autowired
 	private PayService payService;
 	
+	@Autowired
+	private ProductService productService;
+	
 	// My활동
 	@GetMapping("reviewList")
-	public void getReviewList(Model model, HttpSession session) throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
-		List<ReviewDTO> ar = reviewService.myList();
+	public void getReviewList(Model model, HttpSession session, Pager pager) throws Exception{
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
+//		List<ReviewDTO> ar = reviewService.myList();
+//		
+//		model.addAttribute("list", ar);
 		
-		model.addAttribute("list", ar);
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		ReviewDTO reviewDTO = new ReviewDTO();
+		reviewDTO.setId(memberDTO.getId());
+		
+		List<ReviewDTO> rl = reviewService.myList(reviewDTO, pager);
+		List<ProductDTO> pl = new ArrayList<ProductDTO>(); 
+		for(ReviewDTO r:rl) {
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProductNum(r.getProductNum()); 
+			System.out.println(productDTO);
+			productDTO = productService.getDetail(productDTO);
+			System.out.println(productDTO);
+		    if(productDTO!=null) {
+		    	pl.add(productDTO);
+		    }
+		}
+		model.addAttribute("productList", pl);
+		model.addAttribute("list", rl);
 		
 		
 	}

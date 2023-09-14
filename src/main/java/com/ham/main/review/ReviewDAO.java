@@ -2,6 +2,7 @@ package com.ham.main.review;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class ReviewDAO {
   
 	 return sql.selectList(NAMESPACE + "list",pager);
  	}
- 	public List<ReviewDTO> myList() throws Exception { 
+ 	public List<ReviewDTO> myList(Map<String, Object> map) throws Exception { 
  		  
-	 return sql.selectList(NAMESPACE + "myList");
+	 return sql.selectList(NAMESPACE + "myList", map);
  	}
 
 //게시물 작성
@@ -78,5 +79,9 @@ public class ReviewDAO {
 		public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
 			
 			return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+		}
+		
+		public Long getMyReviewTotal(ReviewDTO reviewDTO) throws Exception {
+			return sql.selectOne(NAMESPACE + "getMyReviewTotal", reviewDTO);
 		}
 }

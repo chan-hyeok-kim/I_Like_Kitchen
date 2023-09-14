@@ -5,13 +5,18 @@
 
   <mapper namespace="com.ham.main.review.ReviewDAO">
 
-  <sql id="myReviewList">
+  <!-- <sql id="myReviewList">
   SELECT 
   REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
   FROM REVIEW ORDER BY REVIEWNUM
   	
-  </sql>
+  </sql> -->
 
+<select id="getMyReviewTotal" parameterType="ReviewDTO" resultType="Long" >
+  SELECT COUNT(REVIEWNUM)
+    FROM REVIEW
+   WHERE ID=#{id}  
+</select>
 
   	<select id="getTotal" resultType="Long">
 		SELECT COUNT(REVIEWNUM) 
@@ -46,9 +51,15 @@
 </resultMap>
 
 
-<select id="myList">
-	<include refid="myReviewList"></include>
-	WHERE ID = #{id}
+<select id="myList" parameterType="Map" resultType="ReviewDTO">
+  SELECT *
+		FROM (SELECT ROWNUM R, N.*
+			  FROM (SELECT * 
+			  		FROM REVIEW
+			  		WHERE ID = #{kto.id}
+			  		ORDER BY REVIEWNUM DESC) N)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	
 </select>
 
 <!-- 게시물 작성 -->

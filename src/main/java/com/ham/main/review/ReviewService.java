@@ -1,6 +1,8 @@
 package com.ham.main.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -52,9 +54,15 @@ public class ReviewService {
 		
 		return reviewDAO.list(pager);
 	}
-	public List<ReviewDTO> myList() throws Exception { 
+	public List<ReviewDTO> myList(ReviewDTO reviewDTO, Pager pager) throws Exception { 
+		  pager.makeRowNum();
+		  pager.makePageNum(reviewDAO.getTotal(pager));
 		  
-	 return reviewDAO.myList();
+		  Map<String, Object> map = new HashMap<String, Object>();
+		  map.put("pager", pager);
+		  map.put("kto", reviewDTO);
+		  
+	 return reviewDAO.myList(map);
  	}
 
 //게시물 조회
