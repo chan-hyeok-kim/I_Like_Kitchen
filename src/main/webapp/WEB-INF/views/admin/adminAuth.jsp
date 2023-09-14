@@ -27,7 +27,9 @@
    <form action="adminAdd" method="post">
    <div>
      <div>관리자 권한을 부여할 사용자의 ID를 입력하세요</div>
+     <div>
      <input type="text" class="form-control" name="id">
+     </div>
    <button class="btn btn-primary">권한 부여</button>
    
    </div>
@@ -37,8 +39,10 @@
    <form action="adminRemove" method="post">
    <div>
      <div>관리자 권한을 삭제할 사용자의 ID를 입력하세요</div>
-     <input type="text" class="form-control" name="id"> 
+     <div style="width: 200px;"><input type="text" class="form-control" name="id"></div>
+     <div style="display: flex">
      <button class="btn btn-primary">권한 수거</button>
+     </div>
    </div>
    
     </form>

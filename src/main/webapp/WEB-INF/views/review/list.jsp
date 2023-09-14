@@ -148,7 +148,7 @@
 						data-num="${rPager.lastNum+1}">&#62</a></li>
 
 					<li style="margin-left: 250px;"><input type="hidden"
-						value="${rPager.page}" name="page" id="page-review"></li>
+						value="${rPager.page}" name="page" id="page-review" data-review-productNum="${list[0].productNum}"></li>
 				</ul>
 
 			</nav>
@@ -164,10 +164,10 @@
 		$('.move-review').click(function() {
 			$('#page-review').val($(this).attr('data-num'));
 			page = $('#page-review').val();
-            console.log(page)
+            productNum = $('#page-review').attr('data-review-productNum') 
 			$.ajax({
 				type : 'GET',
-				url : '/review/list?page=' + page,
+				url : '/review/list?page=' + page +'&productNum='+ productNum,
 				success : function(result) {
 					$('#review-list-section').empty();
 					$('#review-list-section').append(result);

@@ -148,7 +148,7 @@
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-product-num="${kto.productNum}"  data-num="${pager.lastNum+1}">&#62</a></li>
 			</ul>
-			<input type="hidden" value="${pager.page}" name="page" id="page">
+			<input type="hidden" value="${pager.page}" name="page" id="page" data-question-productNum="${list[0].productNum}">
 		</nav>
 		<a id="move-question" href="#question-title"></a>
 	</section>
@@ -158,12 +158,12 @@
 		$('.move').click(function() {
 			console.log(page)
 			$('#page').val($(this).attr('data-num'));
-			
+			productNum = $('#page').attr('data-question-productNum') 
 			page = $('#page').val();
 			console.log(page)
 			$.ajax({
 				type : 'GET',
-				url : '/question/list?page=' + page,
+				url : '/question/list?page=' + page + '&productNum='+ productNum,
 				success : function(result) {
 					$('#question-list-section').empty();
 					$('#question-list-section').append(result);
