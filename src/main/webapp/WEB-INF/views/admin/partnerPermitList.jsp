@@ -8,7 +8,9 @@
        margin-left: 40px;
        margin-top: 40px;
   }
-  
+  #permit-list-page{
+       padding-left:40px;
+  }
    
 </style>
 
@@ -39,7 +41,7 @@
 </table>
 
 <div>
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" id="permit-list-page">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
 					<li class="page-item"><a class="page-link move"

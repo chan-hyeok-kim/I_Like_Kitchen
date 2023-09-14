@@ -146,7 +146,7 @@
 
 
 				<li class="page-item ${pager.next?'':'disabled'}"><a
-					class="page-link move" href="#" data-num="${pager.lastNum+1}">&#62</a></li>
+					class="page-link move" href="#" data-product-num="${kto.productNum}"  data-num="${pager.lastNum+1}">&#62</a></li>
 			</ul>
 			<input type="hidden" value="${pager.page}" name="page" id="page">
 		</nav>
@@ -154,12 +154,11 @@
 	</section>
 
 	<script type="text/javascript">
-		page = '${pager.page}'
-        
-		console.log(page)
+
 		$('.move').click(function() {
 			console.log(page)
 			$('#page').val($(this).attr('data-num'));
+			
 			page = $('#page').val();
 			console.log(page)
 			$.ajax({

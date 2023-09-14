@@ -104,8 +104,9 @@
                                     
                                     </li>
                                     <div id="">
+                                    <li><a href="notice/list">공지사항</a></li>
                                     <li>
-                                    
+                                        
                                         <c:if test="${empty member}">
                                             <li><a href="/member/memberLogin">로그인/회원가입</a></li>
                                         </c:if>

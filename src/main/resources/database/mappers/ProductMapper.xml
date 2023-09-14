@@ -26,21 +26,13 @@
 		SELECT * FROM 	
 			(SELECT ROWNUM R, B.* FROM
 				(
-					SELECT * FROM PRODUCT P LEFT OUTER JOIN (SELECT * FROM PRODUCTFILE
+					SELECT * FROM PRODUCT P LEFT OUTER JOIN 
+				   (SELECT * FROM PRODUCTFILE  
                      WHERE FILENUM IN (SELECT MIN(FILENUM)
-                       FROM PRODUCTFILE
-                      GROUP BY PRODUCTNUM)) PF
+                       FROM PRODUCTFILE  
+                      GROUP BY PRODUCTNUM))PF
 					ON P.PRODUCTNUM = PF.PRODUCTNUM
 					<include refid="searchSql"></include>
-						  
-						  <!-- <if test="kind == 'name'">
-						   AND	PRODUCTNUM LIKE '%검색어%' 
-						  </if>
-						  <if test="kind == 'contents'">
-						  	AND	CONTENTS
-						  	 LIKE '%검색어%' 
-						  </if>  -->
-						   
 					ORDER BY P.PRODUCTNUM DESC
 				) B
 			)
@@ -68,9 +60,9 @@
 		SELECT * FROM 	
 			(SELECT ROWNUM R, B.* FROM
 				(
-					SELECT * FROM PRODUCT P LEFT OUTER JOIN (SELECT * FROM PRODUCTFILE
+					SELECT * FROM PRODUCT P LEFT OUTER JOIN (SELECT * FROM PRODUCTFILE  
                      WHERE FILENUM IN (SELECT MIN(FILENUM)
-                       FROM PRODUCTFILE
+                       FROM PRODUCTFILE  
                       GROUP BY PRODUCTNUM)) PF
 					ON P.PRODUCTNUM = PF.PRODUCTNUM
 					<include refid="searchSql"></include>
@@ -101,9 +93,10 @@
 		SELECT * FROM 	
 			(SELECT ROWNUM R, B.* FROM
 				(
-					SELECT * FROM PRODUCT P LEFT OUTER JOIN (SELECT * FROM PRODUCTFILE
+          SELECT * FROM PRODUCT P LEFT OUTER JOIN (SELECT * FROM PRODUCTFILE  
                      WHERE FILENUM IN (SELECT MIN(FILENUM)
-                       FROM PRODUCTFILE
+                       FROM PRODUCTFILE  
+
                       GROUP BY PRODUCTNUM)) PF
 					ON P.PRODUCTNUM = PF.PRODUCTNUM
 					 <include refid="searchSql"></include> 

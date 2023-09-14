@@ -83,12 +83,26 @@ public class MypageController {
 	}
 	
 	@GetMapping("questionList")
-	public void getQuestionList(Model model, HttpSession session) throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
-		List<QuestionDTO> ar = questionService.myList();
+	public void myList(HttpSession session, Pager pager,Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		QuestionDTO questionDTO = new QuestionDTO();
+		questionDTO.setId(memberDTO.getId());
 		
-		model.addAttribute("list", ar);
-
+		List<QuestionDTO> ql = questionService.myList(questionDTO, pager);
+		List<ProductDTO> pl = new ArrayList<ProductDTO>(); 
+		for(QuestionDTO q:ql) {
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProductNum(q.getProductNum()); 
+			System.out.println(productDTO);
+			productDTO = productService.getDetail(productDTO);
+			System.out.println(productDTO);
+		    if(productDTO!=null) {
+		    	pl.add(productDTO);
+		    }
+		}
+		model.addAttribute("productList", pl);
+		model.addAttribute("list", ql);
+		model.addAttribute("pager", pager);
 	}
 	
   	@GetMapping("onGoing")

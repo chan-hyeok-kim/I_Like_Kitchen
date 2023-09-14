@@ -8,7 +8,9 @@
        margin-left: 40px;
        margin-top: 40px;
   }
-  
+  #partner-list-page{
+       padding-left:40px;
+  }
    
 </style>
 
@@ -39,7 +41,7 @@
 </table>
 
 <div>
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" id="partner-list-page">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
 					<li class="page-item"><a class="page-link move"
@@ -59,10 +61,10 @@
 				<li class="page-item ${pager.next?'':'disabled'}"><a
 					class="page-link move" href="#" data-num="${pager.lastNum+1}">Next</a></li>
 
-<div style="display: flex; width: 700px;">
+  <div style="display: flex; width: 700px;">
 		  <li style="margin-left:250px;"><input type="hidden" value="${pager.page}" name="page" id="page">
 			
-			<div class="col-sm-3">
+			<div class="" style="display: flex;">
 				<input class="form-control me-2" type="search" name="search"
 					placeholder="예약 번호를 입력해주세요" aria-label="Search" id="search" style="width:300px;">
 			

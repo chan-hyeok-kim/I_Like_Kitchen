@@ -293,9 +293,11 @@
 
 
 <script type="text/javascript">
+productNum2 = '${kto.productNum}'
+
 	$.ajax({
 		type : 'GET',
-		url : '/question/list',
+		url : '/question/list?productNum='+productNum2,
 		success : function(result) {
 			$('#product-question').append(result);
 		}
@@ -303,7 +305,7 @@
 
 	$.ajax({
 		type : 'GET',
-		url : '/review/list',
+		url : '/review/list?productNum='+productNum2,
 		success : function(result) {
 			$('#product-review').append(result);
 		}

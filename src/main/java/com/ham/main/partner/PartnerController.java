@@ -74,8 +74,11 @@ public class PartnerController {
 	}
 	
 	@PostMapping("partnerRegister")
-	public ModelAndView setPartnerJoin(PartnerDTO partnerDTO) throws Exception {
+	public ModelAndView setPartnerJoin(HttpSession session,PartnerDTO partnerDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		partnerDTO.setId(memberDTO.getId());
+		
 		int result = partnerService.setPartnerJoin(partnerDTO);
 		mv.setViewName("redirect:../");
 		

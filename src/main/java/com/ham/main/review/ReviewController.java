@@ -1,6 +1,8 @@
 package com.ham.main.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ham.main.member.MemberDTO;
 import com.ham.main.notice.NoticeFileDTO;
+import com.ham.main.question.QuestionDTO;
 import com.ham.main.util.Pager;
 
 @Controller
@@ -25,12 +28,13 @@ public class ReviewController {
 	private ReviewService reviewService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String getList(Model model, Pager pager) throws Exception {
+	public String getList(Model model, Pager pager,ReviewDTO reviewDTO) throws Exception {
 
-		List<ReviewDTO> list = reviewService.list(pager);
+		List<ReviewDTO> list = reviewService.list(pager, reviewDTO);
 		model.addAttribute("list", list);
 		model.addAttribute("rPager", pager);
 
+		
 		return "review/list";
 	}
 

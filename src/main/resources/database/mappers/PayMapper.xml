@@ -7,11 +7,8 @@
   
 
   <insert id="setPay" parameterType="payDTO">
-  <selectKey order="BEFORE" resultType="Long" keyProperty="payNum">
-     SELECT PAY_SEQ.NEXTVAL FROM DUAL
-  </selectKey>
      INSERT INTO PAYMENT(PAYNUM, BOOKNUM, PAYDATE, PAYAMOUNT)
-     VALUES ( #{pay.payNum},#{pay.bookNum},SYSDATE,#{pay.payAmount})
+     VALUES ( #{payNum},#{bookNum},SYSDATE,#{payAmount})
   </insert>
   
   

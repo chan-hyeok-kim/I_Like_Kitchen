@@ -16,56 +16,73 @@ public class ReviewDAO {
 
 	@Autowired
 	private SqlSession sql;
+
+	private final String NAMESPACE = "com.ham.main.review.ReviewDAO.";
+
+	// 게시물 목록
  
- 	private final String NAMESPACE="com.ham.main.review.ReviewDAO.";
-
-
-	
-
- // 게시물 목록
  
- 	public List<ReviewDTO> list(Pager pager) throws Exception { 
-  
-	 return sql.selectList(NAMESPACE + "list",pager);
- 	}
  	public List<ReviewDTO> myList(Map<String, Object> map) throws Exception { 
  		  
 	 return sql.selectList(NAMESPACE + "myList", map);
  	}
 
-//게시물 작성
- 	public int add(ReviewDTO reviewDTO) throws Exception{
+	public List<ReviewDTO> list(Map<String, Object> map) throws Exception {
 
-	return sql.insert(NAMESPACE+"add",reviewDTO);
+		return sql.selectList(NAMESPACE + "list", map);
+	}
+
+
+
+//게시물 작성
+	public int add(ReviewDTO reviewDTO) throws Exception {
+
+		return sql.insert(NAMESPACE + "add", reviewDTO);
 	}
 
 //게시물 조회
 	public ReviewDTO view(Long reviewNum) throws Exception {
 
-	return sql.selectOne(NAMESPACE + "view", reviewNum);
+		return sql.selectOne(NAMESPACE + "view", reviewNum);
 
- }
-	
-	// 게시물 수정
-	
-	public int update(ReviewDTO reviewDTO) throws Exception {
-	return sql.update(NAMESPACE + "update", reviewDTO);
 	}
+
+	// 게시물 수정
+
+	public int update(ReviewDTO reviewDTO) throws Exception {
+		return sql.update(NAMESPACE + "update", reviewDTO);
+	}
+
 	// 게시물 삭제
 	public int delete(long reviewNum) throws Exception {
-	return sql.delete(NAMESPACE + "delete", reviewNum);
+		return sql.delete(NAMESPACE + "delete", reviewNum);
 	}
-	
-	public int setReplyAdd(ReviewDTO reviewDTO)throws Exception{
+
+	public int setReplyAdd(ReviewDTO reviewDTO) throws Exception {
 		System.out.println("setReplyAdd");
-		return sql.insert(NAMESPACE+"setReplyAdd", reviewDTO);
+		return sql.insert(NAMESPACE + "setReplyAdd", reviewDTO);
 	}
-	
-		public Long getTotal(Pager pager) {
-		
-		return sql.selectOne(NAMESPACE + "getTotal");
+
+	public Long getTotal(ReviewDTO reviewDTO) {
+		return sql.selectOne(NAMESPACE + "getTotal",reviewDTO);
 	}
-		// file(파일)
+
+	// file(파일)
+	public int setFileAdd(ReviewFileDTO reviewFileDTO) throws Exception {
+
+		return sql.insert(NAMESPACE + "setFileAdd", reviewFileDTO);
+	}
+
+	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
+
+		return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
+	}
+
+	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
+
+		return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+	}
+
 		public int setFileAdd(ReviewFileDTO reviewFileDTO) throws Exception {
 			
 			return sql.insert(NAMESPACE + "setFileAdd", reviewFileDTO);
@@ -84,4 +101,5 @@ public class ReviewDAO {
 		public Long getMyReviewTotal(ReviewDTO reviewDTO) throws Exception {
 			return sql.selectOne(NAMESPACE + "getMyReviewTotal", reviewDTO);
 		}
+
 }

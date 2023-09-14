@@ -244,7 +244,7 @@ background-color: #FAAC58;
 							</div>
 
 
-							<div class="b1">
+							<div class="b1" >
                        <div class="f1"><label for="headCount">인원을 입력해주세요</label></div>
 <div class="input-group input-number-group">
   <div class="input-group-button">
@@ -255,7 +255,7 @@ background-color: #FAAC58;
     <span class="input-number-increment">+</span>
   </div>
 </div>
-<div style="margin-left: 30%;">
+<div style="margin-left: 30%;" id="headCount-inc">
 <button type="button" id="inc-five">+5</button><button type="button" id="inc-ten">+10</button><button type="button" id="inc-fifty">+50</button><button type="button" id="inc-hundred">+100</button>
 </div>
 								<!-- <div class="f1"><label for="headCount">인원 선택</label></div>
