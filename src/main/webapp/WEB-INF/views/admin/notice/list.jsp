@@ -97,8 +97,10 @@
     <div id="nav02">
         <div id="title">
             <h2>공지사항 관리</h2>
+            <c:if test="${size eq 3}">
             <button id="addBtn">공지사항 작성</button>
             <button id="deleteBtn">삭제</button>
+            </c:if>
         </div>
 
 		<div class="contents conTitle">
