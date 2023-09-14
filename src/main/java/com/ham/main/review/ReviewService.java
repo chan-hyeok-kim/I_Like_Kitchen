@@ -61,9 +61,8 @@ public class ReviewService {
 
 	public List<ReviewDTO> myList(ReviewDTO reviewDTO, Pager pager) throws Exception { 
 		  pager.makeRowNum();
-		  pager.makePageNum(reviewDAO.getTotal(pager));
+		  pager.makePageNum(reviewDAO.getMyReviewTotal(reviewDTO));
 
-		  
 		  Map<String, Object> map = new HashMap<String, Object>();
 		  map.put("pager", pager);
 		  map.put("kto", reviewDTO);

@@ -23,7 +23,7 @@
             <table class="border mx-auto p-2 " style="width: 1600px;">
 				<thead>
 				 <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
-				  <th class="p-2 g-col-6 border">후기번호</th>
+				  <th class="p-2 g-col-6 border">대여 공간</th>
 				  <th class="p-2 g-col-6 border">작성자</th>
 				  <th class="p-2 g-col-6 border">평점</th>
 				  <th class="p-2 g-col-6 border">후기내용</th>
@@ -32,9 +32,11 @@
 				</thead>
 				
 				<tbody>
-				<c:forEach items="${list}" var="list">
+				<c:forEach items="${list}" var="list" varStatus="review">
 				 <tr class="grid gap-3">
-				  <td class="p-2 g-col-6 border">${list.reviewNum}</td>
+				  <td class="p-2 g-col-6 border"><img style="width: 90px; height: 60px" alt="" src="/resources/upload/review/${list.ktos[0].fileName}"> 
+				  ${productList[review.index].productName}
+				  </td>
 				  <td class="p-2 g-col-6 border">
 				  		<a href="/review/view?reviewNum=${list.reviewNum}">${list.id}</a>
 					</td>

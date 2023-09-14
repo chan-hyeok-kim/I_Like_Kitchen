@@ -13,7 +13,7 @@ public class ReviewDTO{
 	private String reviewContents;
 	private Date reviewDate;
 	private Long reviewRate;
-	private List<ReviewDTO> ktos;
+	private List<ReviewFileDTO> ktos;
 	
 	public Long getReviewNum() {
 		return reviewNum;
@@ -51,10 +51,10 @@ public class ReviewDTO{
 	public void setReviewRate(Long reviewRate) {
 		this.reviewRate = reviewRate;
 	}
-	public List<ReviewDTO> getKtos() {
+	public List<ReviewFileDTO> getKtos() {
 		return ktos;
 	}
-	public void setKtos(List<ReviewDTO> ktos) {
+	public void setKtos(List<ReviewFileDTO> ktos) {
 		this.ktos = ktos;
 	}
 	

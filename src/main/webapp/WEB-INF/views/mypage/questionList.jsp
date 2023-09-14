@@ -32,7 +32,7 @@
 				<thead>
 				 
 				 <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
-				  <th class="p-2 g-col-6 border">상품</th>
+				  <th class="p-2 g-col-6 border">대여 공간</th>
 				  <th class="p-2 g-col-6 border">작성자</th>
 				  <th class="p-2 g-col-6 border" style="width:500px">작성내용</th>
 				  <th class="p-2 g-col-6 border">질문날짜</th>

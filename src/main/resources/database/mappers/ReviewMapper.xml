@@ -5,12 +5,7 @@
 
   <mapper namespace="com.ham.main.review.ReviewDAO">
 
-  <!-- <sql id="myReviewList">
-  SELECT 
-  REVIEWNUM, PRODUCTNUM, ID, REVIEWRATE, REVIEWCONTENTS, REVIEWDATE
-  FROM REVIEW ORDER BY REVIEWNUM
-  	
-  </sql> -->
+  
 
 <select id="getMyReviewTotal" parameterType="ReviewDTO" resultType="Long" >
   SELECT COUNT(REVIEWNUM)
@@ -43,7 +38,7 @@
 <result column="REVIEWCONTENTS" property="reviewContents"/> 
 <result column="REVIEWDATE" property="reviewDate"/> 
  
-<collection property="ktos" javaType="List" ofType="ProductFileDTO">
+<collection property="ktos" javaType="List" ofType="reviewFileDTO">
 				<id column="FILENUM" property="fileNum"/>
 				<result column="FILENAME" property="fileName"/>
 				<result column="ORIGINALNAME" property="originalName"/>

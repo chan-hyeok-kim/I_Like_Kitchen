@@ -20,19 +20,16 @@ public class ReviewDAO {
 	private final String NAMESPACE = "com.ham.main.review.ReviewDAO.";
 
 	// 게시물 목록
- 
- 
- 	public List<ReviewDTO> myList(Map<String, Object> map) throws Exception { 
- 		  
-	 return sql.selectList(NAMESPACE + "myList", map);
- 	}
+
+	public List<ReviewDTO> myList(Map<String, Object> map) throws Exception {
+
+		return sql.selectList(NAMESPACE + "myList", map);
+	}
 
 	public List<ReviewDTO> list(Map<String, Object> map) throws Exception {
 
 		return sql.selectList(NAMESPACE + "list", map);
 	}
-
-
 
 //게시물 작성
 	public int add(ReviewDTO reviewDTO) throws Exception {
@@ -64,7 +61,7 @@ public class ReviewDAO {
 	}
 
 	public Long getTotal(ReviewDTO reviewDTO) {
-		return sql.selectOne(NAMESPACE + "getTotal",reviewDTO);
+		return sql.selectOne(NAMESPACE + "getTotal", reviewDTO);
 	}
 
 	// file(파일)
@@ -74,32 +71,15 @@ public class ReviewDAO {
 	}
 
 	public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
-
-		return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
+        return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
 	}
 
 	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
-
-		return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
+        return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
 	}
 
-		public int setFileAdd(ReviewFileDTO reviewFileDTO) throws Exception {
-			
-			return sql.insert(NAMESPACE + "setFileAdd", reviewFileDTO);
-		}
-		
-		public ReviewFileDTO getFileDetail(ReviewFileDTO reviewFileDTO) {
-			
-			return sql.selectOne(NAMESPACE + "getFileDetail", reviewFileDTO);
-		}
-		
-		public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception {
-			
-			return sql.delete(NAMESPACE + "setFileDelete", reviewFileDTO);
-		}
-		
-		public Long getMyReviewTotal(ReviewDTO reviewDTO) throws Exception {
-			return sql.selectOne(NAMESPACE + "getMyReviewTotal", reviewDTO);
-		}
+	public Long getMyReviewTotal(ReviewDTO reviewDTO) throws Exception {
+		return sql.selectOne(NAMESPACE + "getMyReviewTotal", reviewDTO);
+	}
 
 }
