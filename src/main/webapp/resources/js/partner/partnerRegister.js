@@ -16,18 +16,7 @@ const partnerForm = document.getElementById("partnerForm");
 
 let checkResult = [false, false, false, false, false, false]
 
-//------ID CHECK---------
-id.addEventListener("blur", function(){
-    let check = emptyCheck(id);
-    idResult.innerHTML = "ID를 입력해주세요.";
-    idResult.className = "f";
-    checkResult[0] = false;
-    if (!check) {
-        idResult.innerHTML = "정상적으로 ID가 입력되었습니다.";
-        idResult.className = "s";
-        checkResult[0] = true;
-    }
-});
+
 
 //------CompanyName CHECK---------
 companyName.addEventListener("blur", function(){
@@ -35,10 +24,12 @@ companyName.addEventListener("blur", function(){
     companyNameResult.innerHTML = "상호명을 입력해주세요.";
     companyNameResult.className = "f";
     checkResult[1] = false;
+    checkResult[0] = false;
     if (!check) {
         companyNameResult.innerHTML = "정상적으로 입력되었습니다.";
         companyNameResult.className = "s";
         checkResult[1] = true;
+        checkResult[0] = true;
     }
 });
 
