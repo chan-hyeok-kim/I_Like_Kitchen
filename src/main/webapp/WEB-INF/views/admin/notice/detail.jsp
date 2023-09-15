@@ -81,13 +81,14 @@
 	<c:import url="../../temp/header.jsp"></c:import>
 	<div id="nav01">
         <a href="/notice/list">공지사항</a>
-        <a href="https://www.notion.so/d87dd9eefdde460f90a773b47fa833f3?pvs=4" target="_blank">자주찾는 질문</a>
     </div>
     <div id="nav02">
     	<div id="title">
         	<h2>공지사항</h2>
+        	<c:if test="${size eq 3}">
         	<button id="updateBtn">수정</button>
         	<button id="deleteBtn">삭제</button>
+        	</c:if>
         </div>
 
 		<div class="contents">

@@ -21,13 +21,13 @@
 		
 			<div class="mb-3">
 			  <label for="partnerNum" class="form-label fw-bold">사업자번호</label>
-			  <input type="text" name="partnerNum" class="form-control" id="partnerNum" data-serviceKey="${serviceKey}" value="4578500300" placeholder="사업자번호를 -를 제외하고 입력해주세요" required>
+			  <input type="text" name="partnerNum" class="form-control" id="partnerNum" data-serviceKey="${serviceKey}" placeholder="사업자번호를 -를 제외하고 입력해주세요" required>
 			  <div id="resultText"></div>
 			</div>
 			
 			<div class="mb-3">
 			  <label for="partnerName" class="form-label fw-bold">대표자</label>
-			  <input type="text" name="partnerName" class="form-control" id="partnerName" value="이승엽" placeholder="대표자이름을 입력해주세요." required>
+			  <input type="text" name="partnerName" class="form-control" id="partnerName" placeholder="대표자이름을 입력해주세요." required>
 			  <div id="partnerNameResult"></div>
 			</div>
 			
