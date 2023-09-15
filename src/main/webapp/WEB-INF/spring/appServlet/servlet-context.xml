@@ -32,7 +32,7 @@
 	</beans:bean>
 
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-	   <beans:constructor-arg value="http://localhost:82/member/auth/naver/callback"></beans:constructor-arg>   
+	   <beans:constructor-arg value="http://192.168.9.13:82/member/auth/naver/callback"></beans:constructor-arg>   
 	</beans:bean>
 	
 	<beans:bean id="naverState" class="java.lang.String">
