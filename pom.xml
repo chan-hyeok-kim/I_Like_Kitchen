@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hamelen</groupId>
 	<artifactId>main</artifactId>
-	<name>GDJ68_Sample</name>
+	<name>GDJ68_Kitchen</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	
