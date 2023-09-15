@@ -300,8 +300,7 @@
                     
                     for (let i = 0; i < count; i++) {
                     	 $('.btn-cancle').eq(i).click(function(){
-                             //let phone=$('.phone').eq(i).attr('data-phone');
-                             let phone='01026459730'
+                             let phone=$('.phone').eq(i).attr('data-phone');
                              $.ajax({
                                  url:"/member/phoneAuth",
                                  type:"POST",
