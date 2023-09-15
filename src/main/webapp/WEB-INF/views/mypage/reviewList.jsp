@@ -25,7 +25,7 @@
                 <h3 style="margin: 50px 0 50px 0">후기 내역</h3>
             </div>
             
-            <table class="border mx-auto p-2 " style="width: 1300px;">
+            <div style="width: 1300px; "><table class="border mx-auto p-2 " style="width: 1300px; ">
 				<thead>
 				 <tr class="grid gap-3 border bg-warning p-2 text-dark bg-opacity-10">
 				  <th class="p-2 g-col-6 border">상품명</th>
@@ -54,7 +54,7 @@
 				</tbody>
 			
 			</table>
-			
+			</div>
 			<nav aria-label="Page navigation example" id="question-pager-nav">
 			<ul class="pagination">
 				<c:if test="${pager.startNum eq 1}">
