@@ -237,10 +237,6 @@ public class MemberController {
 		return mv;
 	}
 	
-//	이메일이 같고, 플랫폼이 같은경우
-//	이런경우는 걍-> 로그인시키면됨
-//	이메일이 같고, 플랫폼이 다른경우
-//	이런 경우는 이미 사용하는 이메일입니다 메세지 띄워주고 홈
 
 	
 	
@@ -345,12 +341,7 @@ public class MemberController {
 	    public Boolean phoneAuth(String phone, HttpSession session) {
             MemberDTO memberDTO = new MemberDTO();
             memberDTO.setPhone(phone);
-	        try { // 이미 가입된 전화번호가 있으면
-	            if(memberService.memberTelCount(memberDTO) > 0) 
-	                return true; 
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	       
 
 	        String code = memberService.sendRandomMessage(phone);
 	        session.setAttribute("rand", code);

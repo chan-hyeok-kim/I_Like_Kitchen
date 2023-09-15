@@ -97,6 +97,16 @@
                          outline: none;
                          border-radius: 10px;
                     }
+                    .btn-cancle {
+                         background-color: #dfa974;
+                         color: white;
+                         border-color: white;
+                         border: none;
+                         outline: none;
+                         border-radius: 10px;
+                         width: 90px;
+    height: 40px;
+                    }
                </style>
           </head>
 
@@ -125,7 +135,7 @@
                                    <div class="book-table-div">
                                         <div>
                                              <p>예약자</p>
-                                             <p>${member.name}</p>
+                                             <p>${memberList[fi.index].name}</p>
                                         </div>
                                         <div>
                                              <p>예약번호</p>
@@ -144,7 +154,7 @@
                                              <p>인원</p>
                                              <p>${i.headCount}</p>
                                         </div>
-                                        <div>
+                                        <div class="phone" data-phone="${memberList[fi.index].phone}" >
                                              <p>승인 상태</p>
                                              <p class="check" data-check="${i.bookCheck}">${i.bookCheck}</p>
                                         </div>
@@ -168,8 +178,10 @@
                                         </div>
                                         <c:if test="${i.bookCheck eq '미승인'}">
                                         <button id="btn-home" class="btn-pay" data-bookNum="${i.bookNum}">승인</button>
+                                        <button id="btn-cancle" class="btn-cancle" data-bookNum="${i.bookNum}">예약 취소</button>
+                                        
                                         </c:if>
-
+                                       
 
 
                                    </div>
@@ -285,6 +297,29 @@
                          $('.bookTime').eq(i).append(start)
                          $('.bookTime').eq(i).append('~' + end)
                     }
+                    
+                    for (let i = 0; i < count; i++) {
+                    	 $('.btn-cancle').eq(i).click(function(){
+                             //let phone=$('.phone').eq(i).attr('data-phone');
+                             let phone='01026459730'
+                             $.ajax({
+                                 url:"/member/phoneAuth",
+                                 type:"POST",
+                                 data:{
+                                 phone:phone
+                                 },success:function(result){
+                                     swal('문자가 정상적으로 발송되었습니다')
+                                 },error:function(){
+                                     console.log("서버 송신 에러")
+                                 }
+                             })
+                         })
+                    	
+                    
+                    }
+                    
+                    
+                   
                </script>
 
           </body>

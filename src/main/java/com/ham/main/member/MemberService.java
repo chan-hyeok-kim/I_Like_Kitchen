@@ -59,14 +59,8 @@ public class MemberService {
 	
 	public String sendRandomMessage(String phone) {
         SendMessage message = new SendMessage();
-        Random random = new Random();
-        String numStr = "";
-        for (int i = 0; i < 6; i++) {
-            String randomNum = Integer.toString(random.nextInt(10));
-            numStr += randomNum;
-        }
-     
-        System.out.println("회원가입 문자 인증 => " + numStr);
+  
+        String numStr = "예약이 취소되셨습니다. 자세한 사항은 문의 바랍니다";
         message.sendMsg(phone, numStr);
 
         return numStr;

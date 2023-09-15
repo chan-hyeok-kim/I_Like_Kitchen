@@ -1,26 +1,7 @@
 
 
-//휴대폰 본인인증
-$('#identify').click(function(){
-    let phone=$('#phone').val();
-    $.ajax({
-        url:"/member/phoneAuth",
-        type:"POST",
-        data:{
-        phone:phone
-        },success:function(result){
-            if(result){
-                alert("이미 가입된 휴대전화번호입니다")
-            }
-            // $.ajax({
-            //     url:"/member/phoneAuthOk"
-            //     type:"POST"
-            // })
-        },error:function(){
-            console.log("서버 송신 에러")
-        }
-    })
-})
+
+
 
 
 // 사업자등록번호 진위확인

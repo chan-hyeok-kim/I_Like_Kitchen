@@ -156,15 +156,15 @@ public class BookController {
 	public void getChecklist(java.sql.Date clickDay,HttpSession session,Model model) throws Exception{
         PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
 		
-		System.out.println(clickDay);
-		
+	    
 		List<ProductDTO> pl = productService.getInfo(partnerDTO);
 //		가져온 자료 담아둘 애들 객체 생성 
 		List<ProductDTO> newPl = new ArrayList<ProductDTO>();
 		List<BookDTO> newBl = new ArrayList<BookDTO>();
+		List<MemberDTO> ml = new ArrayList<MemberDTO>();
 		for(ProductDTO p: pl) {
 			List<BookDTO> bl = bookService.getBook(p);
-		  
+		    
 		    for(BookDTO b: bl) {
 			if(Integer.parseInt(b.getBookCheck())>0) {
 				b.setBookCheck("승인");
@@ -179,11 +179,20 @@ public class BookController {
                 ProductDTO productDTO = new ProductDTO();
                 productDTO.setProductNum(b.getProductNum());
                 newPl.add(productService.getDetail(productDTO));
+			
+                MemberDTO memberDTO = new MemberDTO();
+    			memberDTO.setId(b.getId());
+    			memberDTO = memberService.getDetail(memberDTO);
+    			     if(memberDTO!=null) {
+    				    ml.add(memberDTO);
+    			     } 
 			}
+			
 		    }
 			if(bl.size()!=0) {
 	        	model.addAttribute("bookList", newBl);
 	        	model.addAttribute("productList", newPl);
+	        	model.addAttribute("memberList", ml);
 		}
 		  
         

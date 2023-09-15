@@ -226,6 +226,9 @@ a:visited {
 						}
 					})
 				})
+				
+				
+				
 	</script>
 	<script src="/resources/js/book/list.js"></script>
 
