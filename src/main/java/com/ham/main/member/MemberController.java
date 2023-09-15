@@ -165,7 +165,7 @@ public class MemberController {
 		
 		
 		session.setAttribute("member", memberDTO);
-		
+		session.setAttribute("size",memberDTO.getRoles().size());
 		mv.setViewName("redirect:../../../");
 		return mv;
 	}
@@ -267,7 +267,7 @@ public class MemberController {
 	    		  MemberDTO memberDTO = new MemberDTO();
 	      		  memberDTO.setId(snsMemberDTO.getSnsEmail());
 	      		  memberDTO = memberService.getDetail(memberDTO);
-	      		  memberService.getMemberLogin(memberDTO);
+	      		  
 	      		  session.setAttribute("member", memberDTO);
 	      		  model.addAttribute("result", "로그인 성공");
 	    	  }else {
@@ -319,7 +319,7 @@ public class MemberController {
   		  MemberDTO memberDTO = new MemberDTO();
     		  memberDTO.setId(snsMemberDTO.getSnsEmail());
     		  memberDTO = memberService.getDetail(memberDTO);
-    		  memberService.getMemberLogin(memberDTO);
+    		  memberDTO = memberService.getMemberLogin(memberDTO);
     		  session.setAttribute("member", memberDTO);
     		  mav.addObject("result", "로그인 성공");
     		  mav.setViewName("/commons/loginResult");
