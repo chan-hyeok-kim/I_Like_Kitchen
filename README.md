@@ -22,8 +22,11 @@
 >문의, 후기
 
 ## :date: 프로젝트 개요
+<div style="margin-left: 200px; padding-left:200px;">
+<p>
 <img src="https://github.com/Hamelen/GDJ68_Kitchen/assets/132668682/0add8122-35b4-48f3-9cfd-1b4751242619" width="280" height="50" style="max-width: 100%; margin-left: 200px;"/>
-
+</p>
+  </div>
 ><p><strong>프로젝트</strong>: 공유 주방 대여 사이트</p>
 ><p><strong>기획 및 제작</strong>: 김찬혁, 송윤호, 김민준, 장재혁, 황윤제</p>
 ><p><strong>분류</strong>: 팀 프로젝트</p>
