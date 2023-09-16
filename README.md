@@ -38,3 +38,4 @@ Category| Detail
 API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```
 Diagram | ```ERDCloud```
 
+DBeaver는 IDE에 추가
