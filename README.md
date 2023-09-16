@@ -35,6 +35,6 @@
 #### :hammer: API 및 기타 도구들
 Category| Detail
 :--:|:--:
-Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```
+Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```
 Document | ```ERDCloud```, ```Notion```
 
