@@ -15,7 +15,7 @@
 ## :computer: 개발 환경
 <img src="https://img.shields.io/badge/Framework-%23121011?style=for-the-badge"> <img alt="Spring" src ="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> 
 
-<img src="https://img.shields.io/badge/library-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/>
+<img src="https://img.shields.io/badge/library-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/> <img src="https://img.shields.io/badge/sweetalert-?style=for-the-badge&logoColor=pink"/>
 
 <img src="https://img.shields.io/badge/IDE-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white"/> <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
 
@@ -34,6 +34,6 @@
 #### :hammer: API 및 기타 도구들
 Category| Detail
 :--:|:--:
-Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```, ```SweetAlert Library```
+Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```
 Document | ```ERDCloud```, ```Notion```
 
