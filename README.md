@@ -24,7 +24,7 @@
 
 ### 🔨 개발 도구
 Category| Detail
---|--
+--|:--:
 Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```, ```SweetAlert Library```
 Document | ```ERDCloud```, ```Notion```
 
