@@ -14,8 +14,7 @@
  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
 
 <img src="https://img.shields.io/badge/server-%23121011?style=for-the-badge">
-<img src="https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black
-"/>
+<img src="https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black"/>
 
 <img src=""/><img src=""/><img src=""/>
 ### 🔨라이브러리 및 API
