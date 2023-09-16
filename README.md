@@ -23,6 +23,15 @@
 
 ## :date: 프로젝트 개요
 
+![2](https://github.com/Hamelen/GDJ68_Kitchen/assets/132668682/0add8122-35b4-48f3-9cfd-1b4751242619)
+
+>프로젝트: 공유 주방 대여 사이트 
+>기획 및 제작: 김찬혁, 송윤호, 김민준, 장재혁, 황윤제
+>분류: 팀 프로젝트
+>제작 기간: 2023.08.16 ~ 09.15
+>배포일: 2023
+>사용 기술: SPRING LEGACY
+>문의: daiolous@gmail.com
 
 ## :computer: 개발 환경
 <img src="https://img.shields.io/badge/Framework-%23121011?style=for-the-badge"> <img alt="Spring" src ="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/>
