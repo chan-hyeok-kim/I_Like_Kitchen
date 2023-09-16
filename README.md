@@ -1,19 +1,19 @@
-## 🍴 공유 주방 대여 사이트
+## :fork_and_knife: 공유 주방 대여 사이트
 
-## :open_file_folder:목차
+## :open_file_folder: 목차
 * 팀원
 * 프로젝트 개요
 * 개발 환경
 * 개발 도구
 
-## 💁 팀원 소개
+## :speech_balloon: 팀원 소개
 팀장: 김찬혁
 
 
-## 프로젝트 개요
+## :date: 프로젝트 개요
 
 
-## 💻 개발 환경
+## :computer: 개발 환경
 <img src="https://img.shields.io/badge/Framework-%23121011?style=for-the-badge"> <img alt="Spring" src ="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> 
 
 <img src="https://img.shields.io/badge/library-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/>
@@ -32,7 +32,7 @@
 
 <img src="https://img.shields.io/badge/other-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>
 
-## 🔨 개발 도구
+## :hammer: 개발 도구
 Category| Detail
 :--:|:--:
 Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```, ```SweetAlert Library```
