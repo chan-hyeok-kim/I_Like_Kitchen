@@ -22,7 +22,7 @@
 
 
 <img src="https://img.shields.io/badge/other-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
-<img src="https://img.shields.io/badge/nortion-#000000?style=for-the-badge&logo=nortion&logoColor=black"/>
+<img src="https://img.shields.io/badge/notion-#000000?style=for-the-badge&logo=notion&logoColor=black"/>
 
 
 ### 🔨 API 및 도구
