@@ -10,5 +10,5 @@
 
 <img src="https://img.shields.io/badge/DB-%23121011?style=for-the-badge"> <img alt="Oracle" src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"/>
 
-### 🔧라이브러리 및 API
+### 🔨라이브러리 및 API
 
