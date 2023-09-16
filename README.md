@@ -16,10 +16,10 @@
 >마이페이지, 게시판(공지사항,자주찾는 QNA), 문의 후기 내역
 
 ><p><strong>팀원</strong>: 장재혁</p>
->공간 정보 상세, 전체 공간 리스트, 메인 페이지
+>공간 등록, 공간 정보 상세, 전체 공간 리스트, 메인 페이지
 
 ><p><strong>팀원</strong>: 황윤제</p>
->문의, 후기
+>문의, 후기 등록, 문의 리스트, 후기 리스트
 
 ## :date: 프로젝트 개요
 
@@ -55,6 +55,7 @@
 
 <img src="https://img.shields.io/badge/other-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white"/> 
 
+<img src="https://img.shields.io/badge/DBeaver-f26b00?style=for-the-badge&logo="/>
 #### :hammer: API 및 기타 도구들
 Category| Detail
 :--:|:--:
