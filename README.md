@@ -1,7 +1,16 @@
-##   공유 주방 대여 사이트
+## 🍴 공유 주방 대여 사이트
+
+### 목차
+* 팀원
+* 프로젝트 개요
+* 개발 환경
 
 ### 💁 팀원 소개
 팀장: 김찬혁
+
+
+### 프로젝트 개요
+
 
 ### 💻 개발 환경
 <img src="https://img.shields.io/badge/Framework-%23121011?style=for-the-badge"> <img alt="Spring" src ="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> 
