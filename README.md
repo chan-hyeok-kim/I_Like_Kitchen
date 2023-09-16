@@ -3,8 +3,7 @@
 ## :open_file_folder: 목차
 * 팀원
 * 프로젝트 개요
-* 개발 환경
-* 개발 도구
+* 개발 환경 및 도구
 
 ## :speech_balloon: 팀원 소개
 팀장: 김찬혁
@@ -32,7 +31,7 @@
 
 <img src="https://img.shields.io/badge/other-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>
 
-## :hammer: 개발 도구
+#### :hammer: 기타 API 및 도구들
 Category| Detail
 :--:|:--:
 Libray & API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Lombok1.18.4```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```, ```SweetAlert Library```
