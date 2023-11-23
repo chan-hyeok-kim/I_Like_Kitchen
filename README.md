@@ -9,7 +9,7 @@
 <li> <a href="#function-implementation">기능 구현</a></li>
 </ul>
 
-## :date: <a id="project-outline">프로젝트 개요</a>
+## 📋 <a id="project-outline">프로젝트 개요</a>
 
 <p>
 <img src="https://github.com/Hamelen/GDJ68_Kitchen/assets/132668682/0add8122-35b4-48f3-9cfd-1b4751242619" width="280" height="50" style="max-width: 100%;"/>
