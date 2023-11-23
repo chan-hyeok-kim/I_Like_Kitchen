@@ -1,12 +1,15 @@
 ## :fork_and_knife: 공유 주방 대여 사이트
 
 ## :open_file_folder: 목차
-* 프로젝트 개요
-* 내 담당 기능
-* 팀원 소개
-* 개발 환경 및 도구
+<ul>
+<li> <a href="#project-outline">프로젝트 개요</a></li>
+<li> <a href="#my-role">내 담당 기능</a></li>
+<li> <a href="#team-role">팀원 역할</a></li>
+<li> <a href="#development-configuration">개발 환경 및 도구</a></li>
+<li> <a href="#function-implementation">기능 구현</a></li>
+      
 
-## :date: 프로젝트 개요
+## :date: <a id="project-outline">프로젝트 개요</a>
 
 <p>
 <img src="https://github.com/Hamelen/GDJ68_Kitchen/assets/132668682/0add8122-35b4-48f3-9cfd-1b4751242619" width="280" height="50" style="max-width: 100%;"/>
