@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				let selectYear = info.date.getFullYear();
 				let selectMonth = info.date.getMonth() + 1;
 				let selectDate = info.date.getDate();
-
+                
 
 				console.log(info.date.getTime())
 
@@ -116,7 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
 				setDate = $('#setDate').val();
 				console.log(typeof selectDate)
 				selectDate = ''+selectDate
-				console.log(typeof selectDate)
+			
+				selectMonth= ''+selectMonth
+				
 				if (selectMonth.substring(0, 1) == 0) {
 					selectMonth = selectMonth.substring(1, 2)
 				}
