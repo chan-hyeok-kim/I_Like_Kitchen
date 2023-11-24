@@ -80,7 +80,7 @@ Diagram | ```ERDCloud```
 
 #### 1-3.네이버 소셜 로그인
 ![naverLogin](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/7d68c337-7f3f-4713-bb20-996ff3b1bf0c)
-* scribejava API로 구현
+* Scribejava API로 구현
 * 최초 로그인 시 휴대전화, 이름, 이메일을 가져올 수 있으며, 이메일 정보로 로그인
 
 #### 1-4.예약
@@ -126,7 +126,7 @@ Diagram | ```ERDCloud```
 ![bookApproval](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/09ffcc0b-d2b5-44a2-adc0-2e8baf286323)
 * 캘린더로 예약 미승인 건(빨간색)과 예약 건(연두색)을 확인할 수 있다(FullCalendar API)
 * 캘린더를 클릭 시, 예약 관련 상세 정보를 우측에 표시
-* 예약을 거절했을 경우에는 예약자에게 문자가 발송된다
+* 예약을 거절했을 경우에는 예약자에게 문자가 발송된다(Naver Cloud SMS)
 
 #### 2-3.파트너 페이지
 ![partnerManage](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/7cd524ba-0893-411c-9f40-528183015834)
