@@ -23,12 +23,12 @@
 ><p><strong>사용 기술</strong>: SPRING LEGACY</p>
 ><p><strong>문의</strong>: daiolous@gmail.com</p>
 
-## 🏃 내 담당 기능
+## 🏃 <a id="my-role">내 담당 기능</a>
 ><p><strong>팀장</strong>: 김찬혁(나)</p>
 >예약 페이지(Fullcalendar API), 예약 승인 페이지, 결제 및 환불(API), 예약 상세, 결제 및 환불내역 상세, 문자 발송 API(예약 취소), 대여 공간 위치 표시(카카오맵 API), 관리자 페이지, 공공데이터 사업자 인증 API, 네이버 소셜 로그인 API, 메인 페이지
 
 
-## :speech_balloon: 팀원 소개
+## :speech_balloon: <a id="team-role">팀원 소개</a>
 ><p><strong>팀원</strong>: 송윤호</p>
 >회원가입(이메일 전송 API), 로그인, 카카오 소셜 로그인 API, 회원가입, 회원등급 , 파트너 등록 페이지, 파트너 정보 및 공간 관리 페이지, 메인 페이지, 약관동의
 
@@ -41,7 +41,7 @@
 ><p><strong>팀원</strong>: 황윤제</p>
 >문의 및 후기 등록, 문의 리스트, 후기 리스트
 
-## :computer: 개발 환경
+## :computer: <a id="development-configuration">개발 환경</a>
 <img src="https://img.shields.io/badge/Framework-%23121011?style=for-the-badge"> <img alt="Spring" src ="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/mybatis-004088?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMCIgd2lkdGg9IjEwOC4wMDAwMDBwdCIgaGVpZ2h0PSI4OC4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDEwOC4wMDAwMDAgODguMDAwMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KCjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDg4LjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIgZmlsbD0id2hpdGUiIHN0cm9rZT0ibm9uZSI+CjxwYXRoIGQ9Ik0zNTQgNzk1IGMtOSAtMjMgMTUgLTQ1IDQ3IC00NSAxNSAwIDMxIC01IDM1IC0xMSA1IC05IC0xIC0xMCAtMjEgLTUgLTE3IDQgLTQ5IDAgLTgzIC0xMCBsLTU1IC0xOCAtMjMgMjkgYy0yOSAzNyAtNTIgMjQgLTMzIC0xOCAxNiAtMzQgMzIgLTM5IDczIC0yMiA0NCAxOSAxMTAgMTkgMTI1IDIgNiAtOCAxNCAtMjkgMTggLTQ3IGw2IC0zMyAtNDkgNiBjLTI3IDQgLTYxIDEwIC03NSAxMyAtMjUgNiAtMjYgNCAtMjUgLTMzIGwxIC0zOCAtNTcgLTMgYy0zMiAtMiAtNTggLTcgLTU4IC0xMyAwIC0yMiAyOSAtNzggNTkgLTExMSAxNyAtMjAgMzEgLTQzIDMxIC01MSAwIC0yMCAtNDggLTU2IC0xMzAgLTk3IGwtNjUgLTMzIDQ4IC00MyBjNjEgLTU1IDE1MyAtMTAwIDI0MiAtMTE5IDg3IC0xOCAxMzQgLTE4IDIwNiAtMSAxNDAgMzIgMjI1IDEyMiAyODUgMzAwIDEzIDM4IDMyIDc1IDQxIDgyIDE0IDEwIDE1IDEzIDQgMTQgLTExIDAgLTEwIDMgMyAxMyAxNiAxMiAxNyAxNSAzIDIwIC04IDMgLTMwIDM1IC00NyA3MiAtNDIgODggLTg4IDEyMCAtMTc0IDEyMCAtNDQgMCAtNzQgLTcgLTEwOCAtMjQgLTU3IC0yOSAtNzggLTIzIC03OCAyMiAwIDQzIC0xNSA1NyAtNjIgNTcgLTI3IDAgLTQwIDUgLTQ4IDIwIC0xMyAyNCAtMjggMjYgLTM2IDV6IG00NDYgLTIxNSBjMTIgLTggMTEgLTEwIC03IC0xMCAtNDIgMCAtMzIgLTU5IDEwIC02MSAxMiAwIDE2IC0zIDkgLTYgLTIzIC05IC02MyA3IC03MSAzMCAtMTYgNDMgMjAgNzIgNTkgNDd6IG0zMCAtMzAgYzAgLTUgLTQgLTEwIC05IC0xMCAtNiAwIC0xMyA1IC0xNiAxMCAtMyA2IDEgMTAgOSAxMCA5IDAgMTYgLTQgMTYgLTEweiIvPgo8L2c+Cjwvc3ZnPg=="/>
 
 <img src="https://img.shields.io/badge/library-%23121011?style=for-the-badge"> <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/> <img src="https://img.shields.io/badge/sweetalert-FF3850?style=for-the-badge"/> <img src="https://img.shields.io/badge/lombok-46E3B7?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMCIgd2lkdGg9IjIwMC4wMDAwMDBwdCIgaGVpZ2h0PSIyMDAuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCAyMDAuMDAwMDAwIDIwMC4wMDAwMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMjAwLjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIgZmlsbD0id2hpdGUiIHN0cm9rZT0ibm9uZSI+CjxwYXRoIGQ9Ik0zNzAgMTgyMiBjLTExMSAtMTI0IC0xNzAgLTMxNSAtMTcwIC01NTUgMCAtNjMgLTMgLTcyIC0zNSAtMTExIC02MCAtNzMgLTgwIC0xMzAgLTc5IC0yMjEgMSAtMTAzIDIxIC0xNDYgMTE3IC0yNTYgMTMxIC0xNTAgMjg2IC0yNjkgNDYyIC0zNTUgMjc2IC0xMzQgNTU2IC0xNjkgNzcwIC05NSAxMTkgNDEgMzQzIDE1MiAzODMgMTg5IDQwIDM4IDQzIDc4IDcgOTIgLTI5IDExIC03NiAzIC0yNTUgLTQyIC0yOTAgLTc0IC01MTAgLTI4IC02NzggMTQwIC02MSA2MCAtNjUgNjMgLTk0IDUzIC0yNiAtOSAtMzUgLTcgLTc0IDIwIC01MCAzNCAtNTQgNDYgLTE4IDU1IDIyIDYgMjQgMTAgMTkgMzUgLTUgMjIgLTMgMjkgOSAyOSAyMCAwIDIwIDQgLTMgNjUgLTEwIDI4IC0yNCA3NyAtMzEgMTEwIC0zMyAxNjQgLTE1MiAyODUgLTI4MSAyODUgLTQ2IDAgLTQ2IDAgLTUzIDM4IC0zIDIwIC02IDc5IC02IDEyOSAwIDc0IDUgMTA2IDI1IDE1OCAyNiA3MCA2NyAxMzUgMTA5IDE3NCAxNCAxNCAyNiAyNyAyNiAzMSAwIDQgLTIyIDI2IC00OSA0OCBsLTQ5IDQyIC01MiAtNTh6IG04NCAtMTEgYzE3IC0xOCAxNiAtMjEgLTIwIC02OCAtODggLTExNCAtMTE5IC0yMzMgLTEwNCAtMzk4IDEyIC0xMjkgMTIgLTEyNSAtMyAtMTI1IC03IDAgLTI5IC05IC01MCAtMTkgbC0zNyAtMTkgMCAxMTcgYzAgMjI3IDQ2IDM4MCAxNDggNDk0IDM5IDQzIDQzIDQ0IDY2IDE4eiBtLTE1NyAtNzA3IGMzIC05IC0yIC02MCAtMTIgLTExMyAtMjEgLTExNSAtMTYgLTE2MiAyNSAtMjUwIDUxIC0xMDYgMjExIC0yNDggNDAzIC0zNTUgNDggLTI2IDg3IC01MCA4NyAtNTEgMCAtNiAtMTAyIDM2IC0xNTggNjQgLTE4OSA5NiAtNDQxIDMzMiAtNDgxIDQ1MCAtMzUgMTA2IDI2IDI3MSAxMDAgMjcxIDE4IDAgMzIgLTYgMzYgLTE2eiBtMTg4IC0yODEgYzM0IC0xMCA3MyAtMTMgMTIxIC05IDY3IDUgNzIgNCA3NyAtMTYgMTAgLTM2IC0yIC00MSAtOTIgLTM1IC0xMTEgNiAtMTk1IDM0IC0xOTkgNjcgLTMgMjAgLTEgMjIgMjAgMTUgMTIgLTQgNDYgLTEzIDczIC0yMnoiLz4KPC9nPgo8L3N2Zz4="/> 
@@ -65,3 +65,6 @@ Category| Detail
 :--:|:--:
 API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```,```JDBC```
 Diagram | ```ERDCloud```
+
+## ▶️ <a id="function-implementation">기능 구현</a>
+
