@@ -4,7 +4,7 @@
 <ul>
 <li> <a href="#project-outline">프로젝트 개요</a></li>
 <li> <a href="#my-role">내 담당 기능</a></li>
-<li> <a href="#team-role">팀원 역할</a></li>
+<li> <a href="#team-role">팀원 소개</a></li>
 <li> <a href="#development-configuration">개발 환경 및 도구</a></li>
 <li> <a href="#function-implementation">기능 구현</a></li>
 </ul>
