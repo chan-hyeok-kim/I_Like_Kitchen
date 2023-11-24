@@ -66,5 +66,5 @@ Category| Detail
 API | ```JavaMail API```, ```Apache Commons FileUpload```, ```Fullcalendar```, ```KakaoMap```, ```KakaoLogin```, ```NaverLogin```, ```Iamport```, ```NaverCloud SMS```,```JDBC```
 Diagram | ```ERDCloud```
 
-## ▶️ <a id="function-implementation">기능 구현</a>
+## ⛳ <a id="function-implementation">기능 구현</a>
 
