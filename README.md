@@ -1,4 +1,3 @@
-![naverLogin](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/56fd66aa-2620-4824-a793-3b68b4fca504)## :fork_and_knife: 공유 주방 대여 사이트
 
 ## 📚 목차
 <ul>
