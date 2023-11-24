@@ -69,38 +69,52 @@ Diagram | ```ERDCloud```
 ## ⛳ <a id="function-implementation">기능 구현</a>
 
 ### 1. 일반 유저
-#### 1-1. 일반 로그인
+#### 1-1.일반 로그인
 ![login](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/eb274a56-e224-4e12-bd8b-d7d830e37c1e)
 * 먼저 회원 가입을 진행해야 하며, 이메일 인증을 통해 6자리 인증번호를 입력해야 가입할 수 있다.(Gmail SMTP)
 
-#### 1-2. 카카오 소셜 로그인
+#### 1-2.카카오 소셜 로그인
 ![kakaoLogin](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/ed22fb34-c8fd-4e29-a93b-e5df096437ba)
 * REST API중 HttpURLConnection을 사용하여 구현
 * 최초 로그인 시 이메일, 프로필 사진,닉네임 등을 가져올 수 있다
 * 실제로 사업자 등록을 하고 비즈 앱 신청을 해야만 유저의 다른 정보들을 가져올 수 있기에 현재는 이메일을 아이디로 써서 로그인
 
-#### 1-3. 네이버 소셜 로그인
+#### 1-3.네이버 소셜 로그인
 ![naverLogin](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/7d68c337-7f3f-4713-bb20-996ff3b1bf0c)
 * scribejava API로 구현
 * 최초 로그인 시 휴대전화, 이름, 이메일을 가져올 수 있으며, 이메일 정보로 로그인
 
-#### 1-4. 예약
+#### 1-4.예약
 ![book](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/43be5d9b-ec61-4347-8d8f-4ccc7864e892)
 * 오늘 이전 날짜는 예약이 불가능.
 * 캘린더를 통해 예약 날짜를 선택할 수 있다(FullCalendar API)
 * 기본적으로 최소 4시간 이상만 예약이 가능하며, 파트너의 승인을 받아야 결제를 진행할 수 있다
 
-#### 1-5. 결제
+#### 1-5.결제
 ![pay](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/0e6e90be-6e14-407f-ab98-fec88a65f5c3)
 * Iamport API를 HttpsURLConnection으로 구현
 * 보안이 중요한만큼 자바스크립트에서 한번(결제 후), 자바에서 한번 검증을 거친다(결제 전)
 * 승인된 건에 대해서만 결제가 가능
 * 결제 완료 시, 마이페이지의 결제 내역으로 이동
 
-#### 1-6. 환불
+#### 1-6.환불
 ![refund](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/8d405c31-31e6-49d8-8a10-a9fc4a1aded6)
 * 환불 사유를 필수적으로 입력해야 함
 * 마이페이지의 지난내역, 환불내역에서 확인할 수 있다
+
+#### 1-7.상품 상세
+![productDetail](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/5757f19a-9edd-4296-b2d2-ef451fe854fb)
+* 파트너가 등록한 상품 상세 설명이 있으며, 문의나 후기도 확인할 수 있음
+* 하단에는 주소에 해당하는 위치를 지도로 확인할 수 있게 표시(카카오맵 API)
+
+#### 1-8.문의
+![question1](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/c71ef156-2e89-42c2-910d-e3bfbebb6d91)
+* 자기가 쓴 문의만 수정, 삭제가 가능
+
+#### 1-9.후기
+![review](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/6d01bb88-a58b-40c4-b0f9-c167485c341a)
+* 예약했던 이력이 있는 사람만 후기 등록 가능
+* 1개의 리뷰 사진을 올릴 수 있음
 
 ### 2. 파트너
 #### 2-1.파트너 등록
@@ -109,35 +123,43 @@ Diagram | ```ERDCloud```
 * 등록 버튼 클릭 시 "사업자 번호+대표자명+개업일자"일치하는지 여부 확인하여 불일치 시 파트너 신청 불가
 * 관리자가 파트너 신청을 승인해준 후부터 상품 등록이 가능하다
   
-#### 2-2. 예약 승인 
+#### 2-2.예약 승인 
 ![bookApproval](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/09ffcc0b-d2b5-44a2-adc0-2e8baf286323)
 * 캘린더로 예약 미승인 건(빨간색)과 예약 건(연두색)을 확인할 수 있다(FullCalendar API)
 * 캘린더를 클릭 시, 예약 관련 상세 정보를 우측에 표시
 * 예약을 거절했을 경우에는 예약자에게 문자가 발송된다
 
-#### 2-3. 파트너 페이지
+#### 2-3.파트너 페이지
 ![partnerManage](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/7cd524ba-0893-411c-9f40-528183015834)
 * 파트너 관리, 상품 관리, 예약 관리, 환불 관리로 나눠져 있음
 * 파트너는 자신이 등록한 상품들에 대해서만 수정 및 삭제가 가능
 * 환불 관리는 바로 환불이 되지 않는 경우(예약일 4일전부터 환불 신청한 건)에 대해 관리할 수 있는 페이지
 
-#### 2-4. 상품 등록
+#### 2-4.상품 등록
 ![productAdd](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/506a9421-6c34-4fb5-9a1b-b7d839d4ca11)
 * SummberNote API를 적용
 * 상품 관련 이미지를 최대 5개까지 등록할 수 있음
 
-### 3. 관리자
-#### 3-1. 공지사항
+#### 2-5.상품 목록
+![productList](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/4242bda9-fc3a-48d2-8bc2-bd61eb87ee93)
+* 검색(상품명, 내용)을 통해 원하는 상품을 찾을 수 있게 해놓음
+* 최신 등록순, 높은 가격순, 낮은 가격순으로 조회 가능
+
+### 3. 관리자 및 기타
+#### 3-1.공지사항
 ![notice](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/9350a4fd-b594-4f64-8110-5f92233ad09b)
 * 오직 관리자만 공지사항 작성, 수정, 삭제 가능
 * 1개의 파일 첨부 가능
 
-### 4. 기타
-####  메인 페이지
+#### 3-2.관리자 페이지
+![partnerApproval](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/c638db96-f1e2-405c-9fb4-81c238a65c95)
+* 파트너 승인 및 취소 가능
 
-#### 4-2.자주 찾는 질문(FAQ)
+#### 3-3.메인 페이지
+![mainPage](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/6d84f767-a749-4b57-b505-1b92d3e19e81)
+* 상품들을 최신순으로 정렬해놓음
+  
+#### 3-4.자주 찾는 질문(FAQ)
 ![FAQ](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/9e3b3557-434a-4fb0-8951-6c4c3f62f67c)
 * 우측에 고정해놓아서 언제든 찾을 수 있음
-
-
 
