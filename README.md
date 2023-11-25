@@ -108,7 +108,7 @@ Diagram | ```ERDCloud```
 
 #### 1-3.네이버 소셜 로그인
 ![naverLogin](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/7d68c337-7f3f-4713-bb20-996ff3b1bf0c)
-* Scribejava API로 구현
+* ScribeJava API로 구현
 * 최초 로그인 시 휴대전화, 이름, 이메일을 가져올 수 있으며, 이메일 정보로 로그인
 
 #### 1-4.예약
