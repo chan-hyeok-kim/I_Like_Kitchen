@@ -51,7 +51,7 @@
 ><p><strong>문의</strong>: daiolous@gmail.com</p>
 
 ## 🏃 <a id="my-role">내 담당 기능</a>
-><p><strong>팀장</strong>: 김찬혁(나)</p>
+><p><strong>팀장</strong>: 김찬혁</p>
 >예약 페이지(Fullcalendar API), 예약 승인 페이지, 결제 및 환불(API), 예약 상세, 결제 및 환불내역 상세, 문자 발송 API(예약 취소), 대여 공간 위치 표시(카카오맵 API), 관리자 페이지, 공공데이터 사업자 인증 API, 네이버 소셜 로그인 API, 메인 페이지
 
 
