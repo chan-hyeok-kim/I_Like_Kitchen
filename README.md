@@ -126,7 +126,7 @@ Diagram | ```ERDCloud```
 #### 1-5.결제
 ![pay](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/0e6e90be-6e14-407f-ab98-fec88a65f5c3)
 * Iamport API를 HttpsURLConnection으로 구현
-* 보안이 중요한만큼 자바스크립트에서 한번(결제 후), 자바에서 한번 검증을 거친다(결제 전)
+* 보안이 중요한만큼 자바스크립트에서 한번(결제 후)검증을 거친다
 * 승인된 건에 대해서만 결제가 가능
 * 결제 완료 시, 마이페이지의 결제 내역으로 이동
 
