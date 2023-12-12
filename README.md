@@ -50,6 +50,7 @@
 ><p><strong>사용 기술</strong>: SPRING LEGACY</p>
 ><p><strong>문의</strong>: daiolous@gmail.com</p>
 
+><strong>아키텍처</strong>
 ![Kitchen1 drawio](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/e68cc54b-f581-4f14-9dd4-828af5eeda9f)
 
 
@@ -57,7 +58,8 @@
 ><p><strong>팀장</strong>: 김찬혁</p>
 >예약 페이지(Fullcalendar API), 예약 승인 페이지, 결제 및 환불(API), 예약 상세, 결제 및 환불내역 상세, 문자 발송 API(예약 취소), 대여 공간 위치 표시(카카오맵 API), 관리자 페이지, 공공데이터 사업자 인증 API, 네이버 소셜 로그인 API, 메인 페이지
 
-![Book drawio](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/18242024-8014-49c0-aaf6-274188f65b2d)
+>#### 에약&결제:시퀀스 다이어그램
+>![Book drawio](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/18242024-8014-49c0-aaf6-274188f65b2d)
 
 ## :speech_balloon: <a id="team-role">팀원 소개</a>
 ><p><strong>팀원</strong>: 송윤호</p>
