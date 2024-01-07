@@ -58,9 +58,6 @@
 ><p><strong>팀원</strong>: 황윤제</p>
 >문의 및 후기 등록, 문의 리스트, 후기 리스트
 
->#### 에약&결제:시퀀스 다이어그램
->![Book drawio](https://github.com/chan-hyeok-kim/I_Like_Kitchen/assets/132668682/18242024-8014-49c0-aaf6-274188f65b2d)
-
 ## :speech_balloon: <a id="team-role">팀원 소개</a>
 ><p><strong>팀원</strong>: 송윤호</p>
 >회원가입(이메일 전송 API), 로그인, 카카오 소셜 로그인 API, 회원가입, 회원등급 , 파트너 등록 페이지, 파트너 정보 및 공간 관리 페이지, 메인 페이지, 약관동의
