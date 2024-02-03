@@ -41,7 +41,7 @@ public class PartnerController {
 	@Autowired
 	private ProductService productService;
 	
-	private final String SERVICE_KEY = "bJ6kMWyyBbwha2z3sjC5XeliD%2F%2FTMdJcXmr9veQc%2BIKmwfUs0IYcoRmG0F7qXaxYkf61qRvzBy67J30mnS64Mg%3D%3D";
+	private final String SERVICE_KEY = "";
 	
 	
 	
