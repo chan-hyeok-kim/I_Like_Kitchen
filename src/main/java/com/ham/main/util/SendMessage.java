@@ -22,27 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class SendMessage {
 	
-	
 
-        // JSON 을 활용한 body data 생성
-        JSONObject bodyJson = new JSONObject();
-        JSONObject toJson = new JSONObject();
-        JSONArray  toArr = new JSONArray();
-        
-        // 난수와 함께 전송
-        //toJson.put("content","ILikeKitchen 본인인증 ["+rand+"]");		
-        toJson.put("to",tel);
-        toArr.add(toJson);
-	    
-        // 메시지 Type (sms | lms)
-        bodyJson.put("type","sms");
-        bodyJson.put("contentType","COMM");
-        bodyJson.put("countryCode","82");
-        bodyJson.put("content", "ILikeKitchen ["+rand+"]");
-        
-        // 발신번호 * 사전에 인증/등록된 번호만 사용할 수 있습니다.
-        bodyJson.put("from","");		
-        bodyJson.put("messages", toArr);		
 	    
         String body = bodyJson.toJSONString();
 	    
