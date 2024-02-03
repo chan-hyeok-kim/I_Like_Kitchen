@@ -41,6 +41,7 @@ public class PartnerController {
 	@Autowired
 	private ProductService productService;
 	
+
 	
 	
 	@GetMapping("partnerPage")

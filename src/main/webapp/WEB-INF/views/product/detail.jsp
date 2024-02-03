@@ -18,8 +18,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=367c3993888d805f9a675197a5be6e56&libraries=services&autoload=false"></script>
+<!-- <script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=367c3993888d805f9a675197a5be6e56&libraries=services,clusterer,drawing"></script> -->
 </head>
 
 <style>
@@ -289,8 +289,11 @@
 
 
 </body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=367c3993888d805f9a675197a5be6e56&libraries=services,clusterer,drawing"></script>
+
 <script src="/resources/js/delete.js"></script>
 <script src="/resources/js/product/productBook.js"></script>
+
 <script src="/resources/js/product/kakaoMap.js"></script>
 
 

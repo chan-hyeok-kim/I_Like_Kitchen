@@ -63,9 +63,12 @@ import com.ham.main.util.auth.SNSLogin;
 import com.ham.main.util.auth.SnsUrls;
 import com.ham.main.util.auth.SnsValue;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/member/*")
+@Slf4j
 public class MemberController {
 
 
@@ -111,9 +114,12 @@ public class MemberController {
 		memberDTO = memberService.getMemberEmailCheck(memberDTO);
 
 		int result = 0;  //중복
+		log.info("이메일중복체크{}",memberDTO);
 		if(memberDTO == null) {
 			result = 1; //중복x
+			log.info("이메일중복체크{}",memberDTO);
 		}
+		
 
 		model.addAttribute("result", result);
 
@@ -138,6 +144,8 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public ModelAndView setMemberJoin(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		
 		int result = memberService.setMemberJoin(memberDTO);
 		
 		mv.setViewName("redirect:../");
@@ -173,7 +181,7 @@ public class MemberController {
 	//로그인
 	@GetMapping("memberLogin")
 	public void getMemberLogin(HttpSession session,Model model) throws Exception {
-		
+		log.info("체크");
 		
         SNSLogin snsLogin = new SNSLogin(naverSns);
 		model.addAttribute("naverUrl", snsLogin.getNaverAuthURL("test"));
