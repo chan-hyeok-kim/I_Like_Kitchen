@@ -38,16 +38,15 @@ public class KakaoLogin {
 //	kakao
 
 	private String state = "test";
-	private String kakaoClientId = "ad31c6a5aaaa8e58d6a71df13e7a8cbd";
-    private String kakaoRedirectUri = "http://localhost:82/member/callbackKakao";
+	private String kakaoClientId = "";
+    private String kakaoRedirectUri = "http://192.168.9.13:82/member/callbackKakao";
     private String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code"
 							+ "&client_id=" + kakaoClientId
 							+ "&redirect_uri=" + kakaoRedirectUri
 							+ "&state=" + state;
     private String kakaoToken = "https://kauth.kakao.com/oauth/token";
-    private String kakaoClientSecret = "jXYjRZugqnjo6BWGDzuCy3bkbu6dGtpB";  
-    private String kakaoAuth = "https://kauth.kakao.com/oauth/authorize?client_id=ad31c6a5aaaa8e58d6a71df13e7a8cbd&redirect_uri=http://localhost:82/member/callbackKakao&response_type=code";
-	
+    private String kakaoClientSecret = "";
+    private String kakaoAuth = "";
     
     
     
