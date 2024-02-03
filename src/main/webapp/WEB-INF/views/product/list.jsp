@@ -88,7 +88,6 @@
 				<div id="product-select-list">
 					<select name="order">
 						<option value="0" selected>최신등록순</option>
-						<option value="1">인기순</option>
 						<option value="2">낮은가격순</option>
 						<option value="3">높은가격순</option>
 					</select>

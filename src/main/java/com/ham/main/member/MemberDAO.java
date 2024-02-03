@@ -89,6 +89,14 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"setSnsJoin", snsMemberDTO);
 	}
 	
+	public int setAdd(MemberDTO memberDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setAdd",memberDTO);
+	}
+	
+	
+	public MemberDTO getSnsMemberLogin(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getSnsMemberLogin", memberDTO);
+	}
 
 
 }

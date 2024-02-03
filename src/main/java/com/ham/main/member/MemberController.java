@@ -158,10 +158,8 @@ public class MemberController {
 	
 	}
 	
-	@PostMapping("auth/naver/snsJoin")
-	public ModelAndView setSnsAdd(HttpSession session, MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
+	@PostMapping("snsJoin")
+	public String setKakaoSnsAdd(HttpSession session,MemberDTO memberDTO,Model model) throws Exception {
 		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("snsMember");
 		
 		int result = memberService.setSnsJoin(snsMemberDTO);
@@ -174,9 +172,29 @@ public class MemberController {
 		
 		session.setAttribute("member", memberDTO);
 		session.setAttribute("size",memberDTO.getRoles().size());
-		mv.setViewName("redirect:../../../");
-		return mv;
+		
+		return "redirect:../../../";
 	}
+	
+//	@PostMapping("auth/naver/snsJoin")
+//	public ModelAndView setSnsAdd(HttpSession session, MemberDTO memberDTO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		SnsMemberDTO snsMemberDTO = (SnsMemberDTO)session.getAttribute("snsMember");
+//		
+//		int result = memberService.setSnsJoin(snsMemberDTO);
+//		memberDTO.setId(snsMemberDTO.getSnsEmail());
+//		memberDTO.setName(snsMemberDTO.getSnsName());
+//		memberDTO.setEmail(snsMemberDTO.getSnsEmail());
+//		             
+//		result = memberService.setMemberJoin(memberDTO);
+//		
+//		
+//		session.setAttribute("member", memberDTO);
+//		session.setAttribute("size",memberDTO.getRoles().size());
+//		mv.setViewName("redirect:../../../");
+//		return mv;
+//	}
 	
 	//로그인
 	@GetMapping("memberLogin")
@@ -266,27 +284,32 @@ public class MemberController {
 	      SnsMemberDTO snsMemberDTO = snsLogin.getUserProfile(code); //1,2번 동시
 	         
 
+	      log.warn("네이버{}",snsMemberDTO);
+	      
 	      if(snsMemberDTO != null) {
-	    	  session.setAttribute("snsMember", snsMemberDTO);
-	    	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
-	    	  if(snsMemberDTO == null) {
-	    	     return "/member/snsJoin";
-	    	  }else if(snsMemberDTO.getPlatForm().equals("naver")) {
-	    		  MemberDTO memberDTO = new MemberDTO();
-	      		  memberDTO.setId(snsMemberDTO.getSnsEmail());
-	      		  memberDTO = memberService.getDetail(memberDTO);
-	      		  
-	      		  session.setAttribute("member", memberDTO);
-	      		  model.addAttribute("result", "로그인 성공");
-	    	  }else {
-	    		  model.addAttribute("result", "이미 가입한 이메일입니다.");
-	    	  }
-          }
-          
-	     
-  		
-	     
-	      return "/commons/loginResult";
+	      	  session.setAttribute("snsMember", snsMemberDTO);
+	      	  int result = memberService.setSnsJoin(snsMemberDTO);
+	      	  MemberDTO memberDTO = new MemberDTO();
+	      	  memberDTO.setId(snsMemberDTO.getSnsEmail());
+	      	  
+	      	  log.warn("테스트{}",memberDTO);
+	      	  log.warn("테스트{}",snsMemberDTO);
+	      	  result=memberService.setAdd(memberDTO);
+	      	  
+	      	  if(result>0) {
+	          memberDTO=memberService.getSnsMemberLogin(memberDTO);
+	  	      	
+	      	  session.setAttribute("member", memberDTO);
+	      	  session.setAttribute("size", memberDTO.getRoles().size());
+	     	  }
+	      	  
+	        }
+	        
+	      
+	      
+	      
+	         return "redirect:../../../";
+
 	}
 	
 	
@@ -297,9 +320,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/callbackKakao")
-	public ModelAndView kakao_redirect(@RequestParam("code") String code, HttpSession session) throws Exception  {
+	public String kakao_redirect(@RequestParam("code") String code, HttpSession session,Model mav) throws Exception  {
 	
-	ModelAndView mav = new ModelAndView();
+	
 	String accessToken = kakaoSns.getAccessToken(code);
     // 2번 인증코드로 토큰 전달
     HashMap<String, Object> userInfo = kakaoSns.getUserInfo(accessToken);
@@ -310,35 +333,35 @@ public class MemberController {
         session.setAttribute("userId", userInfo.get("account_email"));
         session.setAttribute("accessToken", accessToken);
     }
-    mav.addObject("userId", userInfo.get("account_email"));
+    mav.addAttribute("userId", userInfo.get("account_email"));
     SnsMemberDTO snsMemberDTO = new SnsMemberDTO();
     snsMemberDTO.setPlatForm("kakao");
+//    snsMemberDTO.setSnsEmail(userInfo.get("account_email").toString());
+
     snsMemberDTO.setSnsEmail(userInfo.get("account_email").toString());
-    snsMemberDTO.setSnsId(userInfo.get("id").toString());
     snsMemberDTO.setSnsName(userInfo.get("profile_nickname").toString());
  
-  
-    if(snsMemberDTO != null) {
-  	  session.setAttribute("snsMember", snsMemberDTO);
-  	  snsMemberDTO = memberService.getBySns(snsMemberDTO);
-  	  if(snsMemberDTO == null) {
-  		mav.setViewName("/member/snsJoin");
-  	  }else if(snsMemberDTO.getPlatForm().equals("kakao")) {
-  		  MemberDTO memberDTO = new MemberDTO();
-    		  memberDTO.setId(snsMemberDTO.getSnsEmail());
-    		  memberDTO = memberService.getDetail(memberDTO);
-    		  memberDTO = memberService.getMemberLogin(memberDTO);
-    		  session.setAttribute("member", memberDTO);
-    		  mav.addObject("result", "로그인 성공");
-    		  mav.setViewName("/commons/loginResult");
-  	  }else {
-  		  mav.addObject("result", "이미 가입한 이메일입니다.");
-  		mav.setViewName("/commons/loginResult");
-  	  }
-    }
-   
     
-    return mav;
+    if(snsMemberDTO != null) {
+    	  session.setAttribute("snsMember", snsMemberDTO);
+    	  int result = memberService.setSnsJoin(snsMemberDTO);
+    	  MemberDTO memberDTO = new MemberDTO();
+    	  memberDTO.setId(snsMemberDTO.getSnsEmail());
+    	  
+    	  log.warn("테스트{}",memberDTO);
+    	  log.warn("테스트{}",snsMemberDTO);
+    	  result=memberService.setAdd(memberDTO);
+    	  
+    	  if(result>0) {
+        memberDTO=memberService.getSnsMemberLogin(memberDTO);
+	      	
+    	  session.setAttribute("member", memberDTO);
+    	  session.setAttribute("size", memberDTO.getRoles().size());
+   	  }
+    	  
+      }
+    
+     return "redirect:../";
 }
 
 

@@ -22,10 +22,10 @@
 
                 <div class="card mb-4">
                 	<div class="card-header">
-                	<c:if test="${snsMember.platForm eq 'kakao'}">
+                	<c:if test="${snsMember.platForm ne 'kakao'}">
 						<form action="auth/naver/snsJoin" id="frm" method="post">
 						</c:if>
-						<c:if test="${snsMember.platForm ne kakao}">
+						<c:if test="${snsMember.platForm eq 'kakao'}">
 						<form action="./snsJoin" id="frm" method="post">
 						</c:if>
 							<div class="mb-3">

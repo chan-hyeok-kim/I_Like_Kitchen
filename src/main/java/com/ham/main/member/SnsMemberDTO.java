@@ -2,21 +2,18 @@ package com.ham.main.member;
 
 import java.util.List;
 
+import lombok.ToString;
 
 
+@ToString
 public class SnsMemberDTO {
 	
-	private String snsId;
+
 	private String platForm;
 	private String snsName;
 	private String snsEmail;
 	
-	public String getSnsId() {
-		return snsId;
-	}
-	public void setSnsId(String snsId) {
-		this.snsId = snsId;
-	}
+	
 	public String getPlatForm() {
 		return platForm;
 	}

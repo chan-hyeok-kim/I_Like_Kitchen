@@ -91,7 +91,7 @@ public class SNSLogin {
 		if(this.sns.isNaver()) {
 		    JsonNode resNode = rootNode.get("response");
 		    System.out.println(resNode);
-		    snsMemberDTO.setSnsId(resNode.get("id").asText());
+		   // snsMemberDTO.setSnsId(resNode.get("id").asText());
 		    snsMemberDTO.setSnsName(resNode.get("name").asText());
 		    snsMemberDTO.setSnsEmail(resNode.get("email").asText());
 		    snsMemberDTO.setPlatForm("naver");
