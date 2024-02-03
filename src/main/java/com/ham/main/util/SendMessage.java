@@ -31,9 +31,9 @@ public class SendMessage {
         // 요청 URL Type
         String requestUrlType = "/messages";
         // 개인 인증키
-        String accessKey = "YOBMQxoPXU3lqd6dYi34";
+        String accessKey = "";
         // 2차 인증을 위해 서비스마다 할당되는 service secret
-        String secretKey = "tG7ZtjRbTIh4EVH4MQTEMLHx53OC0eL2OTuruv9R";
+        String secretKey = "";
         // 프로젝트에 할당된 SMS 서비스 ID
         String serviceId = "ncp:sms:kr:313932845338:gdj68_kitchen";
         // 요청 method
