@@ -41,8 +41,7 @@ public class PartnerController {
 	@Autowired
 	private ProductService productService;
 	
-	private final String SERVICE_KEY = "";
-	
+
 	
 	
 	@GetMapping("partnerPage")
