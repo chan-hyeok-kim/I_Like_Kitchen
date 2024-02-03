@@ -10,8 +10,14 @@ $('#update-btn').click(function(){
         
      swal({
         text:'삭제하시겠습니까?',
-        buttons:['취소','삭제']
-     }).then(function(){
+        buttons:['취소','삭제'],
+        confirmButtonText: "예",
+		cancelButtonText: "아니요",
+		closeOnConfirm: false,
+		closeOnCancel : true,
+        showCancelButton: true,
+     }).then(function(isConfirm){
+     if(isConfirm){
           $.ajax({
               type:'POST',
                url:'/product/delete',
@@ -28,6 +34,8 @@ $('#update-btn').click(function(){
                   swal('삭제하는 도중 에러가 발생했습니다')   
                }
           })
+          
+          }
      })
      
  });
