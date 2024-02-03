@@ -25,7 +25,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	private final String SERVICE_KEY = ""; 
+
 	
 	@Autowired
 	private ProductService productService;
