@@ -86,12 +86,12 @@ public class ProductController {
 	}
 	
 	@GetMapping("update")
-	public void setUpdate(HttpSession session,Model model) throws Exception{
-		PartnerDTO partnerDTO = (PartnerDTO)session.getAttribute("partner");
-	   
-		List<ProductDTO> pl = productService.getInfo(partnerDTO);
+	public void setUpdate(ProductDTO productDTO,Model model) throws Exception{
 		
-		model.addAttribute("kto", pl.get(0));	
+		productDTO=productService.getDetail(productDTO);
+		
+		
+		model.addAttribute("kto", productDTO);	
 	
 	}
 

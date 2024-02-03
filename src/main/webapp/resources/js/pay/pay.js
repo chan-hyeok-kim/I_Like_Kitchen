@@ -26,6 +26,7 @@ amount = amount*useTime
 $('#pay-info').text(amount);
 
 $('#btn').click(function(){
+	console.log('결제버튼 실행')
 	pay()
 })
 

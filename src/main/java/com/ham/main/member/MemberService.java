@@ -112,6 +112,22 @@ public class MemberService {
 	public int setSnsJoin(SnsMemberDTO snsMemberDTO) throws Exception {
 		return memberDAO.setSnsJoin(snsMemberDTO);
 	}
+	
+	public int setAdd(MemberDTO memberDTO) throws Exception{
+		int result=memberDAO.setAdd(memberDTO);
+		
+		result=memberDAO.setMemberRole(memberDTO);
+		
+		
+		return result;	
+	}
+	
+	public MemberDTO getSnsMemberLogin(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getSnsMemberLogin(memberDTO);
+	}
+	
+	
+	
 }
 	    
 	

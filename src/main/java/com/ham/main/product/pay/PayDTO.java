@@ -7,7 +7,13 @@ import com.ham.main.member.MemberDTO;
 import com.ham.main.product.book.BookDTO;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 public class PayDTO {
 	
 	private String payNum;

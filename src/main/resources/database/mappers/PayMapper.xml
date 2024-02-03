@@ -7,8 +7,8 @@
   
 
   <insert id="setPay" parameterType="payDTO">
-     INSERT INTO PAYMENT(PAYNUM, BOOKNUM, PAYDATE, PAYAMOUNT)
-     VALUES ( #{payNum},#{bookNum},SYSDATE,#{payAmount})
+     INSERT INTO PAYMENT(PAYNUM,BOOKNUM,PAYDATE,PAYAMOUNT)
+     VALUES (#{payNum},#{bookNum},SYSDATE,#{payAmount})
   </insert>
   
   

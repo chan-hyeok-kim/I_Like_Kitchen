@@ -1,9 +1,16 @@
 package com.ham.main.member;
 import java.util.List;
 import com.ham.main.notice.NoticeFileDTO;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import com.ham.main.member.RoleDTO;
 
-
+@Getter
+@Setter
+@ToString
 public class MemberDTO {
 
 	private String id;
