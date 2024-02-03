@@ -41,7 +41,7 @@ public class SendMessage {
         bodyJson.put("content", "ILikeKitchen ["+rand+"]");
         
         // 발신번호 * 사전에 인증/등록된 번호만 사용할 수 있습니다.
-        bodyJson.put("from","01026459730");		
+        bodyJson.put("from","");		
         bodyJson.put("messages", toArr);		
 	    
         String body = bodyJson.toJSONString();
