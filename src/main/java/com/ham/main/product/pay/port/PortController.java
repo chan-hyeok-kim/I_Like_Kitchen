@@ -35,8 +35,6 @@ import retrofit2.Response;
 public class PortController {
 	
 	private IamportClient api;
-	private final String impKey="4731477725013655";
-	private final String impSecret="4sLy60QFBFGWqZMMhf3oyDKdIqP3KQnVkgrjy5HOEP2qLap6MY3thgDoCYpbVzQRoMlDOQzqa1o3uW48";
 	
 	
 	
